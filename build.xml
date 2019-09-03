@@ -184,7 +184,7 @@
 	</target>
 
 
-	<target name="-select-release" unless="selected.release">
+	<target name="-select-release" unless="iics.release">
 		<fileset id="available.releases" dir="${basedir}/conf" includes="*.release.properties" />
 		<pathconvert property="available.releases.list" refid="available.releases" pathsep="," />
 		<pathconvert property="available.releases.print" refid="available.releases" pathsep="${line.separator}" />
@@ -192,37 +192,57 @@
 		<echo level="info">=================================</echo>
 		<echo level="info">${available.releases.print}</echo>
 		<echo level="info">=================================</echo>
-		<input validargs="${available.releases.list}" message="Select Release Configuration:" addproperty="selected.release">
+		<input validargs="${available.releases.list}" message="Select Release Configuration:" addproperty="iics.release">
 		</input>
-		<basename file="${selected.release}" property="selected.release.basename" suffix=".properties" />
-		<echo level="info">Selected Release Configuration: ${selected.release.basename}</echo>
-		<echo level="info">Selected File: ${selected.release}</echo>
+		<basename file="${iics.release}" property="iics.release.basename" suffix=".properties" />
+		<echo level="info">Selected Release Configuration: ${iics.release.basename}</echo>
+		<echo level="info">Selected File: ${iics.release}</echo>
+	</target>
+	
+	<target name="-select-package-config" unless="iics.target.package.config">
+        <fileset id="available.package.lists" dir="${basedir}/conf" includes="*.package.txt" />
+        <pathconvert property="available.package.list.files" refid="available.package.lists" pathsep="," />
+        <pathconvert property="available.package.list.files.print" refid="available.package.lists" pathsep="${line.separator}" />
+        <echo level="info">Available Target Package Configurations:</echo>
+        <echo level="info">========================================</echo>
+        <echo level="info">${available.package.list.files.print}</echo>
+        <echo level="info">========================================</echo>
+        <input validargs="${available.package.list.files}" message="Select Package Configuration:" addproperty="iics.target.package.config">
+        </input>
+        <basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix=".txt" />
+        <echo level="info">Selected Target Package Configuration: ${iics.target.package.config.basename}</echo>
+        <echo level="info">Selected File: ${iics.target.package.config}</echo>
+    </target>
+
+	<target name="-select-source-environment" unless="iics.source.environment" depends="-load.release.properties">
+		<input validargs="${iics.environment.list}" message="Select Source Environment:" addproperty="iics.source.environment">
+		</input>
+		<echo level="info">Selected Source Environment: ${iics.source.environment}</echo>
 	</target>
 
-	<target name="-select-source-environment" unless="selected.source.environment">
-		<input validargs="${iics.environment.list}" message="Select Source Environment:" addproperty="selected.source.environment">
+	<target name="-select-target-environment" unless="iics.target.environment" depends="-load.release.properties">
+		<input validargs="${iics.environment.list}" message="Select Target Environment:" addproperty="iics.target.environment">
 		</input>
-		<echo level="info">Selected Source Environment: ${selected.source.environment}</echo>
+		<echo level="info">Selected Target Environment: ${iics.target.environment}</echo>
+	</target>
+	
+	<target name="-set-source-properties" depends="-select-source-environment">
+       <property name="iics.export.dir">${basedir}/target/${iics.release.basename}/export/${iics.source.environment}</property>
+       <property name="iics.export.list.location" location="${iics.export.dir}/${iics.list.output}" />
+       <property name="iics.export.file.location" location="${iics.export.dir}/${iics.export.output}" />
+	</target>
+	
+	<target name="-set-target-properties" depends="-select-target-environment">
+        <property name="iics.import.dir">${basedir}/target/${iics.release.basename}/import/${iics.target.environment}</property>
 	</target>
 
-	<target name="-select-target-environment" unless="selected.target.environment">
-		<input validargs="${iics.environment.list}" message="Select Target Environment:" addproperty="selected.target.environment">
-		</input>
-		<echo level="info">Selected Target Environment: ${selected.target.environment}</echo>
-	</target>
-
-	<target name="-release.load.params" depends="-select-release">
-		<echo level="info">Loading ${selected.release}</echo>
-		<property file="${selected.release}" />
+	<target name="-load.release.properties" depends="-select-release">
+		<echo level="info">Loading ${iics.release}</echo>
+		<property file="${iics.release}" />
 		<echo level="info">Loading External properties (credentials) from ${iics.external.properties}</echo>
 		<property file="${iics.external.properties}" />
-		<property name="iics.export.dir">${basedir}/target/${selected.release.basename}</property>
-		<property name="iics.export.list.location" location="${iics.export.dir}/${iics.list.output}" />
-		<property name="iics.export.file.location" location="${iics.export.dir}/${iics.export.output}" />
-
 		<echo level="info">TODO: Add Inputs Validation</echo>
 	</target>
-
 
 	<target name="-check.external.properties">
 		<condition property="iics.external.properties.available">
@@ -233,9 +253,13 @@
 	</target>
 
 	<target name="-set.source.credentials" depends="-check.external.properties" if="iics.external.properties.available">
-		<set.environment.credentials direction="source" environment="${selected.source.environment}" />
+		<set.environment.credentials direction="source" environment="${iics.source.environment}" />
 	</target>
-
+    
+	<target name="-set.target.credentials" depends="-check.external.properties" if="iics.external.properties.available">
+        <set.environment.credentials direction="target" environment="${iics.target.environment}" />
+    </target>
+	
 	<target name="-check.source.creds">
 		<condition property="iics.source.pwd.set">
 			<isset property="iics.source.password" />
@@ -260,7 +284,7 @@
 			<!-- <handler type="secure"/>  unfortunately this does not work in eclipse -->
 		</input>
 	</target>
-
+	
 	<target name="-check.export.files">
 		<condition property="iics.list.available">
 			<available file="${iics.export.dir}/${iics.list.output}" />
@@ -271,7 +295,7 @@
 	</target>
 
 	<target name="iics.list" depends="-download.iics,-check.export.files,-iics.input.source.creds" unless="iics.list.available">
-		<iics.list id="${selected.release.basename}" 
+		<iics.list id="${iics.release.basename}" 
 			output="${iics.list.output}" 
 			todir="${iics.export.dir}" 
 			query="${iics.query}" 
@@ -281,7 +305,7 @@
 	</target>
 
 	<target name="iics.export" depends="iics.list,-check.export.files,-iics.input.source.creds" unless="iics.export.available">
-		<iics.export id="${selected.release.basename}" 
+		<iics.export id="${iics.release.basename}" 
 			listfile="${iics.list.output}" 
 			outputfile="${iics.export.output}" 
 			todir="${iics.export.dir}" 
@@ -289,7 +313,6 @@
 			password="${iics.source.password}" 
 			region="${iics.region}" />
 	</target>
-	
 	
 
 	<target name="-check.exported">
@@ -299,7 +322,9 @@
 	</target>
 
 	<target name="iics.extract" depends="iics.export,-check.exported" if="iics.export.available">
-		<iics.extract id="${selected.release.basename}" file="${iics.export.dir}/${iics.export.output}" todir="${iics.extract.dir}" />
+		<iics.extract id="${iics.release.basename}" 
+			file="${iics.export.dir}/${iics.export.output}" 
+			todir="${iics.extract.dir}" />
 	</target>
 
 	<target name="iics.prepare.package">
@@ -307,28 +332,37 @@
 
 	</target>
 
-	<target name="iics.package" depends="-release.load.params" >
-        <iics.package id="${selected.release.basename}" workspace="${iics.extract.dir}" todir="${iics.export.dir}" file="${basedir}/conf/full.package.txt"  />
+	<target name="iics.package" depends="-load.release.properties" >
+        <iics.package id="${iics.release.basename}" 
+        	workspace="${iics.extract.dir}" 
+        	output="${iics.package.output}.zip" 
+        	todir="${iics.import.dir}" 
+        	file="${iics.target.package.config}"  />
     </target>
 	
 	
-	<target name="clean.target" depends="-release.load.params">
+	<target name="clean.target" depends="-load.release.properties">
 		<delete dir="${iics.export.dir}" verbose="true">
 		</delete>
 	</target>
 
 	<target name="update.src" depends="-env.info,
 		-select-release,
-		-release.load.params,
+		-load.release.properties,
 		-select-source-environment,
-		iics.extract" description="Updates design ources directory fron Source Environment Org using iics Export utility">
+		-set-source-properties,
+		 iics.extract" 
+		description="Updates design ources directory fron Source Environment Org using iics Export utility">
 	</target>
 
 
-	<target name="build.src" depends="-env.info,
+	<target name="package.src" depends="-env.info,
 		-select-release,
-		-release.load.params,
-		iics.package" description="Builds Package for specified target enviornment from ${basedir}/src/ipd">
+		-load.release.properties,
+		-set-target-properties,
+		-select-package-config,
+		 iics.package" 
+		description="Builds Package for specified target enviornment from ${basedir}/src/ipd">
 	</target>
 
 
@@ -343,8 +377,8 @@
 		<sequential>
 			<mkdir dir="@{toDir}" />
 			<echo level="info">Listing query contents to: @{listFile}</echo>
-			<property name="iics.list.command.@{id}" value="list -r @{region} -u @{user} -p @{password} @{query} -o '@{toDir}/@{output}'" />
-			<echo level="info">Running list -r @{region} -u @{user} -p **** @{query} -o '@{toDir}/@{output}'"</echo>
+			<property name="iics.list.command.@{id}" value='list -r @{region} -u @{user} -p @{password} @{query} -o "@{toDir}/@{output}"' />
+			<echo level="info">Running list -r @{region} -u @{user} -p **** @{query} -o "@{toDir}/@{output}"</echo>
 			<exec dir="${basedir}" executable="${tool.iics}">
 				<arg line="${iics.list.command.@{id}}" />
 			</exec>
@@ -362,7 +396,7 @@
 		<sequential>
 			<mkdir dir="@{toDir}" />
 			<echo level="info">Exporting package using: @{listFile}</echo>
-			<property name="iics.export.command.@{id}" value="export -r @{region} -u '@{user}' -p @{password} -f '@{toDir}/@{listFile}' -z '@{toDir}/@{outputfile}'" />
+			<property name="iics.export.command.@{id}" value='export -r @{region} -u "@{user}" -p @{password} -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"' />
 			<echo level="info">Running iics export -r @{region} -u '@{user}' -p **** -f '@{listFile}' -z '@{toDir}/@{outputfile}'</echo>
 			<exec dir="${basedir}" executable="${tool.iics}">
 				<arg line="${iics.export.command.@{id}}" />
@@ -376,8 +410,8 @@
 		<attribute name="toDir" />
 		<sequential>
 			<mkdir dir="@{toDir}" />
-			<property name="iics.extract.command.@{id}" value="extract -z @{file} -w '@{toDir}'" />
-			<echo level="info">Running iics ${iics.extract.command.@{id}}"</echo>
+			<property name="iics.extract.command.@{id}" value='extract -z "@{file}" -w "@{toDir}"' />
+			<echo level="info">Running iics ${iics.extract.command.@{id}}</echo>
 			<exec dir="${basedir}" executable="${tool.iics}">
 				<arg line="${iics.extract.command.@{id}}" />
 			</exec>
@@ -394,15 +428,38 @@
     	<!-- Defines the path of the workspace directory where the individual artifacts are available. -->
     	<attribute name="toDir" />
     	<!-- Defines the path and file name for the IICS import zip file that you want to create. -->
+		<attribute name="output" />
     	<sequential>
     		<mkdir dir="@{toDir}" />
-    		<property name="iics.package.command.@{id}" value='package -z "@{toDir}" -w "@{workspace}" -f "@{file}"' />
+    		<property name="iics.package.command.@{id}" value='package -z "@{toDir}/@{output}" -w "@{workspace}" -f "@{file}"' />
             <echo level="info">Running iics ${iics.package.command.@{id}}</echo>
-			<exec dir="${basedir}" executable="${tool.iics}">
+			<exec dir="${basedir}" executable="${tool.iics}" failonerror="true">
 				<arg line="${iics.package.command.@{id}}" />
 			</exec>
 		</sequential>
 	</macrodef>
+	
+	
+	<macrodef name="iics.import" description="Imports IICS Package">
+        <attribute name="id" default="1" />
+        <attribute name="file" />
+        <attribute name="region" default="us" />
+        <attribute name="user" />
+        <attribute name="password" />
+		<attribute name="name" default="IICSS Tool Automated Import"/>
+		<attribute name="maxWaitTime" default="240"/>
+		<attribute name="synchronous" default="true"/>
+		        
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <echo level="info">Importing Package: @{file}</echo>
+            <property name="iics.import.command.@{id}" value='import -r @{region} -u "@{user}" -p @{password} -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"' />
+            <echo level="info">Running iics import -r @{region} -u "@{user}" -p **** -f "@{listFile}" -z "@{file}"</echo>
+            <exec dir="${basedir}" executable="${tool.iics}">
+                <arg line="${iics.import.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
 
 
 	<macrodef name="set.environment.credentials">

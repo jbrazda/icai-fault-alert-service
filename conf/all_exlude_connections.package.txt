@@ -1,0 +1,5 @@
+Explore/Alerting/Guides.Folder
+Explore/Alerting/ProcessObjects.Folder
+Explore/Alerting/Processes.Folder
+Explore/Tools/ProcessObjects.Folder
+Explore/Tools/Processes.Folder
