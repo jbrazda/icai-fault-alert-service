@@ -1,0 +1,18 @@
+Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml
+Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml
+Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml
+Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml
+Explore/Alerting/Connections/AWS-SQS-Alerts.AI_CONNECTION.xml
+Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml
+Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml
+Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml
+Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml
+Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml
+Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml
