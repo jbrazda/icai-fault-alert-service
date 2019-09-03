@@ -1,0 +1,71 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BhsydsUf2hwq9bd-gt-5883394-2019-06-20T21:20:49.437Z::conn.xml</types1:EntryId>
+      <types1:Name>AWS-SQS-Alerts</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:NA</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-06-20T21:20:49Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-06-20T21:31:21Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AWS-SQS-Alerts"
+                     label="AWS-SQS-Alerts"
+                     name="AWS-SQS-Alerts">
+            <description/>
+            <tags>.agent:NA</tags>
+            <agent>NA</agent>
+            <attributes>
+               <attribute encrypted="false" name="accessKey" value="AKIAYEDZMZOGIT5F674M"/>
+               <attribute encrypted="true" name="secretKey" value=""/>
+               <attribute encrypted="false"
+                          name="amazonSQSEndpoint"
+                          value="https://sqs.us-east-1.amazonaws.com/558600342412/iics-lab-alerts"/>
+            </attributes>
+            <producers>
+               <producer enabled="true" name="AwsSQSWriter" typeName="AwsSQSWriter">
+                  <description>Use this event target to write new messages to Amazon SQS.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="queueName" value="iics-lab-alerts"/>
+                     <attribute encrypted="false" name="queryParameters" value=""/>
+                     <attribute encrypted="false" name="queueOwnerAWSAccountId" value=""/>
+                     <attribute encrypted="false" name="region" value="us-east-1"/>
+                     <attribute encrypted="false" name="contentFormat" value="XML"/>
+                     <attribute encrypted="false" name="visibilityTimeout" value=""/>
+                     <attribute encrypted="false" name="policy" value=""/>
+                     <attribute encrypted="false" name="maximumMessageSize" value=""/>
+                     <attribute encrypted="false" name="messageRetentionPeriod" value=""/>
+                     <attribute encrypted="false" name="messageGroupIdStrategy" value="useConstant"/>
+                     <attribute encrypted="false"
+                                name="messageDeduplicationIdStrategy"
+                                value="useExchangeId"/>
+                     <attribute encrypted="false" name="delaySeconds" value=""/>
+                  </attributes>
+               </producer>
+            </producers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           type="AWSSQS"
+                           uuid="415bc2f8-8e64-4d18-81a9-1e085f953758">
+               <description>Amazon Web Services SQS service.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>4XgVJDNt2gWi0Zq9iBgPo2</types1:GUID>
+      <types1:DisplayName>AWS-SQS-Alerts</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-09-03T16:20:31.112Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

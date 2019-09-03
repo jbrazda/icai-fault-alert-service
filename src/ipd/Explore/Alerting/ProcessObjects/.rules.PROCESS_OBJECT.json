@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "2xbm1JXVqY0j6uW3iZAv66",
+      "objectName": "rules",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Condition Group for Alert level - Are evaluated in following order error, warning, error OR logical operator is used to  evaluate groups of conditions if any group returns true than the level is selected",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "hnshiYqkeIOehlyCb2Zdwg"
+         ],
+         "repoInfo": {
+            "repoHandle": "Wy0CR3aaa-gt-2121980-2019-06-18T14:54:19.783Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "hnshiYqkeIOehlyCb2Zdwg",
+      "objectName": "rule",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Rule with of Conditions to be evaluated using logical operator provided and perform specified action",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "xyIYmWR7hsAVR3a-gt-3920827-2019-06-18T14:49:43.379Z::po.xml"
+         }
+      }
+   }
+]

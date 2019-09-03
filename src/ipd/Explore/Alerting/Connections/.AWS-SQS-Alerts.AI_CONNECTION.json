@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "4XgVJDNt2gWi0Zq9iBgPo2",
+      "objectName": "AWS-SQS-Alerts",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "BhsydsUf2hwq9bd-gt-5883394-2019-06-20T21:20:49.437Z::conn.xml"
+         }
+      }
+   }
+]

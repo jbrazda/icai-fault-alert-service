@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "akj7LhWsrkRfrss9BWznMz",
+      "objectName": "alert-config",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Alert Configuration Properties",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "aa-gt-4513556-2019-06-18T15:01:20.001Z::po.xml"
+         }
+      }
+   }
+]

@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "2x6ixxuVb9adGyQ78Amke0",
+      "objectName": "Connections",
+      "objectType": "Folder",
+      "path": "/Explore/Alerting",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]

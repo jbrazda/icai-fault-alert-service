@@ -1,0 +1,94 @@
+[
+   {
+      "objectGuid": "a7pUb21Pfy3c67w7CCaz4B",
+      "objectName": "FaultAlertConfiguration",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "PO  to define Fault Alert Service Configuration and also Output of Alert Rules evaluation",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "akj7LhWsrkRfrss9BWznMz",
+            "2xbm1JXVqY0j6uW3iZAv66",
+            "9iWs22M9UJ1lWpwzJdU62X"
+         ],
+         "repoInfo": {
+            "repoHandle": "ciSrZMSPfXBiVGk-gt-4488393-2019-06-18T13:25:21.036Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "akj7LhWsrkRfrss9BWznMz",
+      "objectName": "alert-config",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Alert Configuration Properties",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "aa-gt-4513556-2019-06-18T15:01:20.001Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "2xbm1JXVqY0j6uW3iZAv66",
+      "objectName": "rules",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Condition Group for Alert level - Are evaluated in following order error, warning, error OR logical operator is used to  evaluate groups of conditions if any group returns true than the level is selected",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "Wy0CR3aaa-gt-2121980-2019-06-18T14:54:19.783Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "9iWs22M9UJ1lWpwzJdU62X",
+      "objectName": "actions",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "List of actions for a Alert Event",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "hDnFShFdw8jIw8j-gt-4510760-2019-06-18T14:13:00.612Z::po.xml"
+         }
+      }
+   }
+]

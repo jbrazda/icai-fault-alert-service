@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "0XBGnDRR3WMgJR50uEhJiV",
+      "objectName": "action-email",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "PO to store Email Action details  Such as subject recipients",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "2iXieHufWC64Ky2-gt-4509483-2019-06-18T14:08:18.866Z::po.xml"
+         }
+      }
+   }
+]

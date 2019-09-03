@@ -1,0 +1,852 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>spiRASmvD4teIss-gt-2649660-2019-08-28T20:13:28.304Z::pd.xml</types1:EntryId>
+      <types1:Name>UncaughtFaultAlertHandler-NA</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:NA</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-08-28T20:13:28Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-08-28T20:24:02Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2019-08-28T20:24:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-NA/UncaughtFaultAlertHandler-NA.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="UncaughtFaultAlertHandler-NA"
+                  name="UncaughtFaultAlertHandler-NA">
+            <appliesTo/>
+            <description>Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored</description>
+            <tags>.agent:NA</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="Alert Details" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:AlertDetails</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="Configuration Output with rures outcomes included"
+                      name="AlertHandlerOutput"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:FaultAlertConfiguration</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">a7pUb21Pfy3c67w7CCaz4B</option>
+                  </options>
+               </field>
+               <field description="List of Actions invoked by the handler"
+                      name="out_actions_taken"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:action-ref</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">450357e5mW9eidFwHW1Nou</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="Process Name used to generate process title"
+                      name="tmp_process_name"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">UncaughtFaultAlertHandler-NA</option>
+                  </options>
+               </field>
+               <field description="Augmented Process Title"
+                      name="tmp_process_title"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Fault Alert Handler Configuration retrieved from the provider"
+                      name="tmp_alert_configuration"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:FaultAlertConfiguration</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">a7pUb21Pfy3c67w7CCaz4B</option>
+                  </options>
+               </field>
+               <field description="Temporary output for actions like ipd:setProcessTitle($temp.tmp_process_title )"
+                      name="tmp_script_out"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="URN mapping to set one of the supported configuration providess (simple http get or Github gist)"
+                      name="tmp_urn_configuration_provider"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">urn:ic:faultAlerts:configuration:provider</option>
+                  </options>
+               </field>
+               <field description="Default value for tmp_urn_configuration_provider, default is gist (the ( the github-gist-alert-configuration connection must be set)"
+                      name="tmp_urn_configuration_provider_default"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">gist</option>
+                  </options>
+               </field>
+               <field description="URN mapping to set configuration url "
+                      name="tmp_urn_configuration_url"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">urn:ic:faultAlerts:configuration:url</option>
+                  </options>
+               </field>
+               <field description="Variable to store configured Configuration provider"
+                      name="tmp_configuration_provider"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Variable to store Configuration URL"
+                      name="tmp_configuration_url"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Dafault Value for "
+                      name="tmp_urn_configuration_url_default"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Email Notification Parameters"
+                      name="tmp_email_action_details"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:action-email</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0XBGnDRR3WMgJR50uEhJiV</option>
+                  </options>
+               </field>
+               <field description="URN Defines Fallback Emil to be used by falback configuration"
+                      name="tmp_urn_fallback_email"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">urn:ic:faultAlerts:falback:email</option>
+                  </options>
+               </field>
+               <field description="Falback Mailto Email"
+                      name="tmp_fallback_email"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Org ID must be stored in URN mapping on Agent"
+                      name="tmp_urn_environment_org_id"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">urn:environment:orgid </option>
+                  </options>
+               </field>
+               <field description="URN defines Environment such as Agent name or Cloud"
+                      name="tmp_urn_environment_name"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">urn:environment:name</option>
+                  </options>
+               </field>
+               <field description="URN to resolve base URI of the Cloud server is used to generate links to process console"
+                      name="tmp_urn_base_uri"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">ae:base-uri</option>
+                  </options>
+               </field>
+               <field description="IICS Org ID" name="tmp_org_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Environment Name"
+                      name="tmp_environment_name"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="Base URI of Informatica Cloud Org "
+                      name="tmp_base_uri"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="When Any of the rules. evaluatte to true and is associated with Ignore Action then the Alert will ignore this fault"
+                      name="tmp_ignore_fault"
+                      type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_actions" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:action</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7TCmsWgjoghdSqfpcOxfs4</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_actions_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_actions_index" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_input" type="reference">
+                  <options>
+                     <option name="referenceTo">Email-Alerts:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cOur0Hdz9oshd8U7LIuIiD</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_body" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>NA</targetLocation>
+               <event eventSource="System Events:Runtime Alert Service"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="jx66j68d" targetId="jx66j68c"/>
+               </start>
+               <assignment id="jx66j68c">
+                  <title>Initialize</title>
+                  <operation source="formula" to="temp.tmp_process_title">
+                     <expression language="XQuery">let $pid   := concat("pid:",$input.AlertDetails[1]/processId)
+let $pname := concat("pname:", $input.AlertDetails[1]/processName)
+let $parts := ($temp.tmp_process_name, $pid, $pname)
+let $process_title := substring(string-join($parts, " "),1,255)
+return $process_title</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_script_out">
+                     <expression language="XQuery">ipd:setProcessTitle($temp.tmp_process_title )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_configuration_provider">
+                     <expression language="XQuery">let $urn_value := util:resolveURN($temp.tmp_urn_configuration_provider )
+return 
+if ($urn_value = $temp.tmp_urn_configuration_provider) 
+	then $temp.tmp_urn_configuration_provider_default
+    else $urn_value</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_configuration_url">
+                     <expression language="XQuery">let $urn_value := util:resolveURN($temp.tmp_urn_configuration_url )
+return 
+if ($urn_value = $temp.tmp_urn_configuration_url ) 
+	then $temp.tmp_urn_configuration_url_default 
+    else $urn_value</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_fallback_email">
+                     <expression language="XQuery">util:resolveURN($temp.tmp_urn_fallback_email )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_org_id">
+                     <expression language="XQuery">util:resolveURN($temp.tmp_urn_environment_org_id )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_base_uri">
+                     <expression language="XQuery">util:resolveURN($temp.tmp_urn_base_uri )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_environment_name">
+                     <expression language="XQuery">util:resolveURN($temp.tmp_urn_environment_name )</expression>
+                  </operation>
+                  <link id="jx66j68e" targetId="jx648rso"/>
+               </assignment>
+               <assignment id="jx66j6cz">
+                  <title>Evaluate Rules</title>
+                  <operation source="formula" to="output.AlertHandlerOutput">
+                     <expression language="XQuery">let $config := $temp.tmp_alert_configuration
+let $alert  := $input.AlertDetails
+
+(:
+Evaluate all rules and calculate conditions result and outcome for each rule, 
+the reult field is boolean determining if corresponding action associated with rule shudl be invoked:)
+let $rulesEvaluated := 
+        for $rule in $config/rules/rule
+                    let $group-operator := $rule/operator/text()
+                    let $conditions := for $condition in $rule/condition
+                        let $guid           := $condition/guid/text()
+                        let $fieldName      := $condition/alert-field/text()
+                        let $fieldValue     := $alert/element()[local-name() = $fieldName]/text()
+                        let $conditionValue := $condition/value/text()
+                        let $conditionNot   := $condition/not/text()
+                        let $type           := $condition/type/text()
+                        let $result := switch ($type)
+                                case "equals" return  $fieldValue  eq $conditionValue
+                                case "matches" return matches($fieldValue,$conditionValue)
+                                case "contains" return contains($fieldValue, $conditionValue)
+                                default return false()
+                        (:negate the conditions result when not is set to true :)
+                        let $resultOut := if ($conditionNot = 'true' or $conditionNot = '0' and not(empty($conditionNot))) 
+                                            then not($result) 
+                                            else $result
+                        return (:clone:)
+                          &lt;condition&gt;
+                              &lt;guid&gt;{$guid}&lt;/guid&gt;
+                              &lt;type&gt;{$type}&lt;/type&gt;
+                              &lt;value&gt;{$conditionValue}&lt;/value&gt;
+                              &lt;fieldValue&gt;{$fieldValue}&lt;/fieldValue&gt;
+                              &lt;not&gt;{$conditionNot}&lt;/not&gt;
+                              &lt;alert-field&gt;{$fieldName}&lt;/alert-field&gt;
+                              &lt;result&gt;{$resultOut}&lt;/result&gt;
+                          &lt;/condition&gt;
+                          
+                  return
+                  &lt;rule&gt;
+                    &lt;guid&gt;{$rule/guid/text()}&lt;/guid&gt;
+                    &lt;name&gt;{$rule/name/text()}&lt;/name&gt;
+                    &lt;operator&gt;{$group-operator}&lt;/operator&gt;
+                    {$conditions}
+                    {$rule/action}
+                    &lt;results&gt;{string-join($conditions/result/text(),",")}&lt;/results&gt;
+                    &lt;result&gt;{ 
+                        if (upper-case($group-operator) = "OR" ) then 
+                            'true' = $conditions/result 
+                            else (: checking if value is in the sequence of results :)
+                            not( 'false' = $conditions/result) }&lt;/result&gt;
+                  &lt;/rule&gt;
+(: 
+we need to decide which action to invoke following logic is applied
+Eachr Rulee is associated with action that will be invoked or ignore action will be applied to specific rule
+When Any rule is true with Ignore Action all other actions will be dismissed as well (ignore action is mutually exclusive with any other actions
+Make sure you design rules in the way that no duplicate actions is taken two rules linked to the same action will invoke action only once
+If any other action will be supported such as external event trigger,
+it would be possible to combine it with email actions and they would execute in parallel 
+currently email actions will be invoked sequentialy as the rules evalueted themor we will ignore the error, send Warning or Error level email
+:)
+
+(: get distinct set of actions - find all rules with true result and their actions:)
+let $distinct-actions := $rulesEvaluated[result/text() = 'true']/action/guid
+
+let $invokeActions := for $action in $config/actions/action
+                      (: is value in sequence:)
+                      where string($action/guid/text()) = $distinct-actions
+                      return
+                      $action 
+                         
+return
+&lt;FaultAlertConfiguration&gt;
+   {$config/alert-config}
+   &lt;rules&gt;
+       {$rulesEvaluated}
+   &lt;/rules&gt;
+   {$config/actions}
+   &lt;invokeActions&gt;{$invokeActions}&lt;/invokeActions&gt;
+&lt;/FaultAlertConfiguration&gt;
+          
+
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ignore_fault">
+                     <expression language="XQuery">let $evaluatedRules := $output.AlertHandlerOutput[1] 
+return 
+exists($evaluatedRules/invokeActions/action[Type/text() = 'ignore'])</expression>
+                  </operation>
+                  <link id="jx69rd65" targetId="jx69rd64"/>
+               </assignment>
+               <container id="jx648rso" type="exclusive">
+                  <title>Configuration Provider?</title>
+                  <flow id="jx648rt7">
+                     <eventContainer id="jx66j673">
+                        <service id="jx648rw0">
+                           <title>getGistFile</title>
+                           <serviceName>github-gist-alert-configuration:getGistFile</serviceName>
+                           <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                           <serviceInput>
+                              <parameter name="raw_url" source="formula">
+                                 <expression language="XQuery">$temp.tmp_configuration_url </expression>
+                              </parameter>
+                              <parameter name="parse_as" source="constant">xml</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="jx66j675">
+                           <assignment id="jx66j6bx">
+                              <title>Assignment to tmp_alert_configuration</title>
+                              <operation source="formula" to="temp.tmp_alert_configuration">
+                                 <expression language="XQuery">$output.parsed_xml </expression>
+                              </operation>
+                           </assignment>
+                           <link id="jx66j676" targetId="jx66j673" type="containerLink"/>
+                        </flow>
+                        <flow id="jx66j678">
+                           <assignment id="jx66j68u">
+                              <title>Update Process Title</title>
+                              <operation source="formula" to="temp.tmp_script_out">
+                                 <expression language="XQuery">let $code := $output.faultInfo[1]/code
+let $error := $output.faultInfo[1]/reason
+let $parts := ($temp.tmp_process_title, "ERROR: Failed Read Configuration",$code, $error)
+let $process_title := substring(string-join($parts, " "),1,255)
+return ipd:setProcessTitle($process_title)</expression>
+                              </operation>
+                              <link id="jx66j69h" targetId="jx66j69g"/>
+                           </assignment>
+                           <jumpTo id="jx66j69g">
+                              <link id="jx66j6bk" targetId="jx66j69z"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="jx66j674" targetId="jx66j675" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="jx66j672" interrupting="true">
+                              <link id="jx66j677" targetId="jx66j678" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="jx648rt8" targetId="jx648rso" type="containerLink"/>
+                  </flow>
+                  <flow id="jx648rt9">
+                     <assignment id="jx668eh2">
+                        <title>Load Config from URL (no authentication)</title>
+                        <operation source="formula" to="temp.tmp_alert_configuration">
+                           <expression language="XQuery">doc($temp.tmp_configuration_url)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jx648rta" targetId="jx648rso" type="containerLink"/>
+                  </flow>
+                  <flow id="jx648rvg">
+                     <assignment id="jx66j69z">
+                        <title>Set Fallback Configuration</title>
+                        <operation source="formula" to="temp.tmp_alert_configuration">
+                           <expression language="XQuery">&lt;FaultAlertConfiguration&gt;
+    &lt;alert-config&gt;
+        &lt;Name&gt;Default Falback Alert Configuration&lt;/Name&gt;
+        &lt;Descrioption&gt;This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider&lt;/Descrioption&gt;
+        &lt;created&gt;2019-06-21T10:24:23&lt;/created&gt;
+        &lt;createdBy&gt;System&lt;/createdBy&gt;
+    &lt;/alert-config&gt;
+    &lt;rules&gt;
+        &lt;rule&gt;
+            &lt;guid&gt;9e7b7b98-f7ce-43e1-911f-26b4aaa0506a&lt;/guid&gt;
+            &lt;name&gt;Error Email&lt;/name&gt;
+            &lt;operator&gt;OR&lt;/operator&gt;
+            &lt;condition&gt;
+                &lt;guid&gt;159ccd35-f8a0-433e-82ca-7dea2df10f3e&lt;/guid&gt;
+                &lt;type&gt;equals&lt;/type&gt;
+                &lt;value&gt;&lt;/value&gt;
+                &lt;not&gt;true&lt;/not&gt;
+                &lt;alert-fied&gt;processName&lt;/alert-fied&gt;
+            &lt;/condition&gt;
+            &lt;action&gt;
+                &lt;guid&gt;dcc33ba3-9ced-4546-a6e0-e9c1b33ae767&lt;/guid&gt;
+                &lt;Name&gt;Error Email&lt;/Name&gt;
+                &lt;Type&gt;error-email&lt;/Type&gt;
+            &lt;/action&gt;
+        &lt;/rule&gt;
+    &lt;/rules&gt;
+    &lt;actions&gt;
+        &lt;action&gt;
+            &lt;guid&gt;dcc33ba3-9ced-4546-a6e0-e9c1b33ae767&lt;/guid&gt;
+            &lt;Name&gt;Error Email&lt;/Name&gt;
+            &lt;Description&gt;Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors&lt;/Description&gt;
+            &lt;Type&gt;error-email&lt;/Type&gt;
+            &lt;ActionDetail&gt;
+            	&lt;action-email&gt;
+                  &lt;subject&gt;Fault Alert - Error&lt;/subject&gt;
+                  &lt;to&gt;{$temp.tmp_fallback_email}&lt;/to&gt;
+                  &lt;cc&gt;&lt;/cc&gt;
+                  &lt;bcc&gt;&lt;/bcc&gt;
+                  &lt;contentType&gt;text/html&lt;/contentType&gt;
+                  &lt;actionName&gt;Send Error Email&lt;/actionName&gt;
+              	&lt;/action-email&gt;
+            &lt;/ActionDetail&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+&lt;/FaultAlertConfiguration&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jx648rvh" targetId="jx648rso" type="containerLink"/>
+                  </flow>
+                  <link id="jx648rt0" targetId="jx648rt7" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_configuration_provider}</arg>
+                           <arg name="right">gist</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jx648rt3" targetId="jx648rt9" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_configuration_provider}</arg>
+                           <arg name="right">url</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jx648rvf" targetId="jx648rvg" type="containerLink"/>
+                  <link id="jx66j6d0" targetId="jx66j6cz"/>
+               </container>
+               <container id="jx69rd64" type="exclusive">
+                  <title>tmp_ignore_fault?</title>
+                  <flow id="jx69rd7u">
+                     <assignment id="jxaiev34">
+                        <title>Update Process Title IGNORED</title>
+                        <operation source="formula" to="temp.tmp_script_out">
+                           <expression language="XQuery">
+let $parts := ($temp.tmp_process_title, "ALERT IGNORED")
+let $process_title := substring(string-join($parts, " "),1,255)
+return ipd:setProcessTitle($process_title)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="jx69rd7v" targetId="jx69rd64" type="containerLink"/>
+                  </flow>
+                  <flow id="jx69rd7w">
+                     <assignment id="jx69rd9r">
+                        <title>Assignment to tmp_email_actions, tmp_email_actions_count</title>
+                        <operation source="formula" to="temp.tmp_email_actions">
+                           <expression language="XQuery">let $results := $output.AlertHandlerOutput[1]
+return 
+$results/invokeActions/action[contains(Type/text(),'email')]
+
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_email_actions_count">
+                           <expression language="XQuery">count($temp.tmp_email_actions)
+</expression>
+                        </operation>
+                        <link id="jx6cvz8k" targetId="jx6cvz8j"/>
+                     </assignment>
+                     <container id="jx6cvz8j" type="exclusive">
+                        <title>tmp_email_actions_count</title>
+                        <flow id="jx6cvz95">
+                           <assignment id="jx6cvzb6">
+                              <title>Update Process Title Warning - Invalid Config</title>
+                              <operation source="formula" to="temp.tmp_script_out">
+                                 <expression language="XQuery">
+let $parts := ($temp.tmp_process_title, "WARNING No Action resolved. Alert configuration is likely invalid")
+let $process_title := substring(string-join($parts, " "),1,255)
+return ipd:setProcessTitle($process_title)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="jx6cvz96" targetId="jx6cvz8j" type="containerLink"/>
+                        </flow>
+                        <flow id="jx6cvz97">
+                           <assignment id="jx6cvzbw">
+                              <title>Prepare Send Email</title>
+                              <operation source="formula" to="temp.tmp_email_action_details">
+                                 <expression language="XQuery">let $index := xs:int($temp.tmp_email_actions_index)
+let $email-config := $temp.tmp_email_actions[$index]
+ 
+(:when EMAIL Details are not resolved than we return falback default :)
+return 
+if (not(empty($email-config/ActionDetail/action-email))) then $email-config/ActionDetail/action-email
+else 
+&lt;action-email&gt;
+   &lt;subject&gt;Fault Alert - Error&lt;/subject&gt;
+   &lt;to&gt;{$temp.tmp_fallback_email }&lt;/to&gt;
+   &lt;contentType&gt;text/html&lt;/contentType&gt;
+   &lt;actionName&gt;Fallback Email Config&lt;/actionName&gt;
+&lt;/action-email&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_email_body">
+                                 <expression language="XQuery">(:Copy Expression Starts Here:)
+let $org_id := $temp.tmp_org_id
+let $environment := $temp.tmp_environment_name 
+let $base_uri := $temp.tmp_base_uri
+let $alert := $input.AlertDetails
+let $current-time := current-date()
+let $date_format  := "[Y0001]/[M01]/[D01] [H01]:[m01]:[s01]:[f01]"
+
+let $processId := $alert/processId/text()
+let $processName := $alert/processName/text()
+let $faultNamespace := $alert/faultNamespace/text()
+let $processInitiator := $alert/processInitiator/text()
+let $processNamespace := $alert/processNamespace/text()
+let $locationPath := $alert/locationPath/text()
+let $status := $alert/status/text()
+let $faultName := $alert/faultName/text()
+let $faultDetails := $alert/faultDetails/text()
+
+(:generate Process Link:)
+
+let $view_url :=  if (contains($environment, "Cloud"))
+    then concat($base_uri,"/activevos-central/projres/apps/app-integration/integrationConsole/index.html#/main/processinstance/",$processId,"/",$processName,"-",$processId,"%7B%7D")
+    else concat($base_uri,"/activevos-central/projres/apps/app-integration/integrationConsole/index.html#/main/processinstance/",$processId,"/",$processName,"-",$processId,"%7B",$environment,"%7D")
+
+return
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+        &lt;meta name="Generator" content="Informatica Cloud" /&gt;
+        &lt;title&gt;Integration Job Notification&lt;/title&gt;
+        &lt;style type="text/css" media="screen"&gt;
+
+            body {{
+                font-size: 12px;
+                font-family: arial, sans-serif;
+                width: 100% !important;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                margin: 0;
+                padding: 0;
+            }}
+            
+            /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+            .ExternalClass {{
+                width: 100%;
+            }}
+            
+            /* Force Hotmail to display emails at full width */
+            .ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div
+                {{
+                line-height: 100%;
+            }}
+            /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+            #backgroundTable {{
+                margin: 0;
+                padding: 0;
+                width: 100% !important;
+                line-height: 100% !important;
+            }}
+            
+            p {{
+                font-size: 10px;
+                font-family: inherit;
+            }}
+            
+            ul {{
+                list-style-type: disc;
+            }}
+            
+            li {{
+                font-size: 10px;
+                font-family: arial, sans-serif;
+            }}
+            
+            table{{
+               table-layout: fixed;
+               width: 100%;
+            }}
+            
+            table td {{
+                border-collapse: collapse;
+                font-size: 10px;
+                background-color: inherit;
+                color: inherit;
+            }}
+            
+            td.center {{
+                text-align: center;
+                white-space: nowrap;
+            }}
+            
+            th {{
+                font-size: 10px;
+                font-weight: bold;
+                background-color: #ddd;
+            }}
+    &lt;/style&gt;
+        
+    &lt;/head&gt;
+    &lt;body style="background: #E4E4E4"&gt;
+    &lt;table id="backgroundTable" align="center"
+        style="background: #FFFFFF; border: 10px solid #FFFFFF; width: 90%; border-collapse: collapse; padding: 10px; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
+        &lt;tr style="background: #000000; color: #FFFFFF;"&gt;
+            &lt;td style="padding: 8px; padding-left: 12px; color: #FFFFFF;"&gt;&lt;b&gt;Fault Alert Notification&lt;/b&gt;&lt;/td&gt;
+            &lt;td style="padding: 8px; padding-right: 12px; text-align: right; color: #FFFFFF;"&gt;&lt;b&gt;&lt;i&gt;Org:{$org_id} Env:{$environment}&lt;/i&gt;&lt;/b&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"
+                style="padding: 0px; padding-top: 10px; background: #FFFFFF; font-size: 10pt;"&gt;
+                &lt;table id="messageTable"
+                    style="padding: 0px; border: 0px; width: 100%; background: #F4F4F4; color: #2F2F2F; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
+                    &lt;tr&gt;
+                        &lt;td style="padding: 2em"&gt;
+                            &lt;div id="job_info" style="display: block;"&gt;
+                            &lt;h2&gt;Unexpected Error {$processName}&lt;/h2&gt;
+                            &lt;table id="AlertTable" align="left"
+                                style="width: 100%; ; border: 1px; font-size: 10pt; font-family: Arial, sans-serif; table-layout: fixed;"&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Process Id&lt;/td&gt;
+                                    &lt;td&gt;&lt;a href="{$view_url}"&gt;{$processId}&lt;/a&gt;&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Process Name&lt;/td&gt;
+                                    &lt;td&gt;{$processName}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Process Namespace&lt;/td&gt;
+                                    &lt;td&gt;{$processNamespace}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Fault Location Path&lt;/td&gt;
+                                    &lt;td&gt;{$locationPath}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Fault Name&lt;/td&gt;
+                                    &lt;td&gt;{$faultName}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Fault Namespace&lt;/td&gt;
+                                    &lt;td&gt;{$faultNamespace}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Proccess Initiator&lt;/td&gt;
+                                    &lt;td&gt;{$processInitiator}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 100px"&gt;Process Status&lt;/td&gt;
+                                    &lt;td&gt;{$status}&lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                            &lt;/div&gt;
+                            {if (empty($faultDetails)) then () else 
+                            &lt;div id="item_list" style="padding-top:2em; margin-bottom: 1em; margin-top: 2em; display: block; width: 100%;"&gt;
+                                &lt;h2&gt;Fault Detail&lt;/h2&gt;
+                                &lt;textarea rows="20" cols="80" &gt;
+                                    {$faultDetails}
+                                &lt;/textarea&gt;
+                            &lt;/div&gt;
+                            } 
+                         &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_email_input">
+                                 <expression language="XQuery">let $email-config := $temp.tmp_email_action_details 
+let $emailBody := util:toXML($temp.tmp_email_body)
+return
+&lt;EmailTaskInput&gt;
+   {for $email in tokenize($email-config/to/text(),",")
+   return &lt;to&gt;{$email}&lt;/to&gt;}
+   {for $email in tokenize($email-config/cc/text(),",")
+   return &lt;cc&gt;{$email}&lt;/cc&gt;}
+   {for $email in tokenize($email-config/bcc/text(),",")
+   return &lt;bcc&gt;{$email}&lt;/bcc&gt;}
+   &lt;subject&gt;{$email-config/subject/text()}&lt;/subject&gt;
+   &lt;contentType&gt;{$email-config/contentType/text()}&lt;/contentType&gt;
+   &lt;body&gt;
+   		{$emailBody}
+   &lt;/body&gt;
+&lt;/EmailTaskInput&gt;
+</expression>
+                              </operation>
+                              <link id="jx6cvzkp" targetId="jx6cvzko"/>
+                           </assignment>
+                           <service id="jx6cvzko">
+                              <title>sendEmailService</title>
+                              <serviceName>Email-Alerts:sendEmailService</serviceName>
+                              <serviceGUID>cOur0Hdz9oshd8U7LIuIiD</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_email_input</parameter>
+                              </serviceInput>
+                              <link id="jx6cvzkq" targetId="jx6cvzd0"/>
+                           </service>
+                           <container id="jx6cvzd0" type="exclusive">
+                              <title>tmp_email_actions_count</title>
+                              <flow id="jx6cvzet">
+                                 <assignment id="jx6cvzgd">
+                                    <title>Increment Index</title>
+                                    <operation source="formula" to="temp.tmp_email_actions_index">
+                                       <expression language="XQuery">$temp.tmp_email_actions_index + 1</expression>
+                                    </operation>
+                                    <link id="jx6cvzj0" targetId="jx6cvziz"/>
+                                 </assignment>
+                                 <jumpTo id="jx6cvziz">
+                                    <link id="jx6cvzjl" targetId="jx6cvzbw"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="jx6cvzev">
+                                 <link id="jx6cvzew" targetId="jx6cvzd0" type="containerLink"/>
+                              </flow>
+                              <link id="jx6cvzem" targetId="jx6cvzet" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="greater-than">
+                                       <arg name="left">{$temp.tmp_email_actions_count}</arg>
+                                       <arg name="right">{xs:int($temp.tmp_email_actions_index )}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="jx6cvzep" targetId="jx6cvzev" type="containerLink"/>
+                           </container>
+                           <link id="jx6cvz98" targetId="jx6cvz8j" type="containerLink"/>
+                        </flow>
+                        <link id="jx6cvz8y" targetId="jx6cvz95" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_email_actions_count}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="jx6cvz91" targetId="jx6cvz97" type="containerLink"/>
+                     </container>
+                     <link id="jx69rd7x" targetId="jx69rd64" type="containerLink"/>
+                  </flow>
+                  <link id="jx69rd7n" targetId="jx69rd7u" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.tmp_ignore_fault}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jx69rd7q" targetId="jx69rd7w" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.tmp_ignore_fault}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="jx69rd66" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9UWeUqnSHkalqQVZI82Ekf</types1:GUID>
+      <types1:DisplayName>UncaughtFaultAlertHandler-NA</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-09-03T16:20:31.499Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

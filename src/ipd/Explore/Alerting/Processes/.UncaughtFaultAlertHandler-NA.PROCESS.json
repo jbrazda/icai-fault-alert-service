@@ -1,0 +1,163 @@
+[
+   {
+      "objectGuid": "9UWeUqnSHkalqQVZI82Ekf",
+      "objectName": "UncaughtFaultAlertHandler-NA",
+      "objectType": "PROCESS",
+      "path": "/Explore/Alerting/Processes",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "450357e5mW9eidFwHW1Nou",
+            "a7pUb21Pfy3c67w7CCaz4B",
+            "cOur0Hdz9oshd8U7LIuIiD",
+            "2AJJfAJqQLkaZMytvRBVWR",
+            "0XBGnDRR3WMgJR50uEhJiV",
+            "7TCmsWgjoghdSqfpcOxfs4"
+         ],
+         "repoInfo": {
+            "repoHandle": "spiRASmvD4teIss-gt-2649660-2019-08-28T20:13:28.304Z::pd.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "450357e5mW9eidFwHW1Nou",
+      "objectName": "action-ref",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Altert Action reference",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "f4eC3Q6gaabclvA-gt-4385977-2019-06-19T18:36:52.094Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "a7pUb21Pfy3c67w7CCaz4B",
+      "objectName": "FaultAlertConfiguration",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "PO  to define Fault Alert Service Configuration and also Output of Alert Rules evaluation",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "ciSrZMSPfXBiVGk-gt-4488393-2019-06-18T13:25:21.036Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "cOur0Hdz9oshd8U7LIuIiD",
+      "objectName": "Email-Alerts",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Shared Email Service to send  alerts and notifications",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "uwSSp7aa-gt-6298602-2019-06-21T17:27:21.337Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "2AJJfAJqQLkaZMytvRBVWR",
+      "objectName": "github-gist-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Github Gist API connection to manage Alert Service Configurations",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "0XBGnDRR3WMgJR50uEhJiV",
+      "objectName": "action-email",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "PO to store Email Action details  Such as subject recipients",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "2iXieHufWC64Ky2-gt-4509483-2019-06-18T14:08:18.866Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "7TCmsWgjoghdSqfpcOxfs4",
+      "objectName": "action",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Alert Action Decriptor",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "ShFdw8jIw8jIw8j-gt-5059822-2019-06-19T18:50:06.071Z::po.xml"
+         }
+      }
+   }
+]

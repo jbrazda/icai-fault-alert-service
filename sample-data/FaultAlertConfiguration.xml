@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FaultAlertConfiguration>
+    <alert-config>
+        <Name>Default Alert Configuration</Name>
+        <Descrioption>This is a Default Example Alert Configuration</Descrioption>
+        <created>2019-07-09T03:58:42.924Z</created>
+        <updated>2019-07-09T03:59:41.719Z</updated>
+        <createdBy>jbrazda-iics@informatica.com</createdBy>
+        <updatedBy>jbrazda-iics@informatica.com</updatedBy>
+    </alert-config>
+    <rules>
+        <rule>
+            <guid>17feed12-163d-43b2-9368-ba0b6951b9d6</guid>
+            <name>Ignore Alert</name>
+            <operator>OR</operator>
+            <condition>
+                <guid>502ba658-bbe5-4611-aba4-dd5e021abc59</guid>
+                <type>equals</type>
+                <value>SP-Test-Throw-Fault-Generic</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>981275e6-2328-4294-982d-be85eba32577</guid>
+                <type>matches</type>
+                <value>.*Test.*</value>
+                <not/>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>e14d31b1-cb2f-419b-9770-b69ebc08000d</guid>
+                <type>matches</type>
+                <value>SP-Test-.*</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>70177f72-7ee5-42e6-b2d0-816fba957303</guid>
+                <type>contains</type>
+                <value>Test</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <action>
+                <guid>f419969c-f9f1-4994-8c66-d6710f4d4625</guid>
+                <Name>Ignore Alert</Name>
+                <Type>ignore</Type>
+            </action>
+        </rule>
+        <rule>
+            <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+            <name>Error Email</name>
+            <operator>OR</operator>
+            <action>
+                <guid>1083547d-c196-47c6-9d53-fcbc5172e302</guid>
+                <Name>Alert Email</Name>
+                <Type>alert-email</Type>
+            </action>
+            <condition>
+                <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                <type>equals</type>
+                <value/>
+                <not>true</not>
+                <alert-field>processName</alert-field>
+            </condition>
+        </rule>
+    </rules>
+    <actions>
+        <action>
+            <guid>f419969c-f9f1-4994-8c66-d6710f4d4625</guid>
+            <Name>Ignore Alert</Name>
+            <Description>Action to ignore Alert</Description>
+            <Type>ignore</Type>
+            <ActionDetail/>
+        </action>
+        <action>
+            <guid>1083547d-c196-47c6-9d53-fcbc5172e302</guid>
+            <Name>Alert Email</Name>
+            <Description>Sends HTML Formated Alert Email</Description>
+            <Type>alert-email</Type>
+            <ActionDetail>
+                <action-email>
+                    <subject>Fault Alert - Error</subject>
+                    <to>jbrazda@informatica.com</to>
+                    <cc/>
+                    <bcc/>
+                    <contentType>text/html</contentType>
+                    <actionName>Send Alert Email</actionName>
+                </action-email>
+            </ActionDetail>
+        </action>
+    </actions>
+</FaultAlertConfiguration>

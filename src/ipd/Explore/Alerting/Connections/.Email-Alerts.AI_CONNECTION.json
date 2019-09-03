@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "cOur0Hdz9oshd8U7LIuIiD",
+      "objectName": "Email-Alerts",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Shared Email Service to send  alerts and notifications",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "uwSSp7aa-gt-6298602-2019-06-21T17:27:21.337Z::conn.xml"
+         }
+      }
+   }
+]

@@ -1,0 +1,48 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>hGdwOLIFvukNXHV-gt-2117542-2019-06-18T14:35:44.123Z::po.xml</types1:EntryId>
+      <types1:Name>condition</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Match Condition can be one of the defined types and negated</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-06-18T14:35:44Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-08-28T20:16:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="condition"
+                        isByCopy="true"
+                        name="condition">
+            <description>Match Condition can be one of the defined types and negated</description>
+            <tags/>
+            <detail>
+               <field label="type" name="type" type="picklist">
+                  <options>
+                     <option name="values">[{"value":"equals","label":"equals"},{"value":"matches","label":"matches"},{"value":"contains","label":"contains"},{"value":"starts-with","label":"starts-with"}]</option>
+                  </options>
+               </field>
+               <field label="value" name="value" type="string"/>
+               <field label="negate" name="not" type="boolean"/>
+               <field label="alert-field" name="alert-field" type="picklist">
+                  <options>
+                     <option name="values">[{"value":"processId","label":"processId"},{"value":"processName","label":"processName"},{"value":"processNamespace","label":"processNamespace"},{"value":"status","label":"status"},{"value":"processInitiator","label":"processInitiator"},{"value":"processInitiatorTenant","label":"processInitiatorTenant"},{"value":"processTenant","label":"processTenant"},{"value":"faultName","label":"faultName"},{"value":"faultNamespace","label":"faultNamespace"},{"value":"locationPath","label":"locationPath"},{"value":"faultDetails","label":"faultDetails"}]</option>
+                  </options>
+               </field>
+               <field label="result" name="result" type="boolean"/>
+               <field label="guid" name="guid" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>fnx2xYvSTCul1tKBqmlGcC</types1:GUID>
+      <types1:DisplayName>condition</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-09-03T16:20:31.039Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

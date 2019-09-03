@@ -1,0 +1,63 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ciSrZMSPfXBiVGk-gt-4488393-2019-06-18T13:25:21.036Z::po.xml</types1:EntryId>
+      <types1:Name>FaultAlertConfiguration</types1:Name>
+      <types1:ParentFlowIds>1ZSAP38nXxpr1Iw-gt-2226508-2019-08-28T20:06:28.41Z::pd.xml,spiRASmvD4teIss-gt-2649660-2019-08-28T20:13:28.304Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>PO  to define Fault Alert Service Configuration and also Output of Alert Rules evaluation</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-06-18T13:25:21Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-08-28T20:16:08Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="FaultAlertConfiguration"
+                        isByCopy="true"
+                        name="FaultAlertConfiguration">
+            <description>PO  to define Fault Alert Service Configuration and also Output of Alert Rules evaluation</description>
+            <tags/>
+            <detail>
+               <field label="alert-config" name="alert-config" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:alert-config</option>
+                     <option name="guid">akj7LhWsrkRfrss9BWznMz</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="rules" name="rules" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:rules</option>
+                     <option name="guid">2xbm1JXVqY0j6uW3iZAv66</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="actions" name="actions" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:actions</option>
+                     <option name="guid">9iWs22M9UJ1lWpwzJdU62X</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="invokeActions" name="invokeActions" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:actions</option>
+                     <option name="guid">9iWs22M9UJ1lWpwzJdU62X</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>a7pUb21Pfy3c67w7CCaz4B</types1:GUID>
+      <types1:DisplayName>FaultAlertConfiguration</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-09-03T16:20:31.402Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

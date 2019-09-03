@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "7TCmsWgjoghdSqfpcOxfs4",
+      "objectName": "action",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Alert Action Decriptor",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "ShFdw8jIw8jIw8j-gt-5059822-2019-06-19T18:50:06.071Z::po.xml"
+         }
+      }
+   }
+]

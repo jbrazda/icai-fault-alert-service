@@ -1,0 +1,71 @@
+[
+   {
+      "objectGuid": "hnshiYqkeIOehlyCb2Zdwg",
+      "objectName": "rule",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Rule with of Conditions to be evaluated using logical operator provided and perform specified action",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "450357e5mW9eidFwHW1Nou",
+            "fnx2xYvSTCul1tKBqmlGcC"
+         ],
+         "repoInfo": {
+            "repoHandle": "xyIYmWR7hsAVR3a-gt-3920827-2019-06-18T14:49:43.379Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "450357e5mW9eidFwHW1Nou",
+      "objectName": "action-ref",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Altert Action reference",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "f4eC3Q6gaabclvA-gt-4385977-2019-06-19T18:36:52.094Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "fnx2xYvSTCul1tKBqmlGcC",
+      "objectName": "condition",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Match Condition can be one of the defined types and negated",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "hGdwOLIFvukNXHV-gt-2117542-2019-06-18T14:35:44.123Z::po.xml"
+         }
+      }
+   }
+]

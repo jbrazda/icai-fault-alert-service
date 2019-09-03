@@ -1,0 +1,22 @@
+[
+   {
+      "objectGuid": "6Un1T1CptGGc9J8bfUHOWj",
+      "objectName": "Alerting",
+      "objectType": "Project",
+      "path": "/Explore",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "Binary",
+            "description": "This project contains processes and objects for custom Monitoring and Fault Alerts",
+            "documentState": "COMPLETE"
+         },
+         "contextAttributes": [],
+         "modelVersion": {
+            "major": 0,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": null
+      }
+   }
+]

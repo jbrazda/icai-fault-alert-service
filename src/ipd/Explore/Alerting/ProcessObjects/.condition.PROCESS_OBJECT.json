@@ -1,0 +1,24 @@
+[
+   {
+      "objectGuid": "fnx2xYvSTCul1tKBqmlGcC",
+      "objectName": "condition",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Match Condition can be one of the defined types and negated",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "hGdwOLIFvukNXHV-gt-2117542-2019-06-18T14:35:44.123Z::po.xml"
+         }
+      }
+   }
+]

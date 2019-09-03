@@ -1,0 +1,48 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ShFdw8jIw8jIw8j-gt-5059822-2019-06-19T18:50:06.071Z::po.xml</types1:EntryId>
+      <types1:Name>action</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Alert Action Decriptor</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-06-19T18:50:06Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-08-28T20:16:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="action"
+                        isByCopy="true"
+                        name="action">
+            <description>Alert Action Decriptor</description>
+            <tags/>
+            <detail>
+               <field label="Name" name="Name" type="string"/>
+               <field label="Description" name="Description" type="textarea"/>
+               <field label="Type" name="Type" type="picklist">
+                  <options>
+                     <option name="values">[{"value":"alert-email","label":"Alert Email"},{"value":"ignore","label":"Ignore Alert"}]</option>
+                  </options>
+               </field>
+               <field label="ActionDetail" name="ActionDetail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="guid" name="guid" type="string"/>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>7TCmsWgjoghdSqfpcOxfs4</types1:GUID>
+      <types1:DisplayName>action</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-09-03T16:20:31.032Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
