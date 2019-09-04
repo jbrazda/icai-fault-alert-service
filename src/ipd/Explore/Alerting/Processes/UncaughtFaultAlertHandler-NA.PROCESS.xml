@@ -153,7 +153,7 @@
                       type="string">
                   <options>
                      <option name="required">false</option>
-                     <option name="initialvalue">urn:ic:faultAlerts:falback:email</option>
+                     <option name="initialvalue">urn:ic:faultAlerts:fallback:email</option>
                   </options>
                </field>
                <field description="Falback Mailto Email"
@@ -848,5 +848,5 @@ return
       <types1:GUID>9UWeUqnSHkalqQVZI82Ekf</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-NA</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-03T20:22:31.892Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-04T14:16:38.252Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

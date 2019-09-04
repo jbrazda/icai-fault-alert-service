@@ -345,8 +345,8 @@
     </target>
 	
 	
-	<target name="clean.target" depends="-load.release.properties">
-		<delete dir="${iics.export.dir}" verbose="true">
+	<target name="clean.target" depends="-load.release.properties" if="iics.release.basename}">
+		<delete dir="${basedir}/target/${iics.release.basename}" verbose="true">
 		</delete>
 	</target>
 
@@ -483,5 +483,108 @@
 			<property name="iics.@{direction}.password" value="${iics.password.@{environment}}" />
 		</sequential>
 	</macrodef>
+    
+	<macrodef name="setTracingLevel">
+	        <attribute name="sourceDir"/>
+	        <attribute name="targetDir"/>
+	        <attribute name="tracingLevel" default="none"/>
+	        <attribute name="properties"/>
+	        <sequential>
+	            <property file="build.properties"/>
+	            <property file="@{properties}"/>
+	            <path id="saxon.classpath">
+	                <fileset dir="${saxon.lib}">
+	                    <include name="*.jar"/>
+	                </fileset>
+	            </path>
+	            <echo level="info">****** sourceDir:    @{sourceDir}</echo>
+	            <echo level="info">****** targetDir:    @{targetDir}</echo>
+	            <echo level="info">****** includes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}</echo>
+	            <echo level="info">****** excludes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}</echo>
+	            <echo level="info">****** tracingLevel: @{tracingLevel}</echo>     
+	            <echo level="info">****** properties:   @{properties}</echo>     
+	            <xslt style="${basedir}/xsl/set_service_tracingLevel.xsl" 
+	                basedir="@{sourceDir}" 
+	                destdir="@{targetDir}"
+	                includes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}"
+	                excludes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}"
+	                extension=".xml"
+	                force="true"
+	                classpathref="saxon.classpath">
+	                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+	                <param name="tracingLevel" expression="@{tracingLevel}"/>
+	            </xslt>
+	        </sequential>
+	    </macrodef>
+	    
+	    <macrodef name="setSuspendOnFault">
+	        <attribute name="sourceDir"/>
+	        <attribute name="targetDir"/>
+	        <attribute name="suspendOnFault" default="true"/>
+	        <attribute name="includes"/>
+	        <attribute name="excludes"/>
+	        <sequential>
+	            <property file="build.properties"/>
+	            <path id="saxon.classpath">
+	                <fileset dir="${saxon.lib}">
+	                    <include name="*.jar"/>
+	                </fileset>
+	            </path>
+	            <echo level="info">****** sourceDir:    @{sourceDir}</echo>
+	            <echo level="info">****** targetDir:    @{targetDir}</echo>
+	            <echo level="info">****** includes:     @{includes}</echo>
+	            <echo level="info">****** excludes:     @{excludes}</echo>
+	            <echo level="info">****** suspendOnFault: @{suspendOnFault}</echo>         
+	            <xslt style="${basedir}/xsl/set_service_suspendOnFault.xsl" 
+	                basedir="@{sourceDir}" 
+	                destdir="@{targetDir}"
+	                includes="@{includes}"
+	                excludes="@{excludes}"
+	                extension=".xml"
+	                force="true"
+	                classpathref="saxon.classpath">
+	                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+	                <param name="suspendOnFault" expression="@{suspendOnFault}"/>
+	            </xslt>
+	        </sequential>
+	    </macrodef>
 
+	    <macrodef name="runxq">
+	        <attribute name="file" />
+	        <attribute name="output" />
+	        <attribute name="options" default=""/>
+	        <attribute name="fork" default="false"/>
+	        <attribute name="failonerror" default="false"/>
+	        <attribute name="dir" default="${java.io.tmpdir}"/>
+
+	        <sequential>
+	            <basename property="cf-@{file}" file="@{file}"/>
+	            <property name="input-@{file}" location="@{file}"/>
+	            <property name="out-@{file}" location="@{output}"/>
+	            <tstamp>
+	                <format property="start-time-@{file}" pattern="${xqr.log.timestamp}" />
+	            </tstamp>
+	            <echo level="info">****** file:    ${input-@{file}}</echo>
+	            <echo level="info">****** output:  ${out-@{file}}</echo>
+	            <echo level="info">****** options: @{options}</echo>
+
+	            <java 
+	                classname="${saxon.class}" 
+	                classpathref="saxon.classpath"
+	                output="${out-@{file}}"
+	                fork="@{fork}" 
+	                failonerror="@{failonerror}" >
+	                <arg value="-qversion:3.0"/>
+	                <arg line="@{options}"/>
+	                <arg value="@{file}"/> 
+	            </java>
+	            <tstamp>
+	                <format property="end-time-@{file}" pattern="${xqr.log.timestamp}" />
+	            </tstamp>
+	            <basename property="test-@{file}" file="@{file}" suffix=".xq"/>
+	            <echo level="info">****** start:${start-time-@{file}} end:${end-time-@{file}} file: ${test-@{file}}.xq</echo>
+	        </sequential>
+	    </macrodef>
+	
+	
 </project>

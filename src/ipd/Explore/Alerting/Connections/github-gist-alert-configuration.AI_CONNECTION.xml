@@ -50,5 +50,5 @@ This connector is useful to store and retrive configurations, templates, snippet
       <types1:GUID>2AJJfAJqQLkaZMytvRBVWR</types1:GUID>
       <types1:DisplayName>github-gist-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-03T20:22:31.562Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-04T14:16:38.008Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

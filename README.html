@@ -732,8 +732,52 @@ pre {
 }
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="uncaught-fault-alert-service-implementation">
 <a id="user-content-uncaught-fault-alert-service-implementation" class="anchor" href="#uncaught-fault-alert-service-implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Uncaught Fault Alert Service Implementation</h1>
+
+<ul>
+<li>
+<a href="#markdown-header-uncaught-fault-alert-service-implementation">Uncaught Fault Alert Service Implementation</a>
+<ul>
+<li><a href="#markdown-header-features">Features</a></li>
+<li><a href="#markdown-header-overview">Overview</a></li>
+<li>
+<a href="#markdown-header-installation">Installation</a>
+<ul>
+<li><a href="#markdown-header-pre-requisites">Pre-Requisites</a></li>
+<li><a href="#markdown-header-build-and-install-the-package">Build and Install the Package</a></li>
+<li>
+<a href="#markdown-header-build-package-from-source">Build Package From Source</a>
+<ul>
+<li><a href="#markdown-header-in-process-developer">In Process Developer</a></li>
+<li><a href="#markdown-header-on-command-line">On Command Line</a></li>
+</ul>
+</li>
+<li>
+<a href="#markdown-header-configure-your-org">Configure Your Org</a>
+<ul>
+<li><a href="#markdown-header-urn-mappings">URN mappings</a></li>
+<li><a href="#markdown-header-set-alert-service">Set Alert Service</a></li>
+</ul>
+</li>
+<li><a href="#markdown-header-pre-built-distribution">Pre-built Distribution</a></li>
+</ul>
+</li>
+<li><a href="#markdown-header-fault-alert-handler-configuration">Fault Alert Handler Configuration</a></li>
+<li>
+<a href="#markdown-header-extending-alert-service">Extending Alert Service</a>
+<ul>
+<li><a href="#markdown-header-add-custom-action">Add Custom Action</a></li>
+<li><a href="#markdown-header-add-custom-configuration-storage-provider">Add Custom Configuration Storage Provider</a></li>
+<li><a href="#markdown-header-known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li><a href="#markdown-header-glossary-of-terms-used-in-this-documents">Glossary of Terms used in this Documents</a></li>
+</ul>
+</li>
+</ul>
+
 <p>This project contains Informatica IICS CAI Fault alert Service Implementation.
 Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions</p>
+<p><a href="doc/images/Fault_Alert_-_Error_-_Inbox.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Fault_Alert_-_Error_-_Inbox.png" alt="FAult Alert Example" style="max-width:100%;"></a></p>
 <h2 id="features">
 <a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 <ul>
@@ -745,10 +789,241 @@ Provided Service allows to apply declarative Alert Rules and flexible framework 
 <li>alert-email</li>
 </ul>
 </li>
-<li>Ability to  Save/read configuration in xml on simple http get provider or github gist  or similar snippet storage</li>
+<li>Ability to Save/read configuration in xml on simple http get provider or github gist or similar snippet storage</li>
 <li>Other configuration storage and action providers should be possible to develop via ICAI Service Connectors</li>
 <li>Guide based configuration manager</li>
 </ul>
-<h2 id="components">
-<a id="user-content-components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Components</h2>
+<h2 id="overview">
+<a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+<p>The Alert Service is available for processes that run on a Secure Agent or the Cloud Server. Alert Service provides a mechanism
+to send alert notifications via built-in email notification service or define custom Alert Handler Process.</p>
+<p>this project is a good example how to maintain, build and deploy Informatica IICS project with automation and version control and help of
+IICS Asset Management CLI V2 Utility</p>
+<blockquote>
+<p>See <a href="https://network.informatica.com/onlinehelp/IICS/prod/CAI/en/index.htm#page/cai-aae-monitor/System_Services.html" rel="nofollow">Alert Service Documentation</a>
+See <a href="https://network.informatica.com/docs/DOC-18245" rel="nofollow">IICS Asset Management CLI V2 Utility</a></p>
+</blockquote>
+<h2 id="installation">
+<a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+<h3 id="pre-requisites">
+<a id="user-content-pre-requisites" class="anchor" href="#pre-requisites" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pre-Requisites</h3>
+<p>It is highly recommend to use the build from source as it allows you to change certain attributes of service deployment such as target Secure agent group, etc.
+To build and install from source, you'll need a following set of tools</p>
+<ul>
+<li>git client installed on your system</li>
+<li>Java 1.8 or higher installed on the System</li>
+<li>Apache Ant 1.9 or higher installed on the system or use Informatica Process Developer which includes Ant runtime</li>
+<li>Informatica Process Developer</li>
+</ul>
+<p>You can follow this guide <a href="https://github.com/jbrazda/Informatica/blob/master/Guides/InformaticaCloud/set_development_environment.md">Set Development Environment for IPD Development</a> to setup your environment</p>
+<blockquote>
+<p>See Guide to <a href="https://github.com/jbrazda/Informatica/blob/master/Guides/InformaticaCloud/install_process_developer.md">Install Process Developer</a></p>
+</blockquote>
+<h3 id="build-and-install-the-package">
+<a id="user-content-build-and-install-the-package" class="anchor" href="#build-and-install-the-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build and Install the Package</h3>
+<p>Fork and clone this repository</p>
+<p>Clone example, Youse your own repository url if you forked this one</p>
+<div class="highlight highlight-source-shell"><pre>git clone git@github.com:jbrazda/icai-fault-alert-service.git</pre></div>
+<p>Configure credentials file That should look something like this
+recommended location is your home directory/iics `~/iics/environment.properties as it will contain sensitive information.
+I would also recommend to create Native Service user in each of your orgs that can be used to export/import resources via IICS REST API using the <a href="https://network.informatica.com/docs/DOC-18245" rel="nofollow">IICS Asset Management CLI</a>
+This tool will automatically download latest version an use it to import provided service to your target org</p>
+<div class="highlight highlight-source-ini"><pre><span class="pl-k">iics.user.dev</span>=deployer-iics-dev@acme.com
+<span class="pl-k">iics.password.dev</span>=YOURPWD
+
+<span class="pl-k">iics.user.test</span>=deployer-iics-test@acme.com
+<span class="pl-k">iics.password.test</span>=YOURPWD
+
+<span class="pl-k">iics.user.prod</span>=deployer-iics-prod@informatica.com
+<span class="pl-k">iics.password.prod</span>=YOURPWD</pre></div>
+<blockquote>
+<p>WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  '~/iics/environment.properties' The iics folder should be accessible only by user running the import/export/publish tasks ('700' type of permission on unix systems)</p>
+</blockquote>
+<p>Update existing or copy <a href="conf/iclab-dev.release.properties">conf/iclab-dev.release.properties</a> file which defines a key Environment specific parameters</p>
+<div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> define a comma separated list of environment org labels such as</span>
+<span class="pl-c"><span class="pl-c">#</span> dev,test,uat,prod</span>
+<span class="pl-k">iics.environment.list</span>=dev,test,prod
+
+<span class="pl-c"><span class="pl-c">#</span> This property points to file which contains credentials to login to individual environments</span>
+<span class="pl-c"><span class="pl-c">#</span> we recommend to use user home/iics protected directory, never commit this file to version control with this project</span>
+<span class="pl-c"><span class="pl-c">#</span> This must contain set of  properties following this naming convention for each environment defined in the iics.environment.list</span>
+<span class="pl-c"><span class="pl-c">#</span> iics.user.${environment}=</span>
+<span class="pl-c"><span class="pl-c">#</span> iics.password.${environment}=</span>
+<span class="pl-k">iics.external.properties</span>=${user.home}/iics/environment.properties
+
+<span class="pl-c"><span class="pl-c">#</span> this query is used by iics list command to retrieve available sources from repository to extract the designs from IICS</span>
+<span class="pl-c"><span class="pl-c">#</span> see https://network.informatica.com/docs/DOC-18245#jive_content_id_List_Command</span>
+<span class="pl-k">iics.query</span>=-q <span class="pl-s"><span class="pl-pds">"</span>location==Alerting<span class="pl-pds">"</span></span>
+
+<span class="pl-c"><span class="pl-c">#</span> Defines the output file for the list command</span>
+<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the ${basedir}/target/${selected.release.basename}</span>
+<span class="pl-k">iics.list.output</span>=export_list.txt
+
+<span class="pl-c"><span class="pl-c">#</span> Defines the output file name for iics export command</span>
+<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the ${basedir}/target/${selected.release.basename}</span>
+<span class="pl-k">iics.export.output</span>=FaultAlertService.zip
+
+<span class="pl-c"><span class="pl-c">#</span> Defines Output File name without extension</span>
+<span class="pl-c"><span class="pl-c">#</span> the package.src will produce file in the following path ${basedir}/target/</span>
+<span class="pl-k">iics.package.output</span>=FaultAlertService
+
+<span class="pl-c"><span class="pl-c">#</span> Defines Extract output directory for iics extract command</span>
+<span class="pl-k">iics.extract.dir</span>=${basedir}/src/ipd</pre></div>
+<h3 id="build-package-from-source">
+<a id="user-content-build-package-from-source" class="anchor" href="#build-package-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build Package From Source</h3>
+<h4 id="in-process-developer">
+<a id="user-content-in-process-developer" class="anchor" href="#in-process-developer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>In Process Developer</h4>
+<h4 id="on-command-line">
+<a id="user-content-on-command-line" class="anchor" href="#on-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Command Line</h4>
+<h3 id="configure-your-org">
+<a id="user-content-configure-your-org" class="anchor" href="#configure-your-org" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Your Org</h3>
+<p>The process Implementation requires certain system Lever properties configure to be able to send Notification emails</p>
+<h4 id="urn-mappings">
+<a id="user-content-urn-mappings" class="anchor" href="#urn-mappings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>URN mappings</h4>
+<p>Fallowing URN mappings must be defined</p>
+<table>
+<thead>
+<tr>
+<th>URN</th>
+<th>EXAMPLE</th>
+<th>Required</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ae:base-uri</td>
+<td><a href="https://na1.ai.dm-us.informaticacloud.com" rel="nofollow">https://na1.ai.dm-us.informaticacloud.com</a></td>
+<td>Yes</td>
+<td>Base URL of Informatica Cloud Pod</td>
+</tr>
+<tr>
+<td>urn:environment:name</td>
+<td>Cloud Server {ENV} or Secure Agent Name</td>
+<td>Yes</td>
+<td>Environment Name</td>
+</tr>
+<tr>
+<td>urn:environment:orgid</td>
+<td>Your ORG ID</td>
+<td>Yes</td>
+<td>Org ID.</td>
+</tr>
+<tr>
+<td>urn:ic:faultAlerts:configuration:provider</td>
+<td>gist</td>
+<td>No</td>
+<td>Configuration Storage provider (Default is gist and supported values are gist,url)</td>
+</tr>
+<tr>
+<td>urn:ic:faultAlerts:configuration:url</td>
+<td>URL of Configuration in Gist,File or http location</td>
+<td>Yes</td>
+<td>Alert Service Configuration URL</td>
+</tr>
+<tr>
+<td>urn:ic:faultAlerts:fallback:email</td>
+<td><a href="mailto:iics_alerts@acme.com.com">iics_alerts@acme.com.com</a></td>
+<td>Yes</td>
+<td>Fallback Email for Alert Service</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>See <a href="https://network.informatica.com/onlinehelp/IICS/prod/CAI/en/cai-aae-monitor/URN_Mappings.html" rel="nofollow">URN Mappings</a></p>
+</blockquote>
+<h4 id="set-alert-service">
+<a id="user-content-set-alert-service" class="anchor" href="#set-alert-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set Alert Service</h4>
+<p>Alert Service must be configured after the Deployment/Import and configuration of this package</p>
+<p>Go to each <code>Application Integration Console &gt; Server Configuration &gt; Secure Agent</code>
+and set the System Service pointing to <code>UncaughtFaultAlertHandler-{Agent Group Name}</code> where the <code>{Agent Group Name}</code> is Group name matching the process name for A corresponding Agent group where you deployed the</p>
+<p>The Setup of Alert Service will be possible only after the UncaughtFaultAlertHandler service is published to the corresponding target environment.</p>
+<blockquote>
+<p>Note: you should rename the <code>Alerting/Processes/UncaughtFaultAlertHandler-NA</code> to match your Secure Agent group name after initial install step,
+because currently ICAI does not allow single process to be deployed (published) to multiple target locations, thus requiring to create process copy for Each agent group or Cloud</p>
+</blockquote>
+<p><a href="doc/images/Application_Integration_Console_Alerts.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Application_Integration_Console_Alerts.png" alt="Alert Configuration" style="max-width:100%;"></a></p>
+<blockquote>
+<p><a href="#markdown-header-known-issues">See Known Issues</a></p>
+</blockquote>
+<h3 id="pre-built-distribution">
+<a id="user-content-pre-built-distribution" class="anchor" href="#pre-built-distribution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pre-built Distribution</h3>
+<p>If you decide to not clone this repository and re-build the package from Sources You can use provided im
+for first time Installation to target org manually.</p>
+<p>IPD Import Package <a href="distribution/A%3BertService/zip">Download</a></p>
+<h2 id="fault-alert-handler-configuration">
+<a id="user-content-fault-alert-handler-configuration" class="anchor" href="#fault-alert-handler-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fault Alert Handler Configuration</h2>
+<p>This package contains ICAI</p>
+<h2 id="extending-alert-service">
+<a id="user-content-extending-alert-service" class="anchor" href="#extending-alert-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending Alert Service</h2>
+<p>TBD</p>
+<h3 id="add-custom-action">
+<a id="user-content-add-custom-action" class="anchor" href="#add-custom-action" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Custom Action</h3>
+<p>TBD</p>
+<h3 id="add-custom-configuration-storage-provider">
+<a id="user-content-add-custom-configuration-storage-provider" class="anchor" href="#add-custom-configuration-storage-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Custom Configuration Storage Provider</h3>
+<p>TBD</p>
+<h3 id="known-issues">
+<a id="user-content-known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Known Issues</h3>
+<p>Custom Alert handler Service Works only on Secure Agents, Currently there is an issue on IICS CLoud instances where only built in alert service works as expected , you will have to use built-in Alert Service Email notification on IICS Cloud Servers</p>
+<h2 id="glossary-of-terms-used-in-this-documents">
+<a id="user-content-glossary-of-terms-used-in-this-documents" class="anchor" href="#glossary-of-terms-used-in-this-documents" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Glossary of Terms used in this Documents</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IICS</td>
+<td>Informatica Intelligent Cloud Services, Informatica Cloud Integration platform</td>
+</tr>
+<tr>
+<td>ICAI</td>
+<td>(formerly ICRT) Informatica Cloud Application Integration, see ICRT</td>
+</tr>
+<tr>
+<td>ICDI</td>
+<td>(formerly ICS) Informatica Cloud Data Integration is an ETL batch integration component of IICS platform</td>
+</tr>
+<tr>
+<td>BPEL</td>
+<td>Business Process Execution Language</td>
+</tr>
+<tr>
+<td>BPMN</td>
+<td>Business Process Modeling Notation</td>
+</tr>
+<tr>
+<td>WSDL</td>
+<td>Web Service Definition Language</td>
+</tr>
+<tr>
+<td>API</td>
+<td>Application Programming Interface</td>
+</tr>
+<tr>
+<td>REST</td>
+<td>REpresentational State Transfer</td>
+</tr>
+<tr>
+<td>IPD</td>
+<td>Informatica Process Designer</td>
+</tr>
+<tr>
+<td>Application Integration Console</td>
+<td>ICAI Cloud and Secure Agent Runtime Administration Tool</td>
+</tr>
+<tr>
+<td>Informatica Secure Agent</td>
+<td>Informatica Data Integration Execution Agent that Provides ability to integrate data on premise and in the Cloud, hybrid data integration both batch and real time</td>
+</tr>
+<tr>
+<td>DAS</td>
+<td>Data Access Service</td>
+</tr>
+</tbody>
+</table>
 </article></body></html>
