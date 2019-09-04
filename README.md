@@ -156,7 +156,7 @@ Reposition Ant View to a tab below Project Explorer and drag build.xml to Ant ru
 
 Run The package.src Target, Select the Release configuration from conf directory and Confirm
 
-![Ant_Package_Input_Release_Config](./doc/images/Ant_packag_Input_Release_Config.png)
+![Ant_Package_Input_Release_Config](./doc/images/Ant_Package_Input_Release_Config.png)
 
 Select target Environment
 
@@ -283,7 +283,7 @@ Build a package without Connections DEV Target
 ant package.src \
 -Diics.release=./conf/iclab-dev.release.properties \
 -Diics.target.environment=dev \
--Diics.target.package.config=./conf/all_exlude_connections.package.txt
+-Diics.target.package.config=./conf/all_exclude_connections.package.txt
 ```
 
 TODO Describe Import Steps
