@@ -742,7 +742,12 @@ pre {
 <li>
 <a href="#markdown-header-installation">Installation</a>
 <ul>
-<li><a href="#markdown-header-pre-requisites">Pre-Requisites</a></li>
+<li>
+<a href="#markdown-header-pre-requisites">Pre-Requisites</a>
+<ul>
+<li><a href="#markdown-header-setup-gist-account-and-token">Setup Gist Account and Token</a></li>
+</ul>
+</li>
 <li><a href="#markdown-header-build-and-install-the-package">Build and Install the Package</a></li>
 <li>
 <a href="#markdown-header-build-package-from-source">Build Package From Source</a>
@@ -761,7 +766,22 @@ pre {
 <li><a href="#markdown-header-pre-built-distribution">Pre-built Distribution</a></li>
 </ul>
 </li>
-<li><a href="#markdown-header-fault-alert-handler-configuration">Fault Alert Handler Configuration</a></li>
+<li>
+<a href="#markdown-header-alert-service-components">Alert Service Components</a>
+<ul>
+<li><a href="#markdown-header-process-objects">Process Objects</a></li>
+</ul>
+</li>
+<li><a href="#markdown-header-setup-gist-connector-and-connection">Setup Gist Connector and Connection</a></li>
+<li>
+<a href="#markdown-header-fault-alert-handler-configuration">Fault Alert Handler Configuration</a>
+<ul>
+<li><a href="#markdown-header-supported-condition-types">Supported Condition Types</a></li>
+<li><a href="#markdown-header-supported-actions">Supported Actions</a></li>
+<li><a href="#markdown-header-alert-configuration-management-tool">Alert configuration Management tool</a></li>
+<li><a href="#markdown-header-alert-service-testing-tool-testing-configuration">Alert Service Testing Tool - Testing Configuration</a></li>
+</ul>
+</li>
 <li>
 <a href="#markdown-header-extending-alert-service">Extending Alert Service</a>
 <ul>
@@ -777,7 +797,7 @@ pre {
 
 <p>This project contains Informatica IICS CAI Fault alert Service Implementation.
 Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions</p>
-<p><a href="doc/images/Fault_Alert_-_Error_-_Inbox.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Fault_Alert_-_Error_-_Inbox.png" alt="FAult Alert Example" style="max-width:100%;"></a></p>
+<p><a href="doc/images/Fault_Alert_-_Error_-_Inbox.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Fault_Alert_-_Error_-_Inbox.png" alt="Fault Alert Email Example" style="max-width:100%;"></a></p>
 <h2 id="features">
 <a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 <ul>
@@ -819,6 +839,30 @@ To build and install from source, you'll need a following set of tools</p>
 <blockquote>
 <p>See Guide to <a href="https://github.com/jbrazda/Informatica/blob/master/Guides/InformaticaCloud/install_process_developer.md">Install Process Developer</a></p>
 </blockquote>
+<h4 id="setup-gist-account-and-token">
+<a id="user-content-setup-gist-account-and-token" class="anchor" href="#setup-gist-account-and-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup Gist Account and Token</h4>
+<p>Make sure your secure agents can access the github API to store and retrieve the Alert Service COnfiguration file.</p>
+<p>This Alert Service Implementation can use Github Gist (both Cloud and On prem Github Enterprise Edition) as a storage for its configuration
+It is recommended to use private gist to store this configuration, you will need to create Security token to access gist API</p>
+<ol>
+<li>
+<p>Login to github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)</p>
+</li>
+<li>
+<p>Go to <a href="https://github.com/settings/tokens">Account Settings/Developer Settings/Personal access tokens</a></p>
+</li>
+<li>
+<p>Create new token and give it descriptive name such as <code>IICS-Configuration-Gist-Access</code></p>
+</li>
+<li>
+<p>Select only gist permission</p>
+<p><a href="doc/images/Github_New_personal_access_token.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Github_New_personal_access_token.png" alt="Github_New_personal_access_token" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p>Capture generated token and save it in a save location for later use in the Service Connector configuration after Deployment of the IICS package</p>
+<p><a href="doc/images/Personal_Access_Tokens.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Personal_Access_Tokens.png" alt="Personal_Access_Tokens" style="max-width:100%;"></a></p>
+</li>
+</ol>
 <h3 id="build-and-install-the-package">
 <a id="user-content-build-and-install-the-package" class="anchor" href="#build-and-install-the-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build and Install the Package</h3>
 <p>Fork and clone this repository</p>
@@ -828,43 +872,55 @@ To build and install from source, you'll need a following set of tools</p>
 recommended location is your home directory/iics `~/iics/environment.properties as it will contain sensitive information.
 I would also recommend to create Native Service user in each of your orgs that can be used to export/import resources via IICS REST API using the <a href="https://network.informatica.com/docs/DOC-18245" rel="nofollow">IICS Asset Management CLI</a>
 This tool will automatically download latest version an use it to import provided service to your target org</p>
-<div class="highlight highlight-source-ini"><pre><span class="pl-k">iics.user.dev</span>=deployer-iics-dev@acme.com
+<div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> This file should contain properties for Each environment</span>
+<span class="pl-c"><span class="pl-c">#</span> defined in the associated release properties file property iics.environment.list</span>
+<span class="pl-c"><span class="pl-c">#</span>  </span>
+<span class="pl-c"><span class="pl-c">#</span> DEV Environment Credentials</span>
+<span class="pl-k">iics.user.dev</span>=deployer-iics-dev@acme.com
 <span class="pl-k">iics.password.dev</span>=YOURPWD
 
+<span class="pl-c"><span class="pl-c">#</span> TEST Environment Credentials</span>
 <span class="pl-k">iics.user.test</span>=deployer-iics-test@acme.com
 <span class="pl-k">iics.password.test</span>=YOURPWD
 
+<span class="pl-c"><span class="pl-c">#</span> PROD Environment Credentials</span>
 <span class="pl-k">iics.user.prod</span>=deployer-iics-prod@informatica.com
 <span class="pl-k">iics.password.prod</span>=YOURPWD</pre></div>
 <blockquote>
 <p>WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  '~/iics/environment.properties' The iics folder should be accessible only by user running the import/export/publish tasks ('700' type of permission on unix systems)</p>
 </blockquote>
 <p>Update existing or copy <a href="conf/iclab-dev.release.properties">conf/iclab-dev.release.properties</a> file which defines a key Environment specific parameters</p>
-<div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> define a comma separated list of environment org labels such as</span>
+<div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> define a comma separated list of environment org labels such as </span>
 <span class="pl-c"><span class="pl-c">#</span> dev,test,uat,prod</span>
 <span class="pl-k">iics.environment.list</span>=dev,test,prod
 
 <span class="pl-c"><span class="pl-c">#</span> This property points to file which contains credentials to login to individual environments</span>
-<span class="pl-c"><span class="pl-c">#</span> we recommend to use user home/iics protected directory, never commit this file to version control with this project</span>
-<span class="pl-c"><span class="pl-c">#</span> This must contain set of  properties following this naming convention for each environment defined in the iics.environment.list</span>
+<span class="pl-c"><span class="pl-c">#</span> we recommend to use ${user.home}/iics protected directory</span>
+<span class="pl-c"><span class="pl-c">#</span> never commit this file to version control with this project as it contains credentials to your IICS Orgs</span>
+<span class="pl-c"><span class="pl-c">#</span> the iics.external.properties must contain set of properties</span>
+<span class="pl-c"><span class="pl-c">#</span> following this naming convention for each environment defined in the iics.environment.list</span>
 <span class="pl-c"><span class="pl-c">#</span> iics.user.${environment}=</span>
 <span class="pl-c"><span class="pl-c">#</span> iics.password.${environment}=</span>
-<span class="pl-k">iics.external.properties</span>=${user.home}/iics/environment.properties
+<span class="pl-k">iics.external.properties</span>=${user.home}/iics/iclab.properties
 
-<span class="pl-c"><span class="pl-c">#</span> this query is used by iics list command to retrieve available sources from repository to extract the designs from IICS</span>
+<span class="pl-c"><span class="pl-c">#</span> this query is used by iics list command to retrieve available sources from repository</span>
+<span class="pl-c"><span class="pl-c">#</span> to extract the designs from IICS</span>
 <span class="pl-c"><span class="pl-c">#</span> see https://network.informatica.com/docs/DOC-18245#jive_content_id_List_Command</span>
 <span class="pl-k">iics.query</span>=-q <span class="pl-s"><span class="pl-pds">"</span>location==Alerting<span class="pl-pds">"</span></span>
 
-<span class="pl-c"><span class="pl-c">#</span> Defines the output file for the list command</span>
-<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the ${basedir}/target/${selected.release.basename}</span>
+<span class="pl-c"><span class="pl-c">#</span> Defines the output file for the list command </span>
+<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the following expression</span>
+<span class="pl-c"><span class="pl-c">#</span> ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.list.output}</span>
 <span class="pl-k">iics.list.output</span>=export_list.txt
 
-<span class="pl-c"><span class="pl-c">#</span> Defines the output file name for iics export command</span>
-<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the ${basedir}/target/${selected.release.basename}</span>
+<span class="pl-c"><span class="pl-c">#</span> Defines the ouput file name for iics export command</span>
+<span class="pl-c"><span class="pl-c">#</span> the output location will be driven by the </span>
+<span class="pl-c"><span class="pl-c">#</span> ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.export.output}</span>
 <span class="pl-k">iics.export.output</span>=FaultAlertService.zip
 
 <span class="pl-c"><span class="pl-c">#</span> Defines Output File name without extension</span>
-<span class="pl-c"><span class="pl-c">#</span> the package.src will produce file in the following path ${basedir}/target/</span>
+<span class="pl-c"><span class="pl-c">#</span> the package.src will produce file in the location based on following expression</span>
+<span class="pl-c"><span class="pl-c">#</span> ${basedir}/target/${selected.release.basename}/import/${iics.target.environment}/${iics.package.output}.zip</span>
 <span class="pl-k">iics.package.output</span>=FaultAlertService
 
 <span class="pl-c"><span class="pl-c">#</span> Defines Extract output directory for iics extract command</span>
@@ -873,8 +929,131 @@ This tool will automatically download latest version an use it to import provide
 <a id="user-content-build-package-from-source" class="anchor" href="#build-package-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build Package From Source</h3>
 <h4 id="in-process-developer">
 <a id="user-content-in-process-developer" class="anchor" href="#in-process-developer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>In Process Developer</h4>
+<p>Open new empty Eclipse Workspace in <code>{USER_HOME}/workspace/icai-fault-alert-service</code>
+Switch to Process Developer Perspective</p>
+<p><a href="doc/images/Eclipse_PD_Perspective.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Eclipse_PD_Perspective.png" alt="Eclipse_PD_Perspective" style="max-width:100%;"></a></p>
+<p>Import Cloned repository project as an existing project (assuming you cloned the project to your {USER_HOME}/git folder)</p>
+<p><a href="doc/images/Eclipse_Import_Existing.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Eclipse_Import_Existing.png" alt="Eclipse_Import_Existing" style="max-width:100%;"></a></p>
+<p>Select Your Exported Git Repo root  folder and finish import</p>
+<p><a href="doc/images/Eclipse_Import_Project.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Eclipse_Import_Project.png" alt="Eclipse_Import_Project" style="max-width:100%;"></a></p>
+<p>Open the Ant View using <code>Window &gt; Show View &gt; Other</code></p>
+<p><a href="doc/images/IPD_Show_View_Other.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/IPD_Show_View_Other.png" alt="Open Ant View" style="max-width:100%;"></a></p>
+<p>Reposition Ant View to a tab below Project Explorer and drag build.xml to Ant runner View</p>
+<p><a href="doc/images/Eclipse_Ant_Build.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Eclipse_Ant_Build.png" alt="Eclipse_Ant_Build" style="max-width:100%;"></a></p>
+<p>Run The package.src Target, Select the Release configuration from conf directory and Confirm</p>
+<p><a href="doc/images/Ant_Package_Input_Release_Config.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Ant_Package_Input_Release_Config.png" alt="Ant_Package_Input_Release_Config" style="max-width:100%;"></a></p>
+<p>Select target Environment</p>
+<p><a href="doc/images/Ant_Package_Input_Environment.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Ant_Package_Input_Environment.png" alt="Ant_Package_Input_Environment" style="max-width:100%;"></a></p>
+<p>Select Package Configuration. This step allows to select configuration file that drives what's included/excluded  in the target deployment package.
+Use the <code>all_designs.package.txt</code> for initial import only (it includes connections and connectors)
+Use the <code>all_exclude_connections.package.txt</code> for Subsequent builds and updates (it excludes connections and connectors)</p>
+<p><a href="doc/images/Ant_Package_Input_PackageConf.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Ant_Package_Input_PackageConf.png" alt="Ant_Package_Input_PackageConf" style="max-width:100%;"></a></p>
+<p>Script will generate Package using an iics tool downloaded from github</p>
+<pre lang="text"><code>Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
+-init:
+-env.info:
+     [echo] ========================================
+     [echo] ==        IPD Bunde Build             ==
+     [echo] ========================================
+     [echo] Java Version:    1.8.0_162-b12
+     [echo] Java Home:       /Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre
+     [echo] Ant Version:     Apache Ant(TM) version 1.8.4 compiled on May 22 2012
+     [echo] Ant Lib:         /Applications/eclipse_kepler/plugins/org.apache.ant_1.8.4.v201303080030/lib
+     [echo] eclipse.home:    ${eclipse.home}
+     [echo] shell:           bash
+     [echo] os.name:         Mac OS X
+     [echo] os.version:      10.14.6
+     [echo] os.arch:         x86_64
+     [echo] user.name:       jbrazda
+     [echo] user.dir:        /Users/jbrazda/git/icai-fault-alert-service
+     [echo] user.home:       /Users/jbrazda
+     [echo] env.HOME:        /Users/jbrazda
+     [echo] env.LANG:        en_US.UTF-8
+     [echo] env.SHELL:       /bin/zsh
+     [echo] env.PATH:        /usr/bin:/bin:/usr/sbin:/sbin
+     [echo] env.JAVA_HOME:   /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+     [echo] ========================================
+-select-release:
+     [echo] Available Release Configurations:
+     [echo] =================================
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] =================================
+-set-release-properties:
+     [echo] Selected Release Configuration: iclab-dev.release
+     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+-load.release.properties:
+     [echo] Loading /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] Loading External properties (credentials) from /Users/jbrazda/iics/iclab.properties
+     [echo] TODO: Add Inputs Validation
+-select-target-environment:
+     [echo] Selected Target Environment: dev
+-set-target-properties:
+-select-package-config:
+     [echo] Available Target Package Configurations:
+     [echo] ========================================
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/all_exlude_connections.package.txt
+     [echo] ========================================
+     [echo] Selected Target Package Configuration: all_designs.package
+     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt
+iics.package:
+    [mkdir] Created dir: /Users/jbrazda/git/icai-fault-alert-service/target/iclab-dev.release/import/dev
+     [echo] Running iics package -z "/Users/jbrazda/git/icai-fault-alert-service/target/iclab-dev.release/import/dev/FaultAlertService.zip" -w "/Users/jbrazda/git/icai-fault-alert-service/src/ipd" -f "/Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt"
+     [exec] [36mINFO[0m[0000] IICS CLI Version                              [36mVersion[0m=2.0.0
+     [exec] [36mINFO[0m[0000] Reading artifacts from file                   [36mFile[0m=/Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt
+     [exec] [36mINFO[0m[0000] Gathered artifacts                            [36mArtifacts[0m="[Explore/Alerting.Project Explore/Tools.Project]"
+     [exec] [36mINFO[0m[0000] Packaging artifacts                           [36mWorkspace Directory[0m=/Users/jbrazda/git/icai-fault-alert-service/src/ipd
+     [exec] [36mINFO[0m[0000] Artifact verification complete                [36mResult[0m=true
+     [exec] [36mINFO[0m[0000] Copying artifacts to temp folder
+     [exec] [36mINFO[0m[0000] Creating checksum fil
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Project Explore/Alerting.Project.json Explore/.Alerting.Project.json Explore/Alerting.Project }" [36mChecksum[0m="Explore/Alerting.Project.json=7BFFC629A0012621C1C69CA78164E64425BE2B78FC303FEEB19E66F5379A2FAF\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Alerting/Connections.Folder.json Explore/Alerting/.Connections.Folder.json Explore/Alerting/Connections.Folder }" [36mChecksum[0m="Explore/Alerting/Connections.Folder.json=F2784716473469144FB23D8924CA1B617711119189CEF67DEC4A5F774FD8C669\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{AI_CONNECTION Explore/Alerting/Connections/AWS-SQS-Alerts.AI_CONNECTION.xml Explore/Alerting/Connections/.AWS-SQS-Alerts.AI_CONNECTION.json Explore/Alerting/Connections/AWS-SQS-Alerts.AI_CONNECTION }" [36mChecksum[0m="Explore/Alerting/Connections/AWS-SQS-Alerts.AI_CONNECTION.xml=A69D2AA73E070569E46F7162067124EADA9E1000957AF99CEFE5BF8C41713AD8\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{AI_CONNECTION Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml Explore/Alerting/Connections/.Email-Alerts.AI_CONNECTION.json Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION }" [36mChecksum[0m="Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml=EF7F629C07FA84D8264B76A108047949B548106C733C404A47E5D6BD899466DB\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{AI_CONNECTION Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml Explore/Alerting/Connections/.github-gist-alert-configuration.AI_CONNECTION.json Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION }" [36mChecksum[0m="Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml=EF6ACE796F14F96BBC642F67BF7F951C208AF066B95BB1F30531D49C64EAE49B\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Alerting/Guides.Folder.json Explore/Alerting/.Guides.Folder.json Explore/Alerting/Guides.Folder }" [36mChecksum[0m="Explore/Alerting/Guides.Folder.json=437C4685A6D5F0E038BBA4A9E5834A121CA51B6F58350E87BF5ABBCEF76FE3B4\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{GUIDE Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml Explore/Alerting/Guides/.Alert Configuration Manager.GUIDE.json Explore/Alerting/Guides/Alert Configuration Manager.GUIDE }" [36mChecksum[0m="Explore/Alerting/Guides/Alert\\ Configuration\\ Manager.GUIDE.xml=738F2CB94C551271D6778800D034EC57CFAB37F8B9C2E727EC2D3CF4F0726700\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Alerting/ProcessObjects.Folder.json Explore/Alerting/.ProcessObjects.Folder.json Explore/Alerting/ProcessObjects.Folder }" [36mChecksum[0m="Explore/Alerting/ProcessObjects.Folder.json=0AC3F26AFD1F29AD01F01A9E1E863E841775A7489A1E0AA5A2F8A27D885CBB11\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.FaultAlertConfiguration.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml=BDBA43D49F3FEF597389B9188B8541EF67B64FDB442131B71D33C357A2D24B73\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.action-email.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT.xml=CC6AA1318BD4064EA992832D879C5DF3D6CBE1036DFA0F15E0330EE1F4BC3C99\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.action-ref.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml=3057210CAD08BD2EA097855A6E214BE824C1CC6B7B3E0FDD83C01FA5CDCBA27B\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.action.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT.xml=0481F5D60A70E15C77F308F136B2D98B58673CEDE4C66A56A17E681B4096D1E4\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.actions.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml=3666DE9E95998F8E13105C8D9447D1EC12D56E805052EA1402F07574BDB2300F\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.alert-config.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml=2C409F6423B125F6946D97807EF16FB3EB4F805898A9F757C32B8548177CC98D\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.condition.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml=D5A4F4298552F13F42D940DA2F40D370D6464A1A9A12FA16B8A4EC5B15A55480\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.rule.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml=2B47776C040F3308E4A6573AE1098738711A1ECA2E2A01CDD800B79F9B61C5CC\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml Explore/Alerting/ProcessObjects/.rules.PROCESS_OBJECT.json Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml=E4EBBABEBE655FC5BEF0792E2D265DC033C9CCD1AA8AEBE6617D91C1961183E0\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Alerting/Processes.Folder.json Explore/Alerting/.Processes.Folder.json Explore/Alerting/Processes.Folder }" [36mChecksum[0m="Explore/Alerting/Processes.Folder.json=A07C5F502987589258A11853E168B04AB165659E5FC9E305703555EA005B69FB\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml Explore/Alerting/Processes/.UncaughtFaultAlertHandler-Cloud.PROCESS.json Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS }" [36mChecksum[0m="Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml=CE8CB2D0329CE0CCBB04E858F2A9184C01DF61DA65F3EE55E2924DAD2AD78BB0\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml Explore/Alerting/Processes/.UncaughtFaultAlertHandler-NA.PROCESS.json Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS }" [36mChecksum[0m="Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml=6B2271E9EC067BBBDADEFF58A5CCC92AB92FBFA583FFB2E00CBF9798C7594490\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Project Explore/Tools.Project.json Explore/.Tools.Project.json Explore/Tools.Project }" [36mChecksum[0m="Explore/Tools.Project.json=467871ABEF9EC13ABF617CC1D647ED8EE95D9E4E1DE155E2C4EFBDB4EEFBBC43\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/ProcessObjects.Folder.json Explore/Tools/.ProcessObjects.Folder.json Explore/Tools/ProcessObjects.Folder }" [36mChecksum[0m="Explore/Tools/ProcessObjects.Folder.json=94ECF23F8B13EA1F4E61E9AA7F0936C78BFD51864247B7FAFDF05D14622C1720\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml Explore/Tools/ProcessObjects/.AttchmentInformation.PROCESS_OBJECT.json Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml=EA0036AFEB453064ED998FB172FF3C9920B5308DB999B8518358A65B6FEE8948\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/Processes.Folder.json Explore/Tools/.Processes.Folder.json Explore/Tools/Processes.Folder }" [36mChecksum[0m="Explore/Tools/Processes.Folder.json=E200175169D1F8F83E3B49E0EDE49ED7A2C354EE8704D72A2D5353FA69357380\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml Explore/Tools/Processes/.SP-ConvertAttachmentToText.PROCESS.json Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS }" [36mChecksum[0m="Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml=E4619B8500BC4AA808F64BE98B23A6FCFA3E55B3D76F71DA29B2AC257854C6EF\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/ServiceConnectors.Folder.json Explore/Tools/.ServiceConnectors.Folder.json Explore/Tools/ServiceConnectors.Folder }" [36mChecksum[0m="Explore/Tools/ServiceConnectors.Folder.json=28F4713ECC03D81EE83F12BF320483C7576BB5AE3200C168715FEC83F6B1AA41\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{AI_SERVICE_CONNECTOR Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml Explore/Tools/ServiceConnectors/.github-gist.AI_SERVICE_CONNECTOR.json Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR }" [36mChecksum[0m="Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml=0AA9C879F389E2811F79D0B3B3B6C6708AAF6D55B596BFF9B50F9A4293886D67\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for metadata file          [36mChecksum[0m="exportMetadata.v2.json=E51CF7D22504344C652B950CB185538432B3225EB2E1D0832FECBB4EF296CFAB" [36mFile[0m=/var/folders/hd/q4v90yb52d980_lvj56yxd5c0000gp/T/iics-cli648713486/exportMetadata.v2.json
+     [exec] [36mINFO[0m[0000] Creating zip file                             [36mFile[0m=/Users/jbrazda/git/icai-fault-alert-service/target/iclab-dev.release/import/dev/FaultAlertService.zip
+package.src:
+BUILD SUCCESSFUL
+Total time: 10 seconds
+</code></pre>
+<p>TODO Describe Import Steps</p>
 <h4 id="on-command-line">
 <a id="user-content-on-command-line" class="anchor" href="#on-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Command Line</h4>
+<p>You can run the same as in eclipse from command line using a following command</p>
+<p>Build a full package DEV Target</p>
+<div class="highlight highlight-source-shell"><pre>ant package.src \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=dev \
+-Diics.target.package.config=./conf/all_designs.package.txt</pre></div>
+<p>Build a package without Connections DEV Target</p>
+<div class="highlight highlight-source-shell"><pre>ant package.src \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=dev \
+-Diics.target.package.config=./conf/all_exclude_connections.package.txt</pre></div>
+<p>TODO Describe Import Steps</p>
 <h3 id="configure-your-org">
 <a id="user-content-configure-your-org" class="anchor" href="#configure-your-org" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Your Org</h3>
 <p>The process Implementation requires certain system Lever properties configure to be able to send Notification emails</p>
@@ -937,7 +1116,7 @@ This tool will automatically download latest version an use it to import provide
 <p>Alert Service must be configured after the Deployment/Import and configuration of this package</p>
 <p>Go to each <code>Application Integration Console &gt; Server Configuration &gt; Secure Agent</code>
 and set the System Service pointing to <code>UncaughtFaultAlertHandler-{Agent Group Name}</code> where the <code>{Agent Group Name}</code> is Group name matching the process name for A corresponding Agent group where you deployed the</p>
-<p>The Setup of Alert Service will be possible only after the UncaughtFaultAlertHandler service is published to the corresponding target environment.</p>
+<p>The Setup of Alert Service will be possible only after the <code>UncaughtFaultAlertHandler</code> service is published to the corresponding target environment.</p>
 <blockquote>
 <p>Note: you should rename the <code>Alerting/Processes/UncaughtFaultAlertHandler-NA</code> to match your Secure Agent group name after initial install step,
 because currently ICAI does not allow single process to be deployed (published) to multiple target locations, thus requiring to create process copy for Each agent group or Cloud</p>
@@ -950,10 +1129,340 @@ because currently ICAI does not allow single process to be deployed (published) 
 <a id="user-content-pre-built-distribution" class="anchor" href="#pre-built-distribution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pre-built Distribution</h3>
 <p>If you decide to not clone this repository and re-build the package from Sources You can use provided im
 for first time Installation to target org manually.</p>
-<p>IPD Import Package <a href="distribution/A%3BertService/zip">Download</a></p>
+<p>IPD Import Package <a href="distribution/AlertService.zip">Download</a></p>
+<h2 id="alert-service-components">
+<a id="user-content-alert-service-components" class="anchor" href="#alert-service-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alert Service Components</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Location</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email-Alerts</td>
+<td>Email Service Connection</td>
+<td>Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml</td>
+<td>Connection</td>
+</tr>
+<tr>
+<td>github-gist-alert-configuration</td>
+<td>Github Gist Connection</td>
+<td>Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml</td>
+<td>Connection</td>
+</tr>
+<tr>
+<td>github-gist</td>
+<td>Github Gist Service Connector</td>
+<td>Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml</td>
+<td>Connector</td>
+</tr>
+<tr>
+<td>Alert_Configuration_Manager</td>
+<td>Guide to manage Alert Service Configuration</td>
+<td>Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml</td>
+<td>Guide</td>
+</tr>
+<tr>
+<td>SP-ConvertAttachmentToText</td>
+<td>Utility Service To Load Config From File</td>
+<td>Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml</td>
+<td>Process</td>
+</tr>
+<tr>
+<td>UncaughtFaultAlertHandler-Cloud</td>
+<td>Fault Alert handler process for Cloud Servers</td>
+<td>Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml</td>
+<td>Process</td>
+</tr>
+<tr>
+<td>UncaughtFaultAlertHandler-NA</td>
+<td>Fault Alert Handler process for NA Agents Group</td>
+<td>Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml</td>
+<td>Process</td>
+</tr>
+</tbody>
+</table>
+<h3 id="process-objects">
+<a id="user-content-process-objects" class="anchor" href="#process-objects" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Process Objects</h3>
+<p>Following process objects describe the Structure of Fault Alert Service Configuration</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Location</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>action</td>
+<td>Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>action-email</td>
+<td>Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>action-ref</td>
+<td>Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>actions</td>
+<td>Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>alert-config</td>
+<td>Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>AttchmentInformation</td>
+<td>Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>condition</td>
+<td>Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>FaultAlertConfiguration</td>
+<td>Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>rule</td>
+<td>Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+<tr>
+<td>rules</td>
+<td>Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml</td>
+<td>Process Object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="setup-gist-connector-and-connection">
+<a id="user-content-setup-gist-connector-and-connection" class="anchor" href="#setup-gist-connector-and-connection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup Gist Connector and Connection</h2>
+<p>Once the package is imported for the firs time make sure you have <a href="#markdown-header-setup-gist-account-and-token">enabled access token and gist account on Github</a></p>
 <h2 id="fault-alert-handler-configuration">
 <a id="user-content-fault-alert-handler-configuration" class="anchor" href="#fault-alert-handler-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fault Alert Handler Configuration</h2>
-<p>This package contains ICAI</p>
+<p>This package contains reference configurable implementation of ICAI Fault alert Handler.
+The configuration Allows to define a set of rules/conditions to be evaluated when process
+engine triggers fault alert for a faulting process.</p>
+<p>Lets inspect the Configuration file example</p>
+<p>As you can see below Configuration allows to define Set of rules where each Rule is associated with set of actions.
+Each rule Can have set of the conditions evaluated be either with <code>OR</code> or <code>AND</code> logical operator.
+Each condition can be negated using a <code>&lt;not&gt;true/false&lt;/not&gt;</code> condition property</p>
+<h3 id="supported-condition-types">
+<a id="user-content-supported-condition-types" class="anchor" href="#supported-condition-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Condition Types</h3>
+<table>
+<thead>
+<tr>
+<th>Condition Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>equals</td>
+<td>Exact String Match</td>
+</tr>
+<tr>
+<td>matches</td>
+<td>Condition would Contain Regular expression (needs to be escaped)</td>
+</tr>
+<tr>
+<td>contains</td>
+<td>Contains String</td>
+</tr>
+<tr>
+<td>starts-with</td>
+<td>Starts With a String</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supported-actions">
+<a id="user-content-supported-actions" class="anchor" href="#supported-actions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Actions</h3>
+<table>
+<thead>
+<tr>
+<th>Action Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alert-email</td>
+<td>Send Alert Email to a defined Set of recipients</td>
+</tr>
+<tr>
+<td>ignore</td>
+<td>Ignore Alert</td>
+</tr>
+</tbody>
+</table>
+<p>Each Rule can be linked to one or more Actions When Any rule condition
+Evaluation  outcome contains <code>ignore</code> action, then the Alert will be ignored and no other actions will be taken.</p>
+<p>Ignore Action is mutually exclusive with other actions resulting the rules evaluation.</p>
+<div class="highlight highlight-text-xml"><pre>&lt;<span class="pl-ent">FaultAlertConfiguration</span>&gt;
+    &lt;<span class="pl-ent">alert-config</span>&gt;
+        &lt;<span class="pl-ent">Name</span>&gt;Default Alert Configuration&lt;/<span class="pl-ent">Name</span>&gt;
+        &lt;<span class="pl-ent">Descrioption</span>&gt;This is a Default Example Alert Configuration&lt;/<span class="pl-ent">Descrioption</span>&gt;
+        &lt;<span class="pl-ent">created</span>&gt;2019-07-09T03:58:42.924Z&lt;/<span class="pl-ent">created</span>&gt;
+        &lt;<span class="pl-ent">updated</span>&gt;2019-07-09T03:59:41.719Z&lt;/<span class="pl-ent">updated</span>&gt;
+        &lt;<span class="pl-ent">createdBy</span>&gt;jbrazda-iics@informatica.com&lt;/<span class="pl-ent">createdBy</span>&gt;
+        &lt;<span class="pl-ent">updatedBy</span>&gt;jbrazda-iics@informatica.com&lt;/<span class="pl-ent">updatedBy</span>&gt;
+    &lt;/<span class="pl-ent">alert-config</span>&gt;
+    &lt;<span class="pl-ent">rules</span>&gt;
+        &lt;<span class="pl-ent">rule</span>&gt;
+            &lt;<span class="pl-ent">guid</span>&gt;17feed12-163d-43b2-9368-ba0b6951b9d6&lt;/<span class="pl-ent">guid</span>&gt;
+            &lt;<span class="pl-ent">name</span>&gt;Ignore Alert&lt;/<span class="pl-ent">name</span>&gt;
+            &lt;<span class="pl-ent">operator</span>&gt;OR&lt;/<span class="pl-ent">operator</span>&gt;
+            &lt;<span class="pl-ent">condition</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;502ba658-bbe5-4611-aba4-dd5e021abc59&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">type</span>&gt;equals&lt;/<span class="pl-ent">type</span>&gt;
+                &lt;<span class="pl-ent">value</span>&gt;SP-Test-Throw-Fault-Generic&lt;/<span class="pl-ent">value</span>&gt;
+                &lt;<span class="pl-ent">not</span>&gt;false&lt;/<span class="pl-ent">not</span>&gt;
+                &lt;<span class="pl-ent">alert-field</span>&gt;processName&lt;/<span class="pl-ent">alert-field</span>&gt;
+            &lt;/<span class="pl-ent">condition</span>&gt;
+            &lt;<span class="pl-ent">condition</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;981275e6-2328-4294-982d-be85eba32577&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">type</span>&gt;matches&lt;/<span class="pl-ent">type</span>&gt;
+                &lt;<span class="pl-ent">value</span>&gt;.*Test.*&lt;/<span class="pl-ent">value</span>&gt;
+                &lt;<span class="pl-ent">not</span>/&gt;
+                &lt;<span class="pl-ent">alert-field</span>&gt;processName&lt;/<span class="pl-ent">alert-field</span>&gt;
+            &lt;/<span class="pl-ent">condition</span>&gt;
+            &lt;<span class="pl-ent">condition</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;e14d31b1-cb2f-419b-9770-b69ebc08000d&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">type</span>&gt;matches&lt;/<span class="pl-ent">type</span>&gt;
+                &lt;<span class="pl-ent">value</span>&gt;SP-Test-.*&lt;/<span class="pl-ent">value</span>&gt;
+                &lt;<span class="pl-ent">not</span>&gt;false&lt;/<span class="pl-ent">not</span>&gt;
+                &lt;<span class="pl-ent">alert-field</span>&gt;processName&lt;/<span class="pl-ent">alert-field</span>&gt;
+            &lt;/<span class="pl-ent">condition</span>&gt;
+            &lt;<span class="pl-ent">condition</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;70177f72-7ee5-42e6-b2d0-816fba957303&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">type</span>&gt;contains&lt;/<span class="pl-ent">type</span>&gt;
+                &lt;<span class="pl-ent">value</span>&gt;Test&lt;/<span class="pl-ent">value</span>&gt;
+                &lt;<span class="pl-ent">not</span>&gt;false&lt;/<span class="pl-ent">not</span>&gt;
+                &lt;<span class="pl-ent">alert-field</span>&gt;processName&lt;/<span class="pl-ent">alert-field</span>&gt;
+            &lt;/<span class="pl-ent">condition</span>&gt;
+            &lt;<span class="pl-ent">action</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;f419969c-f9f1-4994-8c66-d6710f4d4625&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">Name</span>&gt;Ignore Alert&lt;/<span class="pl-ent">Name</span>&gt;
+                &lt;<span class="pl-ent">Type</span>&gt;ignore&lt;/<span class="pl-ent">Type</span>&gt;
+            &lt;/<span class="pl-ent">action</span>&gt;
+        &lt;/<span class="pl-ent">rule</span>&gt;
+        &lt;<span class="pl-ent">rule</span>&gt;
+            &lt;<span class="pl-ent">guid</span>&gt;9e7b7b98-f7ce-43e1-911f-26b4aaa0506a&lt;/<span class="pl-ent">guid</span>&gt;
+            &lt;<span class="pl-ent">name</span>&gt;Error Email&lt;/<span class="pl-ent">name</span>&gt;
+            &lt;<span class="pl-ent">operator</span>&gt;OR&lt;/<span class="pl-ent">operator</span>&gt;
+            &lt;<span class="pl-ent">action</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;1083547d-c196-47c6-9d53-fcbc5172e302&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">Name</span>&gt;Alert Email&lt;/<span class="pl-ent">Name</span>&gt;
+                &lt;<span class="pl-ent">Type</span>&gt;alert-email&lt;/<span class="pl-ent">Type</span>&gt;
+            &lt;/<span class="pl-ent">action</span>&gt;
+            &lt;<span class="pl-ent">condition</span>&gt;
+                &lt;<span class="pl-ent">guid</span>&gt;159ccd35-f8a0-433e-82ca-7dea2df10f3e&lt;/<span class="pl-ent">guid</span>&gt;
+                &lt;<span class="pl-ent">type</span>&gt;equals&lt;/<span class="pl-ent">type</span>&gt;
+                &lt;<span class="pl-ent">value</span>/&gt;
+                &lt;<span class="pl-ent">not</span>&gt;true&lt;/<span class="pl-ent">not</span>&gt;
+                &lt;<span class="pl-ent">alert-field</span>&gt;processName&lt;/<span class="pl-ent">alert-field</span>&gt;
+            &lt;/<span class="pl-ent">condition</span>&gt;
+        &lt;/<span class="pl-ent">rule</span>&gt;
+    &lt;/<span class="pl-ent">rules</span>&gt;
+    &lt;<span class="pl-ent">actions</span>&gt;
+        &lt;<span class="pl-ent">action</span>&gt;
+            &lt;<span class="pl-ent">guid</span>&gt;f419969c-f9f1-4994-8c66-d6710f4d4625&lt;/<span class="pl-ent">guid</span>&gt;
+            &lt;<span class="pl-ent">Name</span>&gt;Ignore Alert&lt;/<span class="pl-ent">Name</span>&gt;
+            &lt;<span class="pl-ent">Description</span>&gt;Action to ignore Alert&lt;/<span class="pl-ent">Description</span>&gt;
+            &lt;<span class="pl-ent">Type</span>&gt;ignore&lt;/<span class="pl-ent">Type</span>&gt;
+            &lt;<span class="pl-ent">ActionDetail</span>/&gt;
+        &lt;/<span class="pl-ent">action</span>&gt;
+        &lt;<span class="pl-ent">action</span>&gt;
+            &lt;<span class="pl-ent">guid</span>&gt;1083547d-c196-47c6-9d53-fcbc5172e302&lt;/<span class="pl-ent">guid</span>&gt;
+            &lt;<span class="pl-ent">Name</span>&gt;Alert Email&lt;/<span class="pl-ent">Name</span>&gt;
+            &lt;<span class="pl-ent">Description</span>&gt;Sends HTML Formated Alert Email&lt;/<span class="pl-ent">Description</span>&gt;
+            &lt;<span class="pl-ent">Type</span>&gt;alert-email&lt;/<span class="pl-ent">Type</span>&gt;
+            &lt;<span class="pl-ent">ActionDetail</span>&gt;
+                &lt;<span class="pl-ent">action-email</span>&gt;
+                    &lt;<span class="pl-ent">subject</span>&gt;Fault Alert - Error&lt;/<span class="pl-ent">subject</span>&gt;
+                    &lt;<span class="pl-ent">to</span>&gt;jbrazda@informatica.com&lt;/<span class="pl-ent">to</span>&gt;
+                    &lt;<span class="pl-ent">cc</span>/&gt;
+                    &lt;<span class="pl-ent">bcc</span>/&gt;
+                    &lt;<span class="pl-ent">contentType</span>&gt;text/html&lt;/<span class="pl-ent">contentType</span>&gt;
+                    &lt;<span class="pl-ent">actionName</span>&gt;Send Alert Email&lt;/<span class="pl-ent">actionName</span>&gt;
+                &lt;/<span class="pl-ent">action-email</span>&gt;
+            &lt;/<span class="pl-ent">ActionDetail</span>&gt;
+        &lt;/<span class="pl-ent">action</span>&gt;
+    &lt;/<span class="pl-ent">actions</span>&gt;
+&lt;/<span class="pl-ent">FaultAlertConfiguration</span>&gt;</pre></div>
+<p>Above configuration file is generally not intended to be edited manually it is generated
+by the provided <code>Alert Configuration Manager</code> ICAI guide.</p>
+<p>This Guide provides a tool to manage retrieve and store the configuration on target
+configuration storage system (Github.com gist) or simply exported as XML. It also allows to simulate various fault sample fault alerts and test the configuration for desired behavior</p>
+<h3 id="alert-configuration-management-tool">
+<a id="user-content-alert-configuration-management-tool" class="anchor" href="#alert-configuration-management-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alert configuration Management tool</h3>
+<p>This guide is located in the <code>IICS &gt; Application Integration &gt; Alerting &gt; Guides &gt; Alert Configuration Manager</code></p>
+<p>Main Page</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Main_Screen.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Main_Screen.png" alt="Alert_Configuration_Manager_Main_Screen" style="max-width:100%;"></a></p>
+<p>Manage Alert Service Configuration</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Manage_Config.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Manage_Config.png" alt="Alert_Configuration_Manager_Manage_Config" style="max-width:100%;"></a></p>
+<p>You can choose from following Options</p>
+<ul>
+<li>Load from Gist - load available gists from the Account Associated with the Gist Connection)</li>
+<li>Load From File - Load file from local drive</li>
+<li>Edit XML - You can paste XML or use default generated file to</li>
+</ul>
+<p><a href="doc/images/Alert_Configuration_Manager_Load_Gist.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Load_Gist.png" alt="Alert_Configuration_Manager_Load_Gist" style="max-width:100%;"></a></p>
+<p>Select Gist to be loaded</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Select_Gist.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Select_Gist.png" alt="Alert_Configuration_Manager_Select_Gist" style="max-width:100%;"></a></p>
+<p>Preview Loaded XML</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Load_XML.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Load_XML.png" alt="Alert_Configuration_Manager_Load_XML" style="max-width:100%;"></a></p>
+<p>Configuration Editor</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Config_Editor.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Config_Editor.png" alt="Alert_Configuration_Manager_Config_Editor" style="max-width:100%;"></a></p>
+<p>Rule Editor Editor</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Rule_Editor.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Rule_Editor.png" alt="Alert_Configuration_Manager_Rule_Editor" style="max-width:100%;"></a></p>
+<p>Action Editor</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Action_Editor.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Action_Editor.png" alt="Alert_Configuration_Manager_Action_Editor" style="max-width:100%;"></a></p>
+<p>Email Action Editor</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Email_Action_Editor.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Email_Action_Editor.png" alt="Alert_Configuration_Manager_Email_Action_Editor" style="max-width:100%;"></a></p>
+<p>Save Configuration Provides three actions</p>
+<ul>
+<li>Save as a New Gist - Create a new Gist (typically for different environment)</li>
+<li>Update Existing Gist - Allows you to update existing GIST</li>
+<li>Get Configuration XML - Prints teh Config XML which (save it as a file)</li>
+</ul>
+<p>Save as a New Gist</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Save_New_Gist.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Save_New_Gist.png" alt="Alert_Configuration_Manager_Save_New_Gist" style="max-width:100%;"></a></p>
+<p>Save Completed</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Save_Results.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Save_Results.png" alt="Alert_Configuration_Manager_Save_Results" style="max-width:100%;"></a></p>
+<p>Gist View</p>
+<p><a href="doc/images/Github_Fault_Alert_Configuration_DEMO.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Github_Fault_Alert_Configuration_DEMO.png" alt="Github_Fault_Alert_Configuration_DEMO" style="max-width:100%;"></a></p>
+<p>Github Configuration View with Revisions</p>
+<p><a href="doc/images/Github_Revisions_Demo.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Github_Revisions_Demo.png" alt="Github_Revisions_Demo" style="max-width:100%;"></a></p>
+<h3 id="alert-service-testing-tool---testing-configuration">
+<a id="user-content-alert-service-testing-tool---testing-configuration" class="anchor" href="#alert-service-testing-tool---testing-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alert Service Testing Tool - Testing Configuration</h3>
+<p>This is a part of the Alert Configuration Manager, it allows to test current Environment Configuration parameters based on URN mapping stored on the Secure Agent URNs.</p>
+<ul>
+<li>Test against pre-defined Sample Payload</li>
+<li>Test against arbitrary pasted payload</li>
+</ul>
+<p><a href="doc/images/Alert_Configuration_Manager_Test_Tool.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Test_Tool.png" alt="Alert_Configuration_Manager_Test_Tool" style="max-width:100%;"></a></p>
+<p>Test Message</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Test_Message.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Test_Message.png" alt="Alert_Configuration_Manager_Test_Message" style="max-width:100%;"></a></p>
+<p>Test Results</p>
+<p><a href="doc/images/Alert_Configuration_Manager_Test_Results.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Alert_Configuration_Manager_Test_Results.png" alt="Alert_Configuration_Manager_Test_Results" style="max-width:100%;"></a></p>
+<p>Test Email Sample</p>
+<p><a href="doc/images/Email_Fault_Alert.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Email_Fault_Alert.png" alt="Email_Fault_Alert" style="max-width:100%;"></a></p>
 <h2 id="extending-alert-service">
 <a id="user-content-extending-alert-service" class="anchor" href="#extending-alert-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending Alert Service</h2>
 <p>TBD</p>
