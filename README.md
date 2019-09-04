@@ -7,6 +7,7 @@
     - [Overview](#markdown-header-overview)
     - [Installation](#markdown-header-installation)
         - [Pre-Requisites](#markdown-header-pre-requisites)
+            - [Setup Gist Account and Token](#markdown-header-setup-gist-account-and-token)
         - [Build and Install the Package](#markdown-header-build-and-install-the-package)
         - [Build Package From Source](#markdown-header-build-package-from-source)
             - [In Process Developer](#markdown-header-in-process-developer)
@@ -66,6 +67,24 @@ To build and install from source, you'll need a following set of tools
 You can follow this guide [Set Development Environment for IPD Development][development_setup] to setup your environment
 
 > See Guide to [Install Process Developer][ipd_install_guide]
+
+#### Setup Gist Account and Token
+
+Make sure your secure agents can access the github API to store and retrieve the Alert Service COnfiguration file.
+
+This Alert Service Implementation can use Github Gist (both Cloud and On prem Github Enterprise Edition) as a storage for its configuration
+It is recommended to use private gist to store this configuration, you will need to create Security token to access gist API
+
+1. Login to github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
+2. Go to [Account Settings/Developer Settings/Personal access tokens](https://github.com/settings/tokens)
+3. Create new token and give it descriptive name such as `IICS-Configuration-Gist-Access`
+4. Select only gist permission
+
+    ![Github_New_personal_access_token](./doc/images/Github_New_personal_access_token.png)
+
+5. Capture generated token and save it in a save location for later use in the Service Connector configuration after Deployment of the IICS package
+
+    ![Personal_Access_Tokens](./doc/images/Personal_Access_Tokens.png)
 
 ### Build and Install the Package
 
