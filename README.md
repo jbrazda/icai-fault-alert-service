@@ -16,7 +16,14 @@
             - [URN mappings](#markdown-header-urn-mappings)
             - [Set Alert Service](#markdown-header-set-alert-service)
         - [Pre-built Distribution](#markdown-header-pre-built-distribution)
+    - [Alert Service Components](#markdown-header-alert-service-components)
+        - [Process Objects](#markdown-header-process-objects)
+    - [Setup Gist Connector and Connection](#markdown-header-setup-gist-connector-and-connection)
     - [Fault Alert Handler Configuration](#markdown-header-fault-alert-handler-configuration)
+        - [Supported Condition Types](#markdown-header-supported-condition-types)
+        - [Supported Actions](#markdown-header-supported-actions)
+        - [Alert configuration Management tool](#markdown-header-alert-configuration-management-tool)
+        - [Alert Service Testing Tool - Testing Configuration](#markdown-header-alert-service-testing-tool-testing-configuration)
     - [Extending Alert Service](#markdown-header-extending-alert-service)
         - [Add Custom Action](#markdown-header-add-custom-action)
         - [Add Custom Configuration Storage Provider](#markdown-header-add-custom-configuration-storage-provider)
@@ -102,12 +109,18 @@ I would also recommend to create Native Service user in each of your orgs that c
 This tool will automatically download latest version an use it to import provided service to your target org
 
 ```properties
+# This file should contain properties for Each environment
+# defined in the associated release properties file property iics.environment.list
+#  
+# DEV Environment Credentials
 iics.user.dev=deployer-iics-dev@acme.com
 iics.password.dev=YOURPWD
 
+# TEST Environment Credentials
 iics.user.test=deployer-iics-test@acme.com
 iics.password.test=YOURPWD
 
+# PROD Environment Credentials
 iics.user.prod=deployer-iics-prod@informatica.com
 iics.password.prod=YOURPWD
 ```
@@ -117,31 +130,37 @@ iics.password.prod=YOURPWD
 Update existing or copy [conf/iclab-dev.release.properties](conf/iclab-dev.release.properties) file which defines a key Environment specific parameters
 
 ```properties
-# define a comma separated list of environment org labels such as
+# define a comma separated list of environment org labels such as 
 # dev,test,uat,prod
 iics.environment.list=dev,test,prod
 
 # This property points to file which contains credentials to login to individual environments
-# we recommend to use user home/iics protected directory, never commit this file to version control with this project
-# This must contain set of  properties following this naming convention for each environment defined in the iics.environment.list
+# we recommend to use ${user.home}/iics protected directory
+# never commit this file to version control with this project as it contains credentials to your IICS Orgs
+# the iics.external.properties must contain set of properties
+# following this naming convention for each environment defined in the iics.environment.list
 # iics.user.${environment}=
 # iics.password.${environment}=
-iics.external.properties=${user.home}/iics/environment.properties
+iics.external.properties=${user.home}/iics/iclab.properties
 
-# this query is used by iics list command to retrieve available sources from repository to extract the designs from IICS
+# this query is used by iics list command to retrieve available sources from repository
+# to extract the designs from IICS
 # see https://network.informatica.com/docs/DOC-18245#jive_content_id_List_Command
 iics.query=-q "location==Alerting"
 
-# Defines the output file for the list command
-# the output location will be driven by the ${basedir}/target/${selected.release.basename}
+# Defines the output file for the list command 
+# the output location will be driven by the following expression
+# ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.list.output}
 iics.list.output=export_list.txt
 
-# Defines the output file name for iics export command
-# the output location will be driven by the ${basedir}/target/${selected.release.basename}
+# Defines the ouput file name for iics export command
+# the output location will be driven by the 
+# ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.export.output}
 iics.export.output=FaultAlertService.zip
 
 # Defines Output File name without extension
-# the package.src will produce file in the following path ${basedir}/target/
+# the package.src will produce file in the location based on following expression
+# ${basedir}/target/${selected.release.basename}/import/${iics.target.environment}/${iics.package.output}.zip
 iics.package.output=FaultAlertService
 
 # Defines Extract output directory for iics extract command
@@ -349,9 +368,260 @@ for first time Installation to target org manually.
 
 IPD Import Package [Download](./distribution/AlertService.zip)
 
+## Alert Service Components
+
+| Name                            | Description                                     | Location                                                                       | Type       |
+|---------------------------------|-------------------------------------------------|--------------------------------------------------------------------------------|------------|
+| Email-Alerts                    | Email Service Connection                        | Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml                    | Connection |
+| github-gist-alert-configuration | Github Gist Connection                          | Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml | Connection |
+| github-gist                     | Github Gist Service Connector                   | Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml           | Connector  |
+| Alert_Configuration_Manager     | Guide to manage Alert Service Configuration     | Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml                  | Guide      |
+| SP-ConvertAttachmentToText      | Utility Service To Load Config From File        | Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml                 | Process    |
+| UncaughtFaultAlertHandler-Cloud | Fault Alert handler process for Cloud Servers   | Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml         | Process    |
+| UncaughtFaultAlertHandler-NA    | Fault Alert Handler process for NA Agents Group | Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml            | Process    |
+
+### Process Objects
+
+Following process objects describe the Structure of Fault Alert Service Configuration
+
+| Name                    | Location                                                                   |                |
+|-------------------------|----------------------------------------------------------------------------|----------------|
+| action                  | Explore/Alerting/ProcessObjects/action.PROCESS_OBJECT.xml                  | Process Object |
+| action-email            | Explore/Alerting/ProcessObjects/action-email.PROCESS_OBJECT.xml            | Process Object |
+| action-ref              | Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml              | Process Object |
+| actions                 | Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml                 | Process Object |
+| alert-config            | Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml            | Process Object |
+| AttchmentInformation    | Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml       | Process Object |
+| condition               | Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml               | Process Object |
+| FaultAlertConfiguration | Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml | Process Object |
+| rule                    | Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml                    | Process Object |
+| rules                   | Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml                   | Process Object |
+
+
+## Setup Gist Connector and Connection
+
+Once the package is imported for the firs time make sure you have [enabled access token and gist account on Github](#markdown-header-setup-gist-account-and-token)
+
 ## Fault Alert Handler Configuration
 
-This package contains ICAI
+This package contains reference configurable implementation of ICAI Fault alert Handler.
+The configuration Allows to define a set of rules/conditions to be evaluated when process
+engine triggers fault alert for a faulting process.
+
+Lets inspect the Configuration file example
+
+As you can see below Configuration allows to define Set of rules where each Rule is associated with set of actions.
+Each rule Can have set of the conditions evaluated be either with `OR` or `AND` logical operator.
+Each condition can be negated using a `<not>true/false</not>` condition property
+
+### Supported Condition Types
+
+| Condition Type | Description                                                      |
+| -------------- | ---------------------------------------------------------------- |
+| equals         | Exact String Match                                               |
+| matches        | Condition would Contain Regular expression (needs to be escaped) |
+| contains       | Contains String                                                  |
+| starts-with    | Starts With a String                                             |
+
+### Supported Actions
+
+| Action Type | Description                                     |
+| ----------- | ----------------------------------------------- |
+| alert-email | Send Alert Email to a defined Set of recipients |
+| ignore      | Ignore Alert                                    |
+
+Each Rule can be linked to one or more Actions When Any rule condition
+Evaluation  outcome contains `ignore` action, then the Alert will be ignored and no other actions will be taken.
+
+Ignore Action is mutually exclusive with other actions resulting the rules evaluation.
+
+```xml
+<FaultAlertConfiguration>
+    <alert-config>
+        <Name>Default Alert Configuration</Name>
+        <Descrioption>This is a Default Example Alert Configuration</Descrioption>
+        <created>2019-07-09T03:58:42.924Z</created>
+        <updated>2019-07-09T03:59:41.719Z</updated>
+        <createdBy>jbrazda-iics@informatica.com</createdBy>
+        <updatedBy>jbrazda-iics@informatica.com</updatedBy>
+    </alert-config>
+    <rules>
+        <rule>
+            <guid>17feed12-163d-43b2-9368-ba0b6951b9d6</guid>
+            <name>Ignore Alert</name>
+            <operator>OR</operator>
+            <condition>
+                <guid>502ba658-bbe5-4611-aba4-dd5e021abc59</guid>
+                <type>equals</type>
+                <value>SP-Test-Throw-Fault-Generic</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>981275e6-2328-4294-982d-be85eba32577</guid>
+                <type>matches</type>
+                <value>.*Test.*</value>
+                <not/>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>e14d31b1-cb2f-419b-9770-b69ebc08000d</guid>
+                <type>matches</type>
+                <value>SP-Test-.*</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <condition>
+                <guid>70177f72-7ee5-42e6-b2d0-816fba957303</guid>
+                <type>contains</type>
+                <value>Test</value>
+                <not>false</not>
+                <alert-field>processName</alert-field>
+            </condition>
+            <action>
+                <guid>f419969c-f9f1-4994-8c66-d6710f4d4625</guid>
+                <Name>Ignore Alert</Name>
+                <Type>ignore</Type>
+            </action>
+        </rule>
+        <rule>
+            <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+            <name>Error Email</name>
+            <operator>OR</operator>
+            <action>
+                <guid>1083547d-c196-47c6-9d53-fcbc5172e302</guid>
+                <Name>Alert Email</Name>
+                <Type>alert-email</Type>
+            </action>
+            <condition>
+                <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                <type>equals</type>
+                <value/>
+                <not>true</not>
+                <alert-field>processName</alert-field>
+            </condition>
+        </rule>
+    </rules>
+    <actions>
+        <action>
+            <guid>f419969c-f9f1-4994-8c66-d6710f4d4625</guid>
+            <Name>Ignore Alert</Name>
+            <Description>Action to ignore Alert</Description>
+            <Type>ignore</Type>
+            <ActionDetail/>
+        </action>
+        <action>
+            <guid>1083547d-c196-47c6-9d53-fcbc5172e302</guid>
+            <Name>Alert Email</Name>
+            <Description>Sends HTML Formated Alert Email</Description>
+            <Type>alert-email</Type>
+            <ActionDetail>
+                <action-email>
+                    <subject>Fault Alert - Error</subject>
+                    <to>jbrazda@informatica.com</to>
+                    <cc/>
+                    <bcc/>
+                    <contentType>text/html</contentType>
+                    <actionName>Send Alert Email</actionName>
+                </action-email>
+            </ActionDetail>
+        </action>
+    </actions>
+</FaultAlertConfiguration>
+```
+
+Above configuration file is generally not intended to be edited manually it is generated
+by the provided `Alert Configuration Manager` ICAI guide.
+
+This Guide provides a tool to manage retrieve and store the configuration on target
+configuration storage system (Github.com gist) or simply exported as XML. It also allows to simulate various fault sample fault alerts and test the configuration for desired behavior
+
+### Alert configuration Management tool
+
+This guide is located in the `IICS > Application Integration > Alerting > Guides > Alert Configuration Manager`
+
+Main Page
+
+![Alert_Configuration_Manager_Main_Screen](./doc/images/Alert_Configuration_Manager_Main_Screen.png)
+
+Manage Alert Service Configuration
+
+![Alert_Configuration_Manager_Manage_Config](./doc/images/Alert_Configuration_Manager_Manage_Config.png)
+
+You can choose from following Options
+
+- Load from Gist - load available gists from the Account Associated with the Gist Connection)
+- Load From File - Load file from local drive
+- Edit XML - You can paste XML or use default generated file to
+
+![Alert_Configuration_Manager_Load_Gist](./doc/images/Alert_Configuration_Manager_Load_Gist.png)
+
+Select Gist to be loaded 
+
+![Alert_Configuration_Manager_Select_Gist](./doc/images/Alert_Configuration_Manager_Select_Gist.png)
+
+Preview Loaded XML
+
+![Alert_Configuration_Manager_Load_XML](./doc/images/Alert_Configuration_Manager_Load_XML.png)
+
+Configuration Editor
+
+![Alert_Configuration_Manager_Config_Editor](./doc/images/Alert_Configuration_Manager_Config_Editor.png)
+
+Rule Editor Editor
+
+![Alert_Configuration_Manager_Rule_Editor](./doc/images/Alert_Configuration_Manager_Rule_Editor.png)
+
+Action Editor
+
+![Alert_Configuration_Manager_Action_Editor](./doc/images/Alert_Configuration_Manager_Action_Editor.png)
+
+Email Action Editor
+
+![Alert_Configuration_Manager_Email_Action_Editor](./doc/images/Alert_Configuration_Manager_Email_Action_Editor.png)
+
+Save Configuration Provides three actions
+
+- Save as a New Gist - Create a new Gist (typically for different environment)
+- Update Existing Gist - Allows you to update existing GIST
+- Get Configuration XML - Prints teh Config XML which (save it as a file)
+
+Save as a New Gist
+
+![Alert_Configuration_Manager_Save_New_Gist](./doc/images/Alert_Configuration_Manager_Save_New_Gist.png)
+
+Save Completed
+
+![Alert_Configuration_Manager_Save_Results](./doc/images/Alert_Configuration_Manager_Save_Results.png)
+
+Gist View 
+
+![Github_Fault_Alert_Configuration_DEMO](./doc/images/Github_Fault_Alert_Configuration_DEMO.png)
+
+Github Configuration View with Revisions
+
+![Github_Revisions_Demo](./doc/images/Github_Revisions_Demo.png)
+
+### Alert Service Testing Tool - Testing Configuration
+
+This is a part of the Alert Configuration Manager, it allows to test current Environment Configuration parameters based on URN mapping stored on the Secure Agent URNs.
+
+- Test against pre-defined Sample Payload
+- Test against arbitrary pasted payload
+
+![Alert_Configuration_Manager_Test_Tool](./doc/images/Alert_Configuration_Manager_Test_Tool.png)
+
+Test Message
+
+![Alert_Configuration_Manager_Test_Message](./doc/images/Alert_Configuration_Manager_Test_Message.png)
+
+Test Results
+
+![Alert_Configuration_Manager_Test_Results](./doc/images/Alert_Configuration_Manager_Test_Results.png)
+
+Test Email Sample
+
+![Email_Fault_Alert](./doc/images/Email_Fault_Alert.png)
 
 ## Extending Alert Service
 
@@ -372,7 +642,7 @@ Custom Alert handler Service Works only on Secure Agents, Currently there is an 
 ## Glossary of Terms used in this Documents
 
 | Term                            | Description                                                                                                                                                        |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | IICS                            | Informatica Intelligent Cloud Services, Informatica Cloud Integration platform                                                                                     |
 | ICAI                            | (formerly ICRT) Informatica Cloud Application Integration, see ICRT                                                                                                |
 | ICDI                            | (formerly ICS) Informatica Cloud Data Integration is an ETL batch integration component of IICS platform                                                           |
