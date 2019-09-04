@@ -2,33 +2,33 @@
 
 <!-- TOC -->
 
-- [Uncaught Fault Alert Service Implementation](#markdown-header-uncaught-fault-alert-service-implementation)
-    - [Features](#markdown-header-features)
-    - [Overview](#markdown-header-overview)
-    - [Installation](#markdown-header-installation)
-        - [Pre-Requisites](#markdown-header-pre-requisites)
-            - [Setup Gist Account and Token](#markdown-header-setup-gist-account-and-token)
-        - [Build and Install the Package](#markdown-header-build-and-install-the-package)
-        - [Build Package From Source](#markdown-header-build-package-from-source)
-            - [In Process Developer](#markdown-header-in-process-developer)
-            - [On Command Line](#markdown-header-on-command-line)
-        - [Configure Your Org](#markdown-header-configure-your-org)
-            - [URN mappings](#markdown-header-urn-mappings)
-            - [Set Alert Service](#markdown-header-set-alert-service)
-        - [Pre-built Distribution](#markdown-header-pre-built-distribution)
-    - [Alert Service Components](#markdown-header-alert-service-components)
-        - [Process Objects](#markdown-header-process-objects)
-    - [Setup Gist Connector and Connection](#markdown-header-setup-gist-connector-and-connection)
-    - [Fault Alert Handler Configuration](#markdown-header-fault-alert-handler-configuration)
-        - [Supported Condition Types](#markdown-header-supported-condition-types)
-        - [Supported Actions](#markdown-header-supported-actions)
-        - [Alert configuration Management tool](#markdown-header-alert-configuration-management-tool)
-        - [Alert Service Testing Tool - Testing Configuration](#markdown-header-alert-service-testing-tool-testing-configuration)
-    - [Extending Alert Service](#markdown-header-extending-alert-service)
-        - [Add Custom Action](#markdown-header-add-custom-action)
-        - [Add Custom Configuration Storage Provider](#markdown-header-add-custom-configuration-storage-provider)
-        - [Known Issues](#markdown-header-known-issues)
-    - [Glossary of Terms used in this Documents](#markdown-header-glossary-of-terms-used-in-this-documents)
+- [Uncaught Fault Alert Service Implementation](#uncaught-fault-alert-service-implementation)
+    - [Features](#features)
+    - [Overview](#overview)
+    - [Installation](#installation)
+        - [Pre-Requisites](#pre-requisites)
+            - [Setup Gist Account and Token](#setup-gist-account-and-token)
+        - [Build and Install the Package](#build-and-install-the-package)
+        - [Build Package From Source](#build-package-from-source)
+            - [In Process Developer](#in-process-developer)
+            - [On Command Line](#on-command-line)
+        - [Configure Your Org](#configure-your-org)
+            - [URN mappings](#urn-mappings)
+            - [Set Alert Service](#set-alert-service)
+        - [Pre-built Distribution](#pre-built-distribution)
+    - [Alert Service Components](#alert-service-components)
+        - [Process Objects](#process-objects)
+    - [Setup Gist Connector and Connection](#setup-gist-connector-and-connection)
+    - [Fault Alert Handler Configuration](#fault-alert-handler-configuration)
+        - [Supported Condition Types](#supported-condition-types)
+        - [Supported Actions](#supported-actions)
+        - [Alert configuration Management tool](#alert-configuration-management-tool)
+        - [Alert Service Testing Tool - Testing Configuration](#alert-service-testing-tool---testing-configuration)
+    - [Extending Alert Service](#extending-alert-service)
+        - [Add Custom Action](#add-custom-action)
+        - [Add Custom Configuration Storage Provider](#add-custom-configuration-storage-provider)
+        - [Known Issues](#known-issues)
+    - [Glossary of Terms used in this Documents](#glossary-of-terms-used-in-this-documents)
 
 <!-- /TOC -->
 
@@ -359,7 +359,7 @@ because currently ICAI does not allow single process to be deployed (published) 
 
 ![Alert Configuration](./doc/images/Application_Integration_Console_Alerts.png)
 
-> [See Known Issues](#markdown-header-known-issues)
+> [See Known Issues](#known-issues)
 
 ### Pre-built Distribution
 
@@ -400,7 +400,7 @@ Following process objects describe the Structure of Fault Alert Service Configur
 
 ## Setup Gist Connector and Connection
 
-Once the package is imported for the firs time make sure you have [enabled access token and gist account on Github](#markdown-header-setup-gist-account-and-token)
+Once the package is imported for the firs time make sure you have [enabled access token and gist account on Github](#setup-gist-account-and-token)
 
 ## Fault Alert Handler Configuration
 
