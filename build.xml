@@ -209,11 +209,29 @@
         </input>
     </target>
 	
+	<target name="-select-publish-config" unless="iics.target.publish.config">
+        <fileset id="available.publish.lists" dir="${basedir}/conf" includes="*.publish.txt" />
+        <pathconvert property="available.publish.list.files" refid="available.publish.lists" pathsep="," />
+        <pathconvert property="available.publish.list.files.print" refid="available.publish.lists" pathsep="${line.separator}" />
+        <echo level="info">Available Target Publish Configurations:</echo>
+        <echo level="info">========================================</echo>
+        <echo level="info">${available.publish.list.files.print}</echo>
+        <echo level="info">========================================</echo>
+        <input validargs="${available.publish.list.files}" message="Select Package Configuration:" addproperty="iics.target.publish.config">
+        </input>
+    </target>
+	
 	<target name="-set-package-properties">
 		<basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix="package.txt" />
         <echo level="info">Selected Target Package Configuration: ${iics.target.package.config.basename}</echo>
         <echo level="info">Selected File: ${iics.target.package.config}</echo>
 	</target>
+	
+	<target name="-set-publish-properties">
+        <basename file="${iics.target.publish.config}" property="iics.target.publish.config.basename" suffix="publish.txt" />
+        <echo level="info">Selected Target Package Configuration: ${iics.target.publish.config.basename}</echo>
+        <echo level="info">Selected File: ${iics.target.publish.config}</echo>
+    </target>
 
 	<target name="-set-release-properties">
 		<basename file="${iics.release}" property="iics.release.basename" suffix="release.properties" />
@@ -408,16 +426,37 @@
          iics.import" 
         description="Imports package for a select Environment and Package Configuration">
     </target>
+	
+	<target name="publish" depends="-env.info,
+        -select-release,
+        -load.release.properties,
+        -set-target-properties,
+        -select-publish-config,
+        -set-publish-properties,
+        -iics.input.target.creds"
+        description="Publishes Objects Defined in the Configuration Files">
+		<iics.publish id="${iics.release.basename}" 
+		            region="${iics.region}" 
+		            file="${iics.target.publish.config}"
+		            user="${iics.target.user}" 
+		            password="${iics.target.password}" />
+    </target>
 
 
 	<macrodef name="iics.list" description="List resurces in IICS org using given query into a defined list file">
 		<attribute name="id" default="1" />
-		<attribute name="toDir" />
-		<attribute name="output" />
-		<attribute name="query" />
-		<attribute name="region" default="us" />
-		<attribute name="user" />
-		<attribute name="password" />
+		<attribute name="toDir" 
+			  description="Defines Output Directory"/>
+		<attribute name="output" 
+			  description="Defines file name for the output file. The output file contains the list of IICS artifacts that match the queries"/>
+		<attribute name="query" 
+			  description="Specifies the queries to filter the IICS artifacts that you want to include in the artifacts list. You can define multiple query parameters separated with a space character. The command performs an AND operation when you define multiple query parameters."/>
+		<attribute name="region" default="us" 
+			  description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
+		<attribute name="user" 
+			  description="Defines the user name to log in to IICS."/>
+		<attribute name="password" 
+			  description="Password to login with."/>
 		<sequential>
 			<mkdir dir="@{toDir}" />
 			<echo level="info">Listing query contents to: @{listFile}</echo>
@@ -432,12 +471,18 @@
 
 	<macrodef name="iics.export" description="Export IICS Package using a defined list file">
 		<attribute name="id" default="1" />
-		<attribute name="toDir" />
-		<attribute name="outputfile" />
-		<attribute name="listFile" />
-		<attribute name="region" default="us" />
-		<attribute name="user" />
-		<attribute name="password" />
+		<attribute name="toDir" 
+		  description="Defines Output Directory"/>
+		<attribute name="outputfile"
+			description="Defines Output Zip File Name."/>
+		<attribute name="listFile" 
+			description="Defines the path and file name of the file that contains a list of artifacts to be exported as a zip file from IICS."/>
+		<attribute name="region" default="us"
+			description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
+		<attribute name="user" 
+			description="Defines the user name to log in to IICS."/>
+		<attribute name="password" 
+			description="Password to login with."/>
 		<sequential>
 			<mkdir dir="@{toDir}" />
 			<echo level="info">Exporting package using: @{listFile}</echo>
@@ -514,7 +559,6 @@
 			description="Log level with which the command is run. The value can be error, warn, info or trace. The value indicates the maximum log level."/>
 		        
         <sequential>
-            <mkdir dir="@{toDir}" />
             <echo level="info">Importing Package: @{file}</echo>
             <property name="iics.import.command.@{id}" 
             	value='import -r @{region} -u "@{user}" -p "@{password}" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
@@ -529,7 +573,7 @@
         <attribute name="id" default="1" 
             description="Unique ID for macro internal variables suffix"/>
         <attribute name="file"
-              description="Location of the zip file containing artifacts to be imported."/>
+              description="Defines the path and file name of the file that contains a list of artifacts to be published."/>
         <attribute name="region" 
             default="us" 
             description="IICS region in which the org belongs to. For example, us, eu, ap"/>
@@ -537,9 +581,6 @@
             description="User name to login with."/>
         <attribute name="password" 
             description="Password to login with." />
-        <attribute name="name" 
-            default="IICS Tool Automated Import"
-            description="Name of the request. This is used as the name of the import job."/>
         <attribute name="maxWaitTime" 
             default="240"
             description="Optional. Indicates the maximum time to wait for the request to complete (in seconds). Applicable only with --sync. (default 120)"/>
@@ -552,13 +593,14 @@
             description="Log level with which the command is run. The value can be error, warn, info or trace. The value indicates the maximum log level."/>
                 
         <sequential>
-            <mkdir dir="@{toDir}" />
-            <echo level="info">Importing Package: @{file}</echo>
-            <property name="iics.import.command.@{id}" 
-                value='import -r @{region} -u "@{user}" -p "@{password}" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
-            <echo level="info">Running iics import -r @{region} -u "@{user}" -p "*****" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}</echo>
+            <echo level="info">Publishing Designs: @{file}</echo>
+        	<loadfile property="contents.@{id}" srcFile="@{file}" />
+        	<echo level="info" message="${contents.@{id}}" />
+            <property name="iics.publish.command.@{id}" 
+                value='publish -r @{region} -u "@{user}" -p "@{password}" -f "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
+            <echo level="info">Running iics publish -r @{region} -u "@{user}" -p "*****" -f "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}</echo>
             <exec dir="${basedir}" executable="${tool.iics}">
-                <arg line="${iics.import.command.@{id}}" />
+                <arg line="${iics.publish.command.@{id}}" />
             </exec>
         </sequential>
     </macrodef>
@@ -683,9 +725,12 @@
 	
 	   
 	    <macrodef name="check.credentials">
-	    	 <attribute name="userProperty" /> 
-	    	 <attribute name="passwordProperty" /> 
-	    	 <attribute name="validationresult"/>
+	    	 <attribute name="userProperty" 
+	    	    description="Define User proerty to be checked"/> 
+	    	 <attribute name="passwordProperty" 
+	    	    description="Define Pasword proerty to be checked"/> 
+	    	 <attribute name="validationresult"
+	    	    description="Define Property name to store validation result"/>
 	    	 <sequential>
 	    	 	<condition property="@{userProperty}.set"  >
                     <isset property="@{userProperty}" />
