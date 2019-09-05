@@ -2,7 +2,7 @@
 <FaultAlertConfiguration>
     <alert-config>
         <Name>Default Falback Alert Configuration</Name>
-        <Descrioption>This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Descrioption>
+        <Description>This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Description>
         <created>2019-06-21T10:24:23</created>
         <createdBy>System</createdBy>
     </alert-config>

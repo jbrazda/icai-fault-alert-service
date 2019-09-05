@@ -33,7 +33,7 @@
    },
    {
       "objectGuid": "31o1RHhc6uRdN1eGygCG2Q",
-      "objectName": "AttchmentInformation",
+      "objectName": "AttachmentInformation",
       "objectType": "PROCESS_OBJECT",
       "path": "/Explore/Tools/ProcessObjects",
       "metadata": {

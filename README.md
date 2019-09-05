@@ -114,15 +114,15 @@ This tool will automatically download latest version an use it to import provide
 #  
 # DEV Environment Credentials
 iics.user.dev=deployer-iics-dev@acme.com
-iics.password.dev=YOURPWD
+iics.password.dev=SET_PASSWORD
 
 # TEST Environment Credentials
 iics.user.test=deployer-iics-test@acme.com
-iics.password.test=YOURPWD
+iics.password.test=SET_PASSWORD
 
 # PROD Environment Credentials
 iics.user.prod=deployer-iics-prod@informatica.com
-iics.password.prod=YOURPWD
+iics.password.prod=SET_PASSWORD
 ```
 
 > WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  '~/iics/environment.properties' The iics folder should be accessible only by user running the import/export/publish tasks ('700' type of permission on unix systems)
@@ -130,7 +130,7 @@ iics.password.prod=YOURPWD
 Update existing or copy [conf/iclab-dev.release.properties](conf/iclab-dev.release.properties) file which defines a key Environment specific parameters
 
 ```properties
-# define a comma separated list of environment org labels such as 
+# define a comma separated list of environment org labels such as
 # dev,test,uat,prod
 iics.environment.list=dev,test,prod
 
@@ -148,13 +148,13 @@ iics.external.properties=${user.home}/iics/iclab.properties
 # see https://network.informatica.com/docs/DOC-18245#jive_content_id_List_Command
 iics.query=-q "location==Alerting"
 
-# Defines the output file for the list command 
+# Defines the output file for the list command
 # the output location will be driven by the following expression
 # ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.list.output}
 iics.list.output=export_list.txt
 
-# Defines the ouput file name for iics export command
-# the output location will be driven by the 
+# Defines the output file name for iics export command
+# the output location will be driven by the
 # ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.export.output}
 iics.export.output=FaultAlertService.zip
 
@@ -213,7 +213,7 @@ Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
 -init:
 -env.info:
      [echo] ========================================
-     [echo] ==        IPD Bunde Build             ==
+     [echo] ==        IPD Bundle Build            ==
      [echo] ========================================
      [echo] Java Version:    1.8.0_162-b12
      [echo] Java Home:       /Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home/jre
@@ -252,7 +252,7 @@ Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
      [echo] Available Target Package Configurations:
      [echo] ========================================
      [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt
-     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/all_exlude_connections.package.txt
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/all_exclude_connections.package.txt
      [echo] ========================================
      [echo] Selected Target Package Configuration: all_designs.package
      [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/all_designs.package.txt
@@ -288,7 +288,7 @@ iics.package:
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml Explore/Alerting/Processes/.UncaughtFaultAlertHandler-NA.PROCESS.json Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS }" [36mChecksum[0m="Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml=6B2271E9EC067BBBDADEFF58A5CCC92AB92FBFA583FFB2E00CBF9798C7594490\n"
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Project Explore/Tools.Project.json Explore/.Tools.Project.json Explore/Tools.Project }" [36mChecksum[0m="Explore/Tools.Project.json=467871ABEF9EC13ABF617CC1D647ED8EE95D9E4E1DE155E2C4EFBDB4EEFBBC43\n"
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/ProcessObjects.Folder.json Explore/Tools/.ProcessObjects.Folder.json Explore/Tools/ProcessObjects.Folder }" [36mChecksum[0m="Explore/Tools/ProcessObjects.Folder.json=94ECF23F8B13EA1F4E61E9AA7F0936C78BFD51864247B7FAFDF05D14622C1720\n"
-     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml Explore/Tools/ProcessObjects/.AttchmentInformation.PROCESS_OBJECT.json Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml=EA0036AFEB453064ED998FB172FF3C9920B5308DB999B8518358A65B6FEE8948\n"
+     [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS_OBJECT Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml Explore/Tools/ProcessObjects/.AttachmentInformation.PROCESS_OBJECT.json Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT }" [36mChecksum[0m="Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml=EA0036AFEB453064ED998FB172FF3C9920B5308DB999B8518358A65B6FEE8948\n"
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/Processes.Folder.json Explore/Tools/.Processes.Folder.json Explore/Tools/Processes.Folder }" [36mChecksum[0m="Explore/Tools/Processes.Folder.json=E200175169D1F8F83E3B49E0EDE49ED7A2C354EE8704D72A2D5353FA69357380\n"
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{PROCESS Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml Explore/Tools/Processes/.SP-ConvertAttachmentToText.PROCESS.json Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS }" [36mChecksum[0m="Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml=E4619B8500BC4AA808F64BE98B23A6FCFA3E55B3D76F71DA29B2AC257854C6EF\n"
      [exec] [36mINFO[0m[0000] Generated checksum for artifact               [36mArtifact[0m="{Folder Explore/Tools/ServiceConnectors.Folder.json Explore/Tools/.ServiceConnectors.Folder.json Explore/Tools/ServiceConnectors.Folder }" [36mChecksum[0m="Explore/Tools/ServiceConnectors.Folder.json=28F4713ECC03D81EE83F12BF320483C7576BB5AE3200C168715FEC83F6B1AA41\n"
@@ -391,12 +391,11 @@ Following process objects describe the Structure of Fault Alert Service Configur
 | action-ref              | Explore/Alerting/ProcessObjects/action-ref.PROCESS_OBJECT.xml              | Process Object |
 | actions                 | Explore/Alerting/ProcessObjects/actions.PROCESS_OBJECT.xml                 | Process Object |
 | alert-config            | Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml            | Process Object |
-| AttchmentInformation    | Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml       | Process Object |
+| AttachmentInformation   | Explore/Tools/ProcessObjects/AttchmentInformation.PROCESS_OBJECT.xml       | Process Object |
 | condition               | Explore/Alerting/ProcessObjects/condition.PROCESS_OBJECT.xml               | Process Object |
 | FaultAlertConfiguration | Explore/Alerting/ProcessObjects/FaultAlertConfiguration.PROCESS_OBJECT.xml | Process Object |
 | rule                    | Explore/Alerting/ProcessObjects/rule.PROCESS_OBJECT.xml                    | Process Object |
 | rules                   | Explore/Alerting/ProcessObjects/rules.PROCESS_OBJECT.xml                   | Process Object |
-
 
 ## Setup Gist Connector and Connection
 
@@ -439,7 +438,7 @@ Ignore Action is mutually exclusive with other actions resulting the rules evalu
 <FaultAlertConfiguration>
     <alert-config>
         <Name>Default Alert Configuration</Name>
-        <Descrioption>This is a Default Example Alert Configuration</Descrioption>
+        <Description>This is a Default Example Alert Configuration</Description>
         <created>2019-07-09T03:58:42.924Z</created>
         <updated>2019-07-09T03:59:41.719Z</updated>
         <createdBy>jbrazda-iics@informatica.com</createdBy>
@@ -556,7 +555,7 @@ You can choose from following Options
 
 ![Alert_Configuration_Manager_Load_Gist](./doc/images/Alert_Configuration_Manager_Load_Gist.png)
 
-Select Gist to be loaded 
+Select Gist to be loaded
 
 ![Alert_Configuration_Manager_Select_Gist](./doc/images/Alert_Configuration_Manager_Select_Gist.png)
 
@@ -594,7 +593,7 @@ Save Completed
 
 ![Alert_Configuration_Manager_Save_Results](./doc/images/Alert_Configuration_Manager_Save_Results.png)
 
-Gist View 
+Gist View
 
 ![Github_Fault_Alert_Configuration_DEMO](./doc/images/Github_Fault_Alert_Configuration_DEMO.png)
 

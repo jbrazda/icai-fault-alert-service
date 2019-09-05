@@ -456,7 +456,7 @@ return ipd:setProcessTitle($process_title)</expression>
                            <expression language="XQuery">&lt;FaultAlertConfiguration&gt;
     &lt;alert-config&gt;
         &lt;Name&gt;Default Falback Alert Configuration&lt;/Name&gt;
-        &lt;Descrioption&gt;This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider&lt;/Descrioption&gt;
+        &lt;Description&gt;This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider&lt;/Description&gt;
         &lt;created&gt;2019-06-21T10:24:23&lt;/created&gt;
         &lt;createdBy&gt;System&lt;/createdBy&gt;
     &lt;/alert-config&gt;
@@ -847,5 +847,5 @@ return
       <types1:GUID>7pPDPE0YReLiOlqyaYQzmX</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-Cloud</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-04T14:16:38.261Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-05T18:11:48.703Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

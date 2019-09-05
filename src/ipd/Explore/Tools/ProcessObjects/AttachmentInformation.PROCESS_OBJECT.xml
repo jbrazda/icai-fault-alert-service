@@ -2,7 +2,7 @@
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
       <types1:EntryId>BbeGoQwg74Rpf6J-gt-2267328-2019-08-28T21:27:46.436Z::po.xml</types1:EntryId>
-      <types1:Name>AttchmentInformation</types1:Name>
+      <types1:Name>AttachmentInformation</types1:Name>
       <types1:ParentFlowIds>kL0jmu6lS01BchM-gt-2183732-2019-08-28T21:15:08.716Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+processobject</types1:MimeType>
       <types1:Description>Attachment Object Information Holder</types1:Description>
@@ -13,14 +13,15 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2019-08-28T21:27:46Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-09-05T17:41:36Z</types1:ModificationDate>
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                        displayName="AttchmentInformation"
+                        displayName="AttachmentInformation"
                         isByCopy="true"
-                        name="AttchmentInformation">
+                        name="AttachmentInformation">
             <description>Attachment Object Information Holder</description>
             <tags/>
             <detail>
@@ -31,7 +32,7 @@
          </processObject>
       </types1:Entry>
       <types1:GUID>31o1RHhc6uRdN1eGygCG2Q</types1:GUID>
-      <types1:DisplayName>AttchmentInformation</types1:DisplayName>
+      <types1:DisplayName>AttachmentInformation</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-04T14:16:37.76Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-05T18:11:48.131Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

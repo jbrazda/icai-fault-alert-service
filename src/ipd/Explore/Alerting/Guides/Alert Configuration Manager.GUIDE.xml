@@ -13,10 +13,10 @@
       <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2019-06-19T14:17:33Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-09-03T16:18:50Z</types1:ModificationDate>
+      <types1:ModificationDate>2019-09-05T17:46:43Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-09-03T16:18:54Z</types1:PublicationDate>
+      <types1:PublicationDate>2019-09-05T17:47:30Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/sf.Alert_Configuration_Manager/Alert_Configuration_Manager.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -473,8 +473,8 @@
 &lt;td&gt;&lt;input class="" title="tmp_alert_configuration&gt;alert-config&gt;Name" name="temp.tmp_alert_configuration[1]/alert-config[1]/Name" type="text" value="tmp_alert_configuration&gt;alert-config&gt;Name"&gt;&amp;nbsp;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Descrioption&lt;/td&gt;
-&lt;td&gt;&lt;input class="" title="tmp_alert_configuration&gt;alert-config&gt;Descrioption" name="temp.tmp_alert_configuration[1]/alert-config[1]/Descrioption" type="text" value="tmp_alert_configuration&gt;alert-config&gt;Descrioption"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_alert_configuration&gt;alert-config&gt;Description" name="temp.tmp_alert_configuration[1]/alert-config[1]/Description" type="text" value="tmp_alert_configuration&gt;alert-config&gt;Description"&gt;&amp;nbsp;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Created:&lt;/td&gt;
@@ -595,16 +595,6 @@
                            <option hide="true" name="valuelist.objectlistfield">temp.tmp_alert_configuration[1]/actions[1]/action</option>
                         </options>
                      </screenDataItem>
-                     <screenDataItem name="temp.tmp_alert_configuration[1]/alert-config[1]/Descrioption"
-                                     readonly="false"
-                                     required="false"
-                                     type="textarea">
-                        <options>
-                           <option name="text_width">100</option>
-                           <option name="text_height">5</option>
-                           <option name="required">false</option>
-                        </options>
-                     </screenDataItem>
                      <screenDataItem name="temp.tmp_rule"
                                      readonly="false"
                                      renderingType="table"
@@ -627,6 +617,16 @@
                         <options>
                            <option name="text_height">12</option>
                            <option name="text_width">100</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_alert_configuration[1]/alert-config[1]/Description"
+                                     readonly="false"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
                            <option name="required">false</option>
                         </options>
                      </screenDataItem>
@@ -1711,8 +1711,8 @@
 &lt;td&gt;&amp;nbsp; &lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="AlertHandlerOutput&gt;alert-config&gt;Name" name="output.AlertHandlerOutput[1]/alert-config[1]/Name" readonly="readonly" type="text" value="AlertHandlerOutput&gt;alert-config&gt;Name"&gt;&amp;nbsp;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;Descrioption&lt;/td&gt;
-&lt;td&gt;&amp;nbsp; &lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="AlertHandlerOutput&gt;alert-config&gt;Descrioption" name="output.AlertHandlerOutput[1]/alert-config[1]/Descrioption" readonly="readonly" type="text" value="AlertHandlerOutput&gt;alert-config&gt;Descrioption"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&amp;nbsp; &lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="AlertHandlerOutput&gt;alert-config&gt;Description" name="output.AlertHandlerOutput[1]/alert-config[1]/Description" readonly="readonly" type="text" value="AlertHandlerOutput&gt;alert-config&gt;Description"&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Created:&lt;/td&gt;
@@ -1757,16 +1757,6 @@
                                      required="false"
                                      type="string">
                         <options>
-                           <option name="required">false</option>
-                        </options>
-                     </screenDataItem>
-                     <screenDataItem name="output.AlertHandlerOutput[1]/alert-config[1]/Descrioption"
-                                     readonly="true"
-                                     required="false"
-                                     type="textarea">
-                        <options>
-                           <option name="text_width">100</option>
-                           <option name="text_height">5</option>
                            <option name="required">false</option>
                         </options>
                      </screenDataItem>
@@ -1832,6 +1822,16 @@
                            <option name="display-options">{"display-options":{"columns":{"column":[{"name":"name","type":"string","label":"name","renderingType":"string"},{"name":"operator","type":"picklist","label":"operator","renderingType":"picklist"},{"name":"result","type":"boolean","label":"result","renderingType":"boolean","options":{"option":[{"name":"boolean_show_as","$t":"checkbox"}]}},{"name":"results","type":"string","label":"results","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
                            <option hide="true" name="valuelist.source">objectListField</option>
                            <option hide="true" name="valuelist.objectlistfield">output.AlertHandlerOutput[1]/rules[1]/rule</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.AlertHandlerOutput[1]/alert-config[1]/Description"
+                                     readonly="true"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
                         </options>
                      </screenDataItem>
                   </screenData>
@@ -2028,10 +2028,10 @@
                      <text/>
                   </screenActionLabel>
                </endScreen>
-               <empty gatewayType="exclusive" id="k041cjhl">
+               <empty gatewayType="exclusive" id="k06zazfi">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cj7i">
+               <empty gatewayType="exclusive" id="k06zaz5f">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jzsrt0f8">
@@ -2048,7 +2048,7 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k041cj8c">
+               <empty gatewayType="exclusive" id="k06zaz69">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jzsrt0f6">
@@ -2065,10 +2065,10 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjfw">
+               <empty gatewayType="exclusive" id="k06zazdt">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjat">
+               <empty gatewayType="exclusive" id="k06zaz8q">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jxc7lwwt">
@@ -2127,7 +2127,7 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjes">
+               <empty gatewayType="exclusive" id="k06zazcp">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jx4zw033">
@@ -2151,10 +2151,10 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjdv">
+               <empty gatewayType="exclusive" id="k06zazbs">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cje3">
+               <empty gatewayType="exclusive" id="k06zazc0">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jxdgqb5d">
@@ -2171,19 +2171,19 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjf7">
+               <empty gatewayType="exclusive" id="k06zazd4">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjfg">
+               <empty gatewayType="exclusive" id="k06zazdd">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjfr">
+               <empty gatewayType="exclusive" id="k06zazdo">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjhj">
+               <empty gatewayType="exclusive" id="k06zazfg">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k041cjh7">
+               <empty gatewayType="exclusive" id="k06zazf4">
                   <actions/>
                </empty>
                <jumpTo id="jx4ua7l8" targetTitle="Configuration Editor - Reset Selections">
@@ -2692,7 +2692,7 @@
                      <expression language="XQuery">&lt;FaultAlertConfiguration&gt;
     &lt;alert-config&gt;
         &lt;Name&gt;Default Alert Configuration&lt;/Name&gt;
-        &lt;Descrioption&gt;This is a Default Example Alert Configuration&lt;/Descrioption&gt;
+        &lt;Description&gt;This is a Default Example Alert Configuration&lt;/Description&gt;
         &lt;created&gt;2019-07-09T03:58:42.924Z&lt;/created&gt;
         &lt;updated&gt;2019-07-09T03:59:41.719Z&lt;/updated&gt;
         &lt;createdBy&gt;jbrazda-iics@informatica.com&lt;/createdBy&gt;
@@ -2837,7 +2837,7 @@
                      <expression language="XQuery">&lt;FaultAlertConfiguration&gt;
     &lt;alert-config&gt;
         &lt;Name&gt;Default Alert Configuration&lt;/Name&gt;
-        &lt;Descrioption&gt;This is a Default Example Alert Configuration&lt;/Descrioption&gt;
+        &lt;Description&gt;This is a Default Example Alert Configuration&lt;/Description&gt;
         &lt;created&gt;2019-07-09T03:58:42.924Z&lt;/created&gt;
         &lt;updated&gt;2019-07-09T03:59:41.719Z&lt;/updated&gt;
         &lt;createdBy&gt;jbrazda-iics@informatica.com&lt;/createdBy&gt;
@@ -3782,5 +3782,5 @@ util:toXML($sample_payload)</expression>
       <types1:GUID>8zodeZJhfnBdPPMtFf1DQE</types1:GUID>
       <types1:DisplayName>Alert Configuration Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-04T14:16:38.277Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-05T18:11:48.724Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

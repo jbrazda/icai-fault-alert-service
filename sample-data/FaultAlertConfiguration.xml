@@ -2,7 +2,7 @@
 <FaultAlertConfiguration>
     <alert-config>
         <Name>Default Alert Configuration</Name>
-        <Descrioption>This is a Default Example Alert Configuration</Descrioption>
+        <Description>This is a Default Example Alert Configuration</Description>
         <created>2019-07-09T03:58:42.924Z</created>
         <updated>2019-07-09T03:59:41.719Z</updated>
         <createdBy>jbrazda-iics@informatica.com</createdBy>

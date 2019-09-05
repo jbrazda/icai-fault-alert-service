@@ -1,3 +1,11 @@
 {
-    "markdown-toc.anchorMode": "github.com"
+    "markdown-toc.anchorMode": "github.com",
+    "cSpell.words": [
+        "Buildfile",
+        "Diics",
+        "deployer",
+        "iclab",
+        "mkdir",
+        "sbin"
+    ]
 }
