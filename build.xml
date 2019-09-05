@@ -524,6 +524,44 @@
             </exec>
         </sequential>
     </macrodef>
+	
+   <macrodef name="iics.publish" description="Imports IICS Package">
+        <attribute name="id" default="1" 
+            description="Unique ID for macro internal variables suffix"/>
+        <attribute name="file"
+              description="Location of the zip file containing artifacts to be imported."/>
+        <attribute name="region" 
+            default="us" 
+            description="IICS region in which the org belongs to. For example, us, eu, ap"/>
+        <attribute name="user" 
+            description="User name to login with."/>
+        <attribute name="password" 
+            description="Password to login with." />
+        <attribute name="name" 
+            default="IICS Tool Automated Import"
+            description="Name of the request. This is used as the name of the import job."/>
+        <attribute name="maxWaitTime" 
+            default="240"
+            description="Optional. Indicates the maximum time to wait for the request to complete (in seconds). Applicable only with --sync. (default 120)"/>
+        <attribute name="sync" default="true"
+            description="Optional. Controls whether the command is blocking or non-blocking."/>
+        <attribute name="pollingInterval" 
+            default="10"
+            description="Optional. Indicates how often to poll for status (in seconds). Applicable only with --sync. (default 10)"/>
+        <attribute name="logLevel" default="info"
+            description="Log level with which the command is run. The value can be error, warn, info or trace. The value indicates the maximum log level."/>
+                
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <echo level="info">Importing Package: @{file}</echo>
+            <property name="iics.import.command.@{id}" 
+                value='import -r @{region} -u "@{user}" -p "@{password}" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
+            <echo level="info">Running iics import -r @{region} -u "@{user}" -p "*****" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}</echo>
+            <exec dir="${basedir}" executable="${tool.iics}">
+                <arg line="${iics.import.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
 
 
 	<macrodef name="set.environment.credentials">
