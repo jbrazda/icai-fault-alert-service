@@ -8,196 +8,196 @@
      jbrazda                                                                
      ====================================================================== -->
 <project name="IICS Build Script" default="help" basedir=".">
-	<description>
+    <description>
             IICS CAI Component Build Script
     </description>
 
-	<!-- Global properties -->
+    <!-- Global properties -->
 
-	<condition property="isUnix">
-		<os family="unix" />
-	</condition>
+    <condition property="isUnix">
+        <os family="unix" />
+    </condition>
 
-	<condition property="isWindows">
-		<os family="windows" />
-	</condition>
+    <condition property="isWindows">
+        <os family="windows" />
+    </condition>
 
-	<condition property="exec.ext" value="sh">
-		<os family="unix" />
-	</condition>
+    <condition property="exec.ext" value="sh">
+        <os family="unix" />
+    </condition>
 
-	<condition property="exec.ext" value="bat">
-		<os family="windows" />
-	</condition>
+    <condition property="exec.ext" value="bat">
+        <os family="windows" />
+    </condition>
 
-	<condition property="shell" value="bash">
-		<os family="unix" />
-	</condition>
+    <condition property="shell" value="bash">
+        <os family="unix" />
+    </condition>
 
-	<condition property="shell" value="cmd.exe">
-		<os family="windows" />
-	</condition>
+    <condition property="shell" value="cmd.exe">
+        <os family="windows" />
+    </condition>
 
-	<condition property="shell.options" value="-c">
-		<os name="Mac OS X" />
-	</condition>
+    <condition property="shell.options" value="-c">
+        <os name="Mac OS X" />
+    </condition>
 
-	<condition property="shell.open" value=" open ">
-		<os name="Mac OS X" />
-	</condition>
+    <condition property="shell.open" value=" open ">
+        <os name="Mac OS X" />
+    </condition>
 
-	<property name="shell.open" value="" />
+    <property name="shell.open" value="" />
 
-	<condition property="shell.options" value="-c">
-		<os family="unix" />
-	</condition>
+    <condition property="shell.options" value="-c">
+        <os family="unix" />
+    </condition>
 
-	<condition property="shell.options" value="/c">
-		<os family="windows" />
-	</condition>
-
-
-
-	<target name="-init" unless="ems.initialized">
-		<property file="${iics_user.property.file}" />
-		<property file="build.properties" />
-		<path id="saxon.classpath">
-			<fileset dir="${saxon.lib}">
-				<include name="*.jar" />
-			</fileset>
-		</path>
-		<!-- Platform Specific GNU sed -->
-		<condition property="gnu.sed" value="${tools.gnu.sed.win.amd64}">
-			<and>
-				<os family="windows" />
-				<os arch="amd64" />
-			</and>
-		</condition>
-		<condition property="gnu.sed" value="${tools.gnu.sed.win.x86}">
-			<and>
-				<os family="windows" />
-				<os arch="x86" />
-			</and>
-		</condition>
-		<condition property="gnu.sed" value="${tools.gnu.sed.mac}">
-			<os name="Mac OS X" />
-		</condition>
-		<condition property="gnu.sed" value="sed">
-			<os family="unix" />
-		</condition>
-
-		<!-- IICS Package Manager Tool OS Specific-->
-		<condition property="tool.iics" value="${tools.iics.win.amd64}">
-			<and>
-				<os family="windows" />
-				<os arch="amd64" />
-			</and>
-		</condition>
-		<condition property="tool.iics" value="${tools.iics.win.x86}">
-			<and>
-				<os family="windows" />
-				<os arch="x86" />
-			</and>
-		</condition>
-		<condition property="tool.iics" value="${tools.iics.mac}">
-			<os name="Mac OS X" />
-		</condition>
-		<condition property="tool.iics" value="${tools.iics.linux}">
-			<os family="unix" />
-		</condition>
-
-		<!-- Check if the iics tool is avialable on path specified  in  tool.iics property-->
-		<condition property="iics.available">
-			<available file="${tool.iics}" />
-		</condition>
-
-
-		<property environment="env" />
-	</target>
-
-
-	<target name="-env.info" unless="env.info.displayed" depends="-init">
-		<echo level="info">========================================</echo>
-		<echo level="info">==        IPD Bunde Build             ==</echo>
-		<echo level="info">========================================</echo>
-		<echo level="info">Java Version:    ${java.runtime.version}</echo>
-		<echo level="info">Java Home:       ${java.home}</echo>
-		<echo level="info">Ant Version:     ${ant.version}</echo>
-		<echo level="info">Ant Lib:         ${ant.library.dir}</echo>
-		<echo level="info">eclipse.home:    ${eclipse.home}</echo>
-		<echo level="info">shell:           ${shell}</echo>
-		<echo level="info">os.name:         ${os.name}</echo>
-		<echo level="info">os.version:      ${os.version}</echo>
-		<echo level="info">os.arch:         ${os.arch}</echo>
-		<echo level="info">user.name:       ${user.name}</echo>
-		<echo level="info">user.dir:        ${user.dir}</echo>
-		<echo level="info">user.home:       ${user.home}</echo>
-		<echo level="info">env.HOME:        ${env.HOME}</echo>
-		<echo level="info">env.LANG:        ${env.LANG}</echo>
-		<echo level="info">env.SHELL:       ${env.SHELL}</echo>
-		<echo level="info">env.PATH:        ${env.PATH}</echo>
-		<echo level="info">env.JAVA_HOME:   ${env.JAVA_HOME}</echo>
-		<echo level="info">========================================</echo>
-		<property name="env.info.displayed" value="true" />
-	</target>
-
-
-	<target name="help" description="help - describes how to use this script" depends="-env.info">
-		<echo level="info">This ant script provides set of IICS CAI Bundle Build</echo>
-		<echo level="info">Read the doc/README.MD or README.html for more details</echo>
-		<echo level="info">use ant -projecthelp to see available targets</echo>
-		<property name="help.file" value="${basedir}/README.html" />
-		<echo level="info">${shell.open} ${help.file}</echo>
-		<exec executable="${shell}" spawn="yes">
-			<arg value="${shell.options}" />
-			<arg line="'${shell.open} ${help.file}'" />
-		</exec>
-	</target>
+    <condition property="shell.options" value="/c">
+        <os family="windows" />
+    </condition>
 
 
 
-	<target name="-download.iics" depends="-env.info" unless="iics.available">
-		<!-- Download OS Specific version of the tool-->
-		<condition property="url.download.iics" value="${url.download.iics.win.x86}">
-			<and>
-				<os family="windows" />
-				<os arch="amd64" />
-			</and>
-		</condition>
-		<condition property="url.download.iics" value="${url.download.iics.win}">
-			<and>
-				<os family="windows" />
-				<os arch="x86" />
-			</and>
-		</condition>
-		<condition property="url.download.iics" value="${url.download.iics.mac}">
-			<os name="Mac OS X" />
-		</condition>
-		<condition property="url.download.iics" value="${url.download.iics.linux}">
-			<os family="unix" />
-		</condition>
-		<echo level="info">IICS Tool Available: ${iics.available}</echo>
-		<echo level="info">Downloading: ${url.download.iics}</echo>
-		<mkdir dir="${tools.lib}" />
-		<get src="${url.download.iics}" dest="${tool.iics}" />
-		<chmod file="${tool.iics}" perm="ugo+rx" />
-	</target>
+    <target name="-init" unless="ems.initialized">
+        <property file="${iics_user.property.file}" />
+        <property file="build.properties" />
+        <path id="saxon.classpath">
+            <fileset dir="${saxon.lib}">
+                <include name="*.jar" />
+            </fileset>
+        </path>
+        <!-- Platform Specific GNU sed -->
+        <condition property="gnu.sed" value="${tools.gnu.sed.win.amd64}">
+            <and>
+                <os family="windows" />
+                <os arch="amd64" />
+            </and>
+        </condition>
+        <condition property="gnu.sed" value="${tools.gnu.sed.win.x86}">
+            <and>
+                <os family="windows" />
+                <os arch="x86" />
+            </and>
+        </condition>
+        <condition property="gnu.sed" value="${tools.gnu.sed.mac}">
+            <os name="Mac OS X" />
+        </condition>
+        <condition property="gnu.sed" value="sed">
+            <os family="unix" />
+        </condition>
+
+        <!-- IICS Package Manager Tool OS Specific-->
+        <condition property="tool.iics" value="${tools.iics.win.amd64}">
+            <and>
+                <os family="windows" />
+                <os arch="amd64" />
+            </and>
+        </condition>
+        <condition property="tool.iics" value="${tools.iics.win.x86}">
+            <and>
+                <os family="windows" />
+                <os arch="x86" />
+            </and>
+        </condition>
+        <condition property="tool.iics" value="${tools.iics.mac}">
+            <os name="Mac OS X" />
+        </condition>
+        <condition property="tool.iics" value="${tools.iics.linux}">
+            <os family="unix" />
+        </condition>
+
+        <!-- Check if the iics tool is avialable on path specified  in  tool.iics property-->
+        <condition property="iics.available">
+            <available file="${tool.iics}" />
+        </condition>
 
 
-	<target name="-select-release" unless="iics.release">
-		<fileset id="available.releases" dir="${basedir}/conf" includes="*.release.properties" />
-		<pathconvert property="available.releases.list" refid="available.releases" pathsep="," />
-		<pathconvert property="available.releases.print" refid="available.releases" pathsep="${line.separator}" />
-		<echo level="info">Available Release Configurations:</echo>
-		<echo level="info">=================================</echo>
-		<echo level="info">${available.releases.print}</echo>
-		<echo level="info">=================================</echo>
-		<input validargs="${available.releases.list}" message="Select Release Configuration:" addproperty="iics.release">
-		</input>
-		
-	</target>
-	
-	<target name="-select-package-config" unless="iics.target.package.config">
+        <property environment="env" />
+    </target>
+
+
+    <target name="-env.info" unless="env.info.displayed" depends="-init">
+        <echo level="info">========================================</echo>
+        <echo level="info">==        IPD Bunde Build             ==</echo>
+        <echo level="info">========================================</echo>
+        <echo level="info">Java Version:    ${java.runtime.version}</echo>
+        <echo level="info">Java Home:       ${java.home}</echo>
+        <echo level="info">Ant Version:     ${ant.version}</echo>
+        <echo level="info">Ant Lib:         ${ant.library.dir}</echo>
+        <echo level="info">eclipse.home:    ${eclipse.home}</echo>
+        <echo level="info">shell:           ${shell}</echo>
+        <echo level="info">os.name:         ${os.name}</echo>
+        <echo level="info">os.version:      ${os.version}</echo>
+        <echo level="info">os.arch:         ${os.arch}</echo>
+        <echo level="info">user.name:       ${user.name}</echo>
+        <echo level="info">user.dir:        ${user.dir}</echo>
+        <echo level="info">user.home:       ${user.home}</echo>
+        <echo level="info">env.HOME:        ${env.HOME}</echo>
+        <echo level="info">env.LANG:        ${env.LANG}</echo>
+        <echo level="info">env.SHELL:       ${env.SHELL}</echo>
+        <echo level="info">env.PATH:        ${env.PATH}</echo>
+        <echo level="info">env.JAVA_HOME:   ${env.JAVA_HOME}</echo>
+        <echo level="info">========================================</echo>
+        <property name="env.info.displayed" value="true" />
+    </target>
+
+
+    <target name="help" description="help - describes how to use this script" depends="-env.info">
+        <echo level="info">This ant script provides set of IICS CAI Bundle Build</echo>
+        <echo level="info">Read the doc/README.MD or README.html for more details</echo>
+        <echo level="info">use ant -projecthelp to see available targets</echo>
+        <property name="help.file" value="${basedir}/README.html" />
+        <echo level="info">${shell.open} ${help.file}</echo>
+        <exec executable="${shell}" spawn="yes">
+            <arg value="${shell.options}" />
+            <arg line="'${shell.open} ${help.file}'" />
+        </exec>
+    </target>
+
+
+
+    <target name="-download.iics" depends="-env.info" unless="iics.available">
+        <!-- Download OS Specific version of the tool-->
+        <condition property="url.download.iics" value="${url.download.iics.win.x86}">
+            <and>
+                <os family="windows" />
+                <os arch="amd64" />
+            </and>
+        </condition>
+        <condition property="url.download.iics" value="${url.download.iics.win}">
+            <and>
+                <os family="windows" />
+                <os arch="x86" />
+            </and>
+        </condition>
+        <condition property="url.download.iics" value="${url.download.iics.mac}">
+            <os name="Mac OS X" />
+        </condition>
+        <condition property="url.download.iics" value="${url.download.iics.linux}">
+            <os family="unix" />
+        </condition>
+        <echo level="info">IICS Tool Available: ${iics.available}</echo>
+        <echo level="info">Downloading: ${url.download.iics}</echo>
+        <mkdir dir="${tools.lib}" />
+        <get src="${url.download.iics}" dest="${tool.iics}" />
+        <chmod file="${tool.iics}" perm="ugo+rx" />
+    </target>
+
+
+    <target name="-select-release" unless="iics.release">
+        <fileset id="available.releases" dir="${basedir}/conf" includes="*.release.properties" />
+        <pathconvert property="available.releases.list" refid="available.releases" pathsep="," />
+        <pathconvert property="available.releases.print" refid="available.releases" pathsep="${line.separator}" />
+        <echo level="info">Available Release Configurations:</echo>
+        <echo level="info">=================================</echo>
+        <echo level="info">${available.releases.print}</echo>
+        <echo level="info">=================================</echo>
+        <input validargs="${available.releases.list}" message="Select Release Configuration:" addproperty="iics.release">
+        </input>
+        
+    </target>
+    
+    <target name="-select-package-config" unless="iics.target.package.config">
         <fileset id="available.package.lists" dir="${basedir}/conf" includes="*.package.txt" />
         <pathconvert property="available.package.list.files" refid="available.package.lists" pathsep="," />
         <pathconvert property="available.package.list.files.print" refid="available.package.lists" pathsep="${line.separator}" />
@@ -208,8 +208,8 @@
         <input validargs="${available.package.list.files}" message="Select Package Configuration:" addproperty="iics.target.package.config">
         </input>
     </target>
-	
-	<target name="-select-publish-config" unless="iics.target.publish.config">
+    
+    <target name="-select-publish-config" unless="iics.target.publish.config">
         <fileset id="available.publish.lists" dir="${basedir}/conf" includes="*.publish.txt" />
         <pathconvert property="available.publish.list.files" refid="available.publish.lists" pathsep="," />
         <pathconvert property="available.publish.list.files.print" refid="available.publish.lists" pathsep="${line.separator}" />
@@ -220,155 +220,155 @@
         <input validargs="${available.publish.list.files}" message="Select Package Configuration:" addproperty="iics.target.publish.config">
         </input>
     </target>
-	
-	<target name="-set-package-properties">
-		<basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix="package.txt" />
+    
+    <target name="-set-package-properties">
+        <basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix="package.txt" />
         <echo level="info">Selected Target Package Configuration: ${iics.target.package.config.basename}</echo>
         <echo level="info">Selected File: ${iics.target.package.config}</echo>
-	</target>
-	
-	<target name="-set-publish-properties">
+    </target>
+    
+    <target name="-set-publish-properties">
         <basename file="${iics.target.publish.config}" property="iics.target.publish.config.basename" suffix="publish.txt" />
         <echo level="info">Selected Target Package Configuration: ${iics.target.publish.config.basename}</echo>
         <echo level="info">Selected File: ${iics.target.publish.config}</echo>
     </target>
 
-	<target name="-set-release-properties">
-		<basename file="${iics.release}" property="iics.release.basename" suffix="release.properties" />
+    <target name="-set-release-properties">
+        <basename file="${iics.release}" property="iics.release.basename" suffix="release.properties" />
         <echo level="info">Selected Release Configuration: ${iics.release.basename}</echo>
         <echo level="info">Selected File: ${iics.release}</echo>
-	</target>
-	
-	<target name="-select-source-environment" unless="iics.source.environment" depends="-load.release.properties">
-		<input validargs="${iics.environment.list}" message="Select Source Environment:" addproperty="iics.source.environment">
-		</input>
-		<echo level="info">Selected Source Environment: ${iics.source.environment}</echo>
-	</target>
+    </target>
+    
+    <target name="-select-source-environment" unless="iics.source.environment" depends="-load.release.properties">
+        <input validargs="${iics.environment.list}" message="Select Source Environment:" addproperty="iics.source.environment">
+        </input>
+        <echo level="info">Selected Source Environment: ${iics.source.environment}</echo>
+    </target>
 
-	<target name="-select-target-environment" unless="iics.target.environment" depends="-load.release.properties">
-		<input validargs="${iics.environment.list}" message="Select Target Environment:" addproperty="iics.target.environment">
-		</input>
-		<echo level="info">Selected Target Environment: ${iics.target.environment}</echo>
-	</target>
-	
-	<target name="-set-source-properties" depends="-select-source-environment">
+    <target name="-select-target-environment" unless="iics.target.environment" depends="-load.release.properties">
+        <input validargs="${iics.environment.list}" message="Select Target Environment:" addproperty="iics.target.environment">
+        </input>
+        <echo level="info">Selected Target Environment: ${iics.target.environment}</echo>
+    </target>
+    
+    <target name="-set-source-properties" depends="-select-source-environment">
        <property name="iics.export.dir">${basedir}/target/${iics.release.basename}/export/${iics.source.environment}</property>
        <property name="iics.export.list.location" location="${iics.export.dir}/${iics.list.output}" />
        <property name="iics.export.file.location" location="${iics.export.dir}/${iics.export.output}" />
-	</target>
-	
-	<target name="-set-target-properties" depends="-select-target-environment">
-        <property name="iics.import.dir">${basedir}/target/${iics.release.basename}/import/${iics.target.environment}</property>
-	</target>
-
-	<target name="-load.release.properties" depends="-select-release,-set-release-properties">
-		<echo level="info">Loading ${iics.release}</echo>
-		<property file="${iics.release}" />
-		<echo level="info">Loading External properties (credentials) from ${iics.external.properties}</echo>
-		<property file="${iics.external.properties}" />
-		<echo level="info">TODO: Add Inputs Validation</echo>
-	</target>
-
-	<target name="-check.external.properties">
-		<condition property="iics.external.properties.available">
-			<and>
-				<isset property="iics.external.properties" />
-			</and>
-		</condition>
-	</target>
-
-	<target name="-set.source.credentials" depends="-check.external.properties" if="iics.external.properties.available">
-		<set.environment.credentials direction="source" environment="${iics.source.environment}" />
-	</target>
+    </target>
     
-	<target name="-set.target.credentials" depends="-check.external.properties" if="iics.external.properties.available">
+    <target name="-set-target-properties" depends="-select-target-environment">
+        <property name="iics.import.dir">${basedir}/target/${iics.release.basename}/import/${iics.target.environment}</property>
+    </target>
+
+    <target name="-load.release.properties" depends="-select-release,-set-release-properties">
+        <echo level="info">Loading ${iics.release}</echo>
+        <property file="${iics.release}" />
+        <echo level="info">Loading External properties (credentials) from ${iics.external.properties}</echo>
+        <property file="${iics.external.properties}" />
+        <echo level="info">TODO: Add Inputs Validation</echo>
+    </target>
+
+    <target name="-check.external.properties">
+        <condition property="iics.external.properties.available">
+            <and>
+                <isset property="iics.external.properties" />
+            </and>
+        </condition>
+    </target>
+
+    <target name="-set.source.credentials" depends="-check.external.properties" if="iics.external.properties.available">
+        <set.environment.credentials direction="source" environment="${iics.source.environment}" />
+    </target>
+    
+    <target name="-set.target.credentials" depends="-check.external.properties" if="iics.external.properties.available">
         <set.environment.credentials direction="target" environment="${iics.target.environment}" />
     </target>
-	
-	<target name="-check.source.creds">
-		<check.credentials 
-		            userproperty="iics.source.user"
-		            passwordproperty="iics.source.password"
-		            validationresult="source.creds.set"/>
-	</target>
+    
+    <target name="-check.source.creds">
+        <check.credentials 
+                    userproperty="iics.source.user"
+                    passwordproperty="iics.source.password"
+                    validationresult="source.creds.set"/>
+    </target>
 
-	<target name="-iics.input.source.creds" depends="-set.source.credentials,-check.source.creds" unless="${target.creds.set}">
-		<input.credentials 
+    <target name="-iics.input.source.creds" depends="-set.source.credentials,-check.source.creds" unless="${target.creds.set}">
+        <input.credentials 
             targetuserproperty="iics.source.user"
             targetpasswordproperty="iics.source.password"/>
-	</target>
-	
-	<target name="-iics.input.target.creds" depends="-set.target.credentials,-check.target.creds" if="${target.creds.set}">
-		<input.credentials 
-			targetuserproperty="iics.target.user"
-			targetpasswordproperty="iics.target.password"/>
-	</target>
-	
-	<target name="-check.target.creds">
-		<check.credentials 
-			userproperty="iics.target.user"
-			passwordproperty="iics.target.password"
-		    validationresult="target.creds.set"/>
-	</target>
-	
-	
-	<target name="-check.export.files">
-		<condition property="iics.list.available">
-			<available file="${iics.export.dir}/${iics.list.output}" />
-		</condition>
-		<condition property="iics.export.available">
-			<available file="${iics.export.dir}/${iics.export.output}" />
-		</condition>
-	</target>
-
-	<target name="iics.list" depends="-download.iics,-check.export.files,-iics.input.source.creds" unless="iics.list.available">
-		<iics.list id="${iics.release.basename}" 
-			output="${iics.list.output}" 
-			todir="${iics.export.dir}" 
-			query="${iics.query}" 
-			user="${iics.source.user}" 
-			password="${iics.source.password}" 
-			region="${iics.region}" />
-	</target>
-
-	<target name="iics.export" depends="iics.list,-check.export.files,-iics.input.source.creds" unless="iics.export.available">
-		<iics.export id="${iics.release.basename}" 
-			listfile="${iics.list.output}" 
-			outputfile="${iics.export.output}" 
-			todir="${iics.export.dir}" 
-			user="${iics.source.user}" 
-			password="${iics.source.password}" 
-			region="${iics.region}" />
-	</target>
-	
-
-	<target name="-check.exported">
-		<condition property="iics.export.available">
-			<available file="${iics.export.dir}/${iics.export.output}" />
-		</condition>
-	</target>
-
-	<target name="iics.extract" depends="iics.export,-check.exported" if="iics.export.available">
-	    <iics.extract id="${iics.release.basename}" 
-	        file="${iics.export.dir}/${iics.export.output}" 
-	        todir="${iics.extract.dir}" />
-	</target>
-	
-	<target name="iics.prepare.package">
-
-
-	</target>
-
-	<target name="iics.package" depends="-load.release.properties" >
-        <iics.package id="${iics.release.basename}" 
-        	workspace="${iics.extract.dir}" 
-        	output="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip" 
-        	todir="${iics.import.dir}" 
-        	file="${iics.target.package.config}"  />
     </target>
-	
-	
-	<target name="iics.import" depends="-load.release.properties">
+    
+    <target name="-iics.input.target.creds" depends="-set.target.credentials,-check.target.creds" if="${target.creds.set}">
+        <input.credentials 
+            targetuserproperty="iics.target.user"
+            targetpasswordproperty="iics.target.password"/>
+    </target>
+    
+    <target name="-check.target.creds">
+        <check.credentials 
+            userproperty="iics.target.user"
+            passwordproperty="iics.target.password"
+            validationresult="target.creds.set"/>
+    </target>
+    
+    
+    <target name="-check.export.files">
+        <condition property="iics.list.available">
+            <available file="${iics.export.dir}/${iics.list.output}" />
+        </condition>
+        <condition property="iics.export.available">
+            <available file="${iics.export.dir}/${iics.export.output}" />
+        </condition>
+    </target>
+
+    <target name="iics.list" depends="-download.iics,-check.export.files,-iics.input.source.creds" unless="iics.list.available">
+        <iics.list id="${iics.release.basename}" 
+            output="${iics.list.output}" 
+            todir="${iics.export.dir}" 
+            query="${iics.query}" 
+            user="${iics.source.user}" 
+            password="${iics.source.password}" 
+            region="${iics.region}" />
+    </target>
+
+    <target name="iics.export" depends="iics.list,-check.export.files,-iics.input.source.creds" unless="iics.export.available">
+        <iics.export id="${iics.release.basename}" 
+            listfile="${iics.list.output}" 
+            outputfile="${iics.export.output}" 
+            todir="${iics.export.dir}" 
+            user="${iics.source.user}" 
+            password="${iics.source.password}" 
+            region="${iics.region}" />
+    </target>
+    
+
+    <target name="-check.exported">
+        <condition property="iics.export.available">
+            <available file="${iics.export.dir}/${iics.export.output}" />
+        </condition>
+    </target>
+
+    <target name="iics.extract" depends="iics.export,-check.exported" if="iics.export.available">
+        <iics.extract id="${iics.release.basename}" 
+            file="${iics.export.dir}/${iics.export.output}" 
+            todir="${iics.extract.dir}" />
+    </target>
+    
+    <target name="iics.prepare.package">
+
+
+    </target>
+
+    <target name="iics.package" depends="-load.release.properties" >
+        <iics.package id="${iics.release.basename}" 
+            workspace="${iics.extract.dir}" 
+            output="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip" 
+            todir="${iics.import.dir}" 
+            file="${iics.target.package.config}"  />
+    </target>
+    
+    
+    <target name="iics.import" depends="-load.release.properties">
          <iics.import id="${iics.release.basename}" 
             region="${iics.region}" 
             file="${iics.import.dir}/${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip"
@@ -376,58 +376,58 @@
             password="${iics.target.password}" />
     </target>
 
-	
-	
-	<target name="clean.release" depends="-load.release.properties" if="iics.release.basename"
-		description="Cleans Export/import files in ${basedir}/target/${iics.release.basename}">
-		<echo level="info">Deleting ${basedir}/target/${iics.release.basename}</echo>
-		<delete dir="${basedir}/target/${iics.release.basename}" verbose="true">
-		</delete>
-	</target>
-
-	<target name="update.src" depends="-env.info,
-		-select-release,
-		-load.release.properties,
-		-select-source-environment,
-		-set-source-properties,
-		 iics.extract" 
-		description="Updates design ources directory fron Source Environment Org using iics Export utility">
-	</target>
     
-    	
-	<target name="download.src" depends="-env.info,
+    
+    <target name="clean.release" depends="-load.release.properties" if="iics.release.basename"
+        description="Cleans Export/import files in ${basedir}/target/${iics.release.basename}">
+        <echo level="info">Deleting ${basedir}/target/${iics.release.basename}</echo>
+        <delete dir="${basedir}/target/${iics.release.basename}" verbose="true">
+        </delete>
+    </target>
+
+    <target name="update.src" depends="-env.info,
         -select-release,
         -load.release.properties,
         -select-source-environment,
         -set-source-properties,
-		iics.export" 
+         iics.extract" 
+        description="Updates design ources directory fron Source Environment Org using iics Export utility">
+    </target>
+    
+        
+    <target name="download.src" depends="-env.info,
+        -select-release,
+        -load.release.properties,
+        -select-source-environment,
+        -set-source-properties,
+        iics.export" 
         description="Downloads Designs From Source Environment Org using iics Export utility">
     </target>
 
-	<target name="package.src" depends="-env.info,
-		-select-release,
-		-load.release.properties,
-		-set-target-properties,
-		-select-package-config,
-		-set-package-properties,
-		 iics.package" 
-		description="Builds Package for specified target enviornment from ${basedir}/src/ipd">
-	</target>
-	
-	
-	<target name="import" depends="-env.info,
+    <target name="package.src" depends="-env.info,
         -select-release,
         -load.release.properties,
         -set-target-properties,
         -select-package-config,
-		-set-package-properties,
-		-iics.input.target.creds,
-		 iics.package,
+        -set-package-properties,
+         iics.package" 
+        description="Builds Package for specified target enviornment from ${basedir}/src/ipd">
+    </target>
+    
+    
+    <target name="import" depends="-env.info,
+        -select-release,
+        -load.release.properties,
+        -set-target-properties,
+        -select-package-config,
+        -set-package-properties,
+        -iics.input.target.creds,
+         iics.package,
          iics.import" 
         description="Imports package for a select Environment and Package Configuration">
     </target>
-	
-	<target name="publish" depends="-env.info,
+    
+    <target name="publish" depends="-env.info,
         -select-release,
         -load.release.properties,
         -set-target-properties,
@@ -435,140 +435,140 @@
         -set-publish-properties,
         -iics.input.target.creds"
         description="Publishes Objects Defined in the Configuration Files">
-		<iics.publish id="${iics.release.basename}" 
-		            region="${iics.region}" 
-		            file="${iics.target.publish.config}"
-		            user="${iics.target.user}" 
-		            password="${iics.target.password}" />
+        <iics.publish id="${iics.release.basename}" 
+                    region="${iics.region}" 
+                    file="${iics.target.publish.config}"
+                    user="${iics.target.user}" 
+                    password="${iics.target.password}" />
     </target>
 
 
-	<macrodef name="iics.list" description="List resurces in IICS org using given query into a defined list file">
-		<attribute name="id" default="1" />
-		<attribute name="toDir" 
-			  description="Defines Output Directory"/>
-		<attribute name="output" 
-			  description="Defines file name for the output file. The output file contains the list of IICS artifacts that match the queries"/>
-		<attribute name="query" 
-			  description="Specifies the queries to filter the IICS artifacts that you want to include in the artifacts list. You can define multiple query parameters separated with a space character. The command performs an AND operation when you define multiple query parameters."/>
-		<attribute name="region" default="us" 
-			  description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
-		<attribute name="user" 
-			  description="Defines the user name to log in to IICS."/>
-		<attribute name="password" 
-			  description="Password to login with."/>
-		<sequential>
-			<mkdir dir="@{toDir}" />
-			<echo level="info">Listing query contents to: @{listFile}</echo>
-			<property name="iics.list.command.@{id}" 
-				value='list -r @{region} -u @{user} -p @{password} @{query} -o "@{toDir}/@{output}"' />
-			<echo level="info">Running list -r @{region} -u @{user} -p **** @{query} -o "@{toDir}/@{output}"</echo>
-			<exec dir="${basedir}" executable="${tool.iics}">
-				<arg line="${iics.list.command.@{id}}" />
-			</exec>
-		</sequential>
-	</macrodef>
-
-	<macrodef name="iics.export" description="Export IICS Package using a defined list file">
-		<attribute name="id" default="1" />
-		<attribute name="toDir" 
-		  description="Defines Output Directory"/>
-		<attribute name="outputfile"
-			description="Defines Output Zip File Name."/>
-		<attribute name="listFile" 
-			description="Defines the path and file name of the file that contains a list of artifacts to be exported as a zip file from IICS."/>
-		<attribute name="region" default="us"
-			description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
-		<attribute name="user" 
-			description="Defines the user name to log in to IICS."/>
-		<attribute name="password" 
-			description="Password to login with."/>
-		<sequential>
-			<mkdir dir="@{toDir}" />
-			<echo level="info">Exporting package using: @{listFile}</echo>
-			<property name="iics.export.command.@{id}" value='export -r @{region} -u "@{user}" -p "@{password}" -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"' />
-			<echo level="info">Running iics export -r @{region} -u "@{user}" -p "******" -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"</echo>
-			<exec dir="${basedir}" executable="${tool.iics}">
-				<arg line="${iics.export.command.@{id}}" />
-			</exec>
-		</sequential>
-	</macrodef>
-
-	<macrodef name="iics.extract" description="Extracts exported list to target directory">
-		<attribute name="id" default="1" />
-		<attribute name="file" />
-		<attribute name="toDir" />
-		<sequential>
-			<mkdir dir="@{toDir}" />
-			<property name="iics.extract.command.@{id}" value='extract -z "@{file}" -w "@{toDir}"' />
-			<echo level="info">Running iics ${iics.extract.command.@{id}}</echo>
-			<exec dir="${basedir}" executable="${tool.iics}">
-				<arg line="${iics.extract.command.@{id}}" />
-			</exec>
-		</sequential>
-	</macrodef>
-
-
-	<macrodef name="iics.package" description="Creates a package of IICS artifacts from a local workspace directory into a zip file.">
-    	<attribute name="id" default="1" 
-    		   description="Unique ID for macro internal variables suffix"/>
-    	<attribute name="file" 
-    		   description="Defines the path and file name of the text file that contains a list of artifacts to be included in the zip."/>
-    	<attribute name="workspace" 
-    		   description="Defines the path of the workspace directory where the individual artifacts are available."/>
-    	<attribute name="toDir" 
-    		   description=" Defines the path where the file should be created"/>
-		<attribute name="output" 
-			   description="Defines file name for the IICS import zip file that you want to create."/>
-    	<sequential>
-    		<mkdir dir="@{toDir}" />
-    		<property name="iics.package.command.@{id}" 
-    			value='package -z "@{toDir}/@{output}" -w "@{workspace}" -f "@{file}"' />
-            <echo level="info">Running iics ${iics.package.command.@{id}}</echo>
-			<exec dir="${basedir}" executable="${tool.iics}" failonerror="true">
-				<arg line="${iics.package.command.@{id}}" />
-			</exec>
-		</sequential>
-	</macrodef>
-	
-	
-	<macrodef name="iics.import" description="Imports IICS Package">
-        <attribute name="id" default="1" 
-        	description="Unique ID for macro internal variables suffix"/>
-		<attribute name="file"
-			  description="Location of the zip file containing artifacts to be imported."/>
-        <attribute name="region" 
-        	default="us" 
-        	description="IICS region in which the org belongs to. For example, us, eu, ap"/>
+    <macrodef name="iics.list" description="List resurces in IICS org using given query into a defined list file">
+        <attribute name="id" default="1" />
+        <attribute name="toDir" 
+              description="Defines Output Directory"/>
+        <attribute name="output" 
+              description="Defines file name for the output file. The output file contains the list of IICS artifacts that match the queries"/>
+        <attribute name="query" 
+              description="Specifies the queries to filter the IICS artifacts that you want to include in the artifacts list. You can define multiple query parameters separated with a space character. The command performs an AND operation when you define multiple query parameters."/>
+        <attribute name="region" default="us" 
+              description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
         <attribute name="user" 
-        	description="User name to login with."/>
+              description="Defines the user name to log in to IICS."/>
         <attribute name="password" 
-        	description="Password to login with." />
-		<attribute name="name" 
-			default="IICS Tool Automated Import"
-			description="Name of the request. This is used as the name of the import job."/>
-		<attribute name="maxWaitTime" 
-			default="240"
-		    description="Optional. Indicates the maximum time to wait for the request to complete (in seconds). Applicable only with --sync. (default 120)"/>
-		<attribute name="sync" default="true"
-			description="Optional. Controls whether the command is blocking or non-blocking."/>
-		<attribute name="pollingInterval" 
-			default="10"
-			description="Optional. Indicates how often to poll for status (in seconds). Applicable only with --sync. (default 10)"/>
-		<attribute name="logLevel" default="info"
-			description="Log level with which the command is run. The value can be error, warn, info or trace. The value indicates the maximum log level."/>
-		        
+              description="Password to login with."/>
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <echo level="info">Listing query contents to: @{listFile}</echo>
+            <property name="iics.list.command.@{id}" 
+                value='list -r @{region} -u @{user} -p @{password} @{query} -o "@{toDir}/@{output}"' />
+            <echo level="info">Running list -r @{region} -u @{user} -p **** @{query} -o "@{toDir}/@{output}"</echo>
+            <exec dir="${basedir}" executable="${tool.iics}">
+                <arg line="${iics.list.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="iics.export" description="Export IICS Package using a defined list file">
+        <attribute name="id" default="1" />
+        <attribute name="toDir" 
+          description="Defines Output Directory"/>
+        <attribute name="outputfile"
+            description="Defines Output Zip File Name."/>
+        <attribute name="listFile" 
+            description="Defines the path and file name of the file that contains a list of artifacts to be exported as a zip file from IICS."/>
+        <attribute name="region" default="us"
+            description="Defines the IICS region to which the organization belongs. For example, us, eu, ap."/>
+        <attribute name="user" 
+            description="Defines the user name to log in to IICS."/>
+        <attribute name="password" 
+            description="Password to login with."/>
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <echo level="info">Exporting package using: @{listFile}</echo>
+            <property name="iics.export.command.@{id}" value='export -r @{region} -u "@{user}" -p "@{password}" -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"' />
+            <echo level="info">Running iics export -r @{region} -u "@{user}" -p "******" -f "@{toDir}/@{listFile}" -z "@{toDir}/@{outputfile}"</echo>
+            <exec dir="${basedir}" executable="${tool.iics}">
+                <arg line="${iics.export.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="iics.extract" description="Extracts exported list to target directory">
+        <attribute name="id" default="1" />
+        <attribute name="file" />
+        <attribute name="toDir" />
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <property name="iics.extract.command.@{id}" value='extract -z "@{file}" -w "@{toDir}"' />
+            <echo level="info">Running iics ${iics.extract.command.@{id}}</echo>
+            <exec dir="${basedir}" executable="${tool.iics}">
+                <arg line="${iics.extract.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
+
+
+    <macrodef name="iics.package" description="Creates a package of IICS artifacts from a local workspace directory into a zip file.">
+        <attribute name="id" default="1" 
+               description="Unique ID for macro internal variables suffix"/>
+        <attribute name="file" 
+               description="Defines the path and file name of the text file that contains a list of artifacts to be included in the zip."/>
+        <attribute name="workspace" 
+               description="Defines the path of the workspace directory where the individual artifacts are available."/>
+        <attribute name="toDir" 
+               description=" Defines the path where the file should be created"/>
+        <attribute name="output" 
+               description="Defines file name for the IICS import zip file that you want to create."/>
+        <sequential>
+            <mkdir dir="@{toDir}" />
+            <property name="iics.package.command.@{id}" 
+                value='package -z "@{toDir}/@{output}" -w "@{workspace}" -f "@{file}"' />
+            <echo level="info">Running iics ${iics.package.command.@{id}}</echo>
+            <exec dir="${basedir}" executable="${tool.iics}" failonerror="true">
+                <arg line="${iics.package.command.@{id}}" />
+            </exec>
+        </sequential>
+    </macrodef>
+    
+    
+    <macrodef name="iics.import" description="Imports IICS Package">
+        <attribute name="id" default="1" 
+            description="Unique ID for macro internal variables suffix"/>
+        <attribute name="file"
+              description="Location of the zip file containing artifacts to be imported."/>
+        <attribute name="region" 
+            default="us" 
+            description="IICS region in which the org belongs to. For example, us, eu, ap"/>
+        <attribute name="user" 
+            description="User name to login with."/>
+        <attribute name="password" 
+            description="Password to login with." />
+        <attribute name="name" 
+            default="IICS Tool Automated Import"
+            description="Name of the request. This is used as the name of the import job."/>
+        <attribute name="maxWaitTime" 
+            default="240"
+            description="Optional. Indicates the maximum time to wait for the request to complete (in seconds). Applicable only with --sync. (default 120)"/>
+        <attribute name="sync" default="true"
+            description="Optional. Controls whether the command is blocking or non-blocking."/>
+        <attribute name="pollingInterval" 
+            default="10"
+            description="Optional. Indicates how often to poll for status (in seconds). Applicable only with --sync. (default 10)"/>
+        <attribute name="logLevel" default="info"
+            description="Log level with which the command is run. The value can be error, warn, info or trace. The value indicates the maximum log level."/>
+                
         <sequential>
             <echo level="info">Importing Package: @{file}</echo>
             <property name="iics.import.command.@{id}" 
-            	value='import -r @{region} -u "@{user}" -p "@{password}" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
+                value='import -r @{region} -u "@{user}" -p "@{password}" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
             <echo level="info">Running iics import -r @{region} -u "@{user}" -p "*****" -z "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}</echo>
             <exec dir="${basedir}" executable="${tool.iics}">
                 <arg line="${iics.import.command.@{id}}" />
             </exec>
         </sequential>
     </macrodef>
-	
+    
    <macrodef name="iics.publish" description="Imports IICS Package">
         <attribute name="id" default="1" 
             description="Unique ID for macro internal variables suffix"/>
@@ -594,8 +594,8 @@
                 
         <sequential>
             <echo level="info">Publishing Designs: @{file}</echo>
-        	<loadfile property="contents.@{id}" srcFile="@{file}" />
-        	<echo level="info" message="${contents.@{id}}" />
+            <loadfile property="contents.@{id}" srcFile="@{file}" />
+            <echo level="info" message="${contents.@{id}}" />
             <property name="iics.publish.command.@{id}" 
                 value='publish -r @{region} -u "@{user}" -p "@{password}" -f "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}' />
             <echo level="info">Running iics publish -r @{region} -u "@{user}" -p "*****" -f "@{file}" -m @{maxWaitTime} -s @{sync} -P @{pollingInterval} -v @{logLevel}</echo>
@@ -606,162 +606,162 @@
     </macrodef>
 
 
-	<macrodef name="set.environment.credentials">
-		<attribute name="direction" 
-			  description="Defines as a 'source' or 'target' direction"/>
-		<attribute name="environment" 
-			  description="Environment must be one of the values defined in the  ${iics.environment.list} in the Release configuration propertire or pased in as a parameter"/>
-		<sequential>
-			<fail unless="iics.user.@{environment}" message="Missing property: iics.user.@{environment}" />
-			<fail unless="iics.password.@{environment}" message="Missing property: iics.password.@{environment}" />
-			<echo level="info">Setting: iics.@{direction}.user</echo>
-			<property name="iics.@{direction}.user" value="${iics.user.@{environment}}" />
-			<echo level="info">Setting: iics.@{direction}.password</echo>
-			<property name="iics.@{direction}.password" value="${iics.password.@{environment}}" />
-		</sequential>
-	</macrodef>
+    <macrodef name="set.environment.credentials">
+        <attribute name="direction" 
+              description="Defines as a 'source' or 'target' direction"/>
+        <attribute name="environment" 
+              description="Environment must be one of the values defined in the  ${iics.environment.list} in the Release configuration propertire or pased in as a parameter"/>
+        <sequential>
+            <fail unless="iics.user.@{environment}" message="Missing property: iics.user.@{environment}" />
+            <fail unless="iics.password.@{environment}" message="Missing property: iics.password.@{environment}" />
+            <echo level="info">Setting: iics.@{direction}.user</echo>
+            <property name="iics.@{direction}.user" value="${iics.user.@{environment}}" />
+            <echo level="info">Setting: iics.@{direction}.password</echo>
+            <property name="iics.@{direction}.password" value="${iics.password.@{environment}}" />
+        </sequential>
+    </macrodef>
     
-	<macrodef name="setTracingLevel">
-	        <attribute name="sourceDir"/>
-	        <attribute name="targetDir"/>
-	        <attribute name="tracingLevel" default="none"/>
-	        <attribute name="properties"/>
-	        <sequential>
-	            <property file="build.properties"/>
-	            <property file="@{properties}"/>
-	            <path id="saxon.classpath">
-	                <fileset dir="${saxon.lib}">
-	                    <include name="*.jar"/>
-	                </fileset>
-	            </path>
-	            <echo level="info">****** sourceDir:    @{sourceDir}</echo>
-	            <echo level="info">****** targetDir:    @{targetDir}</echo>
-	            <echo level="info">****** includes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}</echo>
-	            <echo level="info">****** excludes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}</echo>
-	            <echo level="info">****** tracingLevel: @{tracingLevel}</echo>     
-	            <echo level="info">****** properties:   @{properties}</echo>     
-	            <xslt style="${basedir}/xsl/set_service_tracingLevel.xsl" 
-	                basedir="@{sourceDir}" 
-	                destdir="@{targetDir}"
-	                includes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}"
-	                excludes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}"
-	                extension=".xml"
-	                force="true"
-	                classpathref="saxon.classpath">
-	                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-	                <param name="tracingLevel" expression="@{tracingLevel}"/>
-	            </xslt>
-	        </sequential>
-	    </macrodef>
-	    
-	    <macrodef name="setSuspendOnFault">
-	        <attribute name="sourceDir"/>
-	        <attribute name="targetDir"/>
-	        <attribute name="suspendOnFault" default="true"/>
-	        <attribute name="includes"/>
-	        <attribute name="excludes"/>
-	        <sequential>
-	            <property file="build.properties"/>
-	            <path id="saxon.classpath">
-	                <fileset dir="${saxon.lib}">
-	                    <include name="*.jar"/>
-	                </fileset>
-	            </path>
-	            <echo level="info">****** sourceDir:    @{sourceDir}</echo>
-	            <echo level="info">****** targetDir:    @{targetDir}</echo>
-	            <echo level="info">****** includes:     @{includes}</echo>
-	            <echo level="info">****** excludes:     @{excludes}</echo>
-	            <echo level="info">****** suspendOnFault: @{suspendOnFault}</echo>         
-	            <xslt style="${basedir}/xsl/set_service_suspendOnFault.xsl" 
-	                basedir="@{sourceDir}" 
-	                destdir="@{targetDir}"
-	                includes="@{includes}"
-	                excludes="@{excludes}"
-	                extension=".xml"
-	                force="true"
-	                classpathref="saxon.classpath">
-	                <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-	                <param name="suspendOnFault" expression="@{suspendOnFault}"/>
-	            </xslt>
-	        </sequential>
-	    </macrodef>
+    <macrodef name="setTracingLevel">
+            <attribute name="sourceDir"/>
+            <attribute name="targetDir"/>
+            <attribute name="tracingLevel" default="none"/>
+            <attribute name="properties"/>
+            <sequential>
+                <property file="build.properties"/>
+                <property file="@{properties}"/>
+                <path id="saxon.classpath">
+                    <fileset dir="${saxon.lib}">
+                        <include name="*.jar"/>
+                    </fileset>
+                </path>
+                <echo level="info">****** sourceDir:    @{sourceDir}</echo>
+                <echo level="info">****** targetDir:    @{targetDir}</echo>
+                <echo level="info">****** includes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}</echo>
+                <echo level="info">****** excludes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}</echo>
+                <echo level="info">****** tracingLevel: @{tracingLevel}</echo>     
+                <echo level="info">****** properties:   @{properties}</echo>     
+                <xslt style="${basedir}/xsl/set_service_tracingLevel.xsl" 
+                    basedir="@{sourceDir}" 
+                    destdir="@{targetDir}"
+                    includes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}"
+                    excludes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}"
+                    extension=".xml"
+                    force="true"
+                    classpathref="saxon.classpath">
+                    <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+                    <param name="tracingLevel" expression="@{tracingLevel}"/>
+                </xslt>
+            </sequential>
+        </macrodef>
+        
+        <macrodef name="setSuspendOnFault">
+            <attribute name="sourceDir"/>
+            <attribute name="targetDir"/>
+            <attribute name="suspendOnFault" default="true"/>
+            <attribute name="includes"/>
+            <attribute name="excludes"/>
+            <sequential>
+                <property file="build.properties"/>
+                <path id="saxon.classpath">
+                    <fileset dir="${saxon.lib}">
+                        <include name="*.jar"/>
+                    </fileset>
+                </path>
+                <echo level="info">****** sourceDir:    @{sourceDir}</echo>
+                <echo level="info">****** targetDir:    @{targetDir}</echo>
+                <echo level="info">****** includes:     @{includes}</echo>
+                <echo level="info">****** excludes:     @{excludes}</echo>
+                <echo level="info">****** suspendOnFault: @{suspendOnFault}</echo>         
+                <xslt style="${basedir}/xsl/set_service_suspendOnFault.xsl" 
+                    basedir="@{sourceDir}" 
+                    destdir="@{targetDir}"
+                    includes="@{includes}"
+                    excludes="@{excludes}"
+                    extension=".xml"
+                    force="true"
+                    classpathref="saxon.classpath">
+                    <factory name="net.sf.saxon.TransformerFactoryImpl"/>
+                    <param name="suspendOnFault" expression="@{suspendOnFault}"/>
+                </xslt>
+            </sequential>
+        </macrodef>
 
-	    <macrodef name="runxq">
-	        <attribute name="file" />
-	        <attribute name="output" />
-	        <attribute name="options" default=""/>
-	        <attribute name="fork" default="false"/>
-	        <attribute name="failonerror" default="false"/>
-	        <attribute name="dir" default="${java.io.tmpdir}"/>
+        <macrodef name="runxq">
+            <attribute name="file" />
+            <attribute name="output" />
+            <attribute name="options" default=""/>
+            <attribute name="fork" default="false"/>
+            <attribute name="failonerror" default="false"/>
+            <attribute name="dir" default="${java.io.tmpdir}"/>
 
-	        <sequential>
-	            <basename property="cf-@{file}" file="@{file}"/>
-	            <property name="input-@{file}" location="@{file}"/>
-	            <property name="out-@{file}" location="@{output}"/>
-	            <tstamp>
-	                <format property="start-time-@{file}" pattern="${xqr.log.timestamp}" />
-	            </tstamp>
-	            <echo level="info">****** file:    ${input-@{file}}</echo>
-	            <echo level="info">****** output:  ${out-@{file}}</echo>
-	            <echo level="info">****** options: @{options}</echo>
+            <sequential>
+                <basename property="cf-@{file}" file="@{file}"/>
+                <property name="input-@{file}" location="@{file}"/>
+                <property name="out-@{file}" location="@{output}"/>
+                <tstamp>
+                    <format property="start-time-@{file}" pattern="${xqr.log.timestamp}" />
+                </tstamp>
+                <echo level="info">****** file:    ${input-@{file}}</echo>
+                <echo level="info">****** output:  ${out-@{file}}</echo>
+                <echo level="info">****** options: @{options}</echo>
 
-	            <java 
-	                classname="${saxon.class}" 
-	                classpathref="saxon.classpath"
-	                output="${out-@{file}}"
-	                fork="@{fork}" 
-	                failonerror="@{failonerror}" >
-	                <arg value="-qversion:3.0"/>
-	                <arg line="@{options}"/>
-	                <arg value="@{file}"/> 
-	            </java>
-	            <tstamp>
-	                <format property="end-time-@{file}" pattern="${xqr.log.timestamp}" />
-	            </tstamp>
-	            <basename property="test-@{file}" file="@{file}" suffix=".xq"/>
-	            <echo level="info">****** start:${start-time-@{file}} end:${end-time-@{file}} file: ${test-@{file}}.xq</echo>
-	        </sequential>
-	    </macrodef>
-	
-	   
-	    <macrodef name="check.credentials">
-	    	 <attribute name="userProperty" 
-	    	    description="Define User proerty to be checked"/> 
-	    	 <attribute name="passwordProperty" 
-	    	    description="Define Pasword proerty to be checked"/> 
-	    	 <attribute name="validationresult"
-	    	    description="Define Property name to store validation result"/>
-	    	 <sequential>
-	    	 	<condition property="@{userProperty}.set"  >
+                <java 
+                    classname="${saxon.class}" 
+                    classpathref="saxon.classpath"
+                    output="${out-@{file}}"
+                    fork="@{fork}" 
+                    failonerror="@{failonerror}" >
+                    <arg value="-qversion:3.0"/>
+                    <arg line="@{options}"/>
+                    <arg value="@{file}"/> 
+                </java>
+                <tstamp>
+                    <format property="end-time-@{file}" pattern="${xqr.log.timestamp}" />
+                </tstamp>
+                <basename property="test-@{file}" file="@{file}" suffix=".xq"/>
+                <echo level="info">****** start:${start-time-@{file}} end:${end-time-@{file}} file: ${test-@{file}}.xq</echo>
+            </sequential>
+        </macrodef>
+    
+       
+        <macrodef name="check.credentials">
+             <attribute name="userProperty" 
+                description="Define User proerty to be checked"/> 
+             <attribute name="passwordProperty" 
+                description="Define Pasword proerty to be checked"/> 
+             <attribute name="validationresult"
+                description="Define Property name to store validation result"/>
+             <sequential>
+                 <condition property="@{userProperty}.set"  >
                     <isset property="@{userProperty}" />
                 </condition>
-	    	 	<condition property="@{passwordProperty}.set"  >
+                 <condition property="@{passwordProperty}.set"  >
                     <isset property="@{passwordProperty}" />
                 </condition>
-	    	 	<property name="@{userProperty}.set" value="false"/>
-	    	 	<property name="@{passwordProperty}.set" value="false"/>
-	    	 	<condition property="@{validationresult}">
-	    	 	    <and>
-	    	 	    	<istrue value="${@{userProperty}.set}"/>
-	    	 	    	<istrue value="${@{passwordProperty}.set}"/>
-	    	 	    </and>
-	    	 	</condition>
-	    	 	<property name="@{validationresult}" value="false"></property>
-	    	 	
+                 <property name="@{userProperty}.set" value="false"/>
+                 <property name="@{passwordProperty}.set" value="false"/>
+                 <condition property="@{validationresult}">
+                     <and>
+                         <istrue value="${@{userProperty}.set}"/>
+                         <istrue value="${@{passwordProperty}.set}"/>
+                     </and>
+                 </condition>
+                 <property name="@{validationresult}" value="false"></property>
+                 
                 <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
                 <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
-	    	 	<echo level="info">@{validationresult}=${@{validationresult}}</echo>
-	    	 </sequential>
-	    </macrodef>
-	   
-	    <macrodef name="input.credentials">
-	    	   <attribute name="targetUserProperty" /> 
-	    	   <attribute name="targetPasswordProperty" />
-	    	   <sequential>
-	    	     <input addproperty="@{targetUserProperty}" message="Provide Password"/>
-	    	   	 <input addproperty="@{targetPasswordProperty}" message="Provide Password"/>
-	    	   </sequential>
-	    </macrodef>
-	
-	
+                 <echo level="info">@{validationresult}=${@{validationresult}}</echo>
+             </sequential>
+        </macrodef>
+       
+        <macrodef name="input.credentials">
+               <attribute name="targetUserProperty" /> 
+               <attribute name="targetPasswordProperty" />
+               <sequential>
+                 <input addproperty="@{targetUserProperty}" message="Provide Password"/>
+                    <input addproperty="@{targetPasswordProperty}" message="Provide Password"/>
+               </sequential>
+        </macrodef>
+    
+    
 </project>

@@ -81,7 +81,7 @@
             <ActionDetail>
                 <action-email>
                     <subject>Fault Alert - Error</subject>
-                    <to>jbrazda@informatica.com</to>
+                    <to>recipient@acme.com</to>
                     <cc/>
                     <bcc/>
                     <contentType>text/html</contentType>

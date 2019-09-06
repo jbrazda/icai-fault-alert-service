@@ -1,5 +1,14 @@
 # Uncaught Fault Alert Service Implementation
 
+This project contains Informatica IICS CAI Fault alert Service Implementation.
+Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions
+
+UncaughtFaultAlertHandler Process
+
+![UncaughtFaultAlertHandler](./doc/images/UncaughtFaultAlertHandler.png)
+
+![Fault Alert Email Example](./doc/images/Fault_Alert_-_Error_-_Inbox.png)
+
 <!-- TOC -->
 
 - [Uncaught Fault Alert Service Implementation](#uncaught-fault-alert-service-implementation)
@@ -9,8 +18,10 @@
         - [Pre-Requisites](#pre-requisites)
             - [Setup Gist Account and Token](#setup-gist-account-and-token)
         - [Build and Install the Package](#build-and-install-the-package)
+            - [Ant Build Script](#ant-build-script)
         - [Build Package From Source](#build-package-from-source)
             - [In Process Developer](#in-process-developer)
+            - [Example package.src Script output](#example-packagesrc-script-output)
             - [On Command Line](#on-command-line)
         - [Configure Your Org](#configure-your-org)
             - [URN mappings](#urn-mappings)
@@ -32,11 +43,6 @@
 
 <!-- /TOC -->
 
-This project contains Informatica IICS CAI Fault alert Service Implementation.
-Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions
-
-![Fault Alert Email Example](./doc/images/Fault_Alert_-_Error_-_Inbox.png)
-
 ## Features
 
 - Declarative extensible configuration providers (currently supports github gist, http(s) get, local file)
@@ -53,7 +59,7 @@ Provided Service allows to apply declarative Alert Rules and flexible framework 
 The Alert Service is available for processes that run on a Secure Agent or the Cloud Server. Alert Service provides a mechanism
 to send alert notifications via built-in email notification service or define custom Alert Handler Process.
 
-this project is a good example how to maintain, build and deploy Informatica IICS project with automation and version control and help of
+This project is also a good example how to maintain, build and deploy Informatica IICS project with automation and version control and help of
 IICS Asset Management CLI V2 Utility
 
 > See [Alert Service Documentation][alert_service_help]
@@ -77,12 +83,12 @@ You can follow this guide [Set Development Environment for IPD Development][deve
 
 #### Setup Gist Account and Token
 
-Make sure your secure agents can access the github API to store and retrieve the Alert Service COnfiguration file.
+Make sure your secure agents can access the github API to store and retrieve the Alert Service configuration file.
 
-This Alert Service Implementation can use Github Gist (both Cloud and On prem Github Enterprise Edition) as a storage for its configuration
-It is recommended to use private gist to store this configuration, you will need to create Security token to access gist API
+This Alert Service Implementation can use Github Gist (both Cloud and On premise Github Enterprise Edition) as a storage for its configuration
+It is recommended to use private gist to store this configuration, you will need to create Security token to access private gists via API
 
-1. Login to github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
+1. Login to Github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
 2. Go to [Account Settings/Developer Settings/Personal access tokens](https://github.com/settings/tokens)
 3. Create new token and give it descriptive name such as `IICS-Configuration-Gist-Access`
 4. Select only gist permission
@@ -97,15 +103,15 @@ It is recommended to use private gist to store this configuration, you will need
 
 Fork and clone this repository
 
-Clone example, Youse your own repository url if you forked this one
+Following is a clone command example, use your own repository url if you have forked this repository.
 
 ```shell
 git clone git@github.com:jbrazda/icai-fault-alert-service.git
 ```
 
-Configure credentials file That should look something like this
-recommended location is your home directory/iics `~/iics/environment.properties as it will contain sensitive information.
-I would also recommend to create Native Service user in each of your orgs that can be used to export/import resources via IICS REST API using the [IICS Asset Management CLI][iics_cli]
+Configure credentials file. Example file is listed below.
+recommended location is your home directory/iics `~/iics/environment.properties` as it will contain sensitive information.
+I would also recommend to create Native IICS Service user in each of your orgs that can be used to export/import resources via IICS REST API using the [IICS Asset Management CLI][iics_cli]
 This tool will automatically download latest version an use it to import provided service to your target org
 
 ```properties
@@ -125,7 +131,7 @@ iics.user.prod=deployer-iics-prod@informatica.com
 iics.password.prod=SET_PASSWORD
 ```
 
-> WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  '~/iics/environment.properties' The iics folder should be accessible only by user running the import/export/publish tasks ('700' type of permission on unix systems)
+> WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  `~/iics/environment.properties` The `~/iics` folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)
 
 Update existing or copy [conf/iclab-dev.release.properties](conf/iclab-dev.release.properties) file which defines a key Environment specific parameters
 
@@ -160,11 +166,34 @@ iics.export.output=FaultAlertService.zip
 
 # Defines Output File name without extension
 # the package.src will produce file in the location based on following expression
-# ${basedir}/target/${selected.release.basename}/import/${iics.target.environment}/${iics.package.output}.zip
+# ${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip
 iics.package.output=FaultAlertService
 
 # Defines Extract output directory for iics extract command
 iics.extract.dir=${basedir}/src/ipd
+```
+
+#### Ant Build Script
+
+This tool uses ant to build/ download and deploy IICS package
+Following is a list of available targets which you can retrieve by running `ant -projecthelp` in the root of this repository
+
+```text
+ant -projecthelp
+Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
+
+            IICS CAI Component Build Script
+
+Main targets:
+
+ clean.release  Deletes Export/import temporary files in ${basedir}/target/${iics.release.basename}
+ download.src   Downloads Designs From Source Environment Org using iics Export utility
+ help           help - describes how to use this script
+ import         Imports package for a select Environment and Package Configuration
+ package.src    Builds Package for specified target environment from ${basedir}/src/ipd
+ publish        Publishes Objects Defined in the Configuration Files
+ update.src     Updates design sources directory for a Source Environment Org using iics Export/Extract utility
+Default target: help
 ```
 
 ### Build Package From Source
@@ -206,7 +235,14 @@ Use the `all_exclude_connections.package.txt` for Subsequent builds and updates 
 
 ![Ant_Package_Input_PackageConf](./doc/images/Ant_Package_Input_PackageConf.png)
 
-Script will generate Package using an iics tool downloaded from github
+Script will generate Package using an iics tool downloaded from github into a folder
+defined by following expression `${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip`
+
+Import package using an `import` target of ant script
+
+Publish imported resources using a `publish` target of ant script
+
+#### Example package.src Script output
 
 ```text
 Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
@@ -300,13 +336,12 @@ BUILD SUCCESSFUL
 Total time: 10 seconds
 ```
 
-TODO Describe Import Steps
 
 #### On Command Line
 
-You can run the same as in eclipse from command line using a following command
+You can run the same as in eclipse from command line using a following commands
 
-Build a full package DEV Target
+Build a full package, DEV Environment Target
 
 ```shell
 ant package.src \
@@ -315,7 +350,7 @@ ant package.src \
 -Diics.target.package.config=./conf/all_designs.package.txt
 ```
 
-Build a package without Connections DEV Target
+Build a Package without Connections DEV Target
 
 ```shell
 ant package.src \
@@ -324,11 +359,27 @@ ant package.src \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt
 ```
 
-TODO Describe Import Steps
+Import Package to test environment
+
+```shell
+ant import \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=test \
+-Diics.target.package.config=./conf/all_exclude_connections.package.txt
+```
+
+Publish Imported Assets
+
+```shell
+ant publish \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=test \
+-Diics.target.publish.config=./conf/all_designs.publish.txt
+```
 
 ### Configure Your Org
 
-The process Implementation requires certain system Lever properties configure to be able to send Notification emails
+The process Implementation requires certain system level properties to be configured
 
 #### URN mappings
 
@@ -517,7 +568,7 @@ Ignore Action is mutually exclusive with other actions resulting the rules evalu
             <ActionDetail>
                 <action-email>
                     <subject>Fault Alert - Error</subject>
-                    <to>jbrazda@informatica.com</to>
+                    <to>recipient@acme.com</to>
                     <cc/>
                     <bcc/>
                     <contentType>text/html</contentType>
@@ -624,15 +675,27 @@ Test Email Sample
 
 ## Extending Alert Service
 
-TBD
+This Alert Service handler is designed to be extensible, you can add custom actions or Configuration Storage providers.
 
 ### Add Custom Action
 
-TBD
+To Add custom action Follow these steps
+
+1. If Action would require new Connector and connection, Implement such service connector for example Jira, Service Now, MS Teams Channel, Slack Channel
+2. Create Process Object to describe Action Specific Configuration parameters (See existing Process object to describe [email-alert](./src/ipd/Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml))
+3. Implement new branch in the `Alert Configuration Manager` to manage the new action configuration
+4. Implement new branch of logic to invoke specific Action in the `UncaughtFaultAlertHandler-*` processes
+5. Deploy and test the changes to Alert Service
 
 ### Add Custom Configuration Storage Provider
 
-TBD
+To Add custom Storage provider such as Database follow these steps to to store and retrieve the configuration using a new provider
+
+1. Setup or Implement service connector for example to support such storage provider (DB, AWS S3, Bitbucket)
+2. Implement new steps in the `Alert Configuration Manager` to save and load configuration using the new provider
+3. Register new action type in the Pick list selection in the `action` Process Object `Type` field
+4. Implement new branch of logic to Load configuration from new provider in the `UncaughtFaultAlertHandler-*` processes
+5. Deploy and test the changes to Alert Service
 
 ### Known Issues
 

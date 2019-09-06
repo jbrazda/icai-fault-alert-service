@@ -3782,5 +3782,5 @@ util:toXML($sample_payload)</expression>
       <types1:GUID>8zodeZJhfnBdPPMtFf1DQE</types1:GUID>
       <types1:DisplayName>Alert Configuration Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-05T21:45:44.676Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-09-06T15:10:32.075Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

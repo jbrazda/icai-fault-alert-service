@@ -1,5 +1,4 @@
 Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR
-Explore/Alerting/Connections/AWS-SQS-Alerts.AI_CONNECTION
 Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION
 Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION
 Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS
