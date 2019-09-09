@@ -416,7 +416,12 @@ because currently ICAI does not allow single process to be deployed (published) 
 If you decide to not clone this repository and re-build the package from Sources You can use provided im
 for first time Installation to target org manually.
 
-IPD Import Package [Download](./distribution/AlertService.zip)
+IPD Import Packages
+
+| Package                                                                                                         | Description                                              |
+|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| [FaultAlertService_InitialInstall_All_Designs.zip](./dist/FaultAlertService_InitialInstall_All_Designs.zip)     | Use this Download for Initial Deployment                 |
+| [FaultAlertService_Update_Excluding_Connections.zip](./dist/FaultAlertService_Update_Excluding_Connections.zip) | Use this Download when Updating - (Excludes Connections) |
 
 ## Alert Service Components
 
@@ -466,7 +471,7 @@ Each condition can be negated using a `<not>true/false</not>` condition property
 ### Supported Condition Types
 
 | Condition Type | Description                                                      |
-| -------------- | ---------------------------------------------------------------- |
+|----------------|------------------------------------------------------------------|
 | equals         | Exact String Match                                               |
 | matches        | Condition would Contain Regular expression (needs to be escaped) |
 | contains       | Contains String                                                  |
@@ -475,7 +480,7 @@ Each condition can be negated using a `<not>true/false</not>` condition property
 ### Supported Actions
 
 | Action Type | Description                                     |
-| ----------- | ----------------------------------------------- |
+|-------------|-------------------------------------------------|
 | alert-email | Send Alert Email to a defined Set of recipients |
 | ignore      | Ignore Alert                                    |
 
