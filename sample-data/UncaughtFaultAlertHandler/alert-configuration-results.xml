@@ -36,14 +36,14 @@
             <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
             <Type>error-email</Type>
             <ActionDetail>
-            	   <action-email>
+                   <action-email>
                     <subject>Fault Alert Error</subject>
                     <to>recipient@acme.com</to>
                     <cc/>
                     <bcc/>
                     <contentType>text/html</contentType>
                     <actionName>Send Error Email</actionName>
-              	</action-email>
+                  </action-email>
             </ActionDetail>
         </action>
     </actions>
@@ -54,14 +54,14 @@
             <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
             <Type>error-email</Type>
             <ActionDetail>
-            	   <action-email>
+                   <action-email>
                     <subject>Fault Alert Error</subject>
                     <to>recipient@acme.com</to>
                     <cc/>
                     <bcc/>
                     <contentType>text/html</contentType>
                     <actionName>Send Error Email</actionName>
-              	</action-email>
+                  </action-email>
             </ActionDetail>
         </action>
     </invokeActions>

@@ -4,9 +4,12 @@
         "Bitbucket",
         "Buildfile",
         "Diics",
+        "Jira",
         "deployer",
         "iclab",
         "mkdir",
+        "packagesrc",
+        "projecthelp",
         "sbin"
     ]
 }

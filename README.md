@@ -336,7 +336,6 @@ BUILD SUCCESSFUL
 Total time: 10 seconds
 ```
 
-
 #### On Command Line
 
 You can run the same as in eclipse from command line using a following commands

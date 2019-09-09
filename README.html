@@ -732,6 +732,11 @@ pre {
 }
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="uncaught-fault-alert-service-implementation">
 <a id="user-content-uncaught-fault-alert-service-implementation" class="anchor" href="#uncaught-fault-alert-service-implementation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Uncaught Fault Alert Service Implementation</h1>
+<p>This project contains Informatica IICS CAI Fault alert Service Implementation.
+Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions</p>
+<p>UncaughtFaultAlertHandler Process</p>
+<p><a href="doc/images/UncaughtFaultAlertHandler.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/UncaughtFaultAlertHandler.png" alt="UncaughtFaultAlertHandler" style="max-width:100%;"></a></p>
+<p><a href="doc/images/Fault_Alert_-_Error_-_Inbox.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Fault_Alert_-_Error_-_Inbox.png" alt="Fault Alert Email Example" style="max-width:100%;"></a></p>
 
 <ul>
 <li>
@@ -748,11 +753,17 @@ pre {
 <li><a href="#setup-gist-account-and-token">Setup Gist Account and Token</a></li>
 </ul>
 </li>
-<li><a href="#build-and-install-the-package">Build and Install the Package</a></li>
+<li>
+<a href="#build-and-install-the-package">Build and Install the Package</a>
+<ul>
+<li><a href="#ant-build-script">Ant Build Script</a></li>
+</ul>
+</li>
 <li>
 <a href="#build-package-from-source">Build Package From Source</a>
 <ul>
 <li><a href="#in-process-developer">In Process Developer</a></li>
+<li><a href="#example-packagesrc-script-output">Example package.src Script output</a></li>
 <li><a href="#on-command-line">On Command Line</a></li>
 </ul>
 </li>
@@ -795,9 +806,6 @@ pre {
 </li>
 </ul>
 
-<p>This project contains Informatica IICS CAI Fault alert Service Implementation.
-Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions</p>
-<p><a href="doc/images/Fault_Alert_-_Error_-_Inbox.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Fault_Alert_-_Error_-_Inbox.png" alt="Fault Alert Email Example" style="max-width:100%;"></a></p>
 <h2 id="features">
 <a id="user-content-features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 <ul>
@@ -817,7 +825,7 @@ Provided Service allows to apply declarative Alert Rules and flexible framework 
 <a id="user-content-overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
 <p>The Alert Service is available for processes that run on a Secure Agent or the Cloud Server. Alert Service provides a mechanism
 to send alert notifications via built-in email notification service or define custom Alert Handler Process.</p>
-<p>this project is a good example how to maintain, build and deploy Informatica IICS project with automation and version control and help of
+<p>This project is also a good example how to maintain, build and deploy Informatica IICS project with automation and version control and help of
 IICS Asset Management CLI V2 Utility</p>
 <blockquote>
 <p>See <a href="https://network.informatica.com/onlinehelp/IICS/prod/CAI/en/index.htm#page/cai-aae-monitor/System_Services.html" rel="nofollow">Alert Service Documentation</a>
@@ -841,12 +849,12 @@ To build and install from source, you'll need a following set of tools</p>
 </blockquote>
 <h4 id="setup-gist-account-and-token">
 <a id="user-content-setup-gist-account-and-token" class="anchor" href="#setup-gist-account-and-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup Gist Account and Token</h4>
-<p>Make sure your secure agents can access the github API to store and retrieve the Alert Service COnfiguration file.</p>
-<p>This Alert Service Implementation can use Github Gist (both Cloud and On prem Github Enterprise Edition) as a storage for its configuration
-It is recommended to use private gist to store this configuration, you will need to create Security token to access gist API</p>
+<p>Make sure your secure agents can access the github API to store and retrieve the Alert Service configuration file.</p>
+<p>This Alert Service Implementation can use Github Gist (both Cloud and On premise Github Enterprise Edition) as a storage for its configuration
+It is recommended to use private gist to store this configuration, you will need to create Security token to access private gists via API</p>
 <ol>
 <li>
-<p>Login to github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)</p>
+<p>Login to Github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)</p>
 </li>
 <li>
 <p>Go to <a href="https://github.com/settings/tokens">Account Settings/Developer Settings/Personal access tokens</a></p>
@@ -866,11 +874,11 @@ It is recommended to use private gist to store this configuration, you will need
 <h3 id="build-and-install-the-package">
 <a id="user-content-build-and-install-the-package" class="anchor" href="#build-and-install-the-package" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build and Install the Package</h3>
 <p>Fork and clone this repository</p>
-<p>Clone example, Youse your own repository url if you forked this one</p>
+<p>Following is a clone command example, use your own repository url if you have forked this repository.</p>
 <div class="highlight highlight-source-shell"><pre>git clone git@github.com:jbrazda/icai-fault-alert-service.git</pre></div>
-<p>Configure credentials file That should look something like this
-recommended location is your home directory/iics `~/iics/environment.properties as it will contain sensitive information.
-I would also recommend to create Native Service user in each of your orgs that can be used to export/import resources via IICS REST API using the <a href="https://network.informatica.com/docs/DOC-18245" rel="nofollow">IICS Asset Management CLI</a>
+<p>Configure credentials file. Example file is listed below.
+recommended location is your home directory/iics <code>~/iics/environment.properties</code> as it will contain sensitive information.
+I would also recommend to create Native IICS Service user in each of your orgs that can be used to export/import resources via IICS REST API using the <a href="https://network.informatica.com/docs/DOC-18245" rel="nofollow">IICS Asset Management CLI</a>
 This tool will automatically download latest version an use it to import provided service to your target org</p>
 <div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> This file should contain properties for Each environment</span>
 <span class="pl-c"><span class="pl-c">#</span> defined in the associated release properties file property iics.environment.list</span>
@@ -887,7 +895,7 @@ This tool will automatically download latest version an use it to import provide
 <span class="pl-k">iics.user.prod</span>=deployer-iics-prod@informatica.com
 <span class="pl-k">iics.password.prod</span>=SET_PASSWORD</pre></div>
 <blockquote>
-<p>WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  '~/iics/environment.properties' The iics folder should be accessible only by user running the import/export/publish tasks ('700' type of permission on unix systems)</p>
+<p>WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  <code>~/iics/environment.properties</code> The <code>~/iics</code> folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)</p>
 </blockquote>
 <p>Update existing or copy <a href="conf/iclab-dev.release.properties">conf/iclab-dev.release.properties</a> file which defines a key Environment specific parameters</p>
 <div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> define a comma separated list of environment org labels such as</span>
@@ -920,11 +928,31 @@ This tool will automatically download latest version an use it to import provide
 
 <span class="pl-c"><span class="pl-c">#</span> Defines Output File name without extension</span>
 <span class="pl-c"><span class="pl-c">#</span> the package.src will produce file in the location based on following expression</span>
-<span class="pl-c"><span class="pl-c">#</span> ${basedir}/target/${selected.release.basename}/import/${iics.target.environment}/${iics.package.output}.zip</span>
+<span class="pl-c"><span class="pl-c">#</span> ${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip</span>
 <span class="pl-k">iics.package.output</span>=FaultAlertService
 
 <span class="pl-c"><span class="pl-c">#</span> Defines Extract output directory for iics extract command</span>
 <span class="pl-k">iics.extract.dir</span>=${basedir}/src/ipd</pre></div>
+<h4 id="ant-build-script">
+<a id="user-content-ant-build-script" class="anchor" href="#ant-build-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ant Build Script</h4>
+<p>This tool uses ant to build/ download and deploy IICS package
+Following is a list of available targets which you can retrieve by running <code>ant -projecthelp</code> in the root of this repository</p>
+<pre lang="text"><code>ant -projecthelp
+Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
+
+            IICS CAI Component Build Script
+
+Main targets:
+
+ clean.release  Deletes Export/import temporary files in ${basedir}/target/${iics.release.basename}
+ download.src   Downloads Designs From Source Environment Org using iics Export utility
+ help           help - describes how to use this script
+ import         Imports package for a select Environment and Package Configuration
+ package.src    Builds Package for specified target environment from ${basedir}/src/ipd
+ publish        Publishes Objects Defined in the Configuration Files
+ update.src     Updates design sources directory for a Source Environment Org using iics Export/Extract utility
+Default target: help
+</code></pre>
 <h3 id="build-package-from-source">
 <a id="user-content-build-package-from-source" class="anchor" href="#build-package-from-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build Package From Source</h3>
 <h4 id="in-process-developer">
@@ -948,7 +976,12 @@ Switch to Process Developer Perspective</p>
 Use the <code>all_designs.package.txt</code> for initial import only (it includes connections and connectors)
 Use the <code>all_exclude_connections.package.txt</code> for Subsequent builds and updates (it excludes connections and connectors)</p>
 <p><a href="doc/images/Ant_Package_Input_PackageConf.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Ant_Package_Input_PackageConf.png" alt="Ant_Package_Input_PackageConf" style="max-width:100%;"></a></p>
-<p>Script will generate Package using an iics tool downloaded from github</p>
+<p>Script will generate Package using an iics tool downloaded from github into a folder
+defined by following expression <code>${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip</code></p>
+<p>Import package using an <code>import</code> target of ant script</p>
+<p>Publish imported resources using a <code>publish</code> target of ant script</p>
+<h4 id="example-packagesrc-script-output">
+<a id="user-content-example-packagesrc-script-output" class="anchor" href="#example-packagesrc-script-output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example package.src Script output</h4>
 <pre lang="text"><code>Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
 -init:
 -env.info:
@@ -1039,24 +1072,32 @@ package.src:
 BUILD SUCCESSFUL
 Total time: 10 seconds
 </code></pre>
-<p>TODO Describe Import Steps</p>
 <h4 id="on-command-line">
 <a id="user-content-on-command-line" class="anchor" href="#on-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>On Command Line</h4>
-<p>You can run the same as in eclipse from command line using a following command</p>
-<p>Build a full package DEV Target</p>
+<p>You can run the same as in eclipse from command line using a following commands</p>
+<p>Build a full package, DEV Environment Target</p>
 <div class="highlight highlight-source-shell"><pre>ant package.src \
 -Diics.release=./conf/iclab-dev.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_designs.package.txt</pre></div>
-<p>Build a package without Connections DEV Target</p>
+<p>Build a Package without Connections DEV Target</p>
 <div class="highlight highlight-source-shell"><pre>ant package.src \
 -Diics.release=./conf/iclab-dev.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt</pre></div>
-<p>TODO Describe Import Steps</p>
+<p>Import Package to test environment</p>
+<div class="highlight highlight-source-shell"><pre>ant import \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=test \
+-Diics.target.package.config=./conf/all_exclude_connections.package.txt</pre></div>
+<p>Publish Imported Assets</p>
+<div class="highlight highlight-source-shell"><pre>ant publish \
+-Diics.release=./conf/iclab-dev.release.properties \
+-Diics.target.environment=test \
+-Diics.target.publish.config=./conf/all_designs.publish.txt</pre></div>
 <h3 id="configure-your-org">
 <a id="user-content-configure-your-org" class="anchor" href="#configure-your-org" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Your Org</h3>
-<p>The process Implementation requires certain system Lever properties configure to be able to send Notification emails</p>
+<p>The process Implementation requires certain system level properties to be configured</p>
 <h4 id="urn-mappings">
 <a id="user-content-urn-mappings" class="anchor" href="#urn-mappings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>URN mappings</h4>
 <p>Fallowing URN mappings must be defined</p>
@@ -1465,13 +1506,27 @@ configuration storage system (Github.com gist) or simply exported as XML. It als
 <p><a href="doc/images/Email_Fault_Alert.png" target="_blank" rel="noopener noreferrer"><img src="doc/images/Email_Fault_Alert.png" alt="Email_Fault_Alert" style="max-width:100%;"></a></p>
 <h2 id="extending-alert-service">
 <a id="user-content-extending-alert-service" class="anchor" href="#extending-alert-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending Alert Service</h2>
-<p>TBD</p>
+<p>This Alert Service handler is designed to be extensible, you can add custom actions or Configuration Storage providers.</p>
 <h3 id="add-custom-action">
 <a id="user-content-add-custom-action" class="anchor" href="#add-custom-action" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Custom Action</h3>
-<p>TBD</p>
+<p>To Add custom action Follow these steps</p>
+<ol>
+<li>If Action would require new Connector and connection, Implement such service connector for example Jira, Service Now, MS Teams Channel, Slack Channel</li>
+<li>Create Process Object to describe Action Specific Configuration parameters (See existing Process object to describe <a href="src/ipd/Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml">email-alert</a>)</li>
+<li>Implement new branch in the <code>Alert Configuration Manager</code> to manage the new action configuration</li>
+<li>Implement new branch of logic to invoke specific Action in the <code>UncaughtFaultAlertHandler-*</code> processes</li>
+<li>Deploy and test the changes to Alert Service</li>
+</ol>
 <h3 id="add-custom-configuration-storage-provider">
 <a id="user-content-add-custom-configuration-storage-provider" class="anchor" href="#add-custom-configuration-storage-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Custom Configuration Storage Provider</h3>
-<p>TBD</p>
+<p>To Add custom Storage provider such as Database follow these steps to to store and retrieve the configuration using a new provider</p>
+<ol>
+<li>Setup or Implement service connector for example to support such storage provider (DB, AWS S3, Bitbucket)</li>
+<li>Implement new steps in the <code>Alert Configuration Manager</code> to save and load configuration using the new provider</li>
+<li>Register new action type in the Pick list selection in the <code>action</code> Process Object <code>Type</code> field</li>
+<li>Implement new branch of logic to Load configuration from new provider in the <code>UncaughtFaultAlertHandler-*</code> processes</li>
+<li>Deploy and test the changes to Alert Service</li>
+</ol>
 <h3 id="known-issues">
 <a id="user-content-known-issues" class="anchor" href="#known-issues" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Known Issues</h3>
 <p>Custom Alert handler Service Works only on Secure Agents, Currently there is an issue on IICS CLoud instances where only built in alert service works as expected , you will have to use built-in Alert Service Email notification on IICS Cloud Servers</p>
