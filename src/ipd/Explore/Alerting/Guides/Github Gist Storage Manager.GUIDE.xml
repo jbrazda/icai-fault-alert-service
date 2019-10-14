@@ -1,0 +1,817 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml</types1:EntryId>
+      <types1:Name>Github_Gist_Storage_Manager</types1:Name>
+      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description>Guide Save/Load/List Configurations Stored as Github Gist</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-10-10T16:26:39Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-10-11T13:02:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2019-10-14T14:19:25Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Github_Gist_Storage_Manager/Github_Gist_Storage_Manager.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Github Gist Storage Manager"
+                         doneOnEndStep="false"
+                         name="Github_Gist_Storage_Manager"
+                         runAsUser="$current">
+            <description>Guide Save/Load/List Configurations Stored as Github Gist</description>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Action "
+                          name="in Action"
+                          required="false"
+                          type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Save As","value":"Save As"},{"label":"Update","value":"Update"},{"label":"Load","value":"Load"},{"label":"List","value":"List"}]</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Configuration Data as Text is Required for  'Update' and 'Save As' Actions"
+                          name="in_configuration"
+                          required="false"
+                          type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Gist Metada used for New Gists"
+                          name="in_gist_meta"
+                          required="false"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">github-gist-alert-configuration:createGist</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                  </options>
+               </parameter>
+               <parameter description="Gist ID is required for 'Load' Action"
+                          name="in_gist_id"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_configuration" type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_gist" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_selected_gist" type="reference">
+                  <options>
+                     <option name="referenceTo">github-gist-alert-configuration:gist</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_update_gist" type="reference">
+                  <options>
+                     <option name="referenceTo">github-gist-alert-configuration:gist</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                  </options>
+               </field>
+            </tempFields>
+            <possibleOutcomes>
+               <outcome id="outcome_k1ky67a7">Cancelled</outcome>
+               <outcome id="outcome_k1l0sd96">Success</outcome>
+            </possibleOutcomes>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="jd300kk3">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null" id="jd300kk3_k1kwvm09" targetScreen="k1kwvm09">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="k1l0sddi">
+                  <title>Create New Gist</title>
+                  <body contentType="text/html">&lt;p&gt;Create Gist&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&lt;input title="in_gist_meta&gt;description" name="input.in_gist_meta[1]/description" type="text" value="in_gist_meta&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Public&lt;/td&gt;
+&lt;td&gt;&lt;input name="input.in_gist_meta[1]/public" type="text" value="in_gist_meta&gt;public"&gt; &amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;input title="in_configuration (input)" name="input.in_configuration" type="text" value="in_configuration (input)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="" id="k1l0sddi_k1l0sdec" targetScreen="k1l0sdec">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="input.in_gist_meta[1]/description"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.in_gist_meta[1]/public"
+                                     readonly="false"
+                                     required="false"
+                                     type="boolean">
+                        <options>
+                           <option name="defaultvalue">false</option>
+                           <option name="boolean_show_as">checkbox</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.in_configuration"
+                                     readonly="false"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1l0sder">
+                  <title>Gist Published Successfully</title>
+                  <body contentType="text/html">&lt;p&gt;Gist Was Saved as ID:&amp;nbsp;&amp;nbsp;&lt;strong&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.publishedGist[1]/id" readonly="readonly" type="text" value="publishedGist&gt;id"&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Description(Label)&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;description" name="output.publishedGist[1]/description" readonly="readonly" type="text" value="publishedGist&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Public&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.publishedGist[1]/public" readonly="readonly" type="text" value="publishedGist&gt;public"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.publishedGist[1]/url" readonly="readonly" type="text" value="publishedGist&gt;url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HTML URL&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;html_url" name="output.publishedGist[1]/html_url" readonly="readonly" type="text" value="publishedGist&gt;html_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.publishedGist[1]/user" readonly="readonly" type="text" value="publishedGist&gt;user"&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Under Owner:&amp;nbsp;&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Owner&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;owner&gt;avatar_url" name="output.publishedGist[1]/owner[1]/avatar_url" readonly="readonly" type="text" value="publishedGist&gt;owner&gt;avatar_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gists&amp;nbsp;URL&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;owner&gt;gists_url" name="output.publishedGist[1]/owner[1]/gists_url" readonly="readonly" type="text" value="publishedGist&gt;owner&gt;gists_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;owner&gt;url" name="output.publishedGist[1]/owner[1]/url" readonly="readonly" type="text" value="publishedGist&gt;owner&gt;url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Org URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;owner&gt;organizations_url" name="output.publishedGist[1]/owner[1]/organizations_url" readonly="readonly" type="text" value="publishedGist&gt;owner&gt;organizations_url"&gt;&amp;nbsp;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Type&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="publishedGist&gt;owner&gt;type" name="output.publishedGist[1]/owner[1]/type" readonly="readonly" type="text" value="publishedGist&gt;owner&gt;type"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="" id="k1l0sder_k1l0sdfv" targetScreen="k1l0sdfv">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.publishedGist[1]/id"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/description"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/public"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/html_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/user"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/owner[1]/avatar_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="image">
+                        <options>
+                           <option name="show_preview">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/owner[1]/gists_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/owner[1]/url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/owner[1]/organizations_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.publishedGist[1]/owner[1]/type"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1l0sd39">
+                  <title>Select Gist to be Updated</title>
+                  <body contentType="text/html">&lt;p&gt;Please Select the Gist you want to&amp;nbsp;load&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_selected_gist (temporary)" name="temp.tmp_selected_gist" type="text" value="tmp_selected_gist (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1l0sd39_k1l0sd35" targetScreen="k1l0sd35">
+                        <text>Continue</text>
+                     </action>
+                     <action alt="null" id="k1l0sd39_k1l0sd38" targetScreen="k1l0sd38">
+                        <text>Cancel</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_selected_gist"
+                                     readonly="false"
+                                     renderingType="table"
+                                     required="false"
+                                     type="reference">
+                        <options>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"id","type":"string","label":"ID","renderingType":"string"},{"name":"description","type":"string","label":"Description","renderingType":"string"},{"name":"updated_at","type":"string","label":"Updated at","renderingType":"string"},{"name":"created_at","type":"string","label":"Created_at","renderingType":"string"},{"name":"html_url","type":"url","label":"Html Url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"url","type":"url","label":"Url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"owner[1]/login","type":"string","label":"User","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option name="referenceTo">github-gist-alert-configuration:gist</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                           <option hide="true" name="valuelist.source">objectListField</option>
+                           <option hide="true" name="valuelist.objectlistfield">output.gists</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1l0sd9s">
+                  <title>Preview Gist</title>
+                  <body contentType="text/html">&lt;p&gt;Gist Successfully Updated Gist:&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updatedGist[1]/id" readonly="readonly" type="text" value="updatedGist&gt;id"&gt;&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Description(Label)&lt;/td&gt;
+&lt;td&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;description" name="output.updatedGist[1]/description" readonly="readonly" type="text" value="updatedGist&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Public&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updatedGist[1]/public" readonly="readonly" type="text" value="updatedGist&gt;public"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updatedGist[1]/url" readonly="readonly" type="text" value="updatedGist&gt;url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;HTML URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updatedGist[1]/html_url" readonly="readonly" type="text" value="updatedGist&gt;html_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updatedGist[1]/user" readonly="readonly" type="text" value="updatedGist&gt;user"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Gist Owner:&amp;nbsp;&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Owner&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;owner&gt;login" name="output.updatedGist[1]/owner[1]/login" readonly="readonly" type="text" value="updatedGist&gt;owner&gt;login"&gt;&amp;nbsp;&amp;nbsp;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;owner&gt;avatar_url" name="output.updatedGist[1]/owner[1]/avatar_url" readonly="readonly" type="text" value="updatedGist&gt;owner&gt;avatar_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Gists&amp;nbsp;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;owner&gt;gists_url" name="output.updatedGist[1]/owner[1]/gists_url" readonly="readonly" type="text" value="updatedGist&gt;owner&gt;gists_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;owner&gt;url" name="output.updatedGist[1]/owner[1]/url" readonly="readonly" type="text" value="updatedGist&gt;owner&gt;url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Type&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updatedGist&gt;owner&gt;type" name="output.updatedGist[1]/owner[1]/type" readonly="readonly" type="text" value="updatedGist&gt;owner&gt;type"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1l0sd9s_k1l0sd3a" targetScreen="k1l0sd3a">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.updatedGist[1]/id"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/description"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/public"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/html_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/user"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/owner[1]/login"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/owner[1]/avatar_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="image">
+                        <options>
+                           <option name="show_preview">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/owner[1]/gists_url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/owner[1]/url"
+                                     readonly="false"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updatedGist[1]/owner[1]/type"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1ky675d">
+                  <title>Select Gist</title>
+                  <body contentType="text/html">&lt;p&gt;Please Select the Gist you want to&amp;nbsp;load&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_selected_gist (temporary)" name="temp.tmp_selected_gist" type="text" value="tmp_selected_gist (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1ky675d_k1ky67ay" targetScreen="k1ky67ay">
+                        <text>Continue</text>
+                     </action>
+                     <action alt="null" id="k1ky675d_k1ky6794" targetScreen="k1ky6794">
+                        <text>Cancel</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_selected_gist"
+                                     readonly="false"
+                                     renderingType="table"
+                                     required="false"
+                                     type="reference">
+                        <options>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"id","type":"string","label":"ID","renderingType":"string"},{"name":"description","type":"string","label":"Description","renderingType":"string"},{"name":"updated_at","type":"string","label":"Updated at","renderingType":"string"},{"name":"created_at","type":"string","label":"Created_at","renderingType":"string"},{"name":"html_url","type":"url","label":"Html Url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"url","type":"url","label":"Url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"owner[1]/login","type":"string","label":"User","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option name="referenceTo">github-gist-alert-configuration:gist</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                           <option hide="true" name="valuelist.source">objectListField</option>
+                           <option hide="true" name="valuelist.objectlistfield">output.gists</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <service id="k1l0sdec">
+                  <title>createGist</title>
+                  <serviceName>github-gist-alert-configuration:createGist</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0s85w" name="gist" source="field" updatable="false">input.in_gist_meta</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="" id="k1l0sdec_k1l0sder" targetScreen="k1l0sder">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1l0sd0y">
+                  <title>getUserProfile Update</title>
+                  <serviceName>github-gist-alert-configuration:getUserProfile</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <actions>
+                     <action alt="" id="k1l0sd0y_k1l0sd1x" targetScreen="k1l0sd1x">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1l0sd1x">
+                  <title>getUserGists Update</title>
+                  <serviceName>github-gist-alert-configuration:getUserGists</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0si9w" name="user" source="field" updatable="true">output.githubUserProfile[1]/login</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="" id="k1l0sd1x_k1l0sd39" targetScreen="k1l0sd39">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1l0sd35">
+                  <title>getGist for Update</title>
+                  <serviceName>github-gist-alert-configuration:getGist</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0sfga" name="gist_id" source="field" updatable="true">temp.tmp_selected_gist[1]/id</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="" id="k1l0sd35_k1l0sd49" targetScreen="k1l0sd49">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1l0sd5t">
+                  <title>updateGist</title>
+                  <serviceName>github-gist-alert-configuration:updateGist</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0sfgh" name="gist_id" source="field" updatable="true">temp.tmp_selected_gist[1]/id</parameter>
+                     <parameter id="k1l0sfgi" name="gist" source="formula" updatable="false">xpath $temp.tmp_update_gist </parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="" id="k1l0sd5t_k1l0sd36" targetScreen="k1l0sd36">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1l0scxz">
+                  <title>getGist  by ID</title>
+                  <serviceName>github-gist-alert-configuration:getGist</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0s70z" name="gist_id" source="field" updatable="true">input.in_gist_id</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="" id="k1l0scxz_k1l0scz1" targetScreen="k1l0scz1">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1kwvm5v">
+                  <title>getUserProfile</title>
+                  <serviceName>github-gist-alert-configuration:getUserProfile</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <actions>
+                     <action alt="null" id="k1kwvm5v_k1kwvm7c" targetScreen="k1kwvm7c">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1kwvm7c">
+                  <title>getUserGists List</title>
+                  <serviceName>github-gist-alert-configuration:getUserGists</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1l0si9w" name="user" source="field" updatable="true">output.githubUserProfile[1]/login</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1kwvm7c_k1ky675d" targetScreen="k1ky675d">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1ky67ay">
+                  <title>getGist</title>
+                  <serviceName>github-gist-alert-configuration:getGist</serviceName>
+                  <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1kzx3g2" name="gist_id" source="field" updatable="true">temp.tmp_selected_gist[1]/id</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1ky67ay_k1kzxb9j" targetScreen="k1kzxb9j">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <endScreen dontShowScreen="true" id="k1l0sd38" outcomeId="outcome_k1ky67a7">
+                  <title>End Cancelled Update</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1ky6794" outcomeId="outcome_k1ky67a7">
+                  <title>End Cancelled Selection</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen id="jd4cwa59" outcomeId="outcome_k1l0sd96">
+                  <title>End</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <empty gatewayType="exclusive" id="k1kwvm0j">
+                  <actions>
+                     <action alt="null" id="k1kwvm0j_jd4cwa59" targetScreen="jd4cwa59">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="k1l0sd3a">
+                  <actions>
+                     <action alt="" id="k1l0sd3a_k1kwvm0j" targetScreen="k1kwvm0j">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="k1ky678k">
+                  <actions>
+                     <action alt="null" id="k1ky678k_k1kwvm0j" targetScreen="k1kwvm0j">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <jumpTo id="k1kwvm1c" targetTitle="getUserProfile">
+                  <actions>
+                     <action alt="null" id="k1kwvm1c_k1kwvm5v" targetScreen="k1kwvm5v">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <dataDecision id="k1kwvm09">
+                  <title>in Action</title>
+                  <dataName>input.in Action</dataName>
+                  <actions>
+                     <action alt="equals Save As" id="k1kwvm09_k1l0sddi" targetScreen="k1l0sddi">
+                        <text>Save As</text>
+                     </action>
+                     <action alt="equals Update" id="k1kwvm09_k1l0sd0y" targetScreen="k1l0sd0y">
+                        <text>Update</text>
+                     </action>
+                     <action alt="equals Load" id="k1kwvm09_k1l0scxz" targetScreen="k1l0scxz">
+                        <text>Load</text>
+                     </action>
+                     <action alt="equals List" id="k1kwvm09_k1kwvm5v" targetScreen="k1kwvm5v">
+                        <text>List</text>
+                     </action>
+                     <action alt="else " id="k1kwvm09_k1kwvm1c" targetScreen="k1kwvm1c">
+                        <text>otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <assignment id="k1l0sdfv">
+                  <title>Assignment to out_gist, out_configuration</title>
+                  <operation source="field" to="output.out_gist">output.publishedGist</operation>
+                  <operation source="field" to="output.out_configuration">input.in_configuration</operation>
+                  <actions>
+                     <action alt="" id="k1l0sdfv_k1kwvm0j" targetScreen="k1kwvm0j">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1l0sd49">
+                  <title>Assignment to tmp_update_gist</title>
+                  <operation source="formula" to="temp.tmp_update_gist">
+                     <expression language="XQuery">let $saxon_params :=&lt;xsl:output xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                                xmlns:saxon="http://saxon.sf.net/"
+                                method="xml"
+                                omit-xml-declaration="yes"
+                                indent="yes"
+                                saxon:indent-spaces="4"/&gt;
+return    
+&lt;root&gt;
+    &lt;public&gt;{ $temp.tmp_selected_gist[1]/public/text() }&lt;/public&gt;
+    &lt;description&gt;{ $temp.tmp_selected_gist[1]/description/text() }&lt;/description&gt;
+    &lt;files&gt;
+        &lt;alert_configuration.xml&gt;
+            &lt;content&gt;{$input.in_configuration }&lt;/content&gt;
+        &lt;/alert_configuration.xml&gt;
+    &lt;/files&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <actions>
+                     <action alt="" id="k1l0sd49_k1l0sd5t" targetScreen="k1l0sd5t">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1l0sd36">
+                  <title>Assignment to out_gist, out_configuration 2</title>
+                  <operation source="field" to="output.out_gist">output.gist</operation>
+                  <operation source="formula" to="output.out_configuration">
+                     <expression language="XQuery">$input.in_configuration </expression>
+                  </operation>
+                  <actions>
+                     <action alt="" id="k1l0sd36_k1l0sd9s" targetScreen="k1l0sd9s">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1l0scz1">
+                  <title>Assignment to out_gist, out_configuration 1</title>
+                  <operation source="field" to="output.out_gist">output.gist</operation>
+                  <operation source="formula" to="output.out_configuration">
+                     <expression language="XQuery">$output.gist[1]/files[1]/*[1]/content/text() </expression>
+                  </operation>
+                  <actions>
+                     <action alt="" id="k1l0scz1_k1kwvm0j" targetScreen="k1kwvm0j">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1kzxb9j">
+                  <title>Assignment to out_gist, out_configuration</title>
+                  <operation source="field" to="output.out_gist">output.gist</operation>
+                  <operation source="formula" to="output.out_configuration">
+                     <expression language="XQuery">$output.gist[1]/files[1]/*[1]/content/text() </expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="k1kzxb9j_k1ky678k" targetScreen="k1ky678k">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>5e8SOtOzInDhHjnm8F298G</types1:GUID>
+      <types1:DisplayName>Github Gist Storage Manager</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-10-14T16:29:47.321Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

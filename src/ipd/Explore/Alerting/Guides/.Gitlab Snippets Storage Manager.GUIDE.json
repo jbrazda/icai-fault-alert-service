@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "6oIrqEN7LeAjwE2apPaTAX",
+      "objectName": "Gitlab Snippets Storage Manager",
+      "objectType": "GUIDE",
+      "path": "/Explore/Alerting/Guides",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Guide Save/Load/List Configurations Stored in Gitlab",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "aYlOxMbHcsSdSUISh7CVK4"
+         ],
+         "repoInfo": {
+            "repoHandle": "uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "aYlOxMbHcsSdSUISh7CVK4",
+      "objectName": "gitlab-snippets-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml"
+         }
+      }
+   }
+]

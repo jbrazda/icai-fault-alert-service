@@ -1,0 +1,52 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml</types1:EntryId>
+      <types1:Name>gitlab-snippets-alert-configuration</types1:Name>
+      <types1:ParentFlowIds>uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml,5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-10-09T18:48:51Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-10-10T16:51:48Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2019-10-14T14:59:59Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/gitlab-snippets-alert-configuration/gitlab-snippets-alert-configuration.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="gitlab-snippets-alert-configuration"
+                     label="gitlab-snippets-alert-configuration"
+                     name="gitlab-snippets-alert-configuration">
+            <description>Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets</description>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="service_url" value="https://gitlab.com/api"/>
+               <attribute encrypted="true" name="access_token" value=""/>
+               <attribute encrypted="false" name="api_version" value="v4"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/gitlab_snippets/gitlab_snippets_svcDef.xml"
+                               guid="1UgNOYX99vYl4ePFrQfEis"
+                               name="gitlab-snippets"
+                               supportsConnectionTest="false"
+                               uuid="7cf5fdba-abb9-48d4-b6d1-e2481c1eddbd">
+               <description>Provides Support to store  and retrive configurations or other files as gitlab Snippets
+See https://gitlab.com/help/api/README.md</description>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>aYlOxMbHcsSdSUISh7CVK4</types1:GUID>
+      <types1:DisplayName>gitlab-snippets-alert-configuration</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-10-14T16:29:47.152Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

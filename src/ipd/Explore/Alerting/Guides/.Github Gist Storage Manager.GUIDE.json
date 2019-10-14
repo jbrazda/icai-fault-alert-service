@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "5e8SOtOzInDhHjnm8F298G",
+      "objectName": "Github Gist Storage Manager",
+      "objectType": "GUIDE",
+      "path": "/Explore/Alerting/Guides",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Guide Save/Load/List Configurations Stored as Github Gist",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "2AJJfAJqQLkaZMytvRBVWR"
+         ],
+         "repoInfo": {
+            "repoHandle": "AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "2AJJfAJqQLkaZMytvRBVWR",
+      "objectName": "github-gist-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Github Gist API connection to manage Alert Service Configurations",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml"
+         }
+      }
+   }
+]

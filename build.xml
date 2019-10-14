@@ -66,6 +66,7 @@
                 <include name="*.jar" />
             </fileset>
         </path>
+    	
         <!-- Platform Specific GNU sed -->
         <condition property="gnu.sed" value="${tools.gnu.sed.win.amd64}">
             <and>
@@ -331,7 +332,7 @@
             region="${iics.region}" />
     </target>
 
-    <target name="iics.export" depends="iics.list,-check.export.files,-iics.input.source.creds" unless="iics.export.available">
+    <target name="iics.export" depends="-download.iics,iics.list,-check.export.files,-iics.input.source.creds" unless="iics.export.available">
         <iics.export id="${iics.release.basename}" 
             listfile="${iics.list.output}" 
             outputfile="${iics.export.output}" 
@@ -348,7 +349,7 @@
         </condition>
     </target>
 
-    <target name="iics.extract" depends="iics.export,-check.exported" if="iics.export.available">
+    <target name="iics.extract" depends="-download.iics,iics.export,-check.exported" if="iics.export.available">
         <iics.extract id="${iics.release.basename}" 
             file="${iics.export.dir}/${iics.export.output}" 
             todir="${iics.extract.dir}" />
@@ -359,7 +360,7 @@
 
     </target>
 
-    <target name="iics.package" depends="-load.release.properties" >
+    <target name="iics.package" depends="-download.iics,-load.release.properties" >
         <iics.package id="${iics.release.basename}" 
             workspace="${iics.extract.dir}" 
             output="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip" 
@@ -368,7 +369,7 @@
     </target>
     
     
-    <target name="iics.import" depends="-load.release.properties">
+    <target name="iics.import" depends="-download.iics,-load.release.properties">
          <iics.import id="${iics.release.basename}" 
             region="${iics.region}" 
             file="${iics.import.dir}/${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip"
@@ -390,7 +391,7 @@
         -select-release,
         -load.release.properties" 
 		if="iics.release.basename"
-		description="Builds IPD Packages Binry Distribution to pre-defined folder which is available for download in github">
+		description="Builds IPD Binary Packages Distribution to pre-defined folder which are available for download in github">
 		<property name="iics.binaries.dir" location="${basedir}/dist"></property>
 		
 		<iics.package id="initial_release" 
@@ -429,6 +430,7 @@
     <target name="package.src" depends="-env.info,
         -select-release,
         -load.release.properties,
+    	-download.iics,
         -set-target-properties,
         -select-package-config,
         -set-package-properties,
@@ -451,6 +453,7 @@
     
     <target name="publish" depends="-env.info,
         -select-release,
+    	-download.iics,
         -load.release.properties,
         -set-target-properties,
         -select-publish-config,
@@ -772,7 +775,7 @@
                  
                 <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
                 <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
-                 <echo level="info">@{validationresult}=${@{validationresult}}</echo>
+                <echo level="info">@{validationresult}=${@{validationresult}}</echo>
              </sequential>
         </macrodef>
        

@@ -16,13 +16,16 @@
             "minor": 0
          },
          "objectRefs": [
-            "31o1RHhc6uRdN1eGygCG2Q",
-            "450357e5mW9eidFwHW1Nou",
+            "5e8SOtOzInDhHjnm8F298G",
+            "aYlOxMbHcsSdSUISh7CVK4",
             "a7pUb21Pfy3c67w7CCaz4B",
-            "2AJJfAJqQLkaZMytvRBVWR",
             "ioXrdNYzqYFhm23xQKiFKT",
             "fnx2xYvSTCul1tKBqmlGcC",
             "0XBGnDRR3WMgJR50uEhJiV",
+            "6oIrqEN7LeAjwE2apPaTAX",
+            "31o1RHhc6uRdN1eGygCG2Q",
+            "450357e5mW9eidFwHW1Nou",
+            "2AJJfAJqQLkaZMytvRBVWR",
             "hnshiYqkeIOehlyCb2Zdwg",
             "7TCmsWgjoghdSqfpcOxfs4"
          ],
@@ -32,14 +35,14 @@
       }
    },
    {
-      "objectGuid": "31o1RHhc6uRdN1eGygCG2Q",
-      "objectName": "AttachmentInformation",
-      "objectType": "PROCESS_OBJECT",
-      "path": "/Explore/Tools/ProcessObjects",
+      "objectGuid": "5e8SOtOzInDhHjnm8F298G",
+      "objectName": "Github Gist Storage Manager",
+      "objectType": "GUIDE",
+      "path": "/Explore/Alerting/Guides",
       "metadata": {
          "additionalInfo": {
             "contentType": "application/json; charset=utf-8",
-            "description": "Attachment Object Information Holder",
+            "description": "Guide Save/Load/List Configurations Stored as Github Gist",
             "documentState": "VALID"
          },
          "contextAttributes": null,
@@ -49,19 +52,19 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "BbeGoQwg74Rpf6J-gt-2267328-2019-08-28T21:27:46.436Z::po.xml"
+            "repoHandle": "AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml"
          }
       }
    },
    {
-      "objectGuid": "450357e5mW9eidFwHW1Nou",
-      "objectName": "action-ref",
-      "objectType": "PROCESS_OBJECT",
-      "path": "/Explore/Alerting/ProcessObjects",
+      "objectGuid": "aYlOxMbHcsSdSUISh7CVK4",
+      "objectName": "gitlab-snippets-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
       "metadata": {
          "additionalInfo": {
             "contentType": "application/json; charset=utf-8",
-            "description": "Altert Action reference",
+            "description": "Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets",
             "documentState": "VALID"
          },
          "contextAttributes": null,
@@ -71,7 +74,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "f4eC3Q6gaabclvA-gt-4385977-2019-06-19T18:36:52.094Z::po.xml"
+            "repoHandle": "OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml"
          }
       }
    },
@@ -94,28 +97,6 @@
          "objectRefs": [],
          "repoInfo": {
             "repoHandle": "ciSrZMSPfXBiVGk-gt-4488393-2019-06-18T13:25:21.036Z::po.xml"
-         }
-      }
-   },
-   {
-      "objectGuid": "2AJJfAJqQLkaZMytvRBVWR",
-      "objectName": "github-gist-alert-configuration",
-      "objectType": "AI_CONNECTION",
-      "path": "/Explore/Alerting/Connections",
-      "metadata": {
-         "additionalInfo": {
-            "contentType": "application/json; charset=utf-8",
-            "description": "Github Gist API connection to manage Alert Service Configurations",
-            "documentState": "VALID"
-         },
-         "contextAttributes": null,
-         "modelVersion": {
-            "major": 1,
-            "minor": 0
-         },
-         "objectRefs": [],
-         "repoInfo": {
-            "repoHandle": "XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml"
          }
       }
    },
@@ -182,6 +163,94 @@
          "objectRefs": [],
          "repoInfo": {
             "repoHandle": "2iXieHufWC64Ky2-gt-4509483-2019-06-18T14:08:18.866Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "6oIrqEN7LeAjwE2apPaTAX",
+      "objectName": "Gitlab Snippets Storage Manager",
+      "objectType": "GUIDE",
+      "path": "/Explore/Alerting/Guides",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Guide Save/Load/List Configurations Stored in Gitlab",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "31o1RHhc6uRdN1eGygCG2Q",
+      "objectName": "AttachmentInformation",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Tools/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Attachment Object Information Holder",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "BbeGoQwg74Rpf6J-gt-2267328-2019-08-28T21:27:46.436Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "450357e5mW9eidFwHW1Nou",
+      "objectName": "action-ref",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Altert Action reference",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "f4eC3Q6gaabclvA-gt-4385977-2019-06-19T18:36:52.094Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "2AJJfAJqQLkaZMytvRBVWR",
+      "objectName": "github-gist-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Github Gist API connection to manage Alert Service Configurations",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml"
          }
       }
    },

@@ -1,0 +1,966 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml</types1:EntryId>
+      <types1:Name>Gitlab_Snippets_Storage_Manager</types1:Name>
+      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description>Guide Save/Load/List Configurations Stored in Gitlab</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
+      <types1:CreationDate>2019-10-09T17:47:08Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
+      <types1:ModificationDate>2019-10-14T15:05:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
+      <types1:PublicationDate>2019-10-14T15:06:00Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Gitlab_Snippets_Storage_Manager/Gitlab_Snippets_Storage_Manager.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         disableScreenRollback="true"
+                         displayName="Gitlab Snippets Storage Manager"
+                         doneOnEndStep="false"
+                         name="Gitlab_Snippets_Storage_Manager"
+                         runAsUser="$current">
+            <description>Guide Save/Load/List Configurations Stored in Gitlab</description>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Action "
+                          name="in_action"
+                          required="false"
+                          type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Save As","value":"Save As"},{"label":"Update","value":"Update"},{"label":"Load","value":"Load"},{"label":"List","value":"List"}]</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Configuration Data as Text"
+                          name="in_configuration"
+                          required="false"
+                          type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Use this field to set snipet data for Load, Save As Actions"
+                          name="in_snippet_meta"
+                          required="false"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="Configuration as text"
+                      name="out_configuration"
+                      type="textarea">
+                  <options>
+                     <option name="text_width">100</option>
+                     <option name="text_height">5</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="For Save, Update, and List Selection returns Snippet Metadata"
+                      name="out_snippet"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_selected_file" type="reference">
+                  <options>
+                     <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_config_title" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_config_file_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_config_description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_is_update" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <possibleOutcomes>
+               <outcome id="outcome_k1jm9z4k">Error</outcome>
+               <outcome id="outcome_k1jnzp0g">Cancelled</outcome>
+               <outcome id="outcome_k1jnzp3n">Success</outcome>
+            </possibleOutcomes>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="jd300kk3">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null" id="jd300kk3_k1jm9ylq" targetScreen="k1jm9ylq">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="k1jm9z26">
+                  <title>Invalid Data</title>
+                  <body contentType="text/html">&lt;h2&gt;Invalid Parameters&lt;/h2&gt;
+&lt;p&gt;Missing Configuration Data to be Saved&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1jm9z26_k1jm9z4d" targetScreen="k1jm9z4d">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </screen>
+               <screen id="k1jnzp1f">
+                  <title>Save as</title>
+                  <body contentType="text/html">&lt;p&gt;Save as:&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Title&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_selected_file&gt;title" name="temp.tmp_selected_file[1]/title" type="text" value="tmp_selected_file&gt;title"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;File Name&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_selected_file&gt;file_name" name="temp.tmp_selected_file[1]/file_name" type="text" value="tmp_selected_file&gt;file_name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_selected_file&gt;description" name="temp.tmp_selected_file[1]/description" type="text" value="tmp_selected_file&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Visibility&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;input title="tmp_selected_file&gt;visibility" name="temp.tmp_selected_file[1]/visibility" type="text" value="tmp_selected_file&gt;visibility"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;File Content:&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-family: monospace; font-size: 12px;"&gt;&lt;input class="" title="in_configuration (input)" name="input.in_configuration" type="text" value="in_configuration (input)"&gt;&lt;/span&gt;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1jnzp1f_k1qgy96t" targetScreen="k1qgy96t">
+                        <text>Save</text>
+                     </action>
+                     <action alt="null" id="k1jnzp1f_k1jnzp3d" targetScreen="k1jnzp3d">
+                        <text>Cancel</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_selected_file[1]/title"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="text_size">100</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_selected_file[1]/file_name"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                           <option name="text_size">100</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_selected_file[1]/description"
+                                     readonly="false"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="input.in_configuration"
+                                     readonly="false"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">20</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_selected_file[1]/visibility"
+                                     readonly="false"
+                                     required="false"
+                                     type="picklist">
+                        <options>
+                           <option name="values">[{"value":"private","label":"private"},{"value":"internal","label":"internal"},{"value":"public","label":"public"}]</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1ksh2fx">
+                  <title>Preview Updated Gist</title>
+                  <body contentType="text/html">&lt;h2&gt;Updated&amp;nbsp;Snippet&lt;img style="width: 210px; height: 194px; float: right;" title="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg" src="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg" alt="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg"&gt;&lt;/h2&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Title&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;title" name="output.updated_snippet[1]/title" readonly="readonly" type="text" value="updated_snippet&gt;title"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;File Name&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;file_name" name="output.updated_snippet[1]/file_name" readonly="readonly" type="text" value="updated_snippet&gt;file_name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;description" name="output.updated_snippet[1]/description" readonly="readonly" type="text" value="updated_snippet&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ID&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.updated_snippet[1]/id" readonly="readonly" type="text" value="updated_snippet&gt;id"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;web_url" name="output.updated_snippet[1]/web_url" readonly="readonly" type="text" value="updated_snippet&gt;web_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Raw URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;raw_url" name="output.updated_snippet[1]/raw_url" readonly="readonly" type="text" value="updated_snippet&gt;raw_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Created at&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;created_at" name="output.updated_snippet[1]/created_at" readonly="readonly" type="text" value="updated_snippet&gt;created_at"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Updated at&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;updated_at" name="output.updated_snippet[1]/updated_at" readonly="readonly" type="text" value="updated_snippet&gt;updated_at"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Author&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;author&gt;name" name="output.updated_snippet[1]/author[1]/name" readonly="readonly" type="text" value="updated_snippet&gt;author&gt;name"&gt;&amp;nbsp; &lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;author&gt;web_url" name="output.updated_snippet[1]/author[1]/web_url" readonly="readonly" type="text" value="updated_snippet&gt;author&gt;web_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Avatar&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="updated_snippet&gt;author&gt;avatar_url" name="output.updated_snippet[1]/author[1]/avatar_url" readonly="readonly" type="text" value="updated_snippet&gt;author&gt;avatar_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1ksh2fx_k1ktnz1x" targetScreen="k1ktnz1x">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.updated_snippet[1]/title"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/file_name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/description"
+                                     readonly="true"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/id"
+                                     readonly="true"
+                                     required="false"
+                                     type="int">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/web_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/raw_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/created_at"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/updated_at"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/author[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/author[1]/web_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.updated_snippet[1]/author[1]/avatar_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="image">
+                        <options>
+                           <option name="show_preview">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1ksh2hi">
+                  <title>Review New Gist</title>
+                  <body contentType="text/html">&lt;h2&gt;Created Snippet&lt;img style="width: 210px; height: 194px; float: right;" title="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg" src="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg" alt="https://upload.wikimedia.org/wikipedia/commons/1/18/GitLab_Logo.svg"&gt;&lt;/h2&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Title&lt;/td&gt;
+&lt;td&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;File Name&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;file_name" name="output.created_snippet[1]/file_name" readonly="readonly" type="text" value="created_snippet&gt;file_name"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;description" name="output.created_snippet[1]/description" readonly="readonly" type="text" value="created_snippet&gt;description"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ID&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" name="output.created_snippet[1]/id" readonly="readonly" type="text" value="created_snippet&gt;id"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;web_url" name="output.created_snippet[1]/web_url" readonly="readonly" type="text" value="created_snippet&gt;web_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Raw URL&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;raw_url" name="output.created_snippet[1]/raw_url" readonly="readonly" type="text" value="created_snippet&gt;raw_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Created at&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;created_at" name="output.created_snippet[1]/created_at" readonly="readonly" type="text" value="created_snippet&gt;created_at"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Updated at&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;updated_at" name="output.created_snippet[1]/updated_at" readonly="readonly" type="text" value="created_snippet&gt;updated_at"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Author&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;author&gt;name" name="output.created_snippet[1]/author[1]/name" readonly="readonly" type="text" value="created_snippet&gt;author&gt;name"&gt;&amp;nbsp; &lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;author&gt;web_url" name="output.created_snippet[1]/author[1]/web_url" readonly="readonly" type="text" value="created_snippet&gt;author&gt;web_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Avatar&lt;/td&gt;
+&lt;td&gt;&lt;input style="-moz-appearance: none; background-color: lightgrey; border: none;" title="created_snippet&gt;author&gt;avatar_url" name="output.created_snippet[1]/author[1]/avatar_url" readonly="readonly" type="text" value="created_snippet&gt;author&gt;avatar_url"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1ksh2hi_k1ktnz2s" targetScreen="k1ktnz2s">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.created_snippet[1]/file_name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/description"
+                                     readonly="true"
+                                     required="false"
+                                     type="textarea">
+                        <options>
+                           <option name="text_width">100</option>
+                           <option name="text_height">5</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/id"
+                                     readonly="true"
+                                     required="false"
+                                     type="int">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/web_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/raw_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/author[1]/name"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/created_at"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/updated_at"
+                                     readonly="true"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/author[1]/avatar_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="image">
+                        <options>
+                           <option name="show_preview">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="output.created_snippet[1]/author[1]/web_url"
+                                     readonly="true"
+                                     required="false"
+                                     type="url">
+                        <options>
+                           <option name="urlDisplayReadonlyAs">Link</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1jm9ypp">
+                  <title>Select Snippet</title>
+                  <body contentType="text/html">&lt;p&gt;Available Files&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_selected_file (temporary)" name="temp.tmp_selected_file" type="text" value="tmp_selected_file (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1jm9ypp_k1jm9z0s" targetScreen="k1jm9z0s">
+                        <text>Cancel</text>
+                     </action>
+                     <action alt="null" id="k1jm9ypp_k1kumm5p" targetScreen="k1kumm5p">
+                        <text>Load Selected</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_selected_file"
+                                     readonly="false"
+                                     renderingType="table"
+                                     required="false"
+                                     type="reference">
+                        <options>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"title","type":"string","label":"title","renderingType":"string"},{"name":"file_name","type":"string","label":"file_name","renderingType":"string"},{"name":"visibility","type":"string","label":"visibility","renderingType":"string"},{"name":"web_url","type":"url","label":"web_url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"raw_url","type":"url","label":"raw_url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"author[1]/name","type":"string","label":"author &gt; name","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                           <option hide="true" name="valuelist.source">objectListField</option>
+                           <option hide="true" name="valuelist.objectlistfield">output.out_snippets</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k1krpdnv">
+                  <title>Select Snippet to Update</title>
+                  <body contentType="text/html">&lt;p&gt;Available&amp;nbsp;Snippets&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_selected_file (temporary)" name="temp.tmp_selected_file" type="text" value="tmp_selected_file (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k1krpdnv_k1krpdnr" targetScreen="k1krpdnr">
+                        <text>Cancel</text>
+                     </action>
+                     <action alt="null" id="k1krpdnv_k1ksh291" targetScreen="k1ksh291">
+                        <text>Load Selected</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_selected_file"
+                                     readonly="false"
+                                     renderingType="table"
+                                     required="false"
+                                     type="reference">
+                        <options>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"title","type":"string","label":"title","renderingType":"string"},{"name":"file_name","type":"string","label":"file_name","renderingType":"string"},{"name":"visibility","type":"string","label":"visibility","renderingType":"string"},{"name":"web_url","type":"url","label":"web_url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"raw_url","type":"url","label":"raw_url","renderingType":"url","options":{"option":[{"name":"urlDisplayReadonlyAs","$t":"Link"}]}},{"name":"author[1]/name","type":"string","label":"author &gt; name","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                           <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                           <option hide="true" name="valuelist.source">objectListField</option>
+                           <option hide="true" name="valuelist.objectlistfield">output.out_snippets</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <service id="k1ksh2fe">
+                  <title>Update Snippet</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Update Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1qgybyw" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
+                     <parameter id="k1qgybyx" name="title" source="field" updatable="true">temp.tmp_selected_file[1]/title</parameter>
+                     <parameter id="k1qgybyy" name="file_name" source="field" updatable="true">temp.tmp_selected_file[1]/file_name</parameter>
+                     <parameter id="k1qgybyz"
+                                name="description"
+                                source="field"
+                                updatable="true">temp.tmp_selected_file[1]/description</parameter>
+                     <parameter id="k1qgybz0" name="content" source="field" updatable="true">input.in_configuration</parameter>
+                     <parameter id="k1qgybz1" name="visibility" source="field" updatable="true">temp.tmp_selected_file[1]/visibility</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1ksh2fe_k1ksh2fx" targetScreen="k1ksh2fx">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1ksh2ez">
+                  <title>Create Snippet</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Create Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1qgybeg" name="title" source="field" updatable="true">temp.tmp_selected_file[1]/title</parameter>
+                     <parameter id="k1qgybeh" name="file_name" source="field" updatable="true">temp.tmp_selected_file[1]/file_name</parameter>
+                     <parameter id="k1qgybei" name="content" source="field" updatable="true">input.in_configuration</parameter>
+                     <parameter id="k1qgybej"
+                                name="description"
+                                source="field"
+                                updatable="true">temp.tmp_selected_file[1]/description</parameter>
+                     <parameter id="k1qgybek" name="visibility" source="field" updatable="true">temp.tmp_selected_file[1]/visibility</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1ksh2ez_k1ksh2hi" targetScreen="k1ksh2hi">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1jm9you">
+                  <title>Get Snippet</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1krp6ex" name="id" source="field" updatable="true">input.in_snippet_meta[1]/id</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1jm9you_k1jnzp0x" targetScreen="k1jnzp0x">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1jnzp0x">
+                  <title>Get Raw Snippet</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1krp9qz" name="id" source="field" updatable="true">output.snippet_info[1]/id</parameter>
+                     <parameter id="k1krp9r0"
+                                name="parse_as"
+                                source="constant"
+                                updatable="false">xml</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1jnzp0x_k1jnzp0t" targetScreen="k1jnzp0t">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1jm9yph">
+                  <title>Get Snippets</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Snippets</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <actions>
+                     <action alt="null" id="k1jm9yph_k1jm9ypp" targetScreen="k1jm9ypp">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1kumm5p">
+                  <title>Get Snippet File</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1kummf6" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
+                     <parameter id="k1kummf7"
+                                name="parse_as"
+                                source="constant"
+                                updatable="false">xml</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1kumm5p_k1kumm7u" targetScreen="k1kumm7u">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1krpdne">
+                  <title>Get Snippets for Update</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Snippets</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <actions>
+                     <action alt="null" id="k1krpdne_k1krpdnv" targetScreen="k1krpdnv">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="k1ksh2as">
+                  <title>Get Raw Snippet for Update</title>
+                  <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
+                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceInput>
+                     <parameter id="k1krpgfb" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
+                     <parameter id="k1krpgfc"
+                                name="parse_as"
+                                source="constant"
+                                updatable="false">xml</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="k1ksh2as_k1ksh29u" targetScreen="k1ksh29u">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <endScreen dontShowScreen="true" id="k1jm9z4d" outcomeId="outcome_k1jm9z4k">
+                  <title>End Error</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1jnzp3l" outcomeId="outcome_k1jnzp3n">
+                  <title>End - Saved</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen id="k1jnzp3d" outcomeId="outcome_k1jnzp3n">
+                  <title>End</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1jm9yzd" outcomeId="outcome_k1jnzp3n">
+                  <title>End - Loaded</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1jm9z0s" outcomeId="outcome_k1jnzp0g">
+                  <title>End Cancel List</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1kumma7" outcomeId="outcome_k1jnzp3n">
+                  <title>End - Selected</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <endScreen dontShowScreen="true" id="k1krpdnr" outcomeId="outcome_k1jnzp0g">
+                  <title>End Cancel Update</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <empty gatewayType="exclusive" id="k1qjrlxo">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="k1qjrlwk">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="k1qjrlwh">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="k1ksh2d0">
+                  <actions>
+                     <action alt="null" id="k1ksh2d0_k1krpdlt" targetScreen="k1krpdlt">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="k1qjrlx0">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="k1qjrlxj">
+                  <actions/>
+               </empty>
+               <empty gatewayType="exclusive" id="k1ksh28f">
+                  <actions>
+                     <action alt="null" id="k1ksh28f_k1ksh27v" targetScreen="k1ksh27v">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <jumpTo id="k1ksh27v" targetTitle="Save as">
+                  <actions>
+                     <action alt="null" id="k1ksh27v_k1jnzp1f" targetScreen="k1jnzp1f">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="k1jm9ytc" targetTitle="Get Snippets for Update">
+                  <actions>
+                     <action alt="null" id="k1jm9ytc_k1krpdne" targetScreen="k1krpdne">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <dataDecision id="k1jm9ylq">
+                  <title>Action</title>
+                  <dataName>input.in_action</dataName>
+                  <actions>
+                     <action alt="equals Save As" id="k1jm9ylq_k1jm9yut" targetScreen="k1jm9yut">
+                        <text>Equals Save As</text>
+                     </action>
+                     <action alt="equals Load" id="k1jm9ylq_k1jm9you" targetScreen="k1jm9you">
+                        <text>Equals Load</text>
+                     </action>
+                     <action alt="equals List" id="k1jm9ylq_k1jm9yph" targetScreen="k1jm9yph">
+                        <text>Equals List</text>
+                     </action>
+                     <action alt="equals Update" id="k1jm9ylq_k1krpdne" targetScreen="k1krpdne">
+                        <text>Equals Update</text>
+                     </action>
+                     <action alt="else " id="k1jm9ylq_k1jm9ytc" targetScreen="k1jm9ytc">
+                        <text>Otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <dataDecision id="k1jm9yut">
+                  <title>in_alert_configuration</title>
+                  <dataName>input.in_configuration</dataName>
+                  <actions>
+                     <action alt="equals " id="k1jm9yut_k1jm9z26" targetScreen="k1jm9z26">
+                        <text>Equals</text>
+                     </action>
+                     <action alt="else " id="k1jm9yut_k1kwhwgt" targetScreen="k1kwhwgt">
+                        <text>Otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <dataDecision id="k1ksh2cn">
+                  <title>is Update?</title>
+                  <dataName>temp.tmp_is_update</dataName>
+                  <actions>
+                     <action alt="true" id="k1ksh2cn_k1ksh2fe" targetScreen="k1ksh2fe">
+                        <text>Yes</text>
+                     </action>
+                     <action alt="false" id="k1ksh2cn_k1ksh2ez" targetScreen="k1ksh2ez">
+                        <text>No</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <dataDecision id="k1ksh286">
+                  <title>in_configuration</title>
+                  <dataName>input.in_configuration</dataName>
+                  <actions>
+                     <action alt="equals " id="k1ksh286_k1ksh2as" targetScreen="k1ksh2as">
+                        <text>Equals</text>
+                     </action>
+                     <action alt="else " id="k1ksh286_k1ksh28f" targetScreen="k1ksh28f">
+                        <text>Otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <assignment id="k1kwhwgt">
+                  <title>Assignment to tmp_selected_file</title>
+                  <operation source="field" to="temp.tmp_selected_file">input.in_snippet_meta</operation>
+                  <actions>
+                     <action alt="null" id="k1kwhwgt_k1jnzp1f" targetScreen="k1jnzp1f">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1qgy96t">
+                  <title>Assignment to tmp_is_update</title>
+                  <operation source="formula" to="temp.tmp_is_update">
+                     <expression language="XQuery">not(
+$temp.tmp_selected_file[1]/id = '' or empty($temp.tmp_selected_file[1]/id ))</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="k1qgy96t_k1ksh2cn" targetScreen="k1ksh2cn">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1ktnz1x">
+                  <title>Assignment to out_snippet</title>
+                  <operation source="field" to="output.out_snippet">output.updated_snippet</operation>
+                  <actions>
+                     <action alt="null" id="k1ktnz1x_k1ksh2d0" targetScreen="k1ksh2d0">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1ktnz2s">
+                  <title>Assignment to out_snippet</title>
+                  <operation source="field" to="output.out_snippet">output.created_snippet</operation>
+                  <actions>
+                     <action alt="null" id="k1ktnz2s_k1ksh2d0" targetScreen="k1ksh2d0">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1krpdlt">
+                  <title>Assignment to out_configuration</title>
+                  <operation source="field" to="output.out_configuration">input.in_configuration</operation>
+                  <actions>
+                     <action alt="null" id="k1krpdlt_k1jnzp3l" targetScreen="k1jnzp3l">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1jnzp0t">
+                  <title>Assignment to out_configuration, out_snippet</title>
+                  <operation source="field" to="output.out_configuration">output.file_content</operation>
+                  <operation source="field" to="output.out_snippet">temp.tmp_selected_file</operation>
+                  <actions>
+                     <action alt="null" id="k1jnzp0t_k1jm9yzd" targetScreen="k1jm9yzd">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1kumm7u">
+                  <title>Set Output</title>
+                  <operation source="field" to="output.out_configuration">output.file_content</operation>
+                  <operation source="field" to="output.out_snippet">temp.tmp_selected_file</operation>
+                  <actions>
+                     <action alt="null" id="k1kumm7u_k1kumma7" targetScreen="k1kumma7">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1ksh291">
+                  <title>Assignment to in_snippet_meta</title>
+                  <operation source="field" to="input.in_snippet_meta">temp.tmp_selected_file</operation>
+                  <actions>
+                     <action alt="null" id="k1ksh291_k1ksh286" targetScreen="k1ksh286">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k1ksh29u">
+                  <title>Assignment to in_configuration</title>
+                  <operation source="field" to="input.in_configuration">output.file_content</operation>
+                  <actions>
+                     <action alt="null" id="k1ksh29u_k1ksh28f" targetScreen="k1ksh28f">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>6oIrqEN7LeAjwE2apPaTAX</types1:GUID>
+      <types1:DisplayName>Gitlab Snippets Storage Manager</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2019-10-14T16:29:47.287Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

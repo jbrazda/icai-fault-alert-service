@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "aYlOxMbHcsSdSUISh7CVK4",
+      "objectName": "gitlab-snippets-alert-configuration",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "1UgNOYX99vYl4ePFrQfEis"
+         ],
+         "repoInfo": {
+            "repoHandle": "OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "1UgNOYX99vYl4ePFrQfEis",
+      "objectName": "gitlab-snippets",
+      "objectType": "AI_SERVICE_CONNECTOR",
+      "path": "/Explore/Tools/ServiceConnectors",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Provides Support to store  and retrive configurations or other files as gitlab Snippets\nSee https://gitlab.com/help/api/README.md",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "rMZgpDqotxGomUh-gt-3857924-2019-10-09T14:01:23.276Z::svc.xml"
+         }
+      }
+   }
+]

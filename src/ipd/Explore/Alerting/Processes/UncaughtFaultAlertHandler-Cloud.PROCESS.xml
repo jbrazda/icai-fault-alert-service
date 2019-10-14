@@ -13,10 +13,10 @@
       <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2019-08-28T20:06:28Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-09-05T21:14:00Z</types1:ModificationDate>
+      <types1:ModificationDate>2019-10-14T15:20:05Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-09-05T21:17:58Z</types1:PublicationDate>
+      <types1:PublicationDate>2019-10-14T15:20:10Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-Cloud/UncaughtFaultAlertHandler-Cloud.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -440,6 +440,52 @@ return ipd:setProcessTitle($process_title)</expression>
                      </eventContainer>
                      <link id="jx648rt8" targetId="jx648rso" type="containerLink"/>
                   </flow>
+                  <flow id="k1qj3nqk">
+                     <eventContainer id="k1qj3nuf">
+                        <service id="k1qj3nqx">
+                           <title>Get Resource</title>
+                           <serviceName>gitlab-snippets-alert-configuration:Get Resource</serviceName>
+                           <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                           <serviceInput>
+                              <parameter name="in_resource_url" source="formula">
+                                 <expression language="XQuery">$temp.tmp_configuration_url </expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="k1qj3nuh">
+                           <assignment id="k1qkcqw6">
+                              <title>Assignment to tmp_alert_configuration</title>
+                              <operation source="formula" to="temp.tmp_alert_configuration">
+                                 <expression language="XQuery">$output.out_resource_payload </expression>
+                              </operation>
+                           </assignment>
+                           <link id="k1qj3nui" targetId="k1qj3nuf" type="containerLink"/>
+                        </flow>
+                        <flow id="k1qj3nuk">
+                           <assignment id="k1qj3nwe">
+                              <title>Update Process Title 1</title>
+                              <operation source="formula" to="temp.tmp_script_out">
+                                 <expression language="XQuery">let $code := $output.faultInfo[1]/code
+let $error := $output.faultInfo[1]/reason
+let $parts := ($temp.tmp_process_title, "ERROR: Failed Read Configuration",$code, $error)
+let $process_title := substring(string-join($parts, " "),1,255)
+return ipd:setProcessTitle($process_title)</expression>
+                              </operation>
+                              <link id="k1qj3nx6" targetId="k1qj3nx5"/>
+                           </assignment>
+                           <jumpTo id="k1qj3nx5">
+                              <link id="k1qj3nxv" targetId="jx66j69z"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="k1qj3nug" targetId="k1qj3nuh" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="k1qj3ns3" interrupting="true">
+                              <link id="k1qj3nuj" targetId="k1qj3nuk" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="k1qj3nql" targetId="jx648rso" type="containerLink"/>
+                  </flow>
                   <flow id="jx648rt9">
                      <assignment id="jx668eh2">
                         <title>Load Config from URL (no authentication)</title>
@@ -507,6 +553,14 @@ return ipd:setProcessTitle($process_title)</expression>
                         <function name="string-equals">
                            <arg name="left">{$temp.tmp_configuration_provider}</arg>
                            <arg name="right">gist</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k1qj3nqj" targetId="k1qj3nqk" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_configuration_provider}</arg>
+                           <arg name="right">gitlab</arg>
                         </function>
                      </condition>
                   </link>
@@ -847,5 +901,5 @@ return
       <types1:GUID>7pPDPE0YReLiOlqyaYQzmX</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-Cloud</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-09-06T15:10:32.059Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-10-14T16:29:47.725Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
