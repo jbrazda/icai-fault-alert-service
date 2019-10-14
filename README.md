@@ -16,7 +16,8 @@ UncaughtFaultAlertHandler Process
     - [Overview](#overview)
     - [Installation](#installation)
         - [Pre-Requisites](#pre-requisites)
-            - [Setup Gist Account and Token](#setup-gist-account-and-token)
+            - [Setup GitHub Gist Account and Access Token](#setup-github-gist-account-and-access-token)
+            - [Setup GitLab Account and Access Token](#setup-gitlab-account-and-access-token)
         - [Build and Install the Package](#build-and-install-the-package)
             - [Ant Build Script](#ant-build-script)
         - [Build Package From Source](#build-package-from-source)
@@ -81,14 +82,18 @@ You can follow this guide [Set Development Environment for IPD Development][deve
 
 > See Guide to [Install Process Developer][ipd_install_guide]
 
-#### Setup Gist Account and Token
+In Order to Setup this Service after Deployment of assets Storage providers all provided Storage provider Connectors and Connections must be configured.
+You can Select One of the Supported providers (GitHub, GitLab) And configure it with corresponding access token. The other unused providers must be still published, but can be published with empty credentials.
+Follow the below steps for setting Storage Provider Accounts 
 
-Make sure your secure agents can access the github API to store and retrieve the Alert Service configuration file.
+#### Setup GitHub Gist Account and Access Token
+
+Make sure your secure agents can access the GitHub API to store and retrieve the Alert Service configuration file.
 
 This Alert Service Implementation can use Github Gist (both Cloud and On premise Github Enterprise Edition) as a storage for its configuration
 It is recommended to use private gist to store this configuration, you will need to create Security token to access private gists via API
 
-1. Login to Github with an  account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
+1. Login to Github with an account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
 2. Go to [Account Settings/Developer Settings/Personal access tokens](https://github.com/settings/tokens)
 3. Create new token and give it descriptive name such as `IICS-Configuration-Gist-Access`
 4. Select only gist permission
@@ -98,6 +103,23 @@ It is recommended to use private gist to store this configuration, you will need
 5. Capture generated token and save it in a save location for later use in the Service Connector configuration after Deployment of the IICS package
 
     ![Personal_Access_Tokens](./doc/images/Personal_Access_Tokens.png)
+
+#### Setup GitLab Account and Access Token
+
+Make sure your secure agents can access the GitLab API to store and retrieve the Alert Service configuration file.
+
+This Alert Service Implementation can use Cloud Hosted or on-premise GitLab as a storage for its configuration
+It is recommended to use private snippets to store this configuration, you will need to create Security token to access private Assets via API
+
+1. Login to GitLab with an account that would be owner of the configurations (this should be likely service Account or account managed by IT Infrastructure administrators)
+2. Go to [Account Settings/Access Tokens](https://gitlab.com/profile/personal_access_tokens)
+3. Create new token and give it descriptive name such as `IICS-Configuration-API-Access`
+4. Optionally set expiration date
+5. Select api access permission
+
+    ![Personal Access Tokens](./doc/images/GitLab_Personal_Access_Tokens_User_Settings.png)
+
+6. Capture generated Token and use it to configure GitLab Service Connector
 
 ### Build and Install the Package
 
@@ -235,7 +257,7 @@ Use the `all_exclude_connections.package.txt` for Subsequent builds and updates 
 
 ![Ant_Package_Input_PackageConf](./doc/images/Ant_Package_Input_PackageConf.png)
 
-Script will generate Package using an iics tool downloaded from github into a folder
+Script will generate Package using an iics tool downloaded from GitHub into a folder
 defined by following expression `${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip`
 
 Import package using an `import` target of ant script
@@ -425,15 +447,19 @@ IPD Import Packages
 
 ## Alert Service Components
 
-| Name                            | Description                                     | Location                                                                       | Type       |
-|---------------------------------|-------------------------------------------------|--------------------------------------------------------------------------------|------------|
-| Email-Alerts                    | Email Service Connection                        | Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml                    | Connection |
-| github-gist-alert-configuration | Github Gist Connection                          | Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml | Connection |
-| github-gist                     | Github Gist Service Connector                   | Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml           | Connector  |
-| Alert_Configuration_Manager     | Guide to manage Alert Service Configuration     | Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml                  | Guide      |
-| SP-ConvertAttachmentToText      | Utility Service To Load Config From File        | Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml                 | Process    |
-| UncaughtFaultAlertHandler-Cloud | Fault Alert handler process for Cloud Servers   | Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml         | Process    |
-| UncaughtFaultAlertHandler-NA    | Fault Alert Handler process for NA Agents Group | Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml            | Process    |
+| Name                                | Description                                     | Location                                                                           | Type       |
+|-------------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------|------------|
+| Email-Alerts                        | Email Service Connection                        | Explore/Alerting/Connections/Email-Alerts.AI_CONNECTION.xml                        | Connection |
+| github-gist-alert-configuration     | GitHub Gist Connection                          | Explore/Alerting/Connections/github-gist-alert-configuration.AI_CONNECTION.xml     | Connection |
+| gitlab-snippets-alert-configuration | Gitlab Snippets Connection                      | Explore/Alerting/Connections/gitlab-snippets-alert-configuration.AI_CONNECTION.xml | Connection |
+| github-gist                         | GitHub Gist API Connector                       | Explore/Tools/ServiceConnectors/github-gist.AI_SERVICE_CONNECTOR.xml               | Connector  |
+| gitlab-snippets                     | GitLab Snippets API Connector                   | Explore/Tools/ServiceConnectors/gitlab-snippets.AI_SERVICE_CONNECTOR.xml           | Connector  |
+| Alert_Configuration_Manager         | Guide to manage Alert Service Configuration     | Explore/Alerting/Guides/Alert Configuration Manager.GUIDE.xml                      | Guide      |
+| Gitlab Snippets Storage Manager     | Guide To manage Configurations in GitLab        | Explore/Alerting/Guides/Gitlab Snippets Storage Manager .GUIDE.xml                 | Guide      |
+| Github Gist Storage Manager         | Guide To manage Configurations in GitHub        | Explore/Alerting/Guides/Github Gist Storage Manager.GUIDE.xml                      | Guide      |
+| SP-ConvertAttachmentToText          | Utility Service To Load Config From File        | Explore/Tools/Processes/SP-ConvertAttachmentToText.PROCESS.xml                     | Process    |
+| UncaughtFaultAlertHandler-Cloud     | Fault Alert handler process for Cloud Servers   | Explore/Alerting/Processes/UncaughtFaultAlertHandler-Cloud.PROCESS.xml             | Process    |
+| UncaughtFaultAlertHandler-NA        | Fault Alert Handler process for NA Agents Group | Explore/Alerting/Processes/UncaughtFaultAlertHandler-NA.PROCESS.xml                | Process    |
 
 ### Process Objects
 
@@ -608,8 +634,6 @@ You can choose from following Options
 - Load From File - Load file from local drive
 - Edit XML - You can paste XML or use default generated file to
 
-![Alert_Configuration_Manager_Load_Gist](./doc/images/Alert_Configuration_Manager_Load_Gist.png)
-
 Select Gist to be loaded
 
 ![Alert_Configuration_Manager_Select_Gist](./doc/images/Alert_Configuration_Manager_Select_Gist.png)
@@ -688,16 +712,17 @@ To Add custom action Follow these steps
 1. If Action would require new Connector and connection, Implement such service connector for example Jira, Service Now, MS Teams Channel, Slack Channel
 2. Create Process Object to describe Action Specific Configuration parameters (See existing Process object to describe [email-alert](./src/ipd/Explore/Alerting/ProcessObjects/alert-config.PROCESS_OBJECT.xml))
 3. Implement new branch in the `Alert Configuration Manager` to manage the new action configuration
-4. Implement new branch of logic to invoke specific Action in the `UncaughtFaultAlertHandler-*` processes
-5. Deploy and test the changes to Alert Service
+4. Register new action type in the Pick list selection in the `action` Process Object `Type` field
+5. Implement new branch of logic to invoke specific Action in the `UncaughtFaultAlertHandler-*` processes
+6. Deploy and test the changes to Alert Service
 
 ### Add Custom Configuration Storage Provider
 
 To Add custom Storage provider such as Database follow these steps to to store and retrieve the configuration using a new provider
 
 1. Setup or Implement service connector for example to support such storage provider (DB, AWS S3, Bitbucket)
-2. Implement new steps in the `Alert Configuration Manager` to save and load configuration using the new provider
-3. Register new action type in the Pick list selection in the `action` Process Object `Type` field
+2. Implement New Storage Manager Guide based on existing examples for GitHub and GitLab
+3. Implement new steps in the `Alert Configuration Manager` to save and load configuration using the new provider
 4. Implement new branch of logic to Load configuration from new provider in the `UncaughtFaultAlertHandler-*` processes
 5. Deploy and test the changes to Alert Service
 
