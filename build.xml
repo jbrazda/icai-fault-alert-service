@@ -9,83 +9,66 @@
      ====================================================================== -->
 <project name="IICS Build Script" default="help" basedir=".">
     <description>
-            IICS CAI Component Build Script
+            IICS CAI Components Build Script
     </description>
 
-    <!-- Global properties -->
-
-    <condition property="isUnix">
-        <os family="unix" />
-    </condition>
-
-    <condition property="isWindows">
-        <os family="windows" />
-    </condition>
-
-    <condition property="exec.ext" value="sh">
-        <os family="unix" />
-    </condition>
-
-    <condition property="exec.ext" value="bat">
-        <os family="windows" />
-    </condition>
-
-    <condition property="shell" value="bash">
-        <os family="unix" />
-    </condition>
-
-    <condition property="shell" value="cmd.exe">
-        <os family="windows" />
-    </condition>
-
-    <condition property="shell.options" value="-c">
-        <os name="Mac OS X" />
-    </condition>
-
-    <condition property="shell.open" value=" open ">
-        <os name="Mac OS X" />
-    </condition>
-
-    <property name="shell.open" value="" />
-
-    <condition property="shell.options" value="-c">
-        <os family="unix" />
-    </condition>
-
-    <condition property="shell.options" value="/c">
-        <os family="windows" />
-    </condition>
-
-
-
-    <target name="-init" unless="ems.initialized">
+    
+    <target name="-init" unless="initialized">
         <property file="${iics_user.property.file}" />
         <property file="build.properties" />
+    	
+    	<!-- Global properties -->
+        <property environment="env" />
+        
+	    <condition property="isUnix">
+	        <os family="unix" />
+	    </condition>
+
+	    <condition property="isWindows">
+	        <os family="windows" />
+	    </condition>
+
+	    <condition property="exec.ext" value="sh">
+	        <os family="unix" />
+	    </condition>
+
+	    <condition property="exec.ext" value="bat">
+	        <os family="windows" />
+	    </condition>
+
+	    <condition property="shell" value="bash">
+	        <os family="unix" />
+	    </condition>
+
+	    <condition property="shell" value="cmd.exe">
+	        <os family="windows" />
+	    </condition>
+
+	    <condition property="shell.options" value="-c">
+	        <os name="Mac OS X" />
+	    </condition>
+
+	    <condition property="shell.open" value=" open ">
+	        <os name="Mac OS X" />
+	    </condition>
+
+	    <property name="shell.open" value="" />
+
+	    <condition property="shell.options" value="-c">
+	        <os family="unix" />
+	    </condition>
+
+	    <condition property="shell.options" value="/c">
+	        <os family="windows" />
+	    </condition>
+    	
         <path id="saxon.classpath">
             <fileset dir="${saxon.lib}">
                 <include name="*.jar" />
             </fileset>
         </path>
     	
-        <!-- Platform Specific GNU sed -->
-        <condition property="gnu.sed" value="${tools.gnu.sed.win.amd64}">
-            <and>
-                <os family="windows" />
-                <os arch="amd64" />
-            </and>
-        </condition>
-        <condition property="gnu.sed" value="${tools.gnu.sed.win.x86}">
-            <and>
-                <os family="windows" />
-                <os arch="x86" />
-            </and>
-        </condition>
-        <condition property="gnu.sed" value="${tools.gnu.sed.mac}">
-            <os name="Mac OS X" />
-        </condition>
-        <condition property="gnu.sed" value="sed">
-            <os family="unix" />
-        </condition>
+        
 
         <!-- IICS Package Manager Tool OS Specific-->
         <condition property="tool.iics" value="${tools.iics.win.amd64}">
@@ -107,13 +90,40 @@
             <os family="unix" />
         </condition>
 
-        <!-- Check if the iics tool is avialable on path specified  in  tool.iics property-->
+        <!-- Check Availability of iics and supporting modules-->
         <condition property="iics.available">
             <available file="${tool.iics}" />
         </condition>
+        
+        <condition property="tools.reporting.installed">
+            <available file="${tools.package.reporting}" />
+        </condition>
+        
+        <condition property="tools.reporting.install">
+            <not>
+                <and>
+                    <available file="${tools.package.reporting}" />
+                    <equals arg1="${tools.reporting.disabled}" arg2="false" trim="true"/>
+                </and>
+            </not>
+        </condition>
+        
+        <condition property="tools.transform.installed">
+            <available file="${tools.package.transform}" />
+        </condition>
+        
+        <condition property="tools.transform.install">
+            <not>
+                <and>
+                    <available file="${tools.package.transform}" />
+                    <equals arg1="${tools.transform.disabled}" arg2="false" trim="true"/>
+                </and>
+            </not>
+        </condition>
 
 
-        <property environment="env" />
+    	
+    	<property name="initialized" value="true"/>
     </target>
 
 
@@ -183,7 +193,35 @@
         <get src="${url.download.iics}" dest="${tool.iics}" />
         <chmod file="${tool.iics}" perm="ugo+rx" />
     </target>
-
+	
+	
+	<target name="install.tools.transform" depends="-env.info"
+	    if="${tools.transform.install}">
+		<echo level="info">IICS Tramsform Module Available: ${iics.available}</echo>
+        <echo level="info">Downloading: ${url.download.iics.tools.transform}</echo>
+        <mkdir dir="${iics.tools.dir.transform}" />
+        <get src="${url.download.iics.tools.transform}" dest="${tools.download.dir}" usetimestamp="true" />
+        <unzip dest="${iics.tools.dir.transform}" src="${tools.download.dir}/${url.download.iics.tools.transform.archive}">
+            <patternset>
+                <include name="xsl/**"/>
+            	<include name="lib/**"/>
+            	<include name="build.xml"/>
+            </patternset>
+        </unzip>
+	</target>
+    
+    <target name="install.tools.reporting" depends="-env.info"
+        if="${tools.reporting.install}">
+        <echo level="info">Reporting Module Available: ${iics.available}</echo>
+        <echo level="info">Downloading: ${url.download.iics.tools.reporting}</echo>
+        <mkdir dir="${iics.tools.dir.reporting}" />
+        <get src="${url.download.iics.tools.reporting}" dest="${tools.download.dir}" usetimestamp="true" />
+        <unzip dest="${iics.tools.dir.reporting}" src="${tools.download.dir}/${url.download.iics.tools.reporting.archive}">
+            <mapper>
+                <cutdirsmapper dirs="1"/>
+            </mapper>
+        </unzip>
+    </target>
 
     <target name="-select-release" unless="iics.release">
         <fileset id="available.releases" dir="${basedir}/conf" includes="*.release.properties" />
@@ -222,10 +260,12 @@
         </input>
     </target>
     
-    <target name="-set-package-properties">
+    <target name="-set-package-properties" depends="-select-package-config">
         <basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix="package.txt" />
         <echo level="info">Selected Target Package Configuration: ${iics.target.package.config.basename}</echo>
         <echo level="info">Selected File: ${iics.target.package.config}</echo>
+        <property name="release.package.label" value="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}"/>
+        <echo level="info">Output Package Label: ${release.package.label}</echo>
     </target>
     
     <target name="-set-publish-properties">
@@ -238,6 +278,8 @@
         <basename file="${iics.release}" property="iics.release.basename" suffix="release.properties" />
         <echo level="info">Selected Release Configuration: ${iics.release.basename}</echo>
         <echo level="info">Selected File: ${iics.release}</echo>
+
+                
     </target>
     
     <target name="-select-source-environment" unless="iics.source.environment" depends="-load.release.properties">
@@ -265,8 +307,9 @@
     <target name="-load.release.properties" depends="-select-release,-set-release-properties">
         <echo level="info">Loading ${iics.release}</echo>
         <property file="${iics.release}" />
-        <echo level="info">Loading External properties (credentials) from ${iics.external.properties}</echo>
+        <echo level="info">Loading External properties (credentials,transformations) from ${iics.external.properties}</echo>
         <property file="${iics.external.properties}" />
+        
         <echo level="info">TODO: Add Inputs Validation</echo>
     </target>
 
@@ -355,37 +398,65 @@
             todir="${iics.extract.dir}" />
     </target>
     
-    <target name="iics.prepare.package">
+    <target name="iics.prepare.package" 
+        unless="${tools.transform.disabled}"
+        depends="-env.info,-select-release,-load.release.properties,install.tools.transform">
+        <property name="transform.src.folder" location="${basedir}/target/transform/src"></property>
+    	<property name="transform.temp.folder" location="${basedir}/target/transform/temp"></property>
+    	<echo level="info">Copying Sources from ${iics.extract.dir} to ${transform.src.folder}</echo>
+    	<delete dir="${transform.src.folder}"/>
+        <copy todir="${transform.src.folder}" overwrite="true" verbose="true">
+            <fileset dir="${iics.extract.dir}">
+            </fileset>
+        </copy>
+    	<ant antfile="${tools.package.transform}" target="transform" inheritall="false" inheritrefs="false">
+            <property name="iics.release" value="${iics.release.basename}"/>
+        	<property name="transform.source.dir" location="${transform.src.folder}"/>
+        	<property name="transform.target.dir" location="${transform.temp.folder}"/>
+    		<property name="migration.properties.base" value="${iics.external.properties.dir}"/>
+        </ant>
+    </target>
+    
+    
+    <target name="iics.package.report" depends="-env.info,install.tools.reporting" unless="${tools.reporting.disabled}">
+                
+        <ant antfile="${tools.package.reporting}" target="basex.create.db" inheritall="false" inheritrefs="false">
+            <property name="basex.create.db.name" value="${release.package.label}"/>
+            <property name="basex.create.db.source" location="${iics.import.dir}/${release.package.label}.zip"/>
+            <property name="env.info.displayed" value="true"/>
+        </ant>
+        <property file="${iics.tools.dir.reporting}/build.properties"/>
 
-
+        <echo level="info">Openning Browser ${shell.open} "${basex.http.base_url}/iics/report?database=${release.package.label}"</echo>
+        <exec executable="${shell}" spawn="yes">
+            <arg value="${shell.options}" />
+            <arg value='${shell.open} "${basex.http.base_url}/iics/report?database=${release.package.label}"' />
+        </exec>
     </target>
 
-    <target name="iics.package" depends="-download.iics,-load.release.properties" >
+    <target name="iics.package" depends="-download.iics,-load.release.properties,iics.prepare.package" >
+     
         <iics.package id="${iics.release.basename}" 
-            workspace="${iics.extract.dir}" 
-            output="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip" 
+            workspace="${transform.src.folder}" 
+            output="${release.package.label}.zip" 
             todir="${iics.import.dir}" 
             file="${iics.target.package.config}"  />
     </target>
-    
-    
+	
     <target name="iics.import" depends="-download.iics,-load.release.properties">
          <iics.import id="${iics.release.basename}" 
             region="${iics.region}" 
-            file="${iics.import.dir}/${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}.zip"
+            file="${iics.import.dir}/${release.package.label}.zip"
             user="${iics.target.user}" 
             password="${iics.target.password}" />
     </target>
 
-    
-    
     <target name="clean.release" depends="-load.release.properties" if="iics.release.basename"
         description="Cleans Export/import files in ${basedir}/target/${iics.release.basename}">
         <echo level="info">Deleting ${basedir}/target/${iics.release.basename}</echo>
         <delete dir="${basedir}/target/${iics.release.basename}" verbose="true">
         </delete>
     </target>
-	
 	
 	<target name="build.ipd.dist.packages" depends="-env.info,
         -select-release,
@@ -434,8 +505,10 @@
         -set-target-properties,
         -select-package-config,
         -set-package-properties,
-         iics.package" 
-        description="Builds Package for specified target enviornment from ${basedir}/src/ipd">
+         iics.package,
+         iics.package.report" 
+        description="Builds Package for specified target environment from ${basedir}/src/ipd">
+        <echo level="info">Package Created in: ${iics.import.dir}/${release.package.label}.zip</echo>
     </target>
     
     
@@ -645,148 +718,46 @@
             <property name="iics.@{direction}.password" value="${iics.password.@{environment}}" />
         </sequential>
     </macrodef>
-    
-    <macrodef name="setTracingLevel">
-            <attribute name="sourceDir"/>
-            <attribute name="targetDir"/>
-            <attribute name="tracingLevel" default="none"/>
-            <attribute name="properties"/>
-            <sequential>
-                <property file="build.properties"/>
-                <property file="@{properties}"/>
-                <path id="saxon.classpath">
-                    <fileset dir="${saxon.lib}">
-                        <include name="*.jar"/>
-                    </fileset>
-                </path>
-                <echo level="info">****** sourceDir:    @{sourceDir}</echo>
-                <echo level="info">****** targetDir:    @{targetDir}</echo>
-                <echo level="info">****** includes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}</echo>
-                <echo level="info">****** excludes:     ${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}</echo>
-                <echo level="info">****** tracingLevel: @{tracingLevel}</echo>     
-                <echo level="info">****** properties:   @{properties}</echo>     
-                <xslt style="${basedir}/xsl/set_service_tracingLevel.xsl" 
-                    basedir="@{sourceDir}" 
-                    destdir="@{targetDir}"
-                    includes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.includes}"
-                    excludes="${ipd.migrate.processes.tracingLevelUpdate.@{tracingLevel}.excludes}"
-                    extension=".xml"
-                    force="true"
-                    classpathref="saxon.classpath">
-                    <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-                    <param name="tracingLevel" expression="@{tracingLevel}"/>
-                </xslt>
-            </sequential>
-        </macrodef>
-        
-        <macrodef name="setSuspendOnFault">
-            <attribute name="sourceDir"/>
-            <attribute name="targetDir"/>
-            <attribute name="suspendOnFault" default="true"/>
-            <attribute name="includes"/>
-            <attribute name="excludes"/>
-            <sequential>
-                <property file="build.properties"/>
-                <path id="saxon.classpath">
-                    <fileset dir="${saxon.lib}">
-                        <include name="*.jar"/>
-                    </fileset>
-                </path>
-                <echo level="info">****** sourceDir:    @{sourceDir}</echo>
-                <echo level="info">****** targetDir:    @{targetDir}</echo>
-                <echo level="info">****** includes:     @{includes}</echo>
-                <echo level="info">****** excludes:     @{excludes}</echo>
-                <echo level="info">****** suspendOnFault: @{suspendOnFault}</echo>         
-                <xslt style="${basedir}/xsl/set_service_suspendOnFault.xsl" 
-                    basedir="@{sourceDir}" 
-                    destdir="@{targetDir}"
-                    includes="@{includes}"
-                    excludes="@{excludes}"
-                    extension=".xml"
-                    force="true"
-                    classpathref="saxon.classpath">
-                    <factory name="net.sf.saxon.TransformerFactoryImpl"/>
-                    <param name="suspendOnFault" expression="@{suspendOnFault}"/>
-                </xslt>
-            </sequential>
-        </macrodef>
-
-        <macrodef name="runxq">
-            <attribute name="file" />
-            <attribute name="output" />
-            <attribute name="options" default=""/>
-            <attribute name="fork" default="false"/>
-            <attribute name="failonerror" default="false"/>
-            <attribute name="dir" default="${java.io.tmpdir}"/>
-
-            <sequential>
-                <basename property="cf-@{file}" file="@{file}"/>
-                <property name="input-@{file}" location="@{file}"/>
-                <property name="out-@{file}" location="@{output}"/>
-                <tstamp>
-                    <format property="start-time-@{file}" pattern="${xqr.log.timestamp}" />
-                </tstamp>
-                <echo level="info">****** file:    ${input-@{file}}</echo>
-                <echo level="info">****** output:  ${out-@{file}}</echo>
-                <echo level="info">****** options: @{options}</echo>
-
-                <java 
-                    classname="${saxon.class}" 
-                    classpathref="saxon.classpath"
-                    output="${out-@{file}}"
-                    fork="@{fork}" 
-                    failonerror="@{failonerror}" >
-                    <arg value="-qversion:3.0"/>
-                    <arg line="@{options}"/>
-                    <arg value="@{file}"/> 
-                </java>
-                <tstamp>
-                    <format property="end-time-@{file}" pattern="${xqr.log.timestamp}" />
-                </tstamp>
-                <basename property="test-@{file}" file="@{file}" suffix=".xq"/>
-                <echo level="info">****** start:${start-time-@{file}} end:${end-time-@{file}} file: ${test-@{file}}.xq</echo>
-            </sequential>
-        </macrodef>
-    
+  
        
-        <macrodef name="check.credentials">
-             <attribute name="userProperty" 
-                description="Define User proerty to be checked"/> 
-             <attribute name="passwordProperty" 
-                description="Define Pasword proerty to be checked"/> 
-             <attribute name="validationresult"
-                description="Define Property name to store validation result"/>
-             <sequential>
-                 <condition property="@{userProperty}.set"  >
-                    <isset property="@{userProperty}" />
-                </condition>
-                 <condition property="@{passwordProperty}.set"  >
-                    <isset property="@{passwordProperty}" />
-                </condition>
-                 <property name="@{userProperty}.set" value="false"/>
-                 <property name="@{passwordProperty}.set" value="false"/>
-                 <condition property="@{validationresult}">
-                     <and>
-                         <istrue value="${@{userProperty}.set}"/>
-                         <istrue value="${@{passwordProperty}.set}"/>
-                     </and>
-                 </condition>
-                 <property name="@{validationresult}" value="false"></property>
-                 
-                <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
-                <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
-                <echo level="info">@{validationresult}=${@{validationresult}}</echo>
-             </sequential>
-        </macrodef>
+    <macrodef name="check.credentials">
+         <attribute name="userProperty" 
+            description="Define User proerty to be checked"/> 
+         <attribute name="passwordProperty" 
+            description="Define Pasword proerty to be checked"/> 
+         <attribute name="validationresult"
+            description="Define Property name to store validation result"/>
+         <sequential>
+             <condition property="@{userProperty}.set"  >
+                <isset property="@{userProperty}" />
+            </condition>
+             <condition property="@{passwordProperty}.set"  >
+                <isset property="@{passwordProperty}" />
+            </condition>
+             <property name="@{userProperty}.set" value="false"/>
+             <property name="@{passwordProperty}.set" value="false"/>
+             <condition property="@{validationresult}">
+                 <and>
+                     <istrue value="${@{userProperty}.set}"/>
+                     <istrue value="${@{passwordProperty}.set}"/>
+                 </and>
+             </condition>
+             <property name="@{validationresult}" value="false"></property>
+             
+            <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
+            <echo level="info">@{passwordProperty}.set=${@{passwordProperty}.set}</echo>
+            <echo level="info">@{validationresult}=${@{validationresult}}</echo>
+         </sequential>
+    </macrodef>
        
-        <macrodef name="input.credentials">
-               <attribute name="targetUserProperty" /> 
-               <attribute name="targetPasswordProperty" />
-               <sequential>
-                 <input addproperty="@{targetUserProperty}" message="Provide Password"/>
-                    <input addproperty="@{targetPasswordProperty}" message="Provide Password"/>
-               </sequential>
-        </macrodef>
+    <macrodef name="input.credentials">
+        <attribute name="targetUserProperty" /> 
+        <attribute name="targetPasswordProperty" />
+        <sequential>
+            <input addproperty="@{targetUserProperty}" message="Provide Password"/>
+            <input addproperty="@{targetPasswordProperty}" message="Provide Password"/>
+        </sequential>
+    </macrodef>
     
     
 </project>
