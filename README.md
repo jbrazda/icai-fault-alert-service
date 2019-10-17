@@ -19,6 +19,11 @@ UncaughtFaultAlertHandler Process
             - [Setup GitHub Gist Account and Access Token](#setup-github-gist-account-and-access-token)
             - [Setup GitLab Account and Access Token](#setup-gitlab-account-and-access-token)
         - [Build and Install the Package](#build-and-install-the-package)
+            - [Inspect and adjust Main build.properties configuration file](#inspect-and-adjust-main-buildproperties-configuration-file)
+            - [Configure credentials file](#configure-credentials-file)
+        - [Transformation Properties](#transformation-properties)
+            - [Example Transformation Properties File](#example-transformation-properties-file)
+            - [Main Ant Script Properties](#main-ant-script-properties)
             - [Ant Build Script](#ant-build-script)
         - [Build Package From Source](#build-package-from-source)
             - [In Process Developer](#in-process-developer)
@@ -131,7 +136,61 @@ Following is a clone command example, use your own repository url if you have fo
 git clone git@github.com:jbrazda/icai-fault-alert-service.git
 ```
 
-Configure credentials file. Example file is listed below.
+#### Inspect and adjust Main build.properties configuration file
+
+Main configuration file defines key modules locations and enables/disables supporting Tools maintained externally as a dependency.
+
+Example main Configuration file (build.properties) 
+
+```properties
+# lib path
+tools.lib=${basedir}/target/lib
+
+#IICS Asset Management CLI
+# See https://network.informatica.com/docs/DOC-18245
+tools.iics.mac=${tools.lib}/iics
+tools.iics.linux=${tools.lib}/iics
+tools.iics.win.x86=${tools.lib}/iics.exe
+tools.iics.win.amd64=${tools.lib}/iics.exe
+
+## url.download.iics - OS Specific URL
+url.download.iics.mac=https://github.com/InformaticaCloudApplicationIntegration/Tools/raw/master/IICS%20Asset%20Management%20CLI/v2/mac-x86_64/iics
+url.download.iics.win=https://github.com/InformaticaCloudApplicationIntegration/Tools/raw/master/IICS%20Asset%20Management%20CLI/v2/win-x86_64/iics.exe
+url.download.iics.win.x86=https://github.com/InformaticaCloudApplicationIntegration/Tools/raw/master/IICS%20Asset%20Management%20CLI/v2/win-i386/iics.exe
+url.download.iics.linux=https://github.com/InformaticaCloudApplicationIntegration/Tools/raw/master/IICS%20Asset%20Management%20CLI/v2/linux-x86_64/iics
+
+## URLs to Download IICS Migration and Reporting Tools Modules
+url.download.iics.tools.transform.archive=icai_migration_tools.zip
+url.download.iics.tools.transform=https://raw.githubusercontent.com/jbrazda/icai-migration-tools/master/dist/${url.download.iics.tools.transform.archive}
+url.download.iics.tools.reporting.archive=v1.1.zip
+url.download.iics.tools.reporting=https://github.com/jbrazda/iics-reporting-tools/archive/${url.download.iics.tools.reporting.archive}
+
+## Direstoriess for IICS Tools Module Installations
+iics.tools.dir.reporting=${tools.lib}/reporting
+iics.tools.dir.transform=${tools.lib}/transform
+
+## Defines directory used for Downloads
+tools.download.dir=${user.home}/Downloads
+
+## IICS Script tool Modules
+tools.package.transform=${iics.tools.dir.transform}/build.xml
+tools.package.reporting=${iics.tools.dir.reporting}/build.xml
+
+#Disable Use of Individual Modules
+tools.reporting.disabled=false
+tools.transform.disabled=false
+
+## Configure your IICS org region. For example, us, eu, ap
+iics.region=us
+
+# these properties are for future use (nbit used at this time)
+saxon.lib=${basedir}/target/lib
+saxon.class=org.activebpel.rt.bpel.ext.expr.impl.xquery.AeQuery
+```
+
+#### Configure credentials file
+
+Example file is listed below.
 recommended location is your home directory/iics `~/iics/environment.properties` as it will contain sensitive information.
 I would also recommend to create Native IICS Service user in each of your orgs that can be used to export/import resources via IICS REST API using the [IICS Asset Management CLI][iics_cli]
 This tool will automatically download latest version an use it to import provided service to your target org
@@ -158,31 +217,34 @@ iics.password.prod=SET_PASSWORD
 Update existing or copy [conf/iclab-dev.release.properties](conf/iclab-dev.release.properties) file which defines a key Environment specific parameters
 
 ```properties
-# define a comma separated list of environment org labels such as
+# define a comma separated list of environment org labels such as 
 # dev,test,uat,prod
 iics.environment.list=dev,test,prod
 
 # This property points to file which contains credentials to login to individual environments
+# and other environment Specific properties
 # we recommend to use ${user.home}/iics protected directory
 # never commit this file to version control with this project as it contains credentials to your IICS Orgs
-# the iics.external.properties must contain set of properties
+# the iics.external.properties must contain set of properties 
 # following this naming convention for each environment defined in the iics.environment.list
 # iics.user.${environment}=
 # iics.password.${environment}=
-iics.external.properties=${user.home}/iics/iclab.properties
+# iics.transform.properties.${environment}=
+iics.external.properties.dir=${user.home}/iics
+iics.external.properties=${iics.external.properties.dir}/iclab.properties
 
-# this query is used by iics list command to retrieve available sources from repository
+# this query is used by iics list command to retrieve available sources from repository 
 # to extract the designs from IICS
 # see https://network.informatica.com/docs/DOC-18245#jive_content_id_List_Command
 iics.query=-q "location==Alerting"
 
-# Defines the output file for the list command
+# Defines the output file for the list command 
 # the output location will be driven by the following expression
 # ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.list.output}
 iics.list.output=export_list.txt
 
 # Defines the output file name for iics export command
-# the output location will be driven by the
+# the output location will be driven by the 
 # ${basedir}/target/${selected.release.basename}/export/${iics.source.environment}/${iics.export.output}
 iics.export.output=FaultAlertService.zip
 
@@ -193,7 +255,110 @@ iics.package.output=FaultAlertService
 
 # Defines Extract output directory for iics extract command
 iics.extract.dir=${basedir}/src/ipd
+
+# Defines transform directory used to copy sources from iics.extract.dir to allow pre-processing and source transformations before package.src target is called
+transform.src.folder=${basedir}/target/transform/src
+# Defines temporary folder used by transformation pre-processing steps such as set suspend on fault
+transform.temp.folder=${basedir}/target/transform/temp
 ```
+
+### Transformation Properties
+
+Often some on-the-fly Design transformations may be desired to simplify deployment steps and automate some migration changes to deployed designs
+These include following types of changes
+
+- Migrate process from Cloud to specific Secure Agent or Agent Group
+- Migrate process from Agent to Cloud
+- Set Process Tracing levels
+- Set Process Suspend on Fault
+
+This set of build scripts contains optional Scripts Module Which contains set of xslt scripts which can be applied to selected designs before packaging and deployment/import to target org
+This module is maintained in a separate github project [icai-migration-tools](https://github.com/jbrazda/icai-migration-tools) Script will automatically download migration tools and run the transformations steps.
+
+When you want to use this optional step of build and deployment you will need to specify `transform.properties` which configures which transformation steps will be executed on specified design objects
+
+#### Example Transformation Properties File
+
+```properties
+# MOVE Process to Cloud
+# ---------------------
+# Set this property to Enable/Disable Transform Step
+ipd.migrate.processes.to.cloud.enabled=false
+# use this property to include specific processes or use Ant pattern expressions.
+# migrate.processObjects.enabled=true is set
+ipd.migrate.processes.to.cloud.include=*.PROCESS.xml
+# you can exclude specified files from tar
+ipd.migrate.processes.to.cloud.exclude=*-1.PROCESS.xml
+
+
+# MOVE Processes to Agent
+# -----------------------
+# Set this property to Enable/Disable Transform Step
+ipd.migrate.processes.to.agent.enabled=true
+# specify target Agent Name or Agent Group Name to Migrate to
+ipd.migrate.processes.to.agent.name=DEMO
+# Use this property to include specific processes or use Ant pattern expressions.
+# This property is required when migrate.processObjects.enabled=true is set
+# ipd.migrate.processes.to.agent.include=Explore/Tools/Processes/SP-Shell-CMD.PROCESS.xml
+ipd.migrate.processes.to.agent.include=**/*NA.PROCESS.xml
+# you can exclude specified files from migration
+ipd.migrate.processes.to.agent.exclude=**/SCH-*.PROCESS.xml
+
+
+# SET Process Tracing Levels
+# -----------------------
+# Set this property to Enable/Disable Transform Step
+ipd.migrate.processes.tracingLevelUpdate.enabled=true
+
+# List of tracing levels to be processed
+# this is an example to process all levels when you want to set levels on any selected processes
+# ipd.migrate.processes.tracingLevelUpdate.levels=none,terse,normal,verbose
+# note that each supported tracing level must have incudes/excludes defined
+# Following example setting will set  all processes tracing level to None
+ipd.migrate.processes.tracingLevelUpdate.levels=verbose
+
+# Includes Excludes for each level
+# Use this property to include specific processes to get their Logging levels updated 
+# Use relative path reference starting from $basedir or use Ant pattern expressions.
+# This property is required when migrate.processObjects.enabled=true is set
+
+ipd.migrate.processes.tracingLevelUpdate.none.includes=**/*.PROCESS.xml
+ipd.migrate.processes.tracingLevelUpdate.none.excludes=
+
+ipd.migrate.processes.tracingLevelUpdate.terse.includes=nothing
+ipd.migrate.processes.tracingLevelUpdate.terse.excludes=**/*.xml
+
+ipd.migrate.processes.tracingLevelUpdate.normal.includes=nothing
+ipd.migrate.processes.tracingLevelUpdate.normal.excludes=**/*.xml
+
+ipd.migrate.processes.tracingLevelUpdate.verbose.includes=**/*.PROCESS.xml
+ipd.migrate.processes.tracingLevelUpdate.verbose.excludes=nothing
+
+
+# SET Process Suspend On fault
+# -----------------------
+# Set this property to Enable/Disable Transform Step
+ipd.migrate.processes.tracingLevelUpdate.execute=false
+
+#includes/excludes for processes to enable suspendOnFault
+ipd.migrate.processes.suspendOnFault.true.execute=true
+ipd.migrate.processes.suspendOnFault.true.includes=**/*.PROCESS.xml
+ipd.migrate.processes.suspendOnFault.true.excludes=
+ 
+#includes/excludes for processes to disable suspendOnFault
+ipd.migrate.processes.suspendOnFault.false.execute=true
+ipd.migrate.processes.suspendOnFault.false.includes=none
+ipd.migrate.processes.suspendOnFault.false.excludes=**/*.PROCESS.xml
+
+#remove Specific tags based on pattern
+ipd.migrate.removeTags=false
+ipd.tags.remove.include=**/*.xml
+ipd.tags.remove.exclude=
+ipd.tags.remove.tagMatchPattern=(,)?(GIT:\w+)
+
+```
+
+#### Main Ant Script Properties
 
 #### Ant Build Script
 
