@@ -7,7 +7,7 @@
                    
      jbrazda                                                                
      ====================================================================== -->
-<project name="IICS Build Script" default="help" basedir=".">
+<project name="IICS Build Script - Alerting" default="help" basedir=".">
     <description>
             IICS CAI Components Build Script
     </description>
@@ -16,58 +16,58 @@
     <target name="-init" unless="initialized">
         <property file="${iics_user.property.file}" />
         <property file="build.properties" />
-    	
-    	<!-- Global properties -->
+        
+        <!-- Global properties -->
         <property environment="env" />
         
-	    <condition property="isUnix">
-	        <os family="unix" />
-	    </condition>
+        <condition property="isUnix">
+            <os family="unix" />
+        </condition>
 
-	    <condition property="isWindows">
-	        <os family="windows" />
-	    </condition>
+        <condition property="isWindows">
+            <os family="windows" />
+        </condition>
 
-	    <condition property="exec.ext" value="sh">
-	        <os family="unix" />
-	    </condition>
+        <condition property="exec.ext" value="sh">
+            <os family="unix" />
+        </condition>
 
-	    <condition property="exec.ext" value="bat">
-	        <os family="windows" />
-	    </condition>
+        <condition property="exec.ext" value="bat">
+            <os family="windows" />
+        </condition>
 
-	    <condition property="shell" value="bash">
-	        <os family="unix" />
-	    </condition>
+        <condition property="shell" value="bash">
+            <os family="unix" />
+        </condition>
 
-	    <condition property="shell" value="cmd.exe">
-	        <os family="windows" />
-	    </condition>
+        <condition property="shell" value="cmd.exe">
+            <os family="windows" />
+        </condition>
 
-	    <condition property="shell.options" value="-c">
-	        <os name="Mac OS X" />
-	    </condition>
+        <condition property="shell.options" value="-c">
+            <os name="Mac OS X" />
+        </condition>
 
-	    <condition property="shell.open" value=" open ">
-	        <os name="Mac OS X" />
-	    </condition>
+        <condition property="shell.open" value=" open ">
+            <os name="Mac OS X" />
+        </condition>
 
-	    <property name="shell.open" value="" />
+        <property name="shell.open" value="" />
 
-	    <condition property="shell.options" value="-c">
-	        <os family="unix" />
-	    </condition>
+        <condition property="shell.options" value="-c">
+            <os family="unix" />
+        </condition>
 
-	    <condition property="shell.options" value="/c">
-	        <os family="windows" />
-	    </condition>
-    	
+        <condition property="shell.options" value="/c">
+            <os family="windows" />
+        </condition>
+        
         <path id="saxon.classpath">
             <fileset dir="${saxon.lib}">
                 <include name="*.jar" />
             </fileset>
         </path>
-    	
+        
         
 
         <!-- IICS Package Manager Tool OS Specific-->
@@ -122,8 +122,8 @@
         </condition>
 
 
-    	
-    	<property name="initialized" value="true"/>
+        
+        <property name="initialized" value="true"/>
     </target>
 
 
@@ -193,22 +193,22 @@
         <get src="${url.download.iics}" dest="${tool.iics}" />
         <chmod file="${tool.iics}" perm="ugo+rx" />
     </target>
-	
-	
-	<target name="install.tools.transform" depends="-env.info"
-	    if="${tools.transform.install}">
-		<echo level="info">IICS Tramsform Module Available: ${iics.available}</echo>
+    
+    
+    <target name="install.tools.transform" depends="-env.info"
+        if="${tools.transform.install}">
+        <echo level="info">IICS Tramsform Module Available: ${iics.available}</echo>
         <echo level="info">Downloading: ${url.download.iics.tools.transform}</echo>
         <mkdir dir="${iics.tools.dir.transform}" />
         <get src="${url.download.iics.tools.transform}" dest="${tools.download.dir}" usetimestamp="true" />
         <unzip dest="${iics.tools.dir.transform}" src="${tools.download.dir}/${url.download.iics.tools.transform.archive}">
             <patternset>
                 <include name="xsl/**"/>
-            	<include name="lib/**"/>
-            	<include name="build.xml"/>
+                <include name="lib/**"/>
+                <include name="build.xml"/>
             </patternset>
         </unzip>
-	</target>
+    </target>
     
     <target name="install.tools.reporting" depends="-env.info"
         if="${tools.reporting.install}">
@@ -264,7 +264,7 @@
         <basename file="${iics.target.package.config}" property="iics.target.package.config.basename" suffix="package.txt" />
         <echo level="info">Selected Target Package Configuration: ${iics.target.package.config.basename}</echo>
         <echo level="info">Selected File: ${iics.target.package.config}</echo>
-        <property name="release.package.label" value="${iics.package.output}_${iics.release.basename}_${iics.target.package.config.basename}"/>
+        <property name="release.package.label" value="${iics.package.output}_${iics.release.basename}_${iics.target.environment}_${iics.target.package.config.basename}"/>
         <echo level="info">Output Package Label: ${release.package.label}</echo>
     </target>
     
@@ -402,18 +402,18 @@
         unless="${tools.transform.disabled}"
         depends="-env.info,-select-release,-load.release.properties,install.tools.transform">
         <property name="transform.src.folder" location="${basedir}/target/transform/src"></property>
-    	<property name="transform.temp.folder" location="${basedir}/target/transform/temp"></property>
-    	<echo level="info">Copying Sources from ${iics.extract.dir} to ${transform.src.folder}</echo>
-    	<delete dir="${transform.src.folder}"/>
+        <property name="transform.temp.folder" location="${basedir}/target/transform/temp"></property>
+        <echo level="info">Copying Sources from ${iics.extract.dir} to ${transform.src.folder}</echo>
+        <delete dir="${transform.src.folder}"/>
         <copy todir="${transform.src.folder}" overwrite="true" verbose="true">
             <fileset dir="${iics.extract.dir}">
             </fileset>
         </copy>
-    	<ant antfile="${tools.package.transform}" target="transform" inheritall="false" inheritrefs="false">
+        <ant antfile="${tools.package.transform}" target="transform" inheritall="false" inheritrefs="false">
             <property name="iics.release" value="${iics.release.basename}"/>
-        	<property name="transform.source.dir" location="${transform.src.folder}"/>
-        	<property name="transform.target.dir" location="${transform.temp.folder}"/>
-    		<property name="migration.properties.base" value="${iics.external.properties.dir}"/>
+            <property name="transform.source.dir" location="${transform.src.folder}"/>
+            <property name="transform.target.dir" location="${transform.temp.folder}"/>
+            <property name="migration.properties.base" value="${iics.external.properties.dir}"/>
         </ant>
     </target>
     
@@ -444,7 +444,7 @@
             todir="${iics.import.dir}" 
             file="${iics.target.package.config}"  />
     </target>
-	
+    
     <target name="iics.import" depends="-download.iics,-load.release.properties">
          <iics.import id="${iics.release.basename}" 
             region="${iics.region}" 
@@ -459,27 +459,27 @@
         <delete dir="${basedir}/target/${iics.release.basename}" verbose="true">
         </delete>
     </target>
-	
-	<target name="build.ipd.dist.packages" depends="-env.info,
+    
+    <target name="build.ipd.dist.packages" depends="-env.info,
         -select-release,
         -load.release.properties" 
-		if="iics.release.basename"
-		description="Builds IPD Binary Packages Distribution to pre-defined folder which are available for download in github">
-		<property name="iics.binaries.dir" location="${basedir}/dist"></property>
-		
-		<iics.package id="initial_release" 
-		            workspace="${iics.extract.dir}" 
-		            output="${iics.package.output}_InitialInstall_All_Designs.zip" 
-		            todir="${iics.binaries.dir}" 
-		            file="${basedir}/conf/all_designs.package.txt"/>
-		<echo level="info">Updated All Designs distribution in ${iics.binaries.dir}/${iics.package.output}_InitialInstall_All_Designs.zip</echo>
-		<iics.package id="update_release" 
+        if="iics.release.basename"
+        description="Builds IPD Binary Packages Distribution to pre-defined folder which are available for download in github">
+        <property name="iics.binaries.dir" location="${basedir}/dist"></property>
+        
+        <iics.package id="initial_release" 
+                    workspace="${iics.extract.dir}" 
+                    output="${iics.package.output}_InitialInstall_All_Designs.zip" 
+                    todir="${iics.binaries.dir}" 
+                    file="${basedir}/conf/all_designs.package.txt"/>
+        <echo level="info">Updated All Designs distribution in ${iics.binaries.dir}/${iics.package.output}_InitialInstall_All_Designs.zip</echo>
+        <iics.package id="update_release" 
                     workspace="${iics.extract.dir}" 
                     output="${iics.package.output}_Update_Excluding_Connections.zip" 
                     todir="${iics.binaries.dir}" 
                     file="${basedir}/conf/all_exclude_connections.package.txt"/>
         <echo level="info">Updated Update Designs distribution in ${iics.binaries.dir}/${iics.package.output}_Update_Excluding_Connections.zip</echo>
-	</target>
+    </target>
 
     
     
@@ -511,7 +511,7 @@
     <target name="package.src" depends="-env.info,
         -select-release,
         -load.release.properties,
-    	-download.iics,
+        -download.iics,
         -set-target-properties,
         -select-package-config,
         -set-package-properties,
@@ -536,7 +536,7 @@
     
     <target name="publish" depends="-env.info,
         -select-release,
-    	-download.iics,
+        -download.iics,
         -load.release.properties,
         -set-target-properties,
         -select-publish-config,
