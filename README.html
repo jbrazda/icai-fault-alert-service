@@ -897,7 +897,7 @@ This tool will automatically download latest version an use it to import provide
 <blockquote>
 <p>WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  <code>~/iics/environment.properties</code> The <code>~/iics</code> folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)</p>
 </blockquote>
-<p>Update existing or copy <a href="conf/iclab-dev.release.properties">conf/iclab-dev.release.properties</a> file which defines a key Environment specific parameters</p>
+<p>Update existing or copy <a href="conf/iics.release.properties">conf/iics.release.properties</a> file which defines a key Environment specific parameters</p>
 <div class="highlight highlight-source-ini"><pre><span class="pl-c"><span class="pl-c">#</span> define a comma separated list of environment org labels such as</span>
 <span class="pl-c"><span class="pl-c">#</span> dev,test,uat,prod</span>
 <span class="pl-k">iics.environment.list</span>=dev,test,prod
@@ -1009,13 +1009,13 @@ defined by following expression <code>${iics.package.output}_${iics.release.base
 -select-release:
      [echo] Available Release Configurations:
      [echo] =================================
-     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
      [echo] =================================
 -set-release-properties:
      [echo] Selected Release Configuration: iclab-dev.release
-     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
 -load.release.properties:
-     [echo] Loading /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] Loading /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
      [echo] Loading External properties (credentials) from /Users/jbrazda/iics/iclab.properties
      [echo] TODO: Add Inputs Validation
 -select-target-environment:
@@ -1077,22 +1077,22 @@ Total time: 10 seconds
 <p>You can run the same as in eclipse from command line using a following commands</p>
 <p>Build a full package, DEV Environment Target</p>
 <div class="highlight highlight-source-shell"><pre>ant package.src \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_designs.package.txt</pre></div>
 <p>Build a Package without Connections DEV Target</p>
 <div class="highlight highlight-source-shell"><pre>ant package.src \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt</pre></div>
 <p>Import Package to test environment</p>
 <div class="highlight highlight-source-shell"><pre>ant import \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=test \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt</pre></div>
 <p>Publish Imported Assets</p>
 <div class="highlight highlight-source-shell"><pre>ant publish \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=test \
 -Diics.target.publish.config=./conf/all_designs.publish.txt</pre></div>
 <h3 id="configure-your-org">

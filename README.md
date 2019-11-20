@@ -214,7 +214,7 @@ iics.password.prod=SET_PASSWORD
 
 > WARNING Never put these properties into the project folder and keep this property file in a secure location ideally  `~/iics/environment.properties` The `~/iics` folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)
 
-Update existing or copy [conf/iclab-dev.release.properties](conf/iclab-dev.release.properties) file which defines a key Environment specific parameters
+Update existing or copy [conf/iics.release.properties](conf/iics.release.properties) file which defines a key Environment specific parameters
 
 ```properties
 # define a comma separated list of environment org labels such as 
@@ -459,13 +459,13 @@ Buildfile: /Users/jbrazda/git/icai-fault-alert-service/build.xml
 -select-release:
      [echo] Available Release Configurations:
      [echo] =================================
-     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
      [echo] =================================
 -set-release-properties:
      [echo] Selected Release Configuration: iclab-dev.release
-     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] Selected File: /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
 -load.release.properties:
-     [echo] Loading /Users/jbrazda/git/icai-fault-alert-service/conf/iclab-dev.release.properties
+     [echo] Loading /Users/jbrazda/git/icai-fault-alert-service/conf/iics.release.properties
      [echo] Loading External properties (credentials) from /Users/jbrazda/iics/iclab.properties
      [echo] TODO: Add Inputs Validation
 -select-target-environment:
@@ -531,7 +531,7 @@ Build a full package, DEV Environment Target
 
 ```shell
 ant package.src \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_designs.package.txt
 ```
@@ -540,7 +540,7 @@ Build a Package without Connections DEV Target
 
 ```shell
 ant package.src \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=dev \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt
 ```
@@ -549,7 +549,7 @@ Import Package to test environment
 
 ```shell
 ant import \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=test \
 -Diics.target.package.config=./conf/all_exclude_connections.package.txt
 ```
@@ -558,7 +558,7 @@ Publish Imported Assets
 
 ```shell
 ant publish \
--Diics.release=./conf/iclab-dev.release.properties \
+-Diics.release=./conf/iics.release.properties \
 -Diics.target.environment=test \
 -Diics.target.publish.config=./conf/all_designs.publish.txt
 ```
