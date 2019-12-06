@@ -14,11 +14,8 @@
       <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2019-10-09T17:47:08Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-10-14T15:05:57Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T15:06:00Z</types1:PublicationDate>
-      <types1:PublishedContributionId>project:/sf.Gitlab_Snippets_Storage_Manager/Gitlab_Snippets_Storage_Manager.xml</types1:PublishedContributionId>
+      <types1:ModificationDate>2019-12-05T19:53:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
@@ -537,7 +534,7 @@
                         <text>Cancel</text>
                      </action>
                      <action alt="null" id="k1jm9ypp_k1kumm5p" targetScreen="k1kumm5p">
-                        <text>Load Selected</text>
+                        <text>Confirm Selection</text>
                      </action>
                   </actions>
                   <screenData skipIfRequiredFilled="false">
@@ -568,7 +565,7 @@
                         <text>Cancel</text>
                      </action>
                      <action alt="null" id="k1krpdnv_k1ksh291" targetScreen="k1ksh291">
-                        <text>Load Selected</text>
+                        <text>Update Selected</text>
                      </action>
                   </actions>
                   <screenData skipIfRequiredFilled="false">
@@ -770,13 +767,13 @@
                      <text/>
                   </screenActionLabel>
                </endScreen>
-               <empty gatewayType="exclusive" id="k1qjrlxo">
+               <empty gatewayType="exclusive" id="k3t4x5dm">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qjrlwk">
+               <empty gatewayType="exclusive" id="k3t4x5ci">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qjrlwh">
+               <empty gatewayType="exclusive" id="k3t4x5cf">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="k1ksh2d0">
@@ -786,10 +783,10 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k1qjrlx0">
+               <empty gatewayType="exclusive" id="k3t4x5cy">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qjrlxj">
+               <empty gatewayType="exclusive" id="k3t4x5dh">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="k1ksh28f">
@@ -962,5 +959,5 @@ $temp.tmp_selected_file[1]/id = '' or empty($temp.tmp_selected_file[1]/id ))</ex
       <types1:GUID>6oIrqEN7LeAjwE2apPaTAX</types1:GUID>
       <types1:DisplayName>Gitlab Snippets Storage Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-10-14T16:29:47.287Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-12-06T18:14:53.513Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

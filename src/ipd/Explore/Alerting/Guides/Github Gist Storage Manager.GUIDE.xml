@@ -15,10 +15,7 @@
       <types1:CreationDate>2019-10-10T16:26:39Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
       <types1:ModificationDate>2019-10-11T13:02:13Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T14:19:25Z</types1:PublicationDate>
-      <types1:PublishedContributionId>project:/sf.Github_Gist_Storage_Manager/Github_Gist_Storage_Manager.xml</types1:PublishedContributionId>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
@@ -813,5 +810,5 @@ return
       <types1:GUID>5e8SOtOzInDhHjnm8F298G</types1:GUID>
       <types1:DisplayName>Github Gist Storage Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-10-14T16:29:47.321Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-12-06T18:14:53.554Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

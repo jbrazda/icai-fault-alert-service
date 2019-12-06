@@ -13,8 +13,8 @@
       <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
       <types1:CreationDate>2019-08-28T20:13:28Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-10-14T15:19:15Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:ModificationDate>2019-12-05T19:57:53Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
       <types1:PublicationDate>2019-10-14T15:19:23Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-NA/UncaughtFaultAlertHandler-NA.pd.xml</types1:PublishedContributionId>
@@ -464,7 +464,7 @@ return ipd:setProcessTitle($process_title)</expression>
                         </flow>
                         <flow id="k1qix7fy">
                            <assignment id="k1qix7jr">
-                              <title>Update Process Title 1</title>
+                              <title>Update Process Title - Failed Get Snippet</title>
                               <operation source="formula" to="temp.tmp_script_out">
                                  <expression language="XQuery">let $code := $output.faultInfo[1]/code
 let $error := $output.faultInfo[1]/reason
@@ -902,5 +902,5 @@ return
       <types1:GUID>9UWeUqnSHkalqQVZI82Ekf</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-NA</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-10-14T16:29:47.737Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-12-06T18:14:53.794Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

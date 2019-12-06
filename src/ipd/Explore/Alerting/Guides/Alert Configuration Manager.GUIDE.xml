@@ -16,7 +16,7 @@
       <types1:ModificationDate>2019-10-14T14:45:59Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T15:06:08Z</types1:PublicationDate>
+      <types1:PublicationDate>2019-12-05T19:54:28Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/sf.Alert_Configuration_Manager/Alert_Configuration_Manager.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -3673,5 +3673,5 @@ util:toXML($sample_payload)</expression>
       <types1:GUID>8zodeZJhfnBdPPMtFf1DQE</types1:GUID>
       <types1:DisplayName>Alert Configuration Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2019-10-14T16:29:47.705Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2019-12-06T18:14:53.744Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
