@@ -35,7 +35,6 @@ jobs:
 
     - name: Build with Ant
       run: |
-        echo "downloading resources using $IICS_PROD_ORG_USER"
         ant download.src \
         -Diics.user.test="$IICS_PROD_ORG_USER" \
         -Diics.password.test="$IICS_PROD_ORG_PWD" \
