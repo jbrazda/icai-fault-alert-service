@@ -43,4 +43,5 @@ jobs:
         -Diics.password.test="$IICS_QA_ORG_PWD" \
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
-        -Dtools.reporting.disabled=true \
+        -Dtools.reporting.disabled=true
+        echo "$IICS_QA_EXPORT_PATH"
