@@ -37,6 +37,6 @@ jobs:
         ant download.src \
         -Diics.user.test="$IICS_PROD_ORG_USER" \
         -Diics.password.test="$IICS_PROD_ORG_PWD" \
-        -Diics.release="$IICS_PROD_RELEASE_CONFIG" \
-        -Diics.source.environment="$IICS_PROD_TARGET_ENVIRONMENT" \
+        -Diics.release=./conf/iics.release.properties \
+        -Diics.source.environment=test \
         -Dtools.reporting.disabled=true \
