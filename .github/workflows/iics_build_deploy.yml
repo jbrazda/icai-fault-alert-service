@@ -26,7 +26,7 @@ jobs:
       with:
         java-version: 1.8
       
-    - name: Backup Test Org Project
+    - name: Export Project From Target Org
       env:
         IICS_QA_TARGET_ENVIRONMENT: test
         IICS_QA_RELEASE_CONFIG: ./conf/iics.release.properties
@@ -42,3 +42,12 @@ jobs:
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
         -Dtools.reporting.disabled=true
+    - name : Backup to S3
+      uses: opspresso/action-s3-sync@v0.2.1
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1"
+          FROM_PATH: "./target/iics/export"
+          DEST_PATH: "s3://infa.cloud.in"
+          OPTIONS: ""
