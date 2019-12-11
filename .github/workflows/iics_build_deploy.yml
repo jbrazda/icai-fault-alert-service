@@ -8,7 +8,6 @@ name: IICS CI Workflow
   # AWS_SECRET_ACCESS_KEY: ""
   # AWS_DEFAULT_REGION: ""
 
-
 on: [push]
 
 jobs:
