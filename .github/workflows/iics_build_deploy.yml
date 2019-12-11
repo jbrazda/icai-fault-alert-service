@@ -1,5 +1,5 @@
 name: IICS CI Workflow
-  # Following Project Variables must be defined in th CI/CD Configuration
+  # Following Project Secrets must be defined in the CI/CD Configuration
   # IICS_QA_ORG_USER: ""
   # IICS_QA_ORG_PWD: ""
   # IICS_PROD_ORG_USER: ""
@@ -26,10 +26,8 @@ jobs:
       with:
         java-version: 1.8
       
-    - name: Build with Ant
+    - name: Backup Test Org Project
       env:
-        IICS_QA_ORG_USER: ${{ secrets.IICS_QA_ORG_USER }}
-        IICS_QA_ORG_PWD:  ${{ secrets.IICS_QA_ORG_PWD }}
         IICS_QA_TARGET_ENVIRONMENT: test
         IICS_QA_RELEASE_CONFIG: ./conf/iics.release.properties
         IICS_QA_PACKAGE_CONFIG: ./conf/all_designs.package.txt
@@ -39,9 +37,8 @@ jobs:
         IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
       run: |
         ant download.src \
-        -Diics.user.test="$IICS_QA_ORG_USER" \
-        -Diics.password.test="$IICS_QA_ORG_PWD" \
+        -Diics.user.test=${{ secrets.IICS_QA_ORG_USER }} \
+        -Diics.password.test=${{ secrets.IICS_QA_ORG_PWD }} \
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
         -Dtools.reporting.disabled=true
-        echo ${{ secrets.IICS_QA_ORG_USER }}
