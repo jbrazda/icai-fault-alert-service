@@ -44,4 +44,4 @@ jobs:
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
         -Dtools.reporting.disabled=true
-        echo "$IICS_QA_EXPORT_PATH"
+        echo ${{ secrets.IICS_QA_ORG_USER }}
