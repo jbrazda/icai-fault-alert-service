@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+      env:
         IICS_QA_ORG_USER: ${{ secrets.IICS_QA_ORG_USER }}
         IICS_QA_ORG_PWD:  ${{ secrets.IICS_QA_ORG_PWD }}
         IICS_QA_TARGET_ENVIRONMENT: "test"
@@ -34,9 +35,10 @@ jobs:
 
     - name: Build with Ant
       run: |
-        ant download.src
-        -Diics.user.$IICS_PROD_TARGET_ENVIRONMENT="$IICS_PROD_ORG_USER"
-        -Diics.password.$IICS_PROD_TARGET_ENVIRONMENT="$IICS_PROD_ORG_PWD"
-        -Diics.release="$IICS_PROD_RELEASE_CONFIG"
-        -Diics.source.environment="$IICS_PROD_TARGET_ENVIRONMENT"
-        -Dtools.reporting.disabled=true
+        echo "downloading resources using $IICS_PROD_ORG_USER"
+        ant download.src \
+        -Diics.user.test="$IICS_PROD_ORG_USER" \
+        -Diics.password.test="$IICS_PROD_ORG_PWD" \
+        -Diics.release="$IICS_PROD_RELEASE_CONFIG" \
+        -Diics.source.environment="$IICS_PROD_TARGET_ENVIRONMENT" \
+        -Dtools.reporting.disabled=true \
