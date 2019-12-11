@@ -25,13 +25,13 @@ jobs:
       env:
         IICS_QA_ORG_USER: ${{ secrets.IICS_QA_ORG_USER }}
         IICS_QA_ORG_PWD:  ${{ secrets.IICS_QA_ORG_PWD }}
-        IICS_QA_TARGET_ENVIRONMENT: "test"
-        IICS_QA_RELEASE_CONFIG: "./conf/iics.release.properties"
-        IICS_QA_PACKAGE_CONFIG: "./conf/all_designs.package.txt"
-        IICS_QA_TRANSFORM_CONFIG: "./conf/PennyMac_dev_test.transform.properties"
-        IICS_QA_PUBLISH_CONFIG: "./conf/all_designs.publish.txt"
-        IICS_QA_EXPORT_PATH: "./target/iics/export/${IICS_QA_TARGET_ENVIRONMENT}"
-        IICS_QA_EXPORT_FILE: "IICS-PennyMac-CICDTEST"
+        IICS_QA_TARGET_ENVIRONMENT: test
+        IICS_QA_RELEASE_CONFIG: ./conf/iics.release.properties
+        IICS_QA_PACKAGE_CONFIG: ./conf/all_designs.package.txt
+        IICS_QA_TRANSFORM_CONFIG: ./conf/PennyMac_dev_test.transform.properties
+        IICS_QA_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
+        IICS_QA_EXPORT_PATH: ./target/iics/export/test
+        IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
 
     - name: Build with Ant
       run: |
