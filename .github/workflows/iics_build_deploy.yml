@@ -35,8 +35,8 @@ jobs:
         IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
       run: |
         ant download.src \
-        -Diics.user.test="$IICS_PROD_ORG_USER" \
-        -Diics.password.test="$IICS_PROD_ORG_PWD" \
+        -Diics.user.test="$IICS_QA_ORG_USER" \
+        -Diics.password.test="$IICS_QA_ORG_PWD" \
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
         -Dtools.reporting.disabled=true \
