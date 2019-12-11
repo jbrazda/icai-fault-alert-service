@@ -21,6 +21,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+      
+    - name: Build with Ant
       env:
         IICS_QA_ORG_USER: ${{ secrets.IICS_QA_ORG_USER }}
         IICS_QA_ORG_PWD:  ${{ secrets.IICS_QA_ORG_PWD }}
@@ -31,8 +33,6 @@ jobs:
         IICS_QA_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
         IICS_QA_EXPORT_PATH: ./target/iics/export/test
         IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
-
-    - name: Build with Ant
       run: |
         ant download.src \
         -Diics.user.test="$IICS_PROD_ORG_USER" \
