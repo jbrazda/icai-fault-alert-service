@@ -8,8 +8,12 @@ name: IICS CI Workflow
   # AWS_SECRET_ACCESS_KEY: ""
   # AWS_DEFAULT_REGION: ""
 
-on: [push]
-
+on:
+  # Trigger the workflow on push request,
+  # but only for the demo_ci branch
+  push:
+    branches:
+      - demo_ci
 jobs:
   backup:
 
