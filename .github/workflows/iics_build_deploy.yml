@@ -34,7 +34,7 @@ jobs:
         IICS_QA_TRANSFORM_CONFIG: ./conf/PennyMac_dev_test.transform.properties
         IICS_QA_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
         IICS_QA_EXPORT_PATH: ./target/iics/export/test
-        IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
+        IICS_QA_EXPORT_FILE: FaultAlertService
       run: |
         ant download.src \
         -Diics.user.test=${{ secrets.IICS_QA_ORG_USER }} \
