@@ -1,5 +1,5 @@
 name: IICS CI Workflow
-  # Following Project Variables must be defined in th CI/CD Configuration
+  # Following Project Secrets must be defined in the CI/CD Configuration
   # IICS_QA_ORG_USER: ""
   # IICS_QA_ORG_PWD: ""
   # IICS_PROD_ORG_USER: ""
@@ -26,21 +26,28 @@ jobs:
       with:
         java-version: 1.8
       
-    - name: Build with Ant
+    - name: Export Project From Target Org
       env:
-        IICS_QA_ORG_USER: ${{ secrets.IICS_QA_ORG_USER }}
-        IICS_QA_ORG_PWD:  ${{ secrets.IICS_QA_ORG_PWD }}
         IICS_QA_TARGET_ENVIRONMENT: test
         IICS_QA_RELEASE_CONFIG: ./conf/iics.release.properties
         IICS_QA_PACKAGE_CONFIG: ./conf/all_designs.package.txt
         IICS_QA_TRANSFORM_CONFIG: ./conf/PennyMac_dev_test.transform.properties
         IICS_QA_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
         IICS_QA_EXPORT_PATH: ./target/iics/export/test
-        IICS_QA_EXPORT_FILE: IICS-iclab-AlertService
+        IICS_QA_EXPORT_FILE: FaultAlertService
       run: |
         ant download.src \
-        -Diics.user.test="$IICS_QA_ORG_USER" \
-        -Diics.password.test="$IICS_QA_ORG_PWD" \
+        -Diics.user.test=${{ secrets.IICS_QA_ORG_USER }} \
+        -Diics.password.test=${{ secrets.IICS_QA_ORG_PWD }} \
         -Diics.release=./conf/iics.release.properties \
         -Diics.source.environment=test \
-        -Dtools.reporting.disabled=true \
+        -Dtools.reporting.disabled=true
+    - name : Backup to S3
+      uses: opspresso/action-s3-sync@v0.2.1
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1"
+          FROM_PATH: "./target/iics/export"
+          DEST_PATH: "s3://infa.cloud.in"
+          OPTIONS: ""
