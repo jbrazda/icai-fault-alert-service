@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml</types1:EntryId>
       <types1:Name>gitlab-snippets-alert-configuration</types1:Name>
-      <types1:ParentFlowIds>uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml,5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml,uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description>Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets</types1:Description>
       <types1:AppliesTo/>
@@ -48,5 +48,5 @@ See https://gitlab.com/help/api/README.md</description>
       <types1:GUID>aYlOxMbHcsSdSUISh7CVK4</types1:GUID>
       <types1:DisplayName>gitlab-snippets-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-01-08T16:19:10.71Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-03-25T14:48:01.149Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

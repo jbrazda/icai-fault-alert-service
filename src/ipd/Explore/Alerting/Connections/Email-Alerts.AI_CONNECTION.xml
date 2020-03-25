@@ -17,7 +17,7 @@
       <types1:ModificationDate>2019-09-05T21:15:36Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-08T16:15:19Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-03-25T14:46:14Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/Email-Alerts/Email-Alerts.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -58,5 +58,5 @@
       <types1:GUID>cOur0Hdz9oshd8U7LIuIiD</types1:GUID>
       <types1:DisplayName>Email-Alerts</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-01-08T16:19:10.361Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-03-25T14:48:00.955Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

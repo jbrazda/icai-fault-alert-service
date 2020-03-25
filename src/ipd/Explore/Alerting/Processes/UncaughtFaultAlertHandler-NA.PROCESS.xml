@@ -14,9 +14,9 @@
       <types1:CreationDate>2019-08-28T20:13:28Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
       <types1:ModificationDate>2019-12-05T19:57:53Z</types1:ModificationDate>
-      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T15:19:23Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-03-25T14:46:19Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-NA/UncaughtFaultAlertHandler-NA.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -902,5 +902,5 @@ return
       <types1:GUID>9UWeUqnSHkalqQVZI82Ekf</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-NA</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-01-08T16:19:11.182Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-03-25T14:48:01.449Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

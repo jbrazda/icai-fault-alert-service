@@ -16,9 +16,9 @@ See https://gitlab.com/help/api/README.md</types1:Description>
       <types1:CreationDate>2019-10-09T14:01:23Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
       <types1:ModificationDate>2019-11-26T14:57:12Z</types1:ModificationDate>
-      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T14:05:55Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-03-24T21:50:46Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connector/gitlab_snippets/gitlab_snippets_svcDef.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -489,5 +489,5 @@ default return ()}</xquery>
       <types1:GUID>1UgNOYX99vYl4ePFrQfEis</types1:GUID>
       <types1:DisplayName>gitlab-snippets</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-01-08T16:19:10.485Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-03-25T14:48:00.988Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

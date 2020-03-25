@@ -3,7 +3,7 @@
    <types1:Item>
       <types1:EntryId>XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml</types1:EntryId>
       <types1:Name>github-gist-alert-configuration</types1:Name>
-      <types1:ParentFlowIds>AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml,5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml,AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description>Github Gist API connection to manage Alert Service Configurations</types1:Description>
       <types1:AppliesTo/>
@@ -17,7 +17,7 @@
       <types1:ModificationDate>2019-09-05T21:16:41Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T14:59:08Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-03-25T14:46:11Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/github-gist-alert-configuration/github-gist-alert-configuration.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -50,5 +50,5 @@ This connector is useful to store and retrive configurations, templates, snippet
       <types1:GUID>2AJJfAJqQLkaZMytvRBVWR</types1:GUID>
       <types1:DisplayName>github-gist-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-01-08T16:19:10.745Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-03-25T14:48:01.159Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
