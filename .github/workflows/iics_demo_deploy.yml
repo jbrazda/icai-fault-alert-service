@@ -10,12 +10,12 @@ name: IICS CI Workflow
 
 on:
   # Trigger the workflow on push request,
-  # but only for the demo_ci branch
+  # but only for the dev branch
   push:
     branches:
       - dev
 jobs:
-  backup:
+  buid_deploy:
 
     runs-on: ubuntu-latest
 
