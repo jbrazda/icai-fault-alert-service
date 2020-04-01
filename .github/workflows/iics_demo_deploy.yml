@@ -1,0 +1,53 @@
+name: IICS CI Workflow
+  # Following Project Secrets must be defined in the CI/CD Configuration
+  # IICS_TEST_ORG_USER: ""
+  # IICS_TEST_ORG_PWD: ""
+  # IICS_PROD_ORG_USER: ""
+  # IICS_PROD_ORG_PWD: ""
+  # AWS_ACCESS_KEY_ID: "" 
+  # AWS_SECRET_ACCESS_KEY: ""
+  # AWS_DEFAULT_REGION: ""
+
+on:
+  # Trigger the workflow on push request,
+  # but only for the demo_ci branch
+  push:
+    branches:
+      - dev
+jobs:
+  backup:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+      
+    - name: Export Project From Target Org
+      env:
+        IICS_TEST_TARGET_ENVIRONMENT: test
+        IICS_TEST_RELEASE_CONFIG: ./conf/iics.release.properties
+        IICS_TEST_PACKAGE_CONFIG: ./conf/all_designs.package.txt
+        IICS_TEST_TRANSFORM_CONFIG: ./conf/template.transform.properties
+        IICS_TEST_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
+        IICS_TEST_EXPORT_PATH: ./target/iics/export/test
+        IICS_TEST_EXPORT_FILE: FaultAlertService
+      run: |
+        ant download.src \
+        -Diics.user.test=${{ secrets.IICS_TEST_ORG_USER }} \
+        -Diics.password.test=${{ secrets.IICS_TEST_ORG_PWD }} \
+        -Diics.release=./conf/iics.release.properties \
+        -Diics.source.environment=test \
+        -Dtools.reporting.disabled=true
+    - name : Backup to S3
+      uses: opspresso/action-s3-sync@v0.2.1
+      env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1"
+          FROM_PATH: "./target/iics/export"
+          DEST_PATH: "s3://infa.cloud.in"
+          OPTIONS: ""
