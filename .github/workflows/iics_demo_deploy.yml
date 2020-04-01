@@ -29,10 +29,6 @@ jobs:
     - name: Export Project From Target Org
       env:
         IICS_TEST_TARGET_ENVIRONMENT: test
-        IICS_TEST_RELEASE_CONFIG: ./conf/iics.release.properties
-        IICS_TEST_PACKAGE_CONFIG: ./conf/all_designs.package.txt
-        IICS_TEST_TRANSFORM_CONFIG: ./conf/template.transform.properties
-        IICS_TEST_PUBLISH_CONFIG: ./conf/all_designs.publish.txt
         IICS_TEST_EXPORT_PATH: ./target/iics/export/test
         IICS_TEST_EXPORT_FILE: FaultAlertService
       run: |
@@ -51,3 +47,15 @@ jobs:
           FROM_PATH: "./target/iics/export"
           DEST_PATH: "s3://infa.cloud.in"
           OPTIONS: ""
+    - name: Build Deploy
+      env:
+        IICS_TEST_TARGET_ENVIRONMENT: test
+      run:   
+        ant build.deploy \
+        -Diics.user.test=${{ secrets.IICS_TEST_ORG_USER }} \
+        -Diics.password.test=${{ secrets.IICS_TEST_ORG_PWD }} \
+        -Diics.release=./conf/iics.release.properties \
+        -Diics.target.environment=test \
+        -Diics.target.package.config=./conf/all_exclude_connections.package.txt \
+        -Diics.package.transform.config=../../../conf/template.transform.properties \
+        -Diics.target.publish.config=./conf/all_designs.publish.txt
