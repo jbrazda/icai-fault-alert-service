@@ -50,7 +50,7 @@ jobs:
     - name: Build Deploy
       env:
         IICS_TEST_TARGET_ENVIRONMENT: test
-      run:   
+      run: |
         ant build.deploy \
         -Diics.user.test=${{ secrets.IICS_TEST_ORG_USER }} \
         -Diics.password.test=${{ secrets.IICS_TEST_ORG_PWD }} \
