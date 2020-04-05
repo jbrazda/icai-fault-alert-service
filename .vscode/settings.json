@@ -5,11 +5,15 @@
         "Buildfile",
         "Diics",
         "Jira",
+        "activebpel",
+        "buildproperties",
         "deployer",
         "iclab",
         "mkdir",
         "packagesrc",
         "projecthelp",
-        "sbin"
+        "sbin",
+        "uncaughtfaultalerthandler",
+        "xquery"
     ]
 }
