@@ -1,0 +1,274 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Jg7Gaaa-gt-5148370-2020-04-23T17:39:15.575Z::gt.xml</types1:EntryId>
+      <types1:Name>Secure_Agent_Monitor</types1:Name>
+      <types1:MimeType>application/xml+screenflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-04-23T17:39:16Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-04-28T03:30:28Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-04-28T03:39:26Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/sf.Secure_Agent_Monitor/Secure_Agent_Monitor.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <avosScreenflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                         xmlns:list="urn:activevos:spi:list:functions"
+                         allowRestart="true"
+                         displayName="Secure Agent Monitor"
+                         doneOnEndStep="false"
+                         name="Secure_Agent_Monitor"
+                         runAsUser="$current">
+            <description/>
+            <appliesTo/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_SelectedAgent" type="reference">
+                  <options>
+                     <option name="referenceTo">ICS-API:Agent</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9yKFXii7ZmkiUYE6xjuwuh</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_result" type="richtextarea">
+                  <options>
+                     <option name="text_height">12</option>
+                     <option name="text_width">100</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_configuration" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_recipients" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">jbrazda@unicosolution.com</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_subject" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Warning - Unexpected Agent State</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_expected_services" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Administrator,Common Integration Components,Data Integration Server,Mass Ingestion,OI Data Collector,Process Server</option>
+                  </options>
+               </field>
+            </tempFields>
+            <runOn target="desktop"/>
+            <notes/>
+            <deployment/>
+            <sendFeedback>
+               <emailTo/>
+            </sendFeedback>
+            <flow>
+               <startScreen id="jd300kk3">
+                  <title>Start</title>
+                  <body contentType="text/html"/>
+                  <actions>
+                     <action alt="null" id="jd300kk3_k9j7055x" targetScreen="k9j7055x">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="true"/>
+               </startScreen>
+               <screen id="k9j7055x">
+                  <title>Agent Monitor Test</title>
+                  <body contentType="text/html">&lt;p&gt;Check Agents Health&lt;/p&gt;
+&lt;table cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Email Subject&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_subject (temporary)" name="temp.tmp_subject" type="text" value="tmp_subject (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Email Recipients&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_recipients (temporary)" name="temp.tmp_recipients" type="text" value="tmp_recipients (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Expected Services&lt;/td&gt;
+&lt;td&gt;&lt;input class="" title="tmp_expected_services (temporary)" name="temp.tmp_expected_services" type="text" value="tmp_expected_services (temporary)"&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k9j7055x_k9jajki4" targetScreen="k9jajki4">
+                        <text>Run Test</text>
+                     </action>
+                     <action alt="null" id="k9j7055x_k9j7056d" targetScreen="k9j7056d">
+                        <text>Exit</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="temp.tmp_recipients"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="text_size">100</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_subject"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="text_size">100</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_expected_services"
+                                     readonly="false"
+                                     required="false"
+                                     type="string">
+                        <options>
+                           <option name="text_size">200</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <screen id="k9j70575">
+                  <title>Check Results</title>
+                  <body contentType="text/html">&lt;p&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="agentDetails (output)" name="output.agentDetails" readonly="readonly" type="text" value="agentDetails (output)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;input class="" style="-moz-appearance: none; background-color: lightgrey; border: none;" title="tmp_result (temporary)" name="temp.tmp_result" readonly="readonly" type="text" value="tmp_result (temporary)"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</body>
+                  <actionPrompt/>
+                  <actions>
+                     <action alt="null" id="k9j70575_k9j7056d" targetScreen="k9j7056d">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+                  <screenData skipIfRequiredFilled="false">
+                     <screenDataItem name="output.agentDetails"
+                                     readonly="true"
+                                     renderingType="table"
+                                     required="false"
+                                     type="objectlist">
+                        <options>
+                           <option hide="true" name="referenceTo">IICS-REST-API-V2:agentDetail</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">0UyujOCpoiokMXGJttFUIU</option>
+                           <option name="display-options">{"display-options":{"columns":{"column":[{"name":"id","type":"string","label":"id","renderingType":"string"},{"name":"name","type":"string","label":"name","renderingType":"string"},{"name":"active","type":"string","label":"active","renderingType":"string"},{"name":"agentHost","type":"string","label":"agentHost","renderingType":"string"},{"name":"platform","type":"string","label":"platform","renderingType":"string"},{"name":"type","type":"string","label":"type","renderingType":"string"},{"name":"upgradeStatus","type":"string","label":"upgradeStatus","renderingType":"string"},{"name":"updateTime","type":"string","label":"updateTime","renderingType":"string"},{"name":"createTime","type":"string","label":"createTime","renderingType":"string"}]},"rendering-type":{"table-style":null,"height":null},"allow_pagination":true,"allow_filtering":true,"allow_sorting":true}}</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_result"
+                                     readonly="true"
+                                     required="false"
+                                     type="richtextarea">
+                        <options>
+                           <option name="text_height">20</option>
+                           <option name="text_width">100</option>
+                           <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                  </screenData>
+               </screen>
+               <endScreen id="jd4cwa59">
+                  <title>End</title>
+                  <body contentType="text/html"/>
+                  <redirectTo type="current_object"/>
+                  <screenActionLabel>
+                     <text/>
+                  </screenActionLabel>
+               </endScreen>
+               <empty gatewayType="exclusive" id="k9j7056d">
+                  <actions>
+                     <action alt="null" id="k9j7056d_jd4cwa59" targetScreen="jd4cwa59">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <callProcess id="k9j7056o">
+                  <title>SecureAgentMonitor</title>
+                  <subflowGUID>1HJHJCwGsssdiOM956Fo24</subflowGUID>
+                  <subflowPath>SecureAgentMonitor</subflowPath>
+                  <runAsUser>$current</runAsUser>
+                  <serviceInput>
+                     <parameter id="k9jajkkp"
+                                name="in_configuration"
+                                source="field"
+                                updatable="true">temp.tmp_configuration</parameter>
+                  </serviceInput>
+                  <subflowOutput>
+                     <field name="agentDetails" type="objectlist">
+                        <options>
+                           <option name="referenceTo">IICS-REST-API-V2:agentDetail</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">0UyujOCpoiokMXGJttFUIU</option>
+                        </options>
+                     </field>
+                     <field name="out_agentStatusReport" type="xml">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </subflowOutput>
+                  <actions>
+                     <action alt="null" id="k9j7056o_k9j955ay" targetScreen="k9j955ay">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </callProcess>
+               <assignment id="k9jajki4">
+                  <title>Initialize</title>
+                  <operation source="formula" to="temp.tmp_configuration">
+                     <expression language="XQuery">&lt;AgentMonitor&gt;
+    &lt;!-- Comma Separated names of Agent Services to be expectd running on selected group --&gt;
+    &lt;agentServices&gt;{$temp.tmp_expected_services }&lt;/agentServices&gt;
+    &lt;actions&gt;
+    	&lt;email&gt;
+        	&lt;subject&gt;{$temp.tmp_subject }&lt;/subject&gt;
+            &lt;to&gt;{$temp.tmp_recipients }&lt;/to&gt;
+        &lt;/email&gt;
+    &lt;/actions&gt;
+&lt;/AgentMonitor&gt;</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="k9jajki4_k9j7056o" targetScreen="k9j7056o">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+               <assignment id="k9j955ay">
+                  <title>Assignment to tmp_result</title>
+                  <operation source="formula" to="temp.tmp_result">
+                     <expression language="XQuery">util:toXML($output.out_agentStatusReport)</expression>
+                  </operation>
+                  <actions>
+                     <action alt="null" id="k9j955ay_k9j70575" targetScreen="k9j70575">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </assignment>
+            </flow>
+         </avosScreenflow>
+      </types1:Entry>
+      <types1:GUID>2ktRfuITyF9f5VqV7IuM0x</types1:GUID>
+      <types1:DisplayName>Secure Agent Monitor</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:37.196Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

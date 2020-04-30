@@ -1,9 +1,9 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml</types1:EntryId>
+      <types1:EntryId>r5wq9bdsreK8ZAZ-gt-7365267-2020-03-25T23:14:03.528Z::gt.xml</types1:EntryId>
       <types1:Name>Gitlab_Snippets_Storage_Manager</types1:Name>
-      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>aabbeJOSM8NciZB-gt-6346531-2020-03-25T23:14:04.901Z::gt.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+screenflow</types1:MimeType>
       <types1:Description>Guide Save/Load/List Configurations Stored in Gitlab</types1:Description>
       <types1:AppliesTo/>
@@ -11,10 +11,9 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-10-09T17:47:08Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-12-05T19:53:30Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:04Z</types1:CreationDate>
+      <types1:ModifiedBy/>
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -58,7 +57,7 @@
                      <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                     <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                   </options>
                </parameter>
             </input>
@@ -79,7 +78,7 @@
                      <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                     <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                   </options>
                </field>
             </output>
@@ -89,7 +88,7 @@
                      <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                     <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                   </options>
                </field>
                <field description="" name="tmp_config_title" type="string">
@@ -589,7 +588,7 @@
                <service id="k1ksh2fe">
                   <title>Update Snippet</title>
                   <serviceName>gitlab-snippets-alert-configuration:Update Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1qgybyw" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
                      <parameter id="k1qgybyx" name="title" source="field" updatable="true">temp.tmp_selected_file[1]/title</parameter>
@@ -610,7 +609,7 @@
                <service id="k1ksh2ez">
                   <title>Create Snippet</title>
                   <serviceName>gitlab-snippets-alert-configuration:Create Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1qgybeg" name="title" source="field" updatable="true">temp.tmp_selected_file[1]/title</parameter>
                      <parameter id="k1qgybeh" name="file_name" source="field" updatable="true">temp.tmp_selected_file[1]/file_name</parameter>
@@ -630,7 +629,7 @@
                <service id="k1jm9you">
                   <title>Get Snippet</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1krp6ex" name="id" source="field" updatable="true">input.in_snippet_meta[1]/id</parameter>
                   </serviceInput>
@@ -643,7 +642,7 @@
                <service id="k1jnzp0x">
                   <title>Get Raw Snippet</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1krp9qz" name="id" source="field" updatable="true">output.snippet_info[1]/id</parameter>
                      <parameter id="k1krp9r0"
@@ -660,7 +659,7 @@
                <service id="k1jm9yph">
                   <title>Get Snippets</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Snippets</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <actions>
                      <action alt="null" id="k1jm9yph_k1jm9ypp" targetScreen="k1jm9ypp">
                         <text>Continue</text>
@@ -670,7 +669,7 @@
                <service id="k1kumm5p">
                   <title>Get Snippet File</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1kummf6" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
                      <parameter id="k1kummf7"
@@ -687,7 +686,7 @@
                <service id="k1krpdne">
                   <title>Get Snippets for Update</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Snippets</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <actions>
                      <action alt="null" id="k1krpdne_k1krpdnv" targetScreen="k1krpdnv">
                         <text>Continue</text>
@@ -697,7 +696,7 @@
                <service id="k1ksh2as">
                   <title>Get Raw Snippet for Update</title>
                   <serviceName>gitlab-snippets-alert-configuration:Get Raw Snippet</serviceName>
-                  <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                  <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                   <serviceInput>
                      <parameter id="k1krpgfb" name="id" source="field" updatable="true">temp.tmp_selected_file[1]/id</parameter>
                      <parameter id="k1krpgfc"
@@ -956,8 +955,8 @@ $temp.tmp_selected_file[1]/id = '' or empty($temp.tmp_selected_file[1]/id ))</ex
             </flow>
          </avosScreenflow>
       </types1:Entry>
-      <types1:GUID>6oIrqEN7LeAjwE2apPaTAX</types1:GUID>
+      <types1:GUID>jpQ4SSUd8W8ie8NtOTsAAr</types1:GUID>
       <types1:DisplayName>Gitlab Snippets Storage Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.265Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:37.026Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

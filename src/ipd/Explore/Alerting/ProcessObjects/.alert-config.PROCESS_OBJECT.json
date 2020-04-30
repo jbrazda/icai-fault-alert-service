@@ -1,6 +1,6 @@
 [
    {
-      "objectGuid": "akj7LhWsrkRfrss9BWznMz",
+      "objectGuid": "6MExyLqRu2bi4W3D83NIAA",
       "objectName": "alert-config",
       "objectType": "PROCESS_OBJECT",
       "path": "/Explore/Alerting/ProcessObjects",
@@ -17,7 +17,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "aa-gt-4513556-2019-06-18T15:01:20.001Z::po.xml"
+            "repoHandle": "xX0ls2z8Uuopz4K-gt-2341622-2020-03-25T23:14:00.737Z::po.xml"
          }
       }
    }

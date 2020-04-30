@@ -1,6 +1,6 @@
 [
    {
-      "objectGuid": "4XgVJDNt2gWi0Zq9iBgPo2",
+      "objectGuid": "dUVrcfkRsUQcJfC2mayBuY",
       "objectName": "AWS-SQS-Alerts",
       "objectType": "AI_CONNECTION",
       "path": "/Explore/Alerting/Connections",
@@ -17,7 +17,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "BhsydsUf2hwq9bd-gt-5883394-2019-06-20T21:20:49.437Z::conn.xml"
+            "repoHandle": "OAPbdutaaabbgdo-gt-2341612-2020-03-25T23:14:00.665Z::conn.xml"
          }
       }
    }

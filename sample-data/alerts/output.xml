@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aetgt:output xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
+              xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+              xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
+              xmlns:ns2="http://schemas.active-endpoints.com/engineapi/2010/09/ProcessManagementTypes.xsd"
+              xmlns:ns4="http://schemas.active-endpoints.com/engineapi/2010/05/EngineAPITypes.xsd"
+              xmlns:ns3="http://schemas.active-endpoints.com/activebpeladmin/2007/01/activebpeladmin.xsd">
+   <sf:field name="out_actions_taken" objectType="$po:action-ref"/>
+   <sf:field name="responseHeaders"/>
+   <sf:field name="pagingLinks"/>
+   <sf:field name="file_content">&lt;FaultAlertConfiguration&gt;
+    &lt;alert-config&gt;
+        &lt;Name&gt;Default Alert Configuration&lt;/Name&gt;
+        &lt;Descrioption&gt;This is a fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider&lt;/Descrioption&gt;
+        &lt;created&gt;2019-06-21T10:24:23&lt;/created&gt;
+        &lt;createdBy&gt;System&lt;/createdBy&gt;
+    &lt;/alert-config&gt;
+    &lt;rules&gt;
+        &lt;rule&gt;
+            &lt;guid&gt;9e7b7b98-f7ce-43e1-911f-26b4aaa0506a&lt;/guid&gt;
+            &lt;name&gt;Error Email&lt;/name&gt;
+            &lt;operator&gt;OR&lt;/operator&gt;
+            &lt;condition&gt;
+                &lt;guid&gt;159ccd35-f8a0-433e-82ca-7dea2df10f3e&lt;/guid&gt;
+                &lt;type&gt;equals&lt;/type&gt;
+                &lt;value/&gt;
+                &lt;not&gt;true&lt;/not&gt;
+                &lt;alert-field&gt;processName&lt;/alert-field&gt;
+            &lt;/condition&gt;
+            &lt;action&gt;
+                &lt;guid&gt;dcc33ba3-9ced-4546-a6e0-e9c1b33ae767&lt;/guid&gt;
+                &lt;Name&gt;Error Email&lt;/Name&gt;
+                &lt;Type&gt;error-email&lt;/Type&gt;
+            &lt;/action&gt;
+        &lt;/rule&gt;
+    &lt;/rules&gt;
+    &lt;actions&gt;
+        &lt;action&gt;
+            &lt;guid&gt;dcc33ba3-9ced-4546-a6e0-e9c1b33ae767&lt;/guid&gt;
+            &lt;Name&gt;Error Email&lt;/Name&gt;
+            &lt;Description&gt;Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors&lt;/Description&gt;
+            &lt;Type&gt;error-email&lt;/Type&gt;
+            &lt;ActionDetail&gt;
+                &lt;action-email&gt;
+                  &lt;subject&gt;Fault Alert Error&lt;/subject&gt;
+                  &lt;to&gt;jbrazda@informatica.com&lt;/to&gt;
+                  &lt;cc/&gt;
+                  &lt;bcc/&gt;
+                  &lt;contentType&gt;text/html&lt;/contentType&gt;
+                  &lt;actionName&gt;Send Error Email&lt;/actionName&gt;
+                &lt;/action-email&gt;
+            &lt;/ActionDetail&gt;
+        &lt;/action&gt;
+    &lt;/actions&gt;
+&lt;/FaultAlertConfiguration&gt;</sf:field>
+   <sf:field name="parsed_xml" objectType="github-gist-alert-configuration:">
+      <FaultAlertConfiguration xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                               xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+         <alert-config>
+            <Name>Default Alert Configuration</Name>
+            <Descrioption>This is a fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Descrioption>
+            <created>2019-06-21T10:24:23</created>
+            <createdBy>System</createdBy>
+         </alert-config>
+         <rules>
+            <rule>
+               <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+               <name>Error Email</name>
+               <operator>OR</operator>
+               <condition>
+                  <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                  <type>equals</type>
+                  <value/>
+                  <not>true</not>
+                  <alert-field>processName</alert-field>
+               </condition>
+               <action>
+                  <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+                  <Name>Error Email</Name>
+                  <Type>error-email</Type>
+               </action>
+            </rule>
+         </rules>
+         <actions>
+            <action>
+               <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+               <Name>Error Email</Name>
+               <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+               <Type>error-email</Type>
+               <ActionDetail>
+                  <action-email>
+                     <subject>Fault Alert Error</subject>
+                     <to>jbrazda@informatica.com</to>
+                     <cc/>
+                     <bcc/>
+                     <contentType>text/html</contentType>
+                     <actionName>Send Error Email</actionName>
+                   </action-email>
+               </ActionDetail>
+            </action>
+         </actions>
+      </FaultAlertConfiguration>
+   </sf:field>
+   <sf:field name="AlertHandlerOutput" objectType="$po:FaultAlertConfiguration">
+      <FaultAlertConfiguration>
+         <alert-config xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                       xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+            <Name>Default Alert Configuration</Name>
+            <Descrioption>This is a fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Descrioption>
+            <created>2019-06-21T10:24:23</created>
+            <createdBy>System</createdBy>
+         </alert-config>
+         <rules>
+            <rule>
+               <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+               <name>Error Email</name>
+               <operator>OR</operator>
+               <condition>
+                  <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                  <type>equals</type>
+                  <value/>
+                  <fieldValue>SP-Test-Throw-Fault-Generic</fieldValue>
+                  <not>true</not>
+                  <alert-field>processName</alert-field>
+                  <result>true</result>
+               </condition>
+               <action xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                       xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+                  <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+                  <Name>Error Email</Name>
+                  <Type>error-email</Type>
+               </action>
+               <results>true</results>
+               <result>true</result>
+            </rule>
+         </rules>
+         <actions xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+            <action>
+               <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+               <Name>Error Email</Name>
+               <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+               <Type>error-email</Type>
+               <ActionDetail>
+                  <action-email>
+                     <subject>Fault Alert Error</subject>
+                     <to>jbrazda@informatica.com</to>
+                     <cc/>
+                     <bcc/>
+                     <contentType>text/html</contentType>
+                     <actionName>Send Error Email</actionName>
+                   </action-email>
+               </ActionDetail>
+            </action>
+         </actions>
+         <invokeActions>
+            <action xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+               <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+               <Name>Error Email</Name>
+               <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+               <Type>error-email</Type>
+               <ActionDetail>
+                  <action-email>
+                     <subject>Fault Alert Error</subject>
+                     <to>jbrazda@informatica.com</to>
+                     <cc/>
+                     <bcc/>
+                     <contentType>text/html</contentType>
+                     <actionName>Send Error Email</actionName>
+                   </action-email>
+               </ActionDetail>
+            </action>
+         </invokeActions>
+      </FaultAlertConfiguration>
+   </sf:field>
+</aetgt:output>

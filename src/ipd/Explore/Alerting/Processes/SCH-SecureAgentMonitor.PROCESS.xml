@@ -1,0 +1,97 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>AjBeE1KoJBUhtyc-gt-5623320-2020-04-28T02:18:41.426Z::pd.xml</types1:EntryId>
+      <types1:Name>SCH-SecureAgentMonitor</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process to Set and Schedule Agent Monitor</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-04-28T02:18:41Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-04-29T14:20:42Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-04-29T14:20:52Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.SCH-SecureAgentMonitor/SCH-SecureAgentMonitor.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="SCH-SecureAgentMonitor"
+                  name="SCH-SecureAgentMonitor"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Process to Set and Schedule Agent Monitor</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_configuration" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k9ja5cxf" targetId="k9ja5cxe"/>
+               </start>
+               <assignment id="k9ja5cxe">
+                  <title>Assignment to tmp_configuration</title>
+                  <operation source="formula" to="temp.tmp_configuration">
+                     <expression language="XQuery">&lt;AgentMonitor&gt;
+    &lt;!-- Comma Separated names of Agent Services to be expectd running on selected group --&gt;
+    &lt;agentServices&gt;Administrator,Common Integration Components,Data Integration Server,Mass Ingestion,OI Data Collector,Process Server&lt;/agentServices&gt;
+    &lt;actions&gt;
+    	&lt;email&gt;
+        	&lt;subject&gt;Warning - Unexpected Agent State&lt;/subject&gt;
+            &lt;to&gt;jbrazda@unicosolution.com&lt;/to&gt;
+        &lt;/email&gt;
+    &lt;/actions&gt;
+&lt;/AgentMonitor&gt;</expression>
+                  </operation>
+                  <link id="k9ja5cxm" targetId="k9ja5cxl"/>
+               </assignment>
+               <subflow id="k9ja5cxl">
+                  <title>SecureAgentMonitor</title>
+                  <subflowGUID>1HJHJCwGsssdiOM956Fo24</subflowGUID>
+                  <subflowPath>SecureAgentMonitor</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_configuration" source="field" updatable="true">temp.tmp_configuration</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="agentDetails" type="objectlist">
+                        <options>
+                           <option name="referenceTo">IICS-REST-API-V2:agentDetail</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">0UyujOCpoiokMXGJttFUIU</option>
+                        </options>
+                     </field>
+                     <field name="out_agentStatusReport" type="xml">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="k9ja5cxn" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>2ePABy3i6qIdAF28D522Ch</types1:GUID>
+      <types1:DisplayName>SCH-SecureAgentMonitor</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:37.139Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

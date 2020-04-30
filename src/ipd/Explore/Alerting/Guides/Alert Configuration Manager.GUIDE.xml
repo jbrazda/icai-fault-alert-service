@@ -1,7 +1,7 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml</types1:EntryId>
+      <types1:EntryId>aabbeJOSM8NciZB-gt-6346531-2020-03-25T23:14:04.901Z::gt.xml</types1:EntryId>
       <types1:Name>Alert_Configuration_Manager</types1:Name>
       <types1:MimeType>application/xml+screenflow</types1:MimeType>
       <types1:Description>This guide provides set of tools to manage, generate and test Fault Alert Service Configuration</types1:Description>
@@ -10,13 +10,12 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-06-19T14:17:33Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-10-14T14:45:59Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:05Z</types1:CreationDate>
+      <types1:ModifiedBy/>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-12-05T19:54:28Z</types1:PublicationDate>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-03-25T23:43:29Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/sf.Alert_Configuration_Manager/Alert_Configuration_Manager.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -37,7 +36,7 @@
                      <option name="referenceTo">$po:FaultAlertConfiguration</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">a7pUb21Pfy3c67w7CCaz4B</option>
+                     <option name="guid">gEj5IRxX4gJgsLJ33z58qv</option>
                   </options>
                </field>
                <field description="" name="tmp_rule" type="reference">
@@ -45,7 +44,7 @@
                      <option name="referenceTo">$po:rule</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">hnshiYqkeIOehlyCb2Zdwg</option>
+                     <option name="guid">6awi7KEgKmnfNUjHHuVJic</option>
                   </options>
                </field>
                <field description="" name="tmp_condition" type="reference">
@@ -53,7 +52,7 @@
                      <option name="referenceTo">$po:condition</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">fnx2xYvSTCul1tKBqmlGcC</option>
+                     <option name="guid">7dlPL5Q2HIDitkNjx7jBQU</option>
                   </options>
                </field>
                <field description="" name="tmp_action" type="reference">
@@ -61,7 +60,7 @@
                      <option name="referenceTo">$po:action</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">7TCmsWgjoghdSqfpcOxfs4</option>
+                     <option name="guid">cl8knTQGCSQb6MQhyH12Ut</option>
                   </options>
                </field>
                <field description="" name="tmp_action_ref" type="reference">
@@ -69,7 +68,7 @@
                      <option name="referenceTo">$po:action-ref</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">450357e5mW9eidFwHW1Nou</option>
+                     <option name="guid">lKJsk3UE6KjdXexESZSycK</option>
                   </options>
                </field>
                <field description="" name="tmp_select_action" type="reference">
@@ -77,7 +76,7 @@
                      <option name="referenceTo">$po:action</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">7TCmsWgjoghdSqfpcOxfs4</option>
+                     <option name="guid">cl8knTQGCSQb6MQhyH12Ut</option>
                   </options>
                </field>
                <field description="" name="tmp_config_xml" type="textarea">
@@ -99,7 +98,7 @@
                      <option name="referenceTo">$po:action-email</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">0XBGnDRR3WMgJR50uEhJiV</option>
+                     <option name="guid">ajAViSjVGBacGGuYjum320</option>
                   </options>
                </field>
                <field description="This Field used  only to workaround Defect "
@@ -130,7 +129,7 @@
                      <option name="referenceTo">github-gist-alert-configuration:createGist</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">2AJJfAJqQLkaZMytvRBVWR</option>
+                     <option name="guid">2fJdGOrTzrteLpPrsXudqG</option>
                   </options>
                </field>
                <field description="" name="tmp_saxon_serialize_params" type="reference">
@@ -185,7 +184,7 @@
                      <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                     <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                   </options>
                </field>
             </tempFields>
@@ -2014,7 +2013,7 @@
                </jumpTo>
                <subflow id="k1l0tm0k">
                   <title>Github Gist Storage Manager</title>
-                  <subflowGUID>5e8SOtOzInDhHjnm8F298G</subflowGUID>
+                  <subflowGUID>5HkyjCqUbvYfzsgmI7fwcw</subflowGUID>
                   <subflowPath>Github_Gist_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2048,7 +2047,7 @@
                </subflow>
                <subflow id="k1krrdny">
                   <title>Gitlab Snippets Storage Manager</title>
-                  <subflowGUID>6oIrqEN7LeAjwE2apPaTAX</subflowGUID>
+                  <subflowGUID>jpQ4SSUd8W8ie8NtOTsAAr</subflowGUID>
                   <subflowPath>Gitlab_Snippets_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2070,7 +2069,7 @@
                            <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                            <option name="required">false</option>
                            <option name="isCopy">true</option>
-                           <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                           <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                         </options>
                      </field>
                   </subflowOutput>
@@ -2088,7 +2087,7 @@
                </subflow>
                <subflow id="k1l0tkbx">
                   <title>Github Gist Storage Manager</title>
-                  <subflowGUID>5e8SOtOzInDhHjnm8F298G</subflowGUID>
+                  <subflowGUID>5HkyjCqUbvYfzsgmI7fwcw</subflowGUID>
                   <subflowPath>Github_Gist_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2130,7 +2129,7 @@
                </subflow>
                <subflow id="k1l0tl9q">
                   <title>Github Gist Storage Manager</title>
-                  <subflowGUID>5e8SOtOzInDhHjnm8F298G</subflowGUID>
+                  <subflowGUID>5HkyjCqUbvYfzsgmI7fwcw</subflowGUID>
                   <subflowPath>Github_Gist_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2168,7 +2167,7 @@
                </subflow>
                <subflow id="k1kv48g1">
                   <title>Gitlab Snippets - New Snippet</title>
-                  <subflowGUID>6oIrqEN7LeAjwE2apPaTAX</subflowGUID>
+                  <subflowGUID>jpQ4SSUd8W8ie8NtOTsAAr</subflowGUID>
                   <subflowPath>Gitlab_Snippets_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2206,7 +2205,7 @@ return
                            <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                            <option name="required">false</option>
                            <option name="isCopy">true</option>
-                           <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                           <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                         </options>
                      </field>
                   </subflowOutput>
@@ -2224,7 +2223,7 @@ return
                </subflow>
                <subflow id="k1kv49fv">
                   <title>Gitlab Snippets Update Existing</title>
-                  <subflowGUID>6oIrqEN7LeAjwE2apPaTAX</subflowGUID>
+                  <subflowGUID>jpQ4SSUd8W8ie8NtOTsAAr</subflowGUID>
                   <subflowPath>Gitlab_Snippets_Storage_Manager</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2258,7 +2257,7 @@ return
                            <option name="referenceTo">gitlab-snippets-alert-configuration:snippet</option>
                            <option name="required">false</option>
                            <option name="isCopy">true</option>
-                           <option name="guid">aYlOxMbHcsSdSUISh7CVK4</option>
+                           <option name="guid">0no1YZOytACk8uRnaQOduk</option>
                         </options>
                      </field>
                   </subflowOutput>
@@ -2276,7 +2275,7 @@ return
                </subflow>
                <callProcess id="k1krrcmz">
                   <title>SP-ConvertAttachmentToText</title>
-                  <subflowGUID>ioXrdNYzqYFhm23xQKiFKT</subflowGUID>
+                  <subflowGUID>3F9xdqPMhsgjQx07TZa5sr</subflowGUID>
                   <subflowPath>SP-ConvertAttachmentToText</subflowPath>
                   <runAsUser>$current</runAsUser>
                   <serviceInput>
@@ -2295,10 +2294,10 @@ return
                      </field>
                      <field name="out_attachment_info" type="reference">
                         <options>
-                           <option name="referenceTo">$po:AttchmentInformation</option>
+                           <option name="referenceTo">$po:AttachmentInformation</option>
                            <option name="required">false</option>
                            <option name="isCopy">true</option>
-                           <option name="guid">31o1RHhc6uRdN1eGygCG2Q</option>
+                           <option name="guid">3SdosLSHKE9jTes0Sbsqo0</option>
                         </options>
                      </field>
                   </subflowOutput>
@@ -3670,8 +3669,8 @@ util:toXML($sample_payload)</expression>
             </flow>
          </avosScreenflow>
       </types1:Entry>
-      <types1:GUID>8zodeZJhfnBdPPMtFf1DQE</types1:GUID>
+      <types1:GUID>9a53nLp4OIhjqHwaCDI0gZ</types1:GUID>
       <types1:DisplayName>Alert Configuration Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.48Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:37.365Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

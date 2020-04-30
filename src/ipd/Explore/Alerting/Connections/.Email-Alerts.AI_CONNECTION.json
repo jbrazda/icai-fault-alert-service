@@ -1,6 +1,6 @@
 [
    {
-      "objectGuid": "cOur0Hdz9oshd8U7LIuIiD",
+      "objectGuid": "6kW78Fn72hzjZXV0oFE5am",
       "objectName": "Email-Alerts",
       "objectType": "AI_CONNECTION",
       "path": "/Explore/Alerting/Connections",
@@ -17,7 +17,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "uwSSp7aa-gt-6298602-2019-06-21T17:27:21.337Z::conn.xml"
+            "repoHandle": "6UuINciZBpDUQbg-gt-2341642-2020-03-25T23:14:00.893Z::conn.xml"
          }
       }
    }

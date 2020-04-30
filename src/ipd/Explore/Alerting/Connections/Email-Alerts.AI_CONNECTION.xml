@@ -1,9 +1,9 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>uwSSp7aa-gt-6298602-2019-06-21T17:27:21.337Z::conn.xml</types1:EntryId>
+      <types1:EntryId>6UuINciZBpDUQbg-gt-2341642-2020-03-25T23:14:00.893Z::conn.xml</types1:EntryId>
       <types1:Name>Email-Alerts</types1:Name>
-      <types1:ParentFlowIds>1ZSAP38nXxpr1Iw-gt-2226508-2019-08-28T20:06:28.41Z::pd.xml,spiRASmvD4teIss-gt-2649660-2019-08-28T20:13:28.304Z::pd.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>cgp5OjG4abck0Kn-gt-5013926-2020-04-23T17:34:19.03Z::pd.xml,dq9bdsreK8ZAZf5-gt-6346495-2020-03-25T23:14:04.405Z::pd.xml,GlBghNf4TsrT2ht-gt-6346513-2020-03-25T23:14:04.52Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description>Shared Email Service to send  alerts and notifications</types1:Description>
       <types1:AppliesTo/>
@@ -11,13 +11,13 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-06-21T17:27:21Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-09-05T21:15:36Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:01Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-03-25T23:41:04Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2020-03-25T14:46:14Z</types1:PublicationDate>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-03-26T14:49:48Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/Email-Alerts/Email-Alerts.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -30,18 +30,18 @@
             <agent/>
             <attributes>
                <attribute encrypted="false" name="Authentication" value="Enable"/>
-               <attribute encrypted="false" name="hostName" value="smtp.office365.com"/>
+               <attribute encrypted="false" name="hostName" value="smtp.gmail.com"/>
                <attribute encrypted="false" name="port" value="587"/>
-               <attribute encrypted="false" name="username" value="jbrazda@informatica.com"/>
+               <attribute encrypted="false" name="username" value="jaroslav.brazda@gmail.com"/>
                <attribute encrypted="true" name="password" value=""/>
                <attribute encrypted="false" name="security" value="TLS"/>
                <attribute encrypted="false" name="connectionTimeout" value="30000"/>
                <attribute encrypted="false"
                           name="testToAddress"
-                          value="jbrazda@informatica.com"/>
+                          value="jaroslav.brazda@gmail.com"/>
                <attribute encrypted="false"
                           name="fromAddress"
-                          value="jbrazda@informatica.com"/>
+                          value="jaroslav.brazda@gmail.com"/>
             </attributes>
             <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
                            agentOnly="false"
@@ -55,8 +55,8 @@
             </javaConnector>
          </connection>
       </types1:Entry>
-      <types1:GUID>cOur0Hdz9oshd8U7LIuIiD</types1:GUID>
+      <types1:GUID>6kW78Fn72hzjZXV0oFE5am</types1:GUID>
       <types1:DisplayName>Email-Alerts</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:00.955Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:36.657Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

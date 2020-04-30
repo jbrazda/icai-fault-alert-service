@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aetgt:input xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
+             xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+             xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
+             xmlns:type="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
+             xmlns:ns2="http://schemas.active-endpoints.com/engineapi/2010/09/ProcessManagementTypes.xsd"
+             xmlns:ns4="http://schemas.active-endpoints.com/engineapi/2010/05/EngineAPITypes.xsd"
+             xmlns:ns3="http://schemas.active-endpoints.com/activebpeladmin/2007/01/activebpeladmin.xsd">
+   <parameter xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+              name="Alert Details"
+              objectType="$po:AlertDetails">
+      <AlertDetails xmlns=""
+                    xmlns:ns2="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
+                    xmlns:ns4="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd">
+         <processId>14510</processId>
+         <processName>SP-Test-Throw-Fault-Generic</processName>
+         <faultNamespace>http://schemas.informatica.com/spi/types/2013/12/spi-interface/</faultNamespace>
+         <processInitiator>jbrazda-iics@informatica.com</processInitiator>
+         <faultDetails>&lt;fault hasElementData="true" hasMessageData="false" name="faultResponse" namespaceURI="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" rethrowable="true" source="/process/flow/scope[@name='Throw_with_parameters']/sequence/throw[@name='Throw_with_parameters']" suspendable="true"&gt;&lt;aetgt:faultResponse xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" xmlns:type="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt;&lt;sf:code xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"&gt;500&lt;/sf:code&gt;&lt;sf:reason xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"&gt;Test&lt;/sf:reason&gt;&lt;sf:details xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"&gt;Test Fault Detail&lt;/sf:details&gt;&lt;/aetgt:faultResponse&gt;&lt;/fault&gt;</faultDetails>
+         <processNamespace>urn:screenflow:process:SP-Test-Throw-Fault-Generic</processNamespace>
+         <locationPath>/process/flow/scope[@name='Throw_with_parameters']/sequence/throw[@name='Throw_with_parameters']</locationPath>
+         <status>faulting</status>
+         <faultName>faultResponse</faultName>
+      </AlertDetails>
+   </parameter>
+   <sf:parameter name="Current User">anonymous</sf:parameter>
+   <sf:parameter name="Process Title">true</sf:parameter>
+</aetgt:input>

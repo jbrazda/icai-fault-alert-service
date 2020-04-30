@@ -1,7 +1,7 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>spiRASmvD4teIss-gt-2649660-2019-08-28T20:13:28.304Z::pd.xml</types1:EntryId>
+      <types1:EntryId>dq9bdsreK8ZAZf5-gt-6346495-2020-03-25T23:14:04.405Z::pd.xml</types1:EntryId>
       <types1:Name>UncaughtFaultAlertHandler-NA</types1:Name>
       <types1:MimeType>application/xml+process</types1:MimeType>
       <types1:Description>Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored</types1:Description>
@@ -10,20 +10,21 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-08-28T20:13:28Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-12-05T19:57:53Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:04Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-04-29T14:13:17Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2020-03-25T14:46:19Z</types1:PublicationDate>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-04-29T14:15:06Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-NA/UncaughtFaultAlertHandler-NA.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
                   xmlns:list="urn:activevos:spi:list:functions"
                   displayName="UncaughtFaultAlertHandler-NA"
-                  name="UncaughtFaultAlertHandler-NA">
+                  name="UncaughtFaultAlertHandler-NA"
+                  overrideAPIName="false">
             <appliesTo/>
             <description>Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored</description>
             <tags>.agent:NA</tags>
@@ -45,7 +46,7 @@
                      <option name="referenceTo">$po:FaultAlertConfiguration</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">a7pUb21Pfy3c67w7CCaz4B</option>
+                     <option name="guid">gEj5IRxX4gJgsLJ33z58qv</option>
                   </options>
                </field>
                <field description="List of Actions invoked by the handler"
@@ -56,7 +57,7 @@
                      <option hide="true" name="multiSelect">true</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">450357e5mW9eidFwHW1Nou</option>
+                     <option name="guid">lKJsk3UE6KjdXexESZSycK</option>
                   </options>
                </field>
             </output>
@@ -83,7 +84,7 @@
                      <option name="referenceTo">$po:FaultAlertConfiguration</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">a7pUb21Pfy3c67w7CCaz4B</option>
+                     <option name="guid">gEj5IRxX4gJgsLJ33z58qv</option>
                   </options>
                </field>
                <field description="Temporary output for actions like ipd:setProcessTitle($temp.tmp_process_title )"
@@ -145,7 +146,7 @@
                      <option name="referenceTo">$po:action-email</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">0XBGnDRR3WMgJR50uEhJiV</option>
+                     <option name="guid">ajAViSjVGBacGGuYjum320</option>
                   </options>
                </field>
                <field description="URN Defines Fallback Emil to be used by falback configuration"
@@ -220,7 +221,7 @@
                      <option name="referenceTo">$po:action</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">7TCmsWgjoghdSqfpcOxfs4</option>
+                     <option name="guid">cl8knTQGCSQb6MQhyH12Ut</option>
                   </options>
                </field>
                <field description="" name="tmp_email_actions_count" type="int">
@@ -240,7 +241,7 @@
                      <option name="referenceTo">Email-Alerts:EmailTaskInput</option>
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
-                     <option name="guid">cOur0Hdz9oshd8U7LIuIiD</option>
+                     <option name="guid">6kW78Fn72hzjZXV0oFE5am</option>
                   </options>
                </field>
                <field description="" name="tmp_email_body" type="reference">
@@ -399,7 +400,7 @@ exists($evaluatedRules/invokeActions/action[Type/text() = 'ignore'])</expression
                         <service id="jx648rw0">
                            <title>getGistFile</title>
                            <serviceName>github-gist-alert-configuration:getGistFile</serviceName>
-                           <serviceGUID>2AJJfAJqQLkaZMytvRBVWR</serviceGUID>
+                           <serviceGUID>2fJdGOrTzrteLpPrsXudqG</serviceGUID>
                            <serviceInput>
                               <parameter name="raw_url" source="formula">
                                  <expression language="XQuery">$temp.tmp_configuration_url </expression>
@@ -446,7 +447,7 @@ return ipd:setProcessTitle($process_title)</expression>
                         <service id="k1qix7cl">
                            <title>Get Resource</title>
                            <serviceName>gitlab-snippets-alert-configuration:Get Resource</serviceName>
-                           <serviceGUID>aYlOxMbHcsSdSUISh7CVK4</serviceGUID>
+                           <serviceGUID>0no1YZOytACk8uRnaQOduk</serviceGUID>
                            <serviceInput>
                               <parameter name="in_resource_url" source="formula">
                                  <expression language="XQuery">$temp.tmp_configuration_url </expression>
@@ -656,7 +657,19 @@ let $processNamespace := $alert/processNamespace/text()
 let $locationPath := $alert/locationPath/text()
 let $status := $alert/status/text()
 let $faultName := $alert/faultName/text()
-let $faultDetails := $alert/faultDetails/text()
+(:trying to parse fault details if XML and pretty print:)
+
+let $serialization-params := &lt;xsl:output 
+                                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                                xmlns:saxon="http://saxon.sf.net/"
+                                method="xml"
+                                omit-xml-declaration="yes"
+                                indent="yes"
+                                saxon:indent-spaces="4"/&gt;
+let $faultDetails :=   try { saxon:serialize(fn:parse-xml($alert/faultDetails/text()),$serialization-params )
+                        } catch * {
+                          $alert/faultDetails/text()
+                        }
 
 (:generate Process Link:)
 
@@ -701,7 +714,7 @@ return
             }}
             
             p {{
-                font-size: 10px;
+                font-size: 12px;
                 font-family: inherit;
             }}
             
@@ -710,7 +723,7 @@ return
             }}
             
             li {{
-                font-size: 10px;
+                font-size: 12px;
                 font-family: arial, sans-serif;
             }}
             
@@ -721,7 +734,7 @@ return
             
             table td {{
                 border-collapse: collapse;
-                font-size: 10px;
+                font-size: 12px;
                 background-color: inherit;
                 color: inherit;
             }}
@@ -732,7 +745,7 @@ return
             }}
             
             th {{
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: bold;
                 background-color: #ddd;
             }}
@@ -741,7 +754,7 @@ return
     &lt;/head&gt;
     &lt;body style="background: #E4E4E4"&gt;
     &lt;table id="backgroundTable" align="center"
-        style="background: #FFFFFF; border: 10px solid #FFFFFF; width: 90%; border-collapse: collapse; padding: 10px; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
+        style="background: #FFFFFF; border: 12px solid #FFFFFF; width: 90%; border-collapse: collapse; padding: 10px; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
         &lt;tr style="background: #000000; color: #FFFFFF;"&gt;
             &lt;td style="padding: 8px; padding-left: 12px; color: #FFFFFF;"&gt;&lt;b&gt;Fault Alert Notification&lt;/b&gt;&lt;/td&gt;
             &lt;td style="padding: 8px; padding-right: 12px; text-align: right; color: #FFFFFF;"&gt;&lt;b&gt;&lt;i&gt;Org:{$org_id} Env:{$environment}&lt;/i&gt;&lt;/b&gt;&lt;/td&gt;
@@ -758,35 +771,35 @@ return
                             &lt;table id="AlertTable" align="left"
                                 style="width: 100%; ; border: 1px; font-size: 10pt; font-family: Arial, sans-serif; table-layout: fixed;"&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Process Id&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Process Id&lt;/td&gt;
                                     &lt;td&gt;&lt;a href="{$view_url}"&gt;{$processId}&lt;/a&gt;&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Process Name&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Process Name&lt;/td&gt;
                                     &lt;td&gt;{$processName}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Process Namespace&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Process Namespace&lt;/td&gt;
                                     &lt;td&gt;{$processNamespace}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Fault Location Path&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Fault Location Path&lt;/td&gt;
                                     &lt;td&gt;{$locationPath}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Fault Name&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Fault Name&lt;/td&gt;
                                     &lt;td&gt;{$faultName}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Fault Namespace&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Fault Namespace&lt;/td&gt;
                                     &lt;td&gt;{$faultNamespace}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Proccess Initiator&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Proccess Initiator&lt;/td&gt;
                                     &lt;td&gt;{$processInitiator}&lt;/td&gt;
                                 &lt;/tr&gt;
                                 &lt;tr&gt;
-                                    &lt;td style="width: 100px"&gt;Process Status&lt;/td&gt;
+                                    &lt;td style="width: 150px"&gt;Process Status&lt;/td&gt;
                                     &lt;td&gt;{$status}&lt;/td&gt;
                                 &lt;/tr&gt;
                             &lt;/table&gt;
@@ -794,7 +807,7 @@ return
                             {if (empty($faultDetails)) then () else 
                             &lt;div id="item_list" style="padding-top:2em; margin-bottom: 1em; margin-top: 2em; display: block; width: 100%;"&gt;
                                 &lt;h2&gt;Fault Detail&lt;/h2&gt;
-                                &lt;textarea rows="20" cols="80" &gt;
+                                &lt;textarea rows="20" style="width: 100%; height: 300px; font-family: Consolas,'Courier New', Courier, monospace"&gt;
                                     {$faultDetails}
                                 &lt;/textarea&gt;
                             &lt;/div&gt;
@@ -832,7 +845,7 @@ return
                            <service id="jx6cvzko">
                               <title>sendEmailService</title>
                               <serviceName>Email-Alerts:sendEmailService</serviceName>
-                              <serviceGUID>cOur0Hdz9oshd8U7LIuIiD</serviceGUID>
+                              <serviceGUID>6kW78Fn72hzjZXV0oFE5am</serviceGUID>
                               <serviceInput>
                                  <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_email_input</parameter>
                               </serviceInput>
@@ -899,8 +912,8 @@ return
             </flow>
          </process>
       </types1:Entry>
-      <types1:GUID>9UWeUqnSHkalqQVZI82Ekf</types1:GUID>
+      <types1:GUID>76syjaJLYO1eQZO23DoCcR</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-NA</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.449Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:37.264Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

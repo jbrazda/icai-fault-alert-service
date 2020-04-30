@@ -1,9 +1,9 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml</types1:EntryId>
+      <types1:EntryId>qZx1XmgaabclvAh-gt-7365226-2020-03-25T23:14:02.626Z::conn.xml</types1:EntryId>
       <types1:Name>gitlab-snippets-alert-configuration</types1:Name>
-      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml,uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>aabbeJOSM8NciZB-gt-6346531-2020-03-25T23:14:04.901Z::gt.xml,r5wq9bdsreK8ZAZ-gt-7365267-2020-03-25T23:14:03.528Z::gt.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description>Gitlab Storage provider Connection to store Alert Service Configurations as gitlab Snippets</types1:Description>
       <types1:AppliesTo/>
@@ -11,13 +11,13 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-10-09T18:48:51Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-10-10T16:51:48Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:03Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-03-25T23:27:29Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2019-10-14T14:59:59Z</types1:PublicationDate>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-03-26T14:50:07Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/gitlab-snippets-alert-configuration/gitlab-snippets-alert-configuration.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -36,17 +36,17 @@
             <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
                                agentOnly="false"
                                connectorPath="project:/rt.connector/gitlab_snippets/gitlab_snippets_svcDef.xml"
-                               guid="1UgNOYX99vYl4ePFrQfEis"
+                               guid="5aLJgZIK8wekZYYldV5Qmz"
                                name="gitlab-snippets"
                                supportsConnectionTest="false"
                                uuid="7cf5fdba-abb9-48d4-b6d1-e2481c1eddbd">
-               <description>Provides Support to store  and retrive configurations or other files as gitlab Snippets
+               <description>Provides Support to store  and retrieve configurations or other files as gitlab Snippets
 See https://gitlab.com/help/api/README.md</description>
             </businessConnector>
          </connection>
       </types1:Entry>
-      <types1:GUID>aYlOxMbHcsSdSUISh7CVK4</types1:GUID>
+      <types1:GUID>0no1YZOytACk8uRnaQOduk</types1:GUID>
       <types1:DisplayName>gitlab-snippets-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.149Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:36.883Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

@@ -1,9 +1,9 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>XShOeCFk4AdypKw-gt-6237215-2019-06-21T13:55:49.804Z::conn.xml</types1:EntryId>
+      <types1:EntryId>qwx8R8WrY1SypmX-gt-7365196-2020-03-25T23:14:02.527Z::conn.xml</types1:EntryId>
       <types1:Name>github-gist-alert-configuration</types1:Name>
-      <types1:ParentFlowIds>5Ihs9pNz6HKoJBU-gt-4288779-2019-06-19T14:17:32.914Z::gt.xml,AeN7Y3AxtPk7HNC-gt-4080771-2019-10-10T16:26:39.425Z::gt.xml</types1:ParentFlowIds>
+      <types1:ParentFlowIds>aabbeJOSM8NciZB-gt-6346531-2020-03-25T23:14:04.901Z::gt.xml,Bxiggor3rp3yD7t-gt-7365277-2020-03-25T23:14:03.645Z::gt.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+connection</types1:MimeType>
       <types1:Description>Github Gist API connection to manage Alert Service Configurations</types1:Description>
       <types1:AppliesTo/>
@@ -11,13 +11,13 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-06-21T13:55:50Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-09-05T21:16:41Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:03Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-03-25T23:26:56Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>jbrazda-iics@informatica.com</types1:PublishedBy>
-      <types1:PublicationDate>2020-03-25T14:46:11Z</types1:PublicationDate>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-03-26T14:49:54Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/github-gist-alert-configuration/github-gist-alert-configuration.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -36,7 +36,7 @@
             <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
                                agentOnly="false"
                                connectorPath="project:/rt.connector/github_gist/github_gist_svcDef.xml"
-                               guid="aXpKwYgvdgcbMOhXzbXTqd"
+                               guid="9T6SRi7SD2Ik90R03f8dsX"
                                name="github-gist"
                                supportsConnectionTest="false"
                                uuid="3eca5d7c-ee39-4e22-9c8e-5380c7f358f0">
@@ -47,8 +47,8 @@ This connector is useful to store and retrive configurations, templates, snippet
             </businessConnector>
          </connection>
       </types1:Entry>
-      <types1:GUID>2AJJfAJqQLkaZMytvRBVWR</types1:GUID>
+      <types1:GUID>2fJdGOrTzrteLpPrsXudqG</types1:GUID>
       <types1:DisplayName>github-gist-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.159Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:36.8Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

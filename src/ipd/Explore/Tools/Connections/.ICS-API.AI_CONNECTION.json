@@ -1,13 +1,13 @@
 [
    {
-      "objectGuid": "31o1RHhc6uRdN1eGygCG2Q",
-      "objectName": "AttchmentInformation",
-      "objectType": "PROCESS_OBJECT",
-      "path": "/Explore/Tools/ProcessObjects",
+      "objectGuid": "9yKFXii7ZmkiUYE6xjuwuh",
+      "objectName": "ICS-API",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Tools/Connections",
       "metadata": {
          "additionalInfo": {
             "contentType": "application/json; charset=utf-8",
-            "description": "Attachment Object Information Holder",
+            "description": "ICS API Connection",
             "documentState": "VALID"
          },
          "contextAttributes": null,
@@ -17,7 +17,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "BbeGoQwg74Rpf6J-gt-2267328-2019-08-28T21:27:46.436Z::po.xml"
+            "repoHandle": "pyqaa-gt-1870011-2020-03-24T18:08:14.252Z::conn.xml"
          }
       }
    }

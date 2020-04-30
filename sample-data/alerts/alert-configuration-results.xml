@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FaultAlertConfiguration>
+    <alert-config>
+        <Name>Default Falback Alert Configuration</Name>
+        <Descrioption>This is fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Descrioption>
+        <created>2019-06-21T10:24:23</created>
+        <createdBy>System</createdBy>
+    </alert-config>
+    <rules>
+        <rule>
+            <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+            <name/>
+            <operator>OR</operator>
+            <condition>
+                <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                <type>equals</type>
+                <value/>
+                <fieldValue/>
+                <not>true</not>
+                <alert-field/>
+                <result>true</result>
+            </condition>
+            <action>
+                <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+                <Name>Error Email</Name>
+                <Type>error-email</Type>
+            </action>
+            <results>true</results>
+            <result>true</result>
+        </rule>
+    </rules>
+    <actions>
+        <action>
+            <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+            <Name>Error Email</Name>
+            <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+            <Type>error-email</Type>
+            <ActionDetail>
+            	   <action-email>
+                    <subject>Fault Alert Error</subject>
+                    <to>jbrazda@informatica.com</to>
+                    <cc/>
+                    <bcc/>
+                    <contentType>text/html</contentType>
+                    <actionName>Send Error Email</actionName>
+              	</action-email>
+            </ActionDetail>
+        </action>
+    </actions>
+    <invokeActions>
+        <action>
+            <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+            <Name>Error Email</Name>
+            <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+            <Type>error-email</Type>
+            <ActionDetail>
+            	   <action-email>
+                    <subject>Fault Alert Error</subject>
+                    <to>jbrazda@informatica.com</to>
+                    <cc/>
+                    <bcc/>
+                    <contentType>text/html</contentType>
+                    <actionName>Send Error Email</actionName>
+              	</action-email>
+            </ActionDetail>
+        </action>
+    </invokeActions>
+</FaultAlertConfiguration>

@@ -1,7 +1,7 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>xyIYmWR7hsAVR3a-gt-3920827-2019-06-18T14:49:43.379Z::po.xml</types1:EntryId>
+      <types1:EntryId>JOnCBtBghuImXyc-gt-7365236-2020-03-25T23:14:02.657Z::po.xml</types1:EntryId>
       <types1:Name>rule</types1:Name>
       <types1:MimeType>application/xml+processobject</types1:MimeType>
       <types1:Description>Rule with of Conditions to be evaluated using logical operator provided and perform specified action</types1:Description>
@@ -10,10 +10,9 @@
       <types1:VersionLabel>1.0</types1:VersionLabel>
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
-      <types1:CreatedBy>jbrazda-iics@informatica.com</types1:CreatedBy>
-      <types1:CreationDate>2019-06-18T14:49:43Z</types1:CreationDate>
-      <types1:ModifiedBy>jbrazda-iics@informatica.com</types1:ModifiedBy>
-      <types1:ModificationDate>2019-09-06T19:12:35Z</types1:ModificationDate>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-03-25T23:14:03Z</types1:CreationDate>
+      <types1:ModifiedBy/>
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -32,7 +31,7 @@
                <field label="condition" name="condition" type="objectlist">
                   <options>
                      <option name="referenceTo">$po:condition</option>
-                     <option name="guid">fnx2xYvSTCul1tKBqmlGcC</option>
+                     <option name="guid">7dlPL5Q2HIDitkNjx7jBQU</option>
                      <option name="relationshipName">Child</option>
                   </options>
                </field>
@@ -40,7 +39,7 @@
                <field label="action" name="action" type="objectlist">
                   <options>
                      <option name="referenceTo">$po:action-ref</option>
-                     <option name="guid">450357e5mW9eidFwHW1Nou</option>
+                     <option name="guid">lKJsk3UE6KjdXexESZSycK</option>
                      <option name="relationshipName">Child</option>
                   </options>
                </field>
@@ -50,8 +49,8 @@
             </detail>
          </processObject>
       </types1:Entry>
-      <types1:GUID>hnshiYqkeIOehlyCb2Zdwg</types1:GUID>
+      <types1:GUID>6awi7KEgKmnfNUjHHuVJic</types1:GUID>
       <types1:DisplayName>rule</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-03-25T14:48:01.128Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:36.79Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

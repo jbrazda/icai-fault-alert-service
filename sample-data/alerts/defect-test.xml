@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aetgt:output xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
+              xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+              xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
+              xmlns:ns2="http://schemas.active-endpoints.com/engineapi/2010/09/ProcessManagementTypes.xsd"
+              xmlns:ns4="http://schemas.active-endpoints.com/engineapi/2010/05/EngineAPITypes.xsd"
+              xmlns:ns3="http://schemas.active-endpoints.com/activebpeladmin/2007/01/activebpeladmin.xsd">
+   <sf:field name="tmp_urn_configuration_url_default"/>
+   <sf:field name="tmp_email_input" objectType="Email-Alerts:EmailTaskInput"/>
+   <sf:field name="tmp_email_body" objectType="$po:$any"/>
+   <sf:field name="tmp_process_name">UncaughtFaultAlertHandler-NA</sf:field>
+   <sf:field name="tmp_urn_configuration_provider">urn:ic:faultAlerts:configuration:provider</sf:field>
+   <sf:field name="tmp_urn_configuration_provider_default">gist</sf:field>
+   <sf:field name="tmp_urn_configuration_url">urn:ic:faultAlerts:configuration:url</sf:field>
+   <sf:field name="tmp_urn_fallback_email">urn:ic:faultAlerts:falback:email</sf:field>
+   <sf:field name="tmp_urn_environment_org_id">urn:environment:orgid </sf:field>
+   <sf:field name="tmp_urn_environment_name">urn:environment:name</sf:field>
+   <sf:field name="tmp_urn_base_uri">ae:base-uri</sf:field>
+   <sf:field name="tmp_email_actions_count">0</sf:field>
+   <sf:field name="tmp_email_actions_index">1</sf:field>
+   <sf:field name="tmp_process_title">UncaughtFaultAlertHandler-NA pid:14510 pname:SP-Test-Throw-Fault-Generic</sf:field>
+   <sf:field name="tmp_configuration_provider">gist</sf:field>
+   <sf:field name="tmp_configuration_url">https://gist.githubusercontent.com/jbrazda/9d114714259bb05f9dc7f89bbfa978d5/raw/alertConfiguration.xml</sf:field>
+   <sf:field name="tmp_fallback_email">jbrazda@informatica.com</sf:field>
+   <sf:field name="tmp_org_id">d8UL5i5Pm4KddufpfKuiaN</sf:field>
+   <sf:field name="tmp_base_uri">https://na1.ai.dm-us.informaticacloud.com</sf:field>
+   <sf:field name="tmp_environment_name">iclab</sf:field>
+   <sf:field name="tmp_alert_configuration" objectType="$po:FaultAlertConfiguration">
+      <FaultAlertConfiguration xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                               xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+         <alert-config>
+            <Name>Default Alert Configuration</Name>
+            <Descrioption>This is a fallback configuration sending all Faults as errors in case that the Alert configuration is not loaded from the Config provider</Descrioption>
+            <created>2019-06-21T10:24:23</created>
+            <createdBy>System</createdBy>
+         </alert-config>
+         <rules>
+            <rule>
+               <guid>9e7b7b98-f7ce-43e1-911f-26b4aaa0506a</guid>
+               <name>Error Email</name>
+               <operator>OR</operator>
+               <condition>
+                  <guid>159ccd35-f8a0-433e-82ca-7dea2df10f3e</guid>
+                  <type>equals</type>
+                  <value/>
+                  <not>true</not>
+                  <alert-field>processName</alert-field>
+               </condition>
+               <action>
+                  <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+                  <Name>Error Email</Name>
+                  <Type>error-email</Type>
+               </action>
+            </rule>
+         </rules>
+         <actions>
+            <action>
+               <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+               <Name>Error Email</Name>
+               <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+               <Type>error-email</Type>
+               <ActionDetail>
+                  <action-email>
+                     <subject>Fault Alert Error</subject>
+                     <to>jbrazda@informatica.com</to>
+                     <cc/>
+                     <bcc/>
+                     <contentType>text/html</contentType>
+                     <actionName>Send Error Email</actionName>
+                   </action-email>
+               </ActionDetail>
+            </action>
+         </actions>
+      </FaultAlertConfiguration>
+   </sf:field>
+   <sf:field name="tmp_ignore_fault">false</sf:field>
+   <sf:field name="tmp_email_actions" objectType="$po:action">
+      <action xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+              xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+         <guid>dcc33ba3-9ced-4546-a6e0-e9c1b33ae767</guid>
+         <Name>Error Email</Name>
+         <Description>Send Fatal Error level Email - use for Critical errors that need immediate attention. or unexpected errors</Description>
+         <Type>error-email</Type>
+         <ActionDetail>
+            <action-email>
+               <subject>Fault Alert Error</subject>
+               <to>jbrazda@informatica.com</to>
+               <cc/>
+               <bcc/>
+               <contentType>text/html</contentType>
+               <actionName>Send Error Email</actionName>
+                </action-email>
+            </ActionDetail>
+        </action>
+   </sf:field>
+   <sf:field name="tmp_email_action_details" objectType="$po:action-email">1</sf:field>
+   <sf:field name="tmp_script_out">true</sf:field>
+</aetgt:output>

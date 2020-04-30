@@ -1,6 +1,6 @@
 [
    {
-      "objectGuid": "6oIrqEN7LeAjwE2apPaTAX",
+      "objectGuid": "jpQ4SSUd8W8ie8NtOTsAAr",
       "objectName": "Gitlab Snippets Storage Manager",
       "objectType": "GUIDE",
       "path": "/Explore/Alerting/Guides",
@@ -16,15 +16,15 @@
             "minor": 0
          },
          "objectRefs": [
-            "aYlOxMbHcsSdSUISh7CVK4"
+            "0no1YZOytACk8uRnaQOduk"
          ],
          "repoInfo": {
-            "repoHandle": "uHEFsWTzIf6riX2-gt-8325659-2019-10-09T17:47:07.532Z::gt.xml"
+            "repoHandle": "r5wq9bdsreK8ZAZ-gt-7365267-2020-03-25T23:14:03.528Z::gt.xml"
          }
       }
    },
    {
-      "objectGuid": "aYlOxMbHcsSdSUISh7CVK4",
+      "objectGuid": "0no1YZOytACk8uRnaQOduk",
       "objectName": "gitlab-snippets-alert-configuration",
       "objectType": "AI_CONNECTION",
       "path": "/Explore/Alerting/Connections",
@@ -41,7 +41,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "OnTTpOzEkhK6LlR-gt-79426-2019-10-09T18:48:50.657Z::conn.xml"
+            "repoHandle": "qZx1XmgaabclvAh-gt-7365226-2020-03-25T23:14:02.626Z::conn.xml"
          }
       }
    }

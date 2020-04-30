@@ -1,0 +1,48 @@
+[
+   {
+      "objectGuid": "gvymf8kFakmiInM6sJrjYX",
+      "objectName": "AgentMonitorConfiguration",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Process Object for Agent Monitor Configuration",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "bDc1JyCweSqgiI9ugh5dwD"
+         ],
+         "repoInfo": {
+            "repoHandle": "bbeDi34jBvSx0aa-gt-8620341-2020-04-28T02:26:22.016Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "bDc1JyCweSqgiI9ugh5dwD",
+      "objectName": "actions",
+      "objectType": "PROCESS_OBJECT",
+      "path": "/Explore/Alerting/ProcessObjects",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "List of actions for a Alert Event",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "IGSM8NciZBpDUQb-gt-7365206-2020-03-25T23:14:02.556Z::po.xml"
+         }
+      }
+   }
+]

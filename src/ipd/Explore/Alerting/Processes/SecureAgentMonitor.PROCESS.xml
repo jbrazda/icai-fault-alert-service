@@ -1,0 +1,456 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>cgp5OjG4abck0Kn-gt-5013926-2020-04-23T17:34:19.03Z::pd.xml</types1:EntryId>
+      <types1:Name>SecureAgentMonitor</types1:Name>
+      <types1:ParentFlowIds>AjBeE1KoJBUhtyc-gt-5623320-2020-04-28T02:18:41.426Z::pd.xml,Jg7Gaaa-gt-5148370-2020-04-23T17:39:15.575Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process Monitors Secure Agents Health and Reports Issues</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
+      <types1:CreationDate>2020-04-23T17:34:19Z</types1:CreationDate>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2020-04-28T19:11:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
+      <types1:PublicationDate>2020-04-29T14:20:52Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.SecureAgentMonitor/SecureAgentMonitor.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="SecureAgentMonitor"
+                  name="SecureAgentMonitor"
+                  overrideAPIName="false">
+            <appliesTo/>
+            <description>Process Monitors Secure Agents Health and Reports Issues</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_configuration"
+                          required="true"
+                          type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="agentDetails" type="objectlist">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-V2:agentDetail</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0UyujOCpoiokMXGJttFUIU</option>
+                  </options>
+               </field>
+               <field description="" name="out_agentStatusReport" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_agents_with_errors" type="objectlist">
+                  <options>
+                     <option name="referenceTo">IICS-REST-API-V2:agentDetail</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0UyujOCpoiokMXGJttFUIU</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_environment_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_org_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_admin_base_uri" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">Email-Alerts:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6kW78Fn72hzjZXV0oFE5am</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k9da5nop" targetId="k9da5noo"/>
+               </start>
+               <assignment id="k9da5noo">
+                  <title>Initalize</title>
+                  <operation source="formula" to="temp.tmp_admin_base_uri">
+                     <expression language="XQuery">if (util:resolveURN('urn:admin:base-uri') = 'urn:admin:base-uri') 
+then 'https://na1.dm-us.informaticacloud.com' 
+else util:resolveURN('urn:admin:base-uri')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_environment_name">
+                     <expression language="XQuery">if (util:resolveURN('urn:environment:name') = 'urn:environment:name') 
+then 'Cloud Server' 
+else util:resolveURN('urn:environment:name')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_org_id">
+                     <expression language="XQuery">if (util:resolveURN('urn:environment:orgid') = 'urn:environment:name') 
+then util:getOrganizationId()
+else util:resolveURN('urn:environment:orgid')</expression>
+                  </operation>
+                  <link id="k9j9k0qe" targetId="k9d1nq7w"/>
+               </assignment>
+               <assignment id="k9d4q3yi">
+                  <title>Assignment to tmp_agents_with_errors, out_agentStatusReport etc.</title>
+                  <operation source="formula" to="temp.tmp_agents_with_errors">
+                     <expression language="XQuery">let $count_expected := count(tokenize($input.in_configuration/agentServices/text() , ','))
+let $agentDetails := ($output.agentDetails)
+return
+for $agent in $agentDetails
+let $count_running := count($agent/agentEngines[agentEngineStatus/status/text() = "RUNNING"])
+where
+	$count_running != $count_expected
+    or
+	string($agent/active) != 'true'
+return
+$agent</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_agentStatusReport">
+                     <expression language="XQuery">let $configuration := $input.in_configuration
+let $expected_services := tokenize($configuration/agentServices/text(), ',')
+let $environment := $temp.tmp_environment_name
+let $org_id := $temp.tmp_org_id
+let $format-date := "[Y0001]/[M01]/[D01] [H01]:[m01]:[s01]"
+let $agentDetails := ($output.agentDetails)
+
+return 
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+        &lt;meta name="Generator" content="Informatica Cloud" /&gt;
+        &lt;title&gt;Agent Monitor Notification&lt;/title&gt;
+        &lt;style type="text/css" media="screen"&gt;
+
+            body {{
+                font-size: 12px;
+                font-family: arial, sans-serif;
+                width: 100% !important;
+                -webkit-text-size-adjust: 100%;
+                -ms-text-size-adjust: 100%;
+                margin: 0;
+                padding: 0;
+            }}
+            
+            /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+            .ExternalClass {{
+                width: 100%;
+            }}
+            
+            /* Force Hotmail to display emails at full width */
+            .ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div
+                {{
+                line-height: 100%;
+            }}
+            /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+            #backgroundTable {{
+                margin: 0;
+                padding: 0;
+                width: 100% !important;
+                line-height: 100% !important;
+            }}
+            
+            p {{
+                font-size: 12px;
+                font-family: inherit;
+            }}
+            
+            ul {{
+                list-style-type: disc;
+            }}
+            
+            li {{
+                font-size: 12px;
+                font-family: arial, sans-serif;
+            }}
+            
+            table{{
+               table-layout: fixed;
+               width: 100%;
+            }}
+            
+            table td {{
+                border-collapse: collapse;
+                font-size: 12px;
+                background-color: inherit;
+                color: inherit;
+            }}
+            
+            td.center {{
+                text-align: center;
+                white-space: nowrap;
+            }}
+            
+            th {{
+                font-size: 12px;
+                font-weight: bold;
+                background-color: #ddd;
+            }}
+            
+
+            .info-msg,
+            .success-msg,
+            .warning-msg,
+            .error-msg {{
+              margin: 12px 0;
+              padding: 12px;
+              border-radius: 3px 3px 3px 3px;
+            }}
+            
+            .info-msg {{
+              color: #059;
+              background-color: #BEF;
+            }}
+            .success-msg {{
+              color: #270;
+              background-color: #DFF2BF;
+            }}
+            .warning-msg {{
+              color: #9F6000;
+              background-color: #FEEFB3;
+            }}
+            .error-msg {{
+              color: #D8000C;
+              background-color: #FFBABA;
+            }}
+            
+    &lt;/style&gt;
+        
+    &lt;/head&gt;
+    &lt;body style="background: #E4E4E4"&gt;
+    &lt;table id="backgroundTable" align="center"
+        style="background: #FFFFFF; border: 12px solid #FFFFFF; width: 90%; border-collapse: collapse; padding: 12px; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
+        &lt;tr style="background: #000000; color: #FFFFFF;"&gt;
+            &lt;td style="padding: 8px; padding-left: 12px; color: #FFFFFF;"&gt;&lt;b&gt;Agent Monitor Notification&lt;/b&gt;&lt;/td&gt;
+            &lt;td style="padding: 8px; padding-right: 12px; text-align: right; color: #FFFFFF;"&gt;&lt;b&gt;&lt;i&gt;Org:{$org_id} Env:{$environment}&lt;/i&gt;&lt;/b&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"
+                style="padding: 0px; padding-top: 12px; background: #FFFFFF; font-size: 10pt;"&gt;
+                &lt;table id="messageTable"
+                    style="padding: 0px; border: 0px; width: 100%; background: #F4F4F4; color: #2F2F2F; font-size: 10pt; font-family: Arial, sans-serif;"&gt;
+                    &lt;tr&gt;
+                        &lt;td style="padding: 2em"&gt;
+                            { 
+                            for $agent in $agentDetails return
+                            let $view_url := concat($temp.tmp_admin_base_uri,"/cloudUI/products/administer/main/SecureAgentDetailsWS/",$agent/id/text(),"/read")
+                            let $services := ($agent/agentEngines/agentEngineStatus/appDisplayName/text())
+                            let $services_running := ($agent/agentEngines[agentEngineStatus/status/text() = "RUNNING"])
+                            let $count_running  := count($services_running)
+                            let $count_services := count($services)
+                            let $count_expected := count($expected_services)
+                            
+                            return
+                            &lt;div id="alert_info" style="display: block;"&gt;
+                         
+                            &lt;h2&gt;Agent Status Alert&lt;/h2&gt;
+                            {if (exists($agent/agentEngines[agentEngineStatus/status/text() != "RUNNING"])
+                                or $count_expected != $count_running)
+                            then
+                            &lt;div class="warning-msg"&gt;
+                               &amp;#x26a0; &lt;strong&gt;Warning!&lt;/strong&gt; Not All Services Are Running!
+                            &lt;/div&gt;
+                            else ()
+                            }
+                            &lt;table id="agent_table" align="left"
+                                style="width: 100%; ; border: 1px; font-size: 10pt; font-family: Arial, sans-serif; table-layout: fixed;"&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Agent Name&lt;/td&gt;
+                                    &lt;td&gt;&lt;a href="{$view_url}"&gt;{$agent/name/text()}&lt;/a&gt;&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Agent Host&lt;/td&gt;
+                                    &lt;td&gt;{$agent/agentHost/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Active&lt;/td&gt;
+                                    &lt;td&gt;{$agent/active/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Services Status&lt;/td&gt;
+                                    &lt;td&gt;Running {$count_running} out of {$count_expected} expected services&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Platform&lt;/td&gt;
+                                    &lt;td&gt;{$agent/platform/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Last Status Change&lt;/td&gt;
+                                    &lt;td&gt;{$agent/lastStatusChange/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Update Time&lt;/td&gt;
+                                    &lt;td&gt;{$agent/updateTime/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Last Upgraded&lt;/td&gt;
+                                    &lt;td&gt;{$agent/lastUpgraded/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                                &lt;tr&gt;
+                                    &lt;td style="width: 150px"&gt;Agent Version&lt;/td&gt;
+                                    &lt;td&gt;{$agent/agentVersion/text()}&lt;/td&gt;
+                                &lt;/tr&gt;
+                            &lt;/table&gt;
+                            &lt;div id="service_list" style="padding-top:2em; margin-bottom: 1em; margin-top: 2em; display: inline-table; width: 100%;"&gt;
+                                &lt;h2&gt;Services&lt;/h2&gt;
+                                &lt;table id="agent_table" 
+                                    align="left"
+                                    style="width: 100%; border: 1px; font-size: 10pt; font-family: Arial, sans-serif; table-layout: fixed;"&gt;
+                                    &lt;tr&gt;
+                                        &lt;th&gt;Service Name&lt;/th&gt;
+                                        &lt;th&gt;Current Status&lt;/th&gt;
+                                        &lt;th&gt;Desired Status&lt;/th&gt;
+                                    &lt;/tr&gt;
+                                    {
+                                    for $service in $expected_services
+                                        let $agentEngineStatus := $agent/agentEngines/agentEngineStatus[appDisplayName = $service]
+                                        let $status := if (empty($agentEngineStatus/status/text())) then 'STOPPED'
+                                                       else $agentEngineStatus/status/text()
+                                        (:Unicode  characters to represent status 
+                                        U+1F7E2; RUNNING &amp;#x1f7e2;
+                                        U+1F7E0; OTHER   &amp;#x1F7E0;
+                                        U+1F534; ERROR   &amp;#x1f534;
+                                        :)
+                                        let $status_label := switch ($status)
+                                                        case 'RUNNING' return '&amp;#x1f7e2;'
+                                                        case 'STOPPED' return '&amp;#x1f6d1;'
+                                                        case 'ERROR' return '&amp;#x1f534;'
+                                                        default return '&amp;#x1f7e0;'
+
+                                        let $desiredStatus := if (empty($agentEngineStatus/desiredStatus/text())) then 'STOPPED'
+                                                              else $agentEngineStatus/desiredStatus/text()
+                                    return
+                                    &lt;tr&gt;
+                                        &lt;td&gt;{ $service }&lt;/td&gt;
+                                        &lt;td&gt;{ $status_label }{' '}{$status}&lt;/td&gt;
+                                        &lt;td&gt;{ $desiredStatus }&lt;/td&gt;
+                                    &lt;/tr&gt;
+                                    }
+                                 &lt;/table&gt;
+                            &lt;/div&gt; &lt;!-- END service_list --&gt;
+                            &lt;/div&gt;
+                            }
+                         &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt; &lt;!-- END  messageTable--&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt; &lt;!--END backgroundTable--&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_email">
+                     <expression language="XQuery">let $email-config := $input.in_configuration 
+let $emailBody := util:toXML($output.out_agentStatusReport )
+return
+&lt;EmailTaskInput&gt;
+   {for $email in tokenize($email-config/actions/email/to/text(),",")
+   return &lt;to&gt;{$email}&lt;/to&gt;}
+   {for $email in tokenize($email-config/actions/email/cc/text(),",")
+   return &lt;cc&gt;{$email}&lt;/cc&gt;}
+   {for $email in tokenize($email-config/actions/email/bcc/text(),",")
+   return &lt;bcc&gt;{$email}&lt;/bcc&gt;}
+   &lt;subject&gt;{$email-config/actions/email/subject/text()}&lt;/subject&gt;
+   &lt;contentType&gt;text/html&lt;/contentType&gt;
+   &lt;body&gt;
+   		{$emailBody}
+   &lt;/body&gt;
+&lt;/EmailTaskInput&gt;</expression>
+                  </operation>
+                  <link id="k9ipe58x" targetId="k9ipe58w"/>
+               </assignment>
+               <service id="k9d1nq7w">
+                  <title>Login</title>
+                  <serviceName>ICS-API:Login</serviceName>
+                  <serviceGUID>9yKFXii7ZmkiUYE6xjuwuh</serviceGUID>
+                  <serviceInput/>
+                  <link id="k9d1nq7y" targetId="k9d1nq7f"/>
+               </service>
+               <service id="k9d1nq7f">
+                  <title>Get Agents Detail</title>
+                  <serviceName>IICS-REST-API-V2:getAgentDetail</serviceName>
+                  <serviceGUID>0UyujOCpoiokMXGJttFUIU</serviceGUID>
+                  <serviceInput>
+                     <parameter name="base_url" source="field" updatable="true">output.ICS Server URL</parameter>
+                     <parameter name="session_id" source="field" updatable="true">output.ICS Session ID</parameter>
+                  </serviceInput>
+                  <link id="k9j6zpgp" targetId="k9d4q3yi"/>
+               </service>
+               <container id="k9ipe58w" type="exclusive">
+                  <title>tmp_agents_with_errors</title>
+                  <flow id="k9ipe59a">
+                     <service id="k9iuu4b5">
+                        <title>Send Email</title>
+                        <serviceName>Email-Alerts:sendEmailService</serviceName>
+                        <serviceGUID>6kW78Fn72hzjZXV0oFE5am</serviceGUID>
+                        <serviceInput>
+                           <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_email</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="k9ipe59b" targetId="k9ipe58w" type="containerLink"/>
+                  </flow>
+                  <flow id="k9ipe59c">
+                     <link id="k9ipe59d" targetId="k9ipe58w" type="containerLink"/>
+                  </flow>
+                  <link id="k9ipe593" targetId="k9ipe59a" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_agents_with_errors}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k9ipe596" targetId="k9ipe59c" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_agents_with_errors}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="k9ipe58y" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e4ef6576-e70b-4159-aaa3-db1fbd2e6a29</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>jbrazda@unicosolution.com.dev</ns1:CreatedBy>
+               <ns1:CreationDate>2020-04-23T17:36:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>jbrazda@unicosolution.com.dev</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2020-04-23T17:37:52Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1HJHJCwGsssdiOM956Fo24</types1:GUID>
+      <types1:DisplayName>SecureAgentMonitor</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2020-04-30T13:24:36.963Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

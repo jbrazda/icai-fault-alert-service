@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FaultAlertConfiguration>
+	<alert-config>
+		<Name>Default Alert Configuration</Name>
+		<Descrioption>This is a Default Alert Configuration to Customize publish new one on urn:informatica:faultAlerts:config</Descrioption>
+		<created>2019-06-18 11:27:27 EDT</created>
+		<updated>2019-06-18 11:27:27 EDT</updated>
+		<createdBy>jbrazda@informatica.com</createdBy>
+		<updatedBy>jbrazda@informatica.com</updatedBy>
+	</alert-config>
+	<rules>
+		<rule>
+			<operator>AND</operator>
+			<condition>
+				<type>equals</type>
+				<value>SP-Test-Throw-Fault-Generic</value>
+				<not>false</not>
+				<alert-field>processName</alert-field>
+			</condition>
+			<condition>
+				<type>matches</type>
+				<value>.*Test.*</value>
+				<not></not>
+				<alert-field>processName</alert-field>
+			</condition>
+			<condition>
+				<type>matches</type>
+				<value>SP-Test-.*</value>
+				<not>false</not>
+				<alert-field>processName</alert-field>
+			</condition>
+			<condition>
+				<type>contains</type>
+				<value>Test</value>
+				<not>false</not>
+				<alert-field>processName</alert-field>
+			</condition>
+		</rule>
+	</rules>
+</FaultAlertConfiguration>

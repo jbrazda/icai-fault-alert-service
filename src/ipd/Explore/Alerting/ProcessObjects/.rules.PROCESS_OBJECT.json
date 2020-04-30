@@ -1,6 +1,6 @@
 [
    {
-      "objectGuid": "2xbm1JXVqY0j6uW3iZAv66",
+      "objectGuid": "g3sDpxvzb41dIEbIRpTycZ",
       "objectName": "rules",
       "objectType": "PROCESS_OBJECT",
       "path": "/Explore/Alerting/ProcessObjects",
@@ -16,15 +16,15 @@
             "minor": 0
          },
          "objectRefs": [
-            "hnshiYqkeIOehlyCb2Zdwg"
+            "6awi7KEgKmnfNUjHHuVJic"
          ],
          "repoInfo": {
-            "repoHandle": "Wy0CR3aaa-gt-2121980-2019-06-18T14:54:19.783Z::po.xml"
+            "repoHandle": "9t4ydx2CGeFRqXp-gt-7365253-2020-03-25T23:14:03.398Z::po.xml"
          }
       }
    },
    {
-      "objectGuid": "hnshiYqkeIOehlyCb2Zdwg",
+      "objectGuid": "6awi7KEgKmnfNUjHHuVJic",
       "objectName": "rule",
       "objectType": "PROCESS_OBJECT",
       "path": "/Explore/Alerting/ProcessObjects",
@@ -41,7 +41,7 @@
          },
          "objectRefs": [],
          "repoInfo": {
-            "repoHandle": "xyIYmWR7hsAVR3a-gt-3920827-2019-06-18T14:49:43.379Z::po.xml"
+            "repoHandle": "JOnCBtBghuImXyc-gt-7365236-2020-03-25T23:14:02.657Z::po.xml"
          }
       }
    }

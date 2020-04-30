@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-email>
+	<subject>Fault Alert Error</subject>
+	<to>jbrazda@informatica.com</to>
+	<cc />
+	<bcc />
+	<contentType>text/html</contentType>
+	<actionName>Send Error Email</actionName>
+</action-email>

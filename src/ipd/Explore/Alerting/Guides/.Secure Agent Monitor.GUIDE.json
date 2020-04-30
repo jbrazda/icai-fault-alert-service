@@ -1,0 +1,94 @@
+[
+   {
+      "objectGuid": "2ktRfuITyF9f5VqV7IuM0x",
+      "objectName": "Secure Agent Monitor",
+      "objectType": "GUIDE",
+      "path": "/Explore/Alerting/Guides",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [
+            "0UyujOCpoiokMXGJttFUIU",
+            "9yKFXii7ZmkiUYE6xjuwuh",
+            "1HJHJCwGsssdiOM956Fo24"
+         ],
+         "repoInfo": {
+            "repoHandle": "Jg7Gaaa-gt-5148370-2020-04-23T17:39:15.575Z::gt.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "0UyujOCpoiokMXGJttFUIU",
+      "objectName": "IICS-REST-API-V2",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Tools/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "YNqRi92qBbbeJOS-gt-5032181-2020-04-23T18:35:13.816Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "9yKFXii7ZmkiUYE6xjuwuh",
+      "objectName": "ICS-API",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Tools/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "ICS API Connection",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "pyqaa-gt-1870011-2020-03-24T18:08:14.252Z::conn.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "1HJHJCwGsssdiOM956Fo24",
+      "objectName": "SecureAgentMonitor",
+      "objectType": "PROCESS",
+      "path": "/Explore/Alerting/Processes",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Process Monitors Secure Agents Health and Reports Issues",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "cgp5OjG4abck0Kn-gt-5013926-2020-04-23T17:34:19.03Z::pd.xml"
+         }
+      }
+   }
+]
