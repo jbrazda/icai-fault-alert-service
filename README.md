@@ -1,7 +1,7 @@
 # Uncaught Fault Alert Service Implementation
 
-This project contains Informatica IICS CAI Fault alert Service Implementation.
-Provided Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions
+This project contains Informatica IICS CAI Fault alert Service Implementation and Secure Agents Status Monitoring service Implementation.
+Provided Fault Service allows to apply declarative Alert Rules and flexible framework to use any of the built-in or custom Actions
 
 ## UncaughtFaultAlertHandler Process
 
@@ -9,10 +9,15 @@ Provided Service allows to apply declarative Alert Rules and flexible framework 
 
 ![Fault Alert Email Example](./doc/images/Fault_Alert_-_Error_-_Inbox.png)
 
+## Agent Monitor Alert Process
+
+![Agent Status Alert Warning](./doc/images/Warning_-_Unexpected_Agent_State.png)
+
 <!-- TOC -->
 
 - [Uncaught Fault Alert Service Implementation](#uncaught-fault-alert-service-implementation)
   - [UncaughtFaultAlertHandler Process](#uncaughtfaultalerthandler-process)
+  - [Agent Monitor Alert Process](#agent-monitor-alert-process)
   - [Features](#features)
   - [Overview](#overview)
   - [Installation](#installation)
@@ -198,7 +203,7 @@ saxon.class=org.activebpel.rt.bpel.ext.expr.impl.xquery.AeQuery
 #### Configure credentials file
 
 Example file is listed below.
-recommended location is your home directory/iics `~/iics/environment.properties` as it will contain sensitive information.
+recommended location is your home directory/iics `~/iics/iclab.properties` as it will contain sensitive information.
 I would also recommend to create Native IICS Service user in each of your orgs that can be used to export/import resources via IICS REST API using the [IICS Asset Management CLI][iics_cli]
 This tool will automatically download latest version an use it to import provided service to your target org
 
@@ -219,7 +224,7 @@ iics.user.prod=deployer-iics-prod@informatica.com
 iics.password.prod=SET_PASSWORD
 ```
 
-> WARNING Never put these properties into the project folder and keep this property file in a secure location ideally `~/iics/environment.properties` The `~/iics` folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)
+> WARNING Never put these properties into the project folder and keep this property file in a secure location ideally `~/iics/iclab.properties` The `~/iics` folder should be accessible only by user running the import/export/publish tasks (use '700' permission on unix systems)
 
 Update existing or copy [conf/iics.release.properties](conf/iics.release.properties) file which defines a key Environment specific parameters
 
