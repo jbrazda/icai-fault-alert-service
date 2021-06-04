@@ -14,7 +14,7 @@
       <types1:CreationDate>2020-03-25T23:14:05Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
       <types1:ModificationDate>2020-04-29T14:13:55Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
       <types1:PublicationDate>2020-04-29T14:14:39Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-Cloud/UncaughtFaultAlertHandler-Cloud.pd.xml</types1:PublishedContributionId>
@@ -914,5 +914,5 @@ return
       <types1:GUID>4zYmeUtH43beMJKRvr3vWo</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-Cloud</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-04-30T13:24:37.332Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-06-04T15:22:03.772Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

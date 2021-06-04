@@ -12,10 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
       <types1:CreationDate>2020-03-25T23:14:05Z</types1:CreationDate>
-      <types1:ModifiedBy/>
+      <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
+      <types1:ModificationDate>2021-06-04T15:07:39Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
-      <types1:PublicationDate>2020-03-25T23:43:29Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-06-04T15:07:58Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/sf.Alert_Configuration_Manager/Alert_Configuration_Manager.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -185,6 +186,12 @@
                      <option name="required">false</option>
                      <option name="isCopy">true</option>
                      <option name="guid">0no1YZOytACk8uRnaQOduk</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_run_on" type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Cloud","value":"Cloud"},{"label":"Secure Agent","value":"Secure Agent"}]</option>
+                     <option name="required">false</option>
                   </options>
                </field>
             </tempFields>
@@ -1180,7 +1187,9 @@
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Fault Details&lt;/p&gt;
-&lt;p&gt;&lt;input class="" title="tmp_test_fault_preview (temporary)" name="temp.tmp_test_fault_preview" type="text" value="tmp_test_fault_preview (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
+&lt;p&gt;&lt;span style="font-family: monospace; font-size: 12px;"&gt;&lt;input class="" title="tmp_test_fault_preview (temporary)" name="temp.tmp_test_fault_preview" type="text" value="tmp_test_fault_preview (temporary)"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Run On&lt;/p&gt;
+&lt;p&gt;&lt;input class="" title="tmp_run_on (temporary)" name="temp.tmp_run_on" type="text" value="tmp_run_on (temporary)"&gt;&amp;nbsp;&lt;/p&gt;</body>
                   <actionPrompt/>
                   <actions>
                      <action alt="null" id="jzu8iaz6_jzu8iaz7" targetScreen="jzu8iaz7">
@@ -1257,6 +1266,17 @@
                            <option name="text_width">100</option>
                            <option name="text_height">20</option>
                            <option name="required">false</option>
+                        </options>
+                     </screenDataItem>
+                     <screenDataItem name="temp.tmp_run_on"
+                                     readonly="false"
+                                     required="false"
+                                     type="picklist">
+                        <options>
+                           <option name="values">[{"label":"Cloud","value":"Cloud"},{"label":"Secure Agent","value":"Secure Agent"}]</option>
+                           <option name="required">false</option>
+                           <option name="defaultvalue">Cloud</option>
+                           <option hide="true" name="valuelist.source">searchservice</option>
                         </options>
                      </screenDataItem>
                   </screenData>
@@ -1434,18 +1454,34 @@
                      </screenDataItem>
                   </screenData>
                </screen>
-               <service id="jzu8iaz8">
-                  <title>UncaughtFaultAlertHandler-NA</title>
-                  <serviceName>UncaughtFaultAlertHandler-NA</serviceName>
+               <service id="kpifgewa">
+                  <title>UncaughtFaultAlertHandler-Cloud</title>
+                  <serviceName>UncaughtFaultAlertHandler-Cloud</serviceName>
                   <serviceGUID/>
                   <serviceInput>
-                     <parameter id="jzkjcd1q"
+                     <parameter id="kpifgefi"
                                 name="Alert Details"
                                 source="field"
                                 updatable="true">temp.tmp_test_fault_message</parameter>
                   </serviceInput>
                   <actions>
-                     <action alt="null" id="jzu8iaz8_jzu8iazk" targetScreen="jzu8iazk">
+                     <action alt="null" id="kpifgewa_kpifgdpw" targetScreen="kpifgdpw">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </service>
+               <service id="kpifgetb">
+                  <title>UncaughtFaultAlertHandler-G01</title>
+                  <serviceName>UncaughtFaultAlertHandler-G01</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter id="kpifgdun"
+                                name="Alert Details"
+                                source="field"
+                                updatable="true">temp.tmp_test_fault_message</parameter>
+                  </serviceInput>
+                  <actions>
+                     <action alt="null" id="kpifgetb_kpifgdpw" targetScreen="kpifgdpw">
                         <text>Continue</text>
                      </action>
                   </actions>
@@ -1458,10 +1494,10 @@
                      <text/>
                   </screenActionLabel>
                </endScreen>
-               <empty gatewayType="exclusive" id="k1qj4rex">
+               <empty gatewayType="exclusive" id="kpig1sc4">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4r49">
+               <empty gatewayType="exclusive" id="kpig1s17">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="k1krrd8m">
@@ -1506,16 +1542,16 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rd9">
+               <empty gatewayType="exclusive" id="kpig1sa7">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rcc">
+               <empty gatewayType="exclusive" id="kpig1s9a">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4r79">
+               <empty gatewayType="exclusive" id="kpig1s47">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4r75">
+               <empty gatewayType="exclusive" id="kpig1s43">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="k1l0tkhm">
@@ -1588,7 +1624,7 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rb8">
+               <empty gatewayType="exclusive" id="kpig1s86">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jx4zw033">
@@ -1612,10 +1648,10 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rab">
+               <empty gatewayType="exclusive" id="kpig1s79">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4raj">
+               <empty gatewayType="exclusive" id="kpig1s7h">
                   <actions/>
                </empty>
                <empty gatewayType="exclusive" id="jxdgqb5d">
@@ -1632,19 +1668,26 @@
                      </action>
                   </actions>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rbn">
+               <empty gatewayType="exclusive" id="kpig1s8l">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rbw">
+               <empty gatewayType="exclusive" id="kpig1s8u">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rc7">
+               <empty gatewayType="exclusive" id="kpig1s95">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rev">
+               <empty gatewayType="exclusive" id="kpig1sc2">
                   <actions/>
                </empty>
-               <empty gatewayType="exclusive" id="k1qj4rej">
+               <empty gatewayType="exclusive" id="kpifgdpw">
+                  <actions>
+                     <action alt="null" id="kpifgdpw_jzu8iazk" targetScreen="jzu8iazk">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </empty>
+               <empty gatewayType="exclusive" id="kpig1sbj">
                   <actions/>
                </empty>
                <jumpTo id="jx4ua7l8" targetTitle="Configuration Editor - Reset Selections">
@@ -1969,9 +2012,16 @@
                      </action>
                   </actions>
                </jumpTo>
-               <jumpTo id="jzu8iazc" targetTitle="UncaughtFaultAlertHandler-NA">
+               <jumpTo id="kpifge5u" targetTitle="Set Fault Alert Message">
                   <actions>
-                     <action alt="null" id="jzu8iazc_jzu8iaz8" targetScreen="jzu8iaz8">
+                     <action alt="null" id="kpifge5u_jzu8iaz6" targetScreen="jzu8iaz6">
+                        <text>Continue</text>
+                     </action>
+                  </actions>
+               </jumpTo>
+               <jumpTo id="jzu8iazc" targetTitle="Assignment to Fault Details">
+                  <actions>
+                     <action alt="null" id="jzu8iazc_jzu8iaz7" targetScreen="jzu8iaz7">
                         <text>Continue</text>
                      </action>
                   </actions>
@@ -2509,6 +2559,23 @@ return
                      </action>
                      <action alt="else " id="jx4zw14v_jx4zw14y" targetScreen="jx4zw14y">
                         <text>Otherwise</text>
+                     </action>
+                  </actions>
+               </dataDecision>
+               <dataDecision id="kpifgdmu">
+                  <title>tmp_run_on</title>
+                  <dataName>temp.tmp_run_on</dataName>
+                  <actions>
+                     <action alt="equals Cloud" id="kpifgdmu_kpifgewa" targetScreen="kpifgewa">
+                        <text>Cloud</text>
+                     </action>
+                     <action alt="equals Secure Agent"
+                             id="kpifgdmu_kpifgetb"
+                             targetScreen="kpifgetb">
+                        <text>Secure Agent</text>
+                     </action>
+                     <action alt="else " id="kpifgdmu_kpifge5u" targetScreen="kpifge5u">
+                        <text>otherwise</text>
                      </action>
                   </actions>
                </dataDecision>
@@ -3627,7 +3694,22 @@ return
                   <operation source="formula" to="temp.tmp_test_fault_message">
                      <expression language="XQuery">util:parseXML($temp.tmp_test_fault_xml )</expression>
                   </operation>
-                  <operation source="field" to="temp.tmp_test_fault_preview">temp.tmp_test_fault_message[1]/faultDetails</operation>
+                  <operation source="formula" to="temp.tmp_test_fault_preview">
+                     <expression language="XQuery">let $saxon_params :=&lt;xsl:output xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                                xmlns:saxon="http://saxon.sf.net/"
+                                method="xml"
+                                omit-xml-declaration="yes"
+                                indent="yes"
+                                saxon:indent-spaces="4"/&gt;
+let $fault_data := try {
+					saxon:serialize(util:parseXML($temp.tmp_test_fault_message[1]/faultDetails ), $saxon_params)
+                    }
+				catch * { 
+                	$temp.tmp_test_fault_message[1]/faultDetails
+                    }
+return 
+$fault_data</expression>
+                  </operation>
                   <actions>
                      <action alt="null" id="jzu8iaz5_jzu8iaz6" targetScreen="jzu8iaz6">
                         <text>Continue</text>
@@ -3638,7 +3720,7 @@ return
                   <title>Assignment to Fault Details</title>
                   <operation source="field" to="temp.tmp_test_fault_message[1]/faultDetails">temp.tmp_test_fault_preview</operation>
                   <actions>
-                     <action alt="null" id="jzu8iaz7_jzu8iaz8" targetScreen="jzu8iaz8">
+                     <action alt="null" id="jzu8iaz7_kpifgdmu" targetScreen="kpifgdmu">
                         <text>Continue</text>
                      </action>
                   </actions>
@@ -3657,8 +3739,16 @@ return
          &lt;status&gt;faulting&lt;/status&gt;
          &lt;faultName&gt;faultResponse&lt;/faultName&gt;
       &lt;/AlertDetails&gt;
+
+let $saxon_params := &lt;xsl:output 
+						xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                        xmlns:saxon="http://saxon.sf.net/"
+                        method="xml"
+                        omit-xml-declaration="yes"
+                        indent="yes"
+                        saxon:indent-spaces="4"/&gt;
 return 
-util:toXML($sample_payload)</expression>
+saxon:serialize($sample_payload,$saxon_params)</expression>
                   </operation>
                   <actions>
                      <action alt="null" id="jzu8ic1i_jzu8iazn" targetScreen="jzu8iazn">
@@ -3672,5 +3762,5 @@ util:toXML($sample_payload)</expression>
       <types1:GUID>9a53nLp4OIhjqHwaCDI0gZ</types1:GUID>
       <types1:DisplayName>Alert Configuration Manager</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-04-30T13:24:37.365Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-06-04T15:22:03.81Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

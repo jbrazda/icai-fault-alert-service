@@ -14,10 +14,10 @@
       <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
       <types1:CreationDate>2020-03-25T23:14:03Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
-      <types1:ModificationDate>2020-03-25T23:27:29Z</types1:ModificationDate>
+      <types1:ModificationDate>2021-05-20T13:51:32Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
-      <types1:PublicationDate>2020-03-26T14:50:07Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-05-20T13:51:40Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/rt.connection/gitlab-snippets-alert-configuration/gitlab-snippets-alert-configuration.conn.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -48,5 +48,5 @@ See https://gitlab.com/help/api/README.md</description>
       <types1:GUID>0no1YZOytACk8uRnaQOduk</types1:GUID>
       <types1:DisplayName>gitlab-snippets-alert-configuration</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-04-30T13:24:36.883Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-06-04T15:22:03.322Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

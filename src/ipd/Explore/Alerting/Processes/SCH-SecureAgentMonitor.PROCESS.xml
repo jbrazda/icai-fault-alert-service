@@ -13,10 +13,10 @@
       <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
       <types1:CreationDate>2020-04-28T02:18:41Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
-      <types1:ModificationDate>2020-04-29T14:20:42Z</types1:ModificationDate>
-      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:ModificationDate>2020-06-22T22:00:02Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
-      <types1:PublicationDate>2020-04-29T14:20:52Z</types1:PublicationDate>
+      <types1:PublicationDate>2020-06-22T22:00:06Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.SCH-SecureAgentMonitor/SCH-SecureAgentMonitor.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
@@ -38,7 +38,11 @@
             </tempFields>
             <notes/>
             <deployment suspendOnFault="false" tracingLevel="verbose">
-               <rest/>
+               <rest>
+                  <allowedGroups>
+                     <group>DevOps</group>
+                  </allowedGroups>
+               </rest>
             </deployment>
             <flow id="a">
                <start id="b">
@@ -49,7 +53,7 @@
                   <operation source="formula" to="temp.tmp_configuration">
                      <expression language="XQuery">&lt;AgentMonitor&gt;
     &lt;!-- Comma Separated names of Agent Services to be expectd running on selected group --&gt;
-    &lt;agentServices&gt;Administrator,Common Integration Components,Data Integration Server,Mass Ingestion,OI Data Collector,Process Server&lt;/agentServices&gt;
+    &lt;agentServices&gt;Common Integration Components,Data Integration Server,Mass Ingestion,OI Data Collector,Process Server&lt;/agentServices&gt;
     &lt;actions&gt;
     	&lt;email&gt;
         	&lt;subject&gt;Warning - Unexpected Agent State&lt;/subject&gt;
@@ -89,9 +93,20 @@
                <end id="c"/>
             </flow>
          </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>379d85be-c8a6-4275-9619-05f1e60fbe08</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>jbrazda@unicosolution.com.dev</ns1:CreatedBy>
+               <ns1:CreationDate>2020-06-22T21:49:55Z</ns1:CreationDate>
+               <ns1:ModifiedBy>jbrazda@unicosolution.com.dev</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2020-06-22T21:49:55Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
       </types1:Entry>
       <types1:GUID>2ePABy3i6qIdAF28D522Ch</types1:GUID>
       <types1:DisplayName>SCH-SecureAgentMonitor</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2020-04-30T13:24:37.139Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-06-04T15:22:03.528Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

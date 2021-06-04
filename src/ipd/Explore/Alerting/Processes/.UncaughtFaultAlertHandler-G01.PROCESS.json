@@ -1,7 +1,7 @@
 [
    {
       "objectGuid": "76syjaJLYO1eQZO23DoCcR",
-      "objectName": "UncaughtFaultAlertHandler-NA",
+      "objectName": "UncaughtFaultAlertHandler-G01",
       "objectType": "PROCESS",
       "path": "/Explore/Alerting/Processes",
       "metadata": {
@@ -16,9 +16,9 @@
             "minor": 0
          },
          "objectRefs": [
-            "6kW78Fn72hzjZXV0oFE5am",
             "ajAViSjVGBacGGuYjum320",
             "cl8knTQGCSQb6MQhyH12Ut",
+            "2Jw9v5SBMaglAclC0OqcSd",
             "0no1YZOytACk8uRnaQOduk",
             "lKJsk3UE6KjdXexESZSycK",
             "gEj5IRxX4gJgsLJ33z58qv",
@@ -26,28 +26,6 @@
          ],
          "repoInfo": {
             "repoHandle": "dq9bdsreK8ZAZf5-gt-6346495-2020-03-25T23:14:04.405Z::pd.xml"
-         }
-      }
-   },
-   {
-      "objectGuid": "6kW78Fn72hzjZXV0oFE5am",
-      "objectName": "Email-Alerts",
-      "objectType": "AI_CONNECTION",
-      "path": "/Explore/Alerting/Connections",
-      "metadata": {
-         "additionalInfo": {
-            "contentType": "application/json; charset=utf-8",
-            "description": "Shared Email Service to send  alerts and notifications",
-            "documentState": "VALID"
-         },
-         "contextAttributes": null,
-         "modelVersion": {
-            "major": 1,
-            "minor": 0
-         },
-         "objectRefs": [],
-         "repoInfo": {
-            "repoHandle": "6UuINciZBpDUQbg-gt-2341642-2020-03-25T23:14:00.893Z::conn.xml"
          }
       }
    },
@@ -92,6 +70,28 @@
          "objectRefs": [],
          "repoInfo": {
             "repoHandle": "3QhNzUzeA8rJ4pb-gt-6346385-2020-03-25T23:14:01.088Z::po.xml"
+         }
+      }
+   },
+   {
+      "objectGuid": "2Jw9v5SBMaglAclC0OqcSd",
+      "objectName": "Email-Alerts-G01",
+      "objectType": "AI_CONNECTION",
+      "path": "/Explore/Alerting/Connections",
+      "metadata": {
+         "additionalInfo": {
+            "contentType": "application/json; charset=utf-8",
+            "description": "Shared Email Service to send  alerts and notifications for private SMTP accessible from Secure Agents",
+            "documentState": "VALID"
+         },
+         "contextAttributes": null,
+         "modelVersion": {
+            "major": 1,
+            "minor": 0
+         },
+         "objectRefs": [],
+         "repoInfo": {
+            "repoHandle": "i29QqdsQR6kbeJH-gt-52057384-2021-06-03T15:06:01.136Z::conn.xml"
          }
       }
    },
