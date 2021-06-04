@@ -541,6 +541,16 @@
         description="Combines package.src, import, publish steps into one step">
     </target>
 
+    <target name="build.ipd.dist.packages" depends="-env.info,
+            -select-release,
+            -load.release.properties" if="iics.release.basename" description="Builds IPD Binary Packages Distribution to pre-defined folder which are available for download in github">
+        <property name="iics.binaries.dir" location="${basedir}/dist"></property>
+
+        <iics.package id="initial_release" workspace="${iics.extract.dir}" output="FaultAlertService_InitialInstall_All_Designs.zip" todir="${iics.binaries.dir}" file="${basedir}/conf/all_designs.package.txt"/>
+        <echo level="info">Updated All Designs distribution in ${iics.binaries.dir}/FaultAlertService_InitialInstall_All_Designs.zip</echo>
+        <iics.package id="update_release" workspace="${iics.extract.dir}" output="FaultAlertService_Update_Excluding_Connections.zip" todir="${iics.binaries.dir}" file="${basedir}/conf/all_exclude_connections.package.txt"/>
+        <echo level="info">Updated Update Designs distribution in ${iics.binaries.dir}/FaultAlertService_Update_Excluding_Connections.zip</echo>
+    </target>
 
     <macrodef name="iics.list" description="List resurces in IICS org using given query into a defined list file">
         <attribute name="id" default="1" />
