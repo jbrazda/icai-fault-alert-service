@@ -221,8 +221,9 @@ return
                                         <th>Desired Status</th>
                                     </tr>
                                     {
-                                    for $service in $expected_services
-                                        let $agentEngineStatus := $agent/agentEngines/agentEngineStatus[appDisplayName = $service]
+                                    for $service in $agent/agentEngines
+                                        let $agentEngineStatus := $service/agentEngineStatus
+                                        let $appDisplayName :=  $agentEngineStatus/appDisplayName/text()
                                         let $status := if (empty($agentEngineStatus/status/text())) then 'STOPPED'
                                                        else $agentEngineStatus/status/text()
                                         (:Unicode  characters to represent status 
@@ -238,9 +239,10 @@ return
 
                                         let $desiredStatus := if (empty($agentEngineStatus/desiredStatus/text())) then 'STOPPED'
                                                               else $agentEngineStatus/desiredStatus/text()
+                                        where $appDisplayName = $expected_services
                                     return
                                     <tr>
-                                        <td>{ $service }</td>
+                                        <td>{ $appDisplayName }</td>
                                         <td>{ $status_label }{' '}{$status}</td>
                                         <td>{ $desiredStatus }</td>
                                     </tr>

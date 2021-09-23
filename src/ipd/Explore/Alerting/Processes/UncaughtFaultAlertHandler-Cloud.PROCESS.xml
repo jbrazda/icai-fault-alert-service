@@ -13,18 +13,20 @@
       <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
       <types1:CreationDate>2020-03-25T23:14:05Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
-      <types1:ModificationDate>2020-04-29T14:13:55Z</types1:ModificationDate>
-      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:ModificationDate>2021-07-27T16:28:44Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
-      <types1:PublicationDate>2020-04-29T14:14:39Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-07-27T16:28:53Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.UncaughtFaultAlertHandler-Cloud/UncaughtFaultAlertHandler-Cloud.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
                   xmlns:list="urn:activevos:spi:list:functions"
                   displayName="UncaughtFaultAlertHandler-Cloud"
                   name="UncaughtFaultAlertHandler-Cloud"
                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
             <description>Process Engine Fault Alert handler allows to send notifcations based on declarative conditions Faults can be ignored</description>
             <tags/>
@@ -67,7 +69,7 @@
                       type="string">
                   <options>
                      <option name="required">false</option>
-                     <option name="initialvalue">UncaughtFaultAlertHandler-NA</option>
+                     <option name="initialvalue">UncaughtFaultAlertHandler-Cloud</option>
                   </options>
                </field>
                <field description="Augmented Process Title"
@@ -914,5 +916,5 @@ return
       <types1:GUID>4zYmeUtH43beMJKRvr3vWo</types1:GUID>
       <types1:DisplayName>UncaughtFaultAlertHandler-Cloud</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-06-04T15:22:03.772Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-09-23T20:44:01.749Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

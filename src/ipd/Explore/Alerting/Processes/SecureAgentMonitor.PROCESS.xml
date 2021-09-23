@@ -14,18 +14,20 @@
       <types1:CreatedBy>jbrazda@unicosolution.com.dev</types1:CreatedBy>
       <types1:CreationDate>2020-04-23T17:34:19Z</types1:CreationDate>
       <types1:ModifiedBy>jbrazda@unicosolution.com.dev</types1:ModifiedBy>
-      <types1:ModificationDate>2020-04-28T19:11:07Z</types1:ModificationDate>
-      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:ModificationDate>2021-08-11T13:26:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
       <types1:PublishedBy>jbrazda@unicosolution.com.dev</types1:PublishedBy>
-      <types1:PublicationDate>2020-06-22T22:00:06Z</types1:PublicationDate>
+      <types1:PublicationDate>2021-09-23T20:41:53Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.SecureAgentMonitor/SecureAgentMonitor.pd.xml</types1:PublishedContributionId>
       <types1:AutosaveExists>false</types1:AutosaveExists>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
                   xmlns:list="urn:activevos:spi:list:functions"
                   displayName="SecureAgentMonitor"
                   name="SecureAgentMonitor"
                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
             <appliesTo/>
             <description>Process Monitors Secure Agents Health and Reports Issues</description>
             <tags/>
@@ -118,7 +120,7 @@ else util:resolveURN('urn:environment:orgid')</expression>
                   <link id="k9j9k0qe" targetId="k9d1nq7w"/>
                </assignment>
                <assignment id="k9d4q3yi">
-                  <title>Assignment to tmp_agents_with_errors, out_agentStatusReport etc.</title>
+                  <title>Evaluate Results</title>
                   <operation source="formula" to="temp.tmp_agents_with_errors">
                      <expression language="XQuery">let $count_expected := count(tokenize($input.in_configuration/agentServices/text() , ','))
 let $agentDetails := ($output.agentDetails)
@@ -452,5 +454,5 @@ return
       <types1:GUID>1HJHJCwGsssdiOM956Fo24</types1:GUID>
       <types1:DisplayName>SecureAgentMonitor</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2021-06-04T15:22:03.395Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2021-09-23T20:43:55.634Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

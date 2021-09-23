@@ -1,1739 +1,2499 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aetgt:output xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"
-              xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
-   <sf:field name="out_agentStatusReport"/>
-   <sf:field name="ICS Session ID">3O1N3xLczkShsQyjWXvrC9</sf:field>
-   <sf:field name="ICS Username">Data Viewer</sf:field>
-   <sf:field name="ICS Server URL">https://na1.dm-us.informaticacloud.com/saas</sf:field>
-   <sf:field name="ICS User Email">jbrazda@unicosolution.com</sf:field>
-   <sf:field name="ICS Org Id">0118TN</sf:field>
-   <sf:field name="Status">200</sf:field>
-   <sf:field name="agentDetails" objectType="IICS-REST-API-V2:agentDetail">
-      <agent xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
-             xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
-         <updatedBy>admin</updatedBy>
-         <configUpdateTime>2020-03-20T17:07:27.000Z</configUpdateTime>
-         <type>agentdetails</type>
-         <active>true</active>
-         <updateTime>2020-04-27T21:15:21.000Z</updateTime>
-         <agentConfigs/>
-         <packages/>
-         <orgId>0118TN</orgId>
-         <platform>linux64</platform>
-         <upgradeStatus>NotUpgrading</upgradeStatus>
-         <lastUpgraded>2020-03-17T10:55:25.000Z</lastUpgraded>
-         <proxyPort>0</proxyPort>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_rootLogger</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO, tomcatLog'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'org.apache.log4j.FileAppender'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog_layout</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'org.apache.log4j.PatternLayout'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog_layout_ConversionPattern</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'%d %d{z} %p [%c] - %m%n'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_net_sf</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_hibernate</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_springframework</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas_tunnel_TunnelClientImpl</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas_tunnel_TunnelClientHttpCommonsImpl</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache_commons_httpclient_auth_AuthChallengeProcessor</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache_commons_httpclient</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_httpclient_wire</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>org_apache_axis_utils_JavaUtils</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'ERROR'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>host</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'localhost'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>address</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'127.0.0.1'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>tomcat_minSpareThreads</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'2'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>tomcat_maxThreads</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'200'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>tomcat_acceptCount</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'100'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>tomcat_connectionTimeout</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'3600000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>tomcat_maxKeepAliveRequests</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'500'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>whitelist_csv_log_extensions</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'log,out,ini,cfg,xml,appspec,param'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>http_socket_timeout</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'60000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>http_connection_timeout</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'60000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>predownload_available_poll_interval</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'300000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>predownload_available_poll_initDelay</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'300000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>predownload_minimum_required_memory</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'5120'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>package_download_thread_pool_size</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'2'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>package_download_backoff_max_time</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'600000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>package_download_backoff_period</name>
-               <type>ADMIN_APP_CONF</type>
-               <value>'5000'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-Administrator_R1.90</packages>
-            <agentEngineStatus>
-               <subState>0</subState>
-               <appname>Administrator</appname>
-               <replacePolicy>REPLACE</replacePolicy>
-               <createTime>2020-03-17T10:55:26.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>Administrator</appDisplayName>
-               <appversion>1.0.1</appversion>
-               <updateTime>2020-04-22T16:35:40.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>RUNNING</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NetworkTimeoutPeriod</name>
-               <type>TOMCAT_CFG</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NetworkRetryInterval</name>
-               <type>TOMCAT_CFG</type>
-               <value>5</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JRE_OPTS</name>
-               <type>TOMCAT_CFG</type>
-               <value>'-Xms32m -Xmx512m -XX:MaxPermSize=128m'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>LCM_JRE_OPTS</name>
-               <type>PLATFORM_CFG</type>
-               <value>'-Xms32m -Xmx256m'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>TunnelTimeoutPeriod</name>
-               <type>SYSTEM_CFG</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>HTTP_CONNECTION_TIMEOUT_SECONDS</name>
-               <type>SYSTEM_CFG</type>
-               <value>60</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>HTTP_SOCKET_TIMEOUT_SECONDS</name>
-               <type>SYSTEM_CFG</type>
-               <value>60</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MaximumConcurrentJobs</name>
-               <type>COMMAND_CFG</type>
-               <value>10</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-CommonIntegrationComponents.3</packages>
-            <packages>package-CommandExecutor.2</packages>
-            <agentEngineStatus>
-               <subState>302</subState>
-               <appname>Common_Integration_Components</appname>
-               <replacePolicy>COPY</replacePolicy>
-               <createTime>2020-03-24T14:12:41.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>Common Integration Components</appDisplayName>
-               <appversion>1.0.1</appversion>
-               <updateTime>2020-04-24T11:39:30.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>ERROR</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NetworkTimeoutPeriod</name>
-               <type>TOMCAT_CFG</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NetworkRetryInterval</name>
-               <type>TOMCAT_CFG</type>
-               <value>5</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MySQL_JDBC_DRIVER_JARNAME</name>
-               <type>TOMCAT_CFG</type>
-               <value>'mysql-connector-java-8.0.12.jar'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>INFA_SSL</name>
-               <type>TOMCAT_JRE</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>INFA_MEMORY</name>
-               <type>TOMCAT_JRE</type>
-               <value>'-Xms32m -Xmx512m -XX:MaxPermSize=128m'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JRE_OPTS</name>
-               <type>TOMCAT_JRE</type>
-               <value>'-Xrs'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JAVA_LIBS</name>
-               <type>TOMCAT_JRE</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_rootLogger</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO, tomcatLog'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'org.apache.log4j.FileAppender'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog_layout</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'org.apache.log4j.PatternLayout'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_appender_tomcatLog_layout_ConversionPattern</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'%d %d{z} %p [%c] - %m%n'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_net_sf</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_hibernate</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_springframework</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas_tunnel_TunnelClientImpl</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas_tunnel_TunnelClientHttpCommonsImpl</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache_commons_httpclient_auth_AuthChallengeProcessor</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_org_apache_commons_httpclient</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'WARN'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_httpclient_wire</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>org_apache_axis_utils_JavaUtils</name>
-               <type>TOMCAT_LOG4J</type>
-               <value>'ERROR'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMClassPath</name>
-               <type>PMRDTM_CFG</type>
-               <value>'pmserversdk.jar'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMOption1</name>
-               <type>PMRDTM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMOption2</name>
-               <type>PMRDTM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMOption3</name>
-               <type>PMRDTM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMOption4</name>
-               <type>PMRDTM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>JVMOption5</name>
-               <type>PMRDTM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>UseLogService</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ServerName</name>
-               <type>PMRDTM_CFG</type>
-               <value>'rDTM'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PMUser</name>
-               <type>PMRDTM_CFG</type>
-               <value>'rDTMUser'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PMUserNamespace</name>
-               <type>PMRDTM_CFG</type>
-               <value>'rDTMUserNamespace'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PMPassword</name>
-               <type>PMRDTM_CFG</type>
-               <value>'rDTMPass'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>RepositoryName</name>
-               <type>PMRDTM_CFG</type>
-               <value>'XMLRepository'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>RepositoryDomain</name>
-               <type>PMRDTM_CFG</type>
-               <value>'rDTMDomain'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeODBCRead</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeODBCWrite</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>DataMovementMode</name>
-               <type>PMRDTM_CFG</type>
-               <value>'UNICODE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>RecordSessStatInRepo</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ValidateDataCodePages</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>__PMOV_FFW_ESCAPE_QUOTE</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>AgentConnectionTimeout</name>
-               <type>PMRDTM_CFG</type>
-               <value>5</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>LogsInUTF8</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>SalesForceConnectionTimeout</name>
-               <type>PMRDTM_CFG</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OdbcDataDirectNonWapi</name>
-               <type>PMRDTM_CFG</type>
-               <value>1</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeOracleSQLServerWrite</name>
-               <type>PMRDTM_CFG</type>
-               <value>'no'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OdbcDataDirectWapiWithSQLWChar</name>
-               <type>PMRDTM_CFG</type>
-               <value>1</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMLookupFileDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMSessionLogDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir/../logs'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMBadFileDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir/error'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMCacheDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir/cache'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMStorageDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMTargetFileDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMSourceFileDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMExtProcDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMTempDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir/temp'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>$PMWorkflowLogDir</name>
-               <type>PMRDTM_CFG</type>
-               <value>'$PMRootDir/../logs'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ExitOnAgentError</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>SfdcProxyFile</name>
-               <type>PMRDTM_CFG</type>
-               <value>'../../proxy.ini'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>CommitOnlyAtEnd</name>
-               <type>PMRDTM_CFG</type>
-               <value>'true'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeAuroraRead</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeAuroraWrite</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>DD_CLOSED_ORACLE_DRIVER</name>
-               <type>PMRDTM_CFG</type>
-               <value>'DataDirect CLOSED 8.0 Oracle Wire Protocol for Informatica - R33'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>DD_CLOSED_SQLSERVER_DRIVER</name>
-               <type>PMRDTM_CFG</type>
-               <value>'DataDirect CLOSED 8.0 SQL Server Wire Protocol for Informatica - R33'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MySQL_ODBC_DRIVER</name>
-               <type>PMRDTM_CFG</type>
-               <value>'MySQL ODBC 8.0 Unicode Driver'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeMySQLRead</name>
-               <type>PMRDTM_CFG</type>
-               <value>'Yes'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OptimizeMySQLWrite</name>
-               <type>PMRDTM_CFG</type>
-               <value>'No'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>EnableCustomFlagsForSqlTx</name>
-               <type>PMRDTM_CFG</type>
-               <value>0</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>IdentityReferenceDataLocation</name>
-               <type>IDQ</type>
-               <value>'../../rdtmDir/DQContent/Informatica_DQ_Content/identity'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ReferenceDataLocation</name>
-               <type>IDQ</type>
-               <value>'../../rdtmDir/DQContent'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ReferenceDataLocation</name>
-               <type>IDQAD</type>
-               <value>'$PMRootDir/avdata'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>LicenseKey</name>
-               <type>IDQAD</type>
-               <value>'PNXJ0QQX84F7AW3LJPVDS99ZHHLCE94QZ3NA'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>FullPreLoadCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PartialPreLoadCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NoPreLoadCountries</name>
-               <type>IDQAD</type>
-               <value>'ALL'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>FullPreLoadGeoCodingCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PartialPreLoadGeoCodingCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NoPreLoadGeoCodingCountries</name>
-               <type>IDQAD</type>
-               <value>'ALL'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MemoryUsage</name>
-               <type>IDQAD</type>
-               <value>1048</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>CacheSize</name>
-               <type>IDQAD</type>
-               <value>'LARGE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PreloadingMethod</name>
-               <type>IDQAD</type>
-               <value>'MAP'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>FullPreLoadAddressCodeCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>PartialPreLoadAddressCodeCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>NoPreLoadAddressCodeCountries</name>
-               <type>IDQAD</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ReportLocation</name>
-               <type>IDQAD</type>
-               <value>'.'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MaxResultCount</name>
-               <type>IDQAD</type>
-               <value>100</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>MaxAddressObjectCount</name>
-               <type>IDQAD</type>
-               <value>5</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ICSCheckPeriod</name>
-               <type>PLATFORM_CFG</type>
-               <value>120</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>INFA_DEBUG</name>
-               <type>PLATFORM_CFG</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j_logger_com_informatica_saas_di_app_script</name>
-               <type>PLATFORM_CFG</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>LCM_SCRIPT_MEMORY</name>
-               <type>PLATFORM_CFG</type>
-               <value>'-Xrs -Xms8m -Xmx256m'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>TunnelTimeoutPeriod</name>
-               <type>SYSTEM_CFG</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-ICSAgent_R56.14</packages>
-            <packages>package-ICSAgentDriver_V7.2</packages>
-            <packages>package-ICSAgentPatch_R56.2</packages>
-            <packages>package-runAJobCli.10</packages>
-            <packages>package-SDKPatch.22</packages>
-            <packages>package-cmask.9</packages>
-            <packages>package-saas-xmetadataread.11</packages>
-            <packages>package-AgentCompiler.3</packages>
-            <packages>package-InformaticaCryptoLibrary.1</packages>
-            <packages>package-DataTransformation.25</packages>
-            <packages>package-DataQualitySA.7</packages>
-            <packages>package-DataQualityProfilingSA.1</packages>
-            <packages>package-RESTSwaggerGenerator.5</packages>
-            <packages>package-UDTforHierarchy.15</packages>
-            <packages>package-StructureDiscovery.334</packages>
-            <packages>package-adlsv2.11</packages>
-            <packages>package-Box.11</packages>
-            <packages>package-ldap.11</packages>
-            <packages>package-genericwsc.10</packages>
-            <packages>package-AmazonS3.33</packages>
-            <packages>package-FileList.8</packages>
-            <packages>package-FileProcessor.29</packages>
-            <packages>package-GoogleBigQuery.14</packages>
-            <packages>package-googlestorage.7</packages>
-            <packages>package-JDBCv2.36</packages>
-            <packages>package-Marketo_RESTV3.25</packages>
-            <packages>package-MemSQL.2</packages>
-            <packages>package-AzureDWv2.8</packages>
-            <packages>package-MicrosoftExcel.3</packages>
-            <packages>package-REST.37</packages>
-            <packages>package-SnowflakeCloudDataWarehouse.11</packages>
-            <packages>package-XML.20</packages>
-            <packages>package-sapbapi.11</packages>
-            <packages>package-RESTv2.31</packages>
-            <packages>package-NetSuiteConnector.86</packages>
-            <packages>package-ConcurREST.4</packages>
-            <packages>package-hadoopfiles.2</packages>
-            <packages>package-AmazonS3V2.11</packages>
-            <packages>package-AmazonRedshiftV2.9</packages>
-            <packages>package-MockConnector.4</packages>
-            <packages>package-spannerGoogle.8</packages>
-            <packages>package-fileio.6</packages>
-            <packages>package-AnaplanV2.13</packages>
-            <packages>package-Anaplan.6</packages>
-            <packages>package-OracleCDCRealTime.4</packages>
-            <packages>package-PowerExchangeClient.2</packages>
-            <packages>package-DIHS.20</packages>
-            <packages>package-AzureBlobV3.7</packages>
-            <packages>package-GoogleAnalytics.7</packages>
-            <packages>package-hiveadapter.8</packages>
-            <packages>package-ZendeskV2.4</packages>
-            <packages>package-adlsv3.5</packages>
-            <packages>package-PostgreSQLadapter.4</packages>
-            <packages>package-Salesforce.3</packages>
-            <agentEngineStatus>
-               <subState>0</subState>
-               <appname>Data_Integration_Server</appname>
-               <replacePolicy>COPY</replacePolicy>
-               <createTime>2020-04-23T16:25:03.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>Data Integration Server</appDisplayName>
-               <appversion>56.0.2</appversion>
-               <updateTime>2020-04-23T16:29:02.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>RUNNING</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>file-listener-snapshot-dir</name>
-               <type>AGENT_RUNTIME_SETTINGS</type>
-               <value>'../data/monitor'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>file-listener-max-pool-size</name>
-               <type>AGENT_RUNTIME_SETTINGS</type>
-               <value>20</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>file-listener-core-pool-size</name>
-               <type>AGENT_RUNTIME_SETTINGS</type>
-               <value>20</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ftp-receive-socket-buffer-size</name>
-               <type>AGENT_RUNTIME_SETTINGS</type>
-               <value>16</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ftp-send-socket-buffer-size</name>
-               <type>AGENT_RUNTIME_SETTINGS</type>
-               <value>16</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>public-keyring-path</name>
-               <type>PGP_SETTINGS</type>
-               <value>'../data/pubring.pkr'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>secret-keying-path</name>
-               <type>PGP_SETTINGS</type>
-               <value>'../data/secring.skr'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-MassIngestionRuntime.14</packages>
-            <packages>package-AmazonS3V2.11</packages>
-            <packages>package-SDKPatch.21</packages>
-            <packages>package-AmazonRedshiftV2.9</packages>
-            <packages>package-spannerGoogle.8</packages>
-            <packages>package-AzureBlobV3.7</packages>
-            <packages>package-GoogleAnalytics.7</packages>
-            <packages>package-adlsv3.5</packages>
-            <packages>package-AdvancedFTPV2.2</packages>
-            <packages>package-AdvancedFTPSV2.3</packages>
-            <packages>package-AdvancedSFTPV2.1</packages>
-            <agentEngineStatus>
-               <subState>0</subState>
-               <appname>MassIngestionRuntime</appname>
-               <replacePolicy>COPY</replacePolicy>
-               <createTime>2020-03-17T10:55:25.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>Mass Ingestion</appDisplayName>
-               <appversion>8.1</appversion>
-               <updateTime>2020-04-27T00:09:04.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>RUNNING</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log_level</name>
-               <type>LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>infa_log_level</name>
-               <type>LOG4J</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>OpsInsightsBaseURL</name>
-               <type>OpsInsights</type>
-               <value>'https://opsinsights.dm-us.informaticacloud.com'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>maxBufferSize</name>
-               <type>OpsInsights</type>
-               <value>512</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>scriptLogDir</name>
-               <type>OpsInsights</type>
-               <value>''</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>scriptTimeoutSecs</name>
-               <type>OpsInsights</type>
-               <value>'300'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>scriptLogRetentionCount</name>
-               <type>OpsInsights</type>
-               <value>'100'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-OpsInsightsDataCollector.2073</packages>
-            <packages>package-OpsInsightsTomcat8.2073</packages>
-            <packages>package-OpsInsightsDomainDependencies.2073</packages>
-            <packages>package-OpsInsightsDataCollectorDomain.2073</packages>
-            <packages>package-OpsInsightsAutoScaleDomain.2073</packages>
-            <agentEngineStatus>
-               <subState>0</subState>
-               <appname>OpsInsightsDataCollector</appname>
-               <replacePolicy>REPLACE</replacePolicy>
-               <createTime>2020-03-17T10:55:26.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>OI Data Collector</appDisplayName>
-               <appversion>8.1</appversion>
-               <updateTime>2020-04-22T16:41:42.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>RUNNING</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <agentEngines>
-            <type>AgentEngine</type>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>host-name</name>
-               <type>server</type>
-               <value>'localhost'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>shutdown-port</name>
-               <type>server</type>
-               <value>7005</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>key-alias</name>
-               <type>server</type>
-               <value>'localhost'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>key-store</name>
-               <type>server</type>
-               <value>'../conf/ae.keystore'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>key-store-password</name>
-               <type>server</type>
-               <value>'password'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>trust-store</name>
-               <type>server</type>
-               <value>'../conf/ae.cacerts'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>trust-store-password</name>
-               <type>server</type>
-               <value>'changeit'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ldap-enabled-realm</name>
-               <type>server</type>
-               <value>false</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ldap-properties</name>
-               <type>server</type>
-               <value>- key: connectionURL&#xD;
-  value: ldap://${host.name}:10389&#xD;
-- key: connectionName&#xD;
-  value: uid=admin,ou=system&#xD;
-- key: connectionPassword&#xD;
-  value: ${pe.ldap.password}&#xD;
-- key: authentication&#xD;
-  value: simple&#xD;
-- key: userBase&#xD;
-  value: ou=people,DC=${host.name},DC=informatica,DC=com&#xD;
-- key: userSearch&#xD;
-  value: (uid={0})&#xD;
-- key: roleBase&#xD;
-  value: ou=groups,DC=${host.name},DC=informatica,DC=com&#xD;
-- key: roleName&#xD;
-  value: cn&#xD;
-- key: roleSearch&#xD;
-  value: (uniqueMember={0})&#xD;
-</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ssl-enabled-protocols</name>
-               <type>server</type>
-               <value>'TLSv1.2'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>ephemeral-DH-key-size</name>
-               <type>server</type>
-               <value>2048</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>use-secure-ciphers-only</name>
-               <type>server</type>
-               <value>true</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>enabled</name>
-               <type>cluster</type>
-               <value>false</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>name</name>
-               <type>cluster</type>
-               <value>'ProcessEngine'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>primary-node</name>
-               <type>cluster</type>
-               <value>true</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>load-balance-url</name>
-               <type>cluster</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>min-heap</name>
-               <type>jvm</type>
-               <value>'1G'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>max-heap</name>
-               <type>jvm</type>
-               <value>'4G'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>additional-properties</name>
-               <type>jvm</type>
-               <value/>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>http-port</name>
-               <type>connectors</type>
-               <value>7080</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>http-maxThreads</name>
-               <type>connectors</type>
-               <value>600</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>http-connectionTimeout</name>
-               <type>connectors</type>
-               <value>120000</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>https-port</name>
-               <type>connectors</type>
-               <value>7443</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>https-maxThreads</name>
-               <type>connectors</type>
-               <value>600</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>https-connectionTimeout</name>
-               <type>connectors</type>
-               <value>120000</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>secure-channel-maxThreads</name>
-               <type>connectors</type>
-               <value>600</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>secure-channel-connectionTimeout</name>
-               <type>connectors</type>
-               <value>120000</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>type</name>
-               <type>db</type>
-               <value>'postgre'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>driver</name>
-               <type>db</type>
-               <value>'org.postgresql.Driver'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>url</name>
-               <type>db</type>
-               <value>'jdbc:postgresql://localhost:5432/activevos'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>maxActive</name>
-               <type>db</type>
-               <value>300</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>maxIdle</name>
-               <type>db</type>
-               <value>30</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>maxWait</name>
-               <type>db</type>
-               <value>30000</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>connection-properties</name>
-               <type>db</type>
-               <value>- key: timeBetweenEvictionRunsMillis&#xD;
-  value: 300000&#xD;
-- key: testOnBorrow&#xD;
-  value: true&#xD;
-- key: testWhileIdle&#xD;
-  value: true&#xD;
-</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>1catalina_org_apache_juli_FileHandler_level</name>
-               <type>logging</type>
-               <value>'FINE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>2localhost_org_apache_juli_FileHandler_level</name>
-               <type>logging</type>
-               <value>'FINE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>3manager_org_apache_juli_FileHandler_level</name>
-               <type>logging</type>
-               <value>'FINE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>4host_manager_org_apache_juli_FileHandler_level</name>
-               <type>logging</type>
-               <value>'FINE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>java_util_logging_ConsoleHandler_level</name>
-               <type>logging</type>
-               <value>'FINE'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>org_apache_catalina_core_ContainerBase_Catalina_localhost_level</name>
-               <type>logging</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>org_apache_catalina_core_ContainerBase_Catalina_localhost_manager_level</name>
-               <type>logging</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>org_apache_catalina_core_ContainerBase_Catalina_localhost_host-manager_level</name>
-               <type>logging</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <agentEngineConfigs>
-               <customized>false</customized>
-               <type>engineConfig</type>
-               <name>log4j2_root_level</name>
-               <type>logging</type>
-               <value>'INFO'</value>
-               <platform>all</platform>
-            </agentEngineConfigs>
-            <packages>package-apache-tomcat-7-0.86</packages>
-            <packages>package-postgresql.4</packages>
-            <packages>package-process-engine.9174990</packages>
-            <packages>package-JDBCv2.36</packages>
-            <packages>package-sapbapi.11</packages>
-            <packages>package-saas-xmetadataread.10</packages>
-            <packages>package-UDTforHierarchy.12</packages>
-            <packages>package-DataTransformation.23</packages>
-            <packages>package-NetSuiteConnector.86</packages>
-            <agentEngineStatus>
-               <subState>0</subState>
-               <appname>process-engine</appname>
-               <replacePolicy>REPLACE_VERSION</replacePolicy>
-               <createTime>2020-03-24T15:12:01.000Z</createTime>
-               <type>AgentEngineStatus</type>
-               <appDisplayName>Process Server</appDisplayName>
-               <appversion>9174990.3</appversion>
-               <updateTime>2020-04-22T16:37:55.000Z</updateTime>
-               <desiredStatus>RUNNING</desiredStatus>
-               <status>RUNNING</status>
-            </agentEngineStatus>
-         </agentEngines>
-         <createTime>2020-03-17T10:55:23.000Z</createTime>
-         <createdBy>admin</createdBy>
-         <platformAgent>true</platformAgent>
-         <serverUrl>https://na1.dm-us.informaticacloud.com/saas</serverUrl>
-         <lastStatusChange>2020-04-27T00:09:09.000Z</lastStatusChange>
-         <name>na_agent_01</name>
-         <agentVersion>56.08</agentVersion>
-         <id>0118TN08000000000002</id>
-         <agentHost>dev.unicosolution.com</agentHost>
-         <spiUrl>https://paku.rt.informaticacloud.com/activevos</spiUrl>
-         <lastUpgradeCheck>2020-04-27T21:15:21.000Z</lastUpgradeCheck>
-      </agent>
-   </sf:field>
+
+<aetgt:output xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+	<sf:field name="out_agentStatusReport" />
+
+	<sf:field name="ICS Session ID">4DSExC7dcVah6qpCClt2c0</sf:field>
+	<sf:field name="ICS Username">Data Viewer</sf:field>
+	<sf:field name="ICS Server URL">https://na1.dm-us.informaticacloud.com/saas</sf:field>
+	<sf:field name="ICS User Email">jbrazda@hcg.com</sf:field>
+	<sf:field name="ICS Org Id">0118TN</sf:field>
+	<sf:field name="Status">200</sf:field>
+	<sf:field name="agentDetails" objectType="IICS-REST-API-V2:agentDetail">
+		<agent xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:xsd1="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd">
+			<updatedBy>agent</updatedBy>
+			<configUpdateTime>2021-05-13T10:49:26.000Z</configUpdateTime>
+			<type>agentdetails</type>
+			<active>true</active>
+			<updateTime>2021-08-11T09:24:52.000Z</updateTime>
+			<agentConfigs />
+
+			<packages />
+
+			<orgId>0118TN</orgId>
+			<platform>linux64</platform>
+			<upgradeStatus>NotUpgrading</upgradeStatus>
+			<lastUpgraded>2021-07-11T11:43:55.000Z</lastUpgraded>
+			<proxyPort>0</proxyPort>
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>NetworkTimeoutPeriod</name>
+					<type>TOMCAT_CFG</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xms32m -Xmx512m'</defaultValue>
+					<name>JRE_OPTS</name>
+					<type>TOMCAT_CFG</type>
+					<value>'-Xms32m -Xmx512m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xms32m -Xmx256m'</defaultValue>
+					<name>LCM_JRE_OPTS</name>
+					<type>PLATFORM_CFG</type>
+					<value>'-Xms32m -Xmx256m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>60</defaultValue>
+					<name>HTTP_CONNECTION_TIMEOUT_SECONDS</name>
+					<type>SYSTEM_CFG</type>
+					<value>60</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>60</defaultValue>
+					<name>HTTP_SOCKET_TIMEOUT_SECONDS</name>
+					<type>SYSTEM_CFG</type>
+					<value>60</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>10</defaultValue>
+					<name>MaximumConcurrentJobs</name>
+					<type>COMMAND_CFG</type>
+					<value>10</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-CommonIntegrationComponents.253</packages>
+				<packages>package-CommandExecutor.126</packages>
+				<agentEngineStatus>
+					<subState>0</subState>
+					<appname>Common_Integration_Components</appname>
+					<replacePolicy>COPY</replacePolicy>
+					<createTime>2021-07-12T11:49:19.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>Common Integration Components</appDisplayName>
+					<appversion>13.0.1</appversion>
+					<updateTime>2021-07-12T11:51:54.000Z</updateTime>
+					<desiredStatus>RUNNING</desiredStatus>
+					<status>RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>NetworkTimeoutPeriod</name>
+					<type>TOMCAT_CFG</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>5</defaultValue>
+					<name>NetworkRetryInterval</name>
+					<type>TOMCAT_CFG</type>
+					<value>5</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'mysql-connector-java-8.0.12.jar'</defaultValue>
+					<name>MySQL_JDBC_DRIVER_JARNAME</name>
+					<type>TOMCAT_CFG</type>
+					<value>'mysql-connector-java-8.0.12.jar'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'dworacle-r37.jar'</defaultValue>
+					<name>ORACLE_JDBC_DRIVER_JARNAME</name>
+					<type>TOMCAT_CFG</type>
+					<value>'dworacle-r37.jar'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'dwsqlserver-r37.jar'</defaultValue>
+					<name>SQLSERVER_JDBC_DRIVER_JARNAME</name>
+					<type>TOMCAT_CFG</type>
+					<value>'dwsqlserver-r37.jar'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'true'</defaultValue>
+					<name>EnableParallelRunFilePurge</name>
+					<type>TOMCAT_CFG</type>
+					<value>'true'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>''</defaultValue>
+					<name>Tomcat_Server_SSL_Enabled_Protocols</name>
+					<type>TOMCAT_CFG</type>
+					<value>''</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>INFA_SSL</name>
+					<type>TOMCAT_JRE</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xms32m -Xmx512m'</defaultValue>
+					<name>INFA_MEMORY</name>
+					<type>TOMCAT_JRE</type>
+					<value>'-Xms32m -Xmx512m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xrs'</defaultValue>
+					<name>JRE_OPTS</name>
+					<type>TOMCAT_JRE</type>
+					<value>'-Xrs'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JAVA_LIBS</name>
+					<type>TOMCAT_JRE</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO, tomcatLog'</defaultValue>
+					<name>log4j_rootLogger</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO, tomcatLog'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_rootLoggerLevel</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'org.apache.log4j.FileAppender'</defaultValue>
+					<name>log4j_appender_tomcatLog</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'org.apache.log4j.FileAppender'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'org.apache.log4j.PatternLayout'</defaultValue>
+					<name>log4j_appender_tomcatLog_layout</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'org.apache.log4j.PatternLayout'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'%d %d{z} %p [%c] - %encode{%m}{CRLF}%n'</defaultValue>
+					<name>log4j_appender_tomcatLog_layout_ConversionPattern</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'%d %d{z} %p [%c] - %encode{%m}{CRLF}%n'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_org_apache</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_net_sf</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_org_hibernate</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_org_springframework</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_logger_com_informatica_saas</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_logger_com_informatica_saas_tunnel_TunnelClientImpl</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_logger_com_informatica_saas_tunnel_TunnelClientHttpCommonsImpl</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_org_apache_commons_httpclient_auth_AuthChallengeProcessor</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'WARN'</defaultValue>
+					<name>log4j_logger_org_apache_commons_httpclient</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'WARN'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_logger_httpclient_wire</name>
+					<type>TOMCAT_LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'pmserversdk.jar'</defaultValue>
+					<name>JVMClassPath</name>
+					<type>PMRDTM_CFG</type>
+					<value>'pmserversdk.jar'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JVMOption1</name>
+					<type>PMRDTM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JVMOption2</name>
+					<type>PMRDTM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JVMOption3</name>
+					<type>PMRDTM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JVMOption4</name>
+					<type>PMRDTM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>JVMOption5</name>
+					<type>PMRDTM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>UseLogService</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'rDTM'</defaultValue>
+					<name>ServerName</name>
+					<type>PMRDTM_CFG</type>
+					<value>'rDTM'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'rDTMUser'</defaultValue>
+					<name>PMUser</name>
+					<type>PMRDTM_CFG</type>
+					<value>'rDTMUser'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'rDTMUserNamespace'</defaultValue>
+					<name>PMUserNamespace</name>
+					<type>PMRDTM_CFG</type>
+					<value>'rDTMUserNamespace'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'rDTMPass'</defaultValue>
+					<name>PMPassword</name>
+					<type>PMRDTM_CFG</type>
+					<value>'rDTMPass'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'XMLRepository'</defaultValue>
+					<name>RepositoryName</name>
+					<type>PMRDTM_CFG</type>
+					<value>'XMLRepository'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'rDTMDomain'</defaultValue>
+					<name>RepositoryDomain</name>
+					<type>PMRDTM_CFG</type>
+					<value>'rDTMDomain'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>OptimizeODBCRead</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>OptimizeODBCWrite</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'UNICODE'</defaultValue>
+					<name>DataMovementMode</name>
+					<type>PMRDTM_CFG</type>
+					<value>'UNICODE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>RecordSessStatInRepo</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>ValidateDataCodePages</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>__PMOV_FFW_ESCAPE_QUOTE</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>5</defaultValue>
+					<name>AgentConnectionTimeout</name>
+					<type>PMRDTM_CFG</type>
+					<value>5</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>LogsInUTF8</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>SalesForceConnectionTimeout</name>
+					<type>PMRDTM_CFG</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>1</defaultValue>
+					<name>OdbcDataDirectNonWapi</name>
+					<type>PMRDTM_CFG</type>
+					<value>1</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'no'</defaultValue>
+					<name>OptimizeOracleSQLServerWrite</name>
+					<type>PMRDTM_CFG</type>
+					<value>'no'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>1</defaultValue>
+					<name>OdbcDataDirectWapiWithSQLWChar</name>
+					<type>PMRDTM_CFG</type>
+					<value>1</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir'</defaultValue>
+					<name>$PMLookupFileDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/../logs'</defaultValue>
+					<name>$PMSessionLogDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir/../logs'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/error'</defaultValue>
+					<name>$PMBadFileDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir/error'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/cache'</defaultValue>
+					<name>$PMCacheDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir/cache'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir'</defaultValue>
+					<name>$PMStorageDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir'</defaultValue>
+					<name>$PMTargetFileDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir'</defaultValue>
+					<name>$PMSourceFileDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir'</defaultValue>
+					<name>$PMExtProcDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/temp'</defaultValue>
+					<name>$PMTempDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir/temp'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/../logs'</defaultValue>
+					<name>$PMWorkflowLogDir</name>
+					<type>PMRDTM_CFG</type>
+					<value>'$PMRootDir/../logs'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>ExitOnAgentError</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../../proxy.ini'</defaultValue>
+					<name>SfdcProxyFile</name>
+					<type>PMRDTM_CFG</type>
+					<value>'../../proxy.ini'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'true'</defaultValue>
+					<name>CommitOnlyAtEnd</name>
+					<type>PMRDTM_CFG</type>
+					<value>'true'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>OptimizeAuroraRead</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>OptimizeAuroraWrite</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'DataDirect CLOSED 8.0 Oracle Wire Protocol for Informatica - R37'</defaultValue>
+					<name>DD_CLOSED_ORACLE_DRIVER</name>
+					<type>PMRDTM_CFG</type>
+					<value>'DataDirect CLOSED 8.0 Oracle Wire Protocol for Informatica - R37'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'DataDirect CLOSED 8.0 SQL Server Wire Protocol for Informatica - R37'</defaultValue>
+					<name>DD_CLOSED_SQLSERVER_DRIVER</name>
+					<type>PMRDTM_CFG</type>
+					<value>'DataDirect CLOSED 8.0 SQL Server Wire Protocol for Informatica - R37'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'MySQL ODBC 8.0 Unicode Driver'</defaultValue>
+					<name>MySQL_ODBC_DRIVER</name>
+					<type>PMRDTM_CFG</type>
+					<value>'MySQL ODBC 8.0 Unicode Driver'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>OptimizeMySQLRead</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'No'</defaultValue>
+					<name>OptimizeMySQLWrite</name>
+					<type>PMRDTM_CFG</type>
+					<value>'No'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>0</defaultValue>
+					<name>EnableCustomFlagsForSqlTx</name>
+					<type>PMRDTM_CFG</type>
+					<value>0</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'Yes'</defaultValue>
+					<name>RemoveOutputHeaderHash</name>
+					<type>PMRDTM_CFG</type>
+					<value>'Yes'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../../../../DQ/Populations'</defaultValue>
+					<name>IdentityReferenceDataLocation</name>
+					<type>IDQ</type>
+					<value>'../../../../DQ/Populations'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/dq/dedupeIndexFiles'</defaultValue>
+					<name>IdentityReferenceIndexLocation</name>
+					<type>IDQ</type>
+					<value>'$PMRootDir/dq/dedupeIndexFiles'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/dq/dedupeCacheFiles'</defaultValue>
+					<name>IdentityCacheLocation</name>
+					<type>IDQ</type>
+					<value>'$PMRootDir/dq/dedupeCacheFiles'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../../rdtmDir/DQContent'</defaultValue>
+					<name>ReferenceDataLocation</name>
+					<type>IDQ</type>
+					<value>'../../rdtmDir/DQContent'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'$PMRootDir/avdata'</defaultValue>
+					<name>ReferenceDataLocation</name>
+					<type>IDQAD</type>
+					<value>'$PMRootDir/avdata'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'PNXJ0QQX84F7AW3LJPVDS99ZHHLCE94QZ3NA'</defaultValue>
+					<name>LicenseKey</name>
+					<type>IDQAD</type>
+					<value>'PNXJ0QQX84F7AW3LJPVDS99ZHHLCE94QZ3NA'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>FullPreLoadCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>PartialPreLoadCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'ALL'</defaultValue>
+					<name>NoPreLoadCountries</name>
+					<type>IDQAD</type>
+					<value>'ALL'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>FullPreLoadGeoCodingCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>PartialPreLoadGeoCodingCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'ALL'</defaultValue>
+					<name>NoPreLoadGeoCodingCountries</name>
+					<type>IDQAD</type>
+					<value>'ALL'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>1048</defaultValue>
+					<name>MemoryUsage</name>
+					<type>IDQAD</type>
+					<value>1048</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'LARGE'</defaultValue>
+					<name>CacheSize</name>
+					<type>IDQAD</type>
+					<value>'LARGE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'MAP'</defaultValue>
+					<name>PreloadingMethod</name>
+					<type>IDQAD</type>
+					<value>'MAP'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>FullPreLoadAddressCodeCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>PartialPreLoadAddressCodeCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>NoPreLoadAddressCodeCountries</name>
+					<type>IDQAD</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'.'</defaultValue>
+					<name>ReportLocation</name>
+					<type>IDQAD</type>
+					<value>'.'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>100</defaultValue>
+					<name>MaxResultCount</name>
+					<type>IDQAD</type>
+					<value>100</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>5</defaultValue>
+					<name>MaxAddressObjectCount</name>
+					<type>IDQAD</type>
+					<value>5</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120</defaultValue>
+					<name>ICSCheckPeriod</name>
+					<type>PLATFORM_CFG</type>
+					<value>120</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>INFA_DEBUG</name>
+					<type>PLATFORM_CFG</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j_logger_com_informatica_saas_di_app_script</name>
+					<type>PLATFORM_CFG</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xrs -Xms8m -Xmx256m'</defaultValue>
+					<name>LCM_SCRIPT_MEMORY</name>
+					<type>PLATFORM_CFG</type>
+					<value>'-Xrs -Xms8m -Xmx256m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>TunnelTimeoutPeriod</name>
+					<type>SYSTEM_CFG</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>3700</defaultValue>
+					<name>CompatibleReleaseLabel</name>
+					<type>SYSTEM_CFG</type>
+					<value>3700</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-ICSAgent_R60_102.86</packages>
+				<packages>package-CCIAgent.3701201</packages>
+				<packages>package-ICSAgentDriver_V11.2</packages>
+				<packages>package-ICSAgentPatch_R60_102.1</packages>
+				<packages>package-StructureDiscovery_102.372</packages>
+				<packages>package-DataQualitySA_102.16</packages>
+				<packages>package-DataTransformation_102.362</packages>
+				<packages>package-RESTSwaggerGenerator.364</packages>
+				<packages>package-SDKPatch.37001</packages>
+				<packages>package-runAJobCli.18</packages>
+				<packages>package-DataQualityProfilingSA_102.2</packages>
+				<packages>package-cmask_102.370144</packages>
+				<packages>package-InformaticaCryptoLibrary.3</packages>
+				<packages>package-saas-xmetadataread.370</packages>
+				<packages>package-UDTforHierarchy_102.370</packages>
+				<packages>package-AgentCompiler.12</packages>
+				<packages>package-adlsv2.11</packages>
+				<packages>package-Box.11</packages>
+				<packages>package-ldap.370112</packages>
+				<packages>package-genericwsc.365</packages>
+				<packages>package-AmazonS3.370116</packages>
+				<packages>package-FileList.8</packages>
+				<packages>package-FileProcessor.370022</packages>
+				<packages>package-GoogleBigQuery.367</packages>
+				<packages>package-googlestorage.37015</packages>
+				<packages>package-JDBCv2.36</packages>
+				<packages>package-Marketo_RESTV3.370020</packages>
+				<packages>package-MemSQL.2</packages>
+				<packages>package-AzureDWv2.8</packages>
+				<packages>package-MicrosoftExcel.364</packages>
+				<packages>package-REST.37</packages>
+				<packages>package-SnowflakeCloudDataWarehouse.11</packages>
+				<packages>package-XML.20</packages>
+				<packages>package-sapbapi.370026</packages>
+				<packages>package-RESTv2.370039</packages>
+				<packages>package-NetSuiteConnector.370012</packages>
+				<packages>package-ConcurREST.4</packages>
+				<packages>package-hadoopfiles.2</packages>
+				<packages>package-AmazonS3V2.3701229</packages>
+				<packages>package-AmazonRedshiftV2.3701268</packages>
+				<packages>package-MockConnector.11</packages>
+				<packages>package-spannerGoogle.370112</packages>
+				<packages>package-fileio.6</packages>
+				<packages>package-AnaplanV2.18</packages>
+				<packages>package-Anaplan.6</packages>
+				<packages>package-OracleCDCRealTime.364</packages>
+				<packages>package-PowerExchangeClient.37004</packages>
+				<packages>package-PowerExchangeMetaAdapter.364</packages>
+				<packages>package-DIHS.27</packages>
+				<packages>package-AzureBlobV3.370116</packages>
+				<packages>package-GoogleAnalytics.370031</packages>
+				<packages>package-hiveadapter.370025</packages>
+				<packages>package-ZendeskV2.4</packages>
+				<packages>package-adlsv3.5</packages>
+				<packages>package-PostgreSQLadapter.370056</packages>
+				<packages>package-Salesforce.370045</packages>
+				<agentEngineStatus>
+					<subState>0</subState>
+					<appname>Data_Integration_Server</appname>
+					<replacePolicy>COPY</replacePolicy>
+					<createTime>2021-08-11T02:05:46.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>Data Integration Server</appDisplayName>
+					<appversion>60.0.5</appversion>
+					<updateTime>2021-08-11T02:09:24.000Z</updateTime>
+					<desiredStatus>RUNNING</desiredStatus>
+					<status>RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../data/monitor'</defaultValue>
+					<name>file-listener-snapshot-dir</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>'../data/monitor'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'userdata/workspace'</defaultValue>
+					<name>mi-task-workspace-dir</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>'userdata/workspace'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>20</defaultValue>
+					<name>file-listener-max-pool-size</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>20</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>20</defaultValue>
+					<name>file-listener-core-pool-size</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>20</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>16</defaultValue>
+					<name>ftp-receive-socket-buffer-size</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>16</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>16</defaultValue>
+					<name>ftp-send-socket-buffer-size</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>16</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>http-client-timeout</name>
+					<type>AGENT_RUNTIME_SETTINGS</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../data/pubring.pkr'</defaultValue>
+					<name>public-keyring-path</name>
+					<type>PGP_SETTINGS</type>
+					<value>'../data/pubring.pkr'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../data/secring.skr'</defaultValue>
+					<name>secret-keying-path</name>
+					<type>PGP_SETTINGS</type>
+					<value>'../data/secring.skr'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xms256m -Xmx2048m'</defaultValue>
+					<name>app-heap-size</name>
+					<type>JVM_SETTINGS</type>
+					<value>'-Xms256m -Xmx2048m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'-Xms32m -Xmx128m'</defaultValue>
+					<name>lcm-heap-size</name>
+					<type>JVM_SETTINGS</type>
+					<value>'-Xms32m -Xmx128m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-MassIngestionRuntime.101</packages>
+				<packages>package-AmazonS3V2.3701229</packages>
+				<packages>package-SDKPatch.37001</packages>
+				<packages>package-AmazonRedshiftV2.3701268</packages>
+				<packages>package-spannerGoogle.370112</packages>
+				<packages>package-AzureBlobV3.370116</packages>
+				<packages>package-GoogleAnalytics.370031</packages>
+				<packages>package-adlsv3.5</packages>
+				<packages>package-AdvancedFTPV2.35</packages>
+				<packages>package-AdvancedFTPSV2.35</packages>
+				<packages>package-AdvancedSFTPV2.40</packages>
+				<agentEngineStatus>
+					<subState>0</subState>
+					<appname>MassIngestionRuntime</appname>
+					<replacePolicy>COPY</replacePolicy>
+					<createTime>2021-08-11T02:05:46.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>Mass Ingestion</appDisplayName>
+					<appversion>14.3</appversion>
+					<updateTime>2021-08-11T02:08:37.000Z</updateTime>
+					<desiredStatus>RUNNING</desiredStatus>
+					<status>RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log_level</name>
+					<type>LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>infa_log_level</name>
+					<type>LOG4J</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>512</defaultValue>
+					<name>maxBufferSize</name>
+					<type>OpsInsights</type>
+					<value>512</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>''</defaultValue>
+					<name>scriptLogDir</name>
+					<type>OpsInsights</type>
+					<value>''</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'300'</defaultValue>
+					<name>scriptTimeoutSecs</name>
+					<type>OpsInsights</type>
+					<value>'300'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'100'</defaultValue>
+					<name>scriptLogRetentionCount</name>
+					<type>OpsInsights</type>
+					<value>'100'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'256m'</defaultValue>
+					<name>initialHeapsize</name>
+					<type>OpsInsights</type>
+					<value>'256m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'3072m'</defaultValue>
+					<name>maxHeapsize</name>
+					<type>OpsInsights</type>
+					<value>'3072m'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'no'</defaultValue>
+					<name>disableOpsinsightHeapDump</name>
+					<type>OpsInsights</type>
+					<value>'no'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'datapublisher-kinesis'</defaultValue>
+					<name>agentstatsPublisher</name>
+					<type>OpsInsights</type>
+					<value>'datapublisher-kinesis'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>''</defaultValue>
+					<name>customConfigurations</name>
+					<type>OpsInsights</type>
+					<value>''</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-OpsInsightsDataCollector.3345</packages>
+				<packages>package-OpsInsightsTomcat8.3345</packages>
+				<packages>package-OpsInsightsDataCollectorDomain.3345</packages>
+				<packages>package-OpsInsightsDomainDependencies.3345</packages>
+				<packages>package-OpsInsightsAutoScaleDomain.3345</packages>
+				<agentEngineStatus>
+					<subState>0</subState>
+					<appname>OpsInsightsDataCollector</appname>
+					<replacePolicy>REPLACE</replacePolicy>
+					<createTime>2021-08-11T02:02:19.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>OI Data Collector</appDisplayName>
+					<appversion>22.6</appversion>
+					<updateTime>2021-08-11T02:05:32.000Z</updateTime>
+					<desiredStatus>RUNNING</desiredStatus>
+					<status>RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'localhost'</defaultValue>
+					<name>host-name</name>
+					<type>server</type>
+					<value>'localhost'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7005</defaultValue>
+					<name>shutdown-port</name>
+					<type>server</type>
+					<value>7005</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'localhost'</defaultValue>
+					<name>key-alias</name>
+					<type>server</type>
+					<value>'localhost'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../conf/ae.keystore'</defaultValue>
+					<name>key-store</name>
+					<type>server</type>
+					<value>'../conf/ae.keystore'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'password'</defaultValue>
+					<name>key-store-password</name>
+					<type>server</type>
+					<value>'password'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../conf/ae.cacerts'</defaultValue>
+					<name>trust-store</name>
+					<type>server</type>
+					<value>'../conf/ae.cacerts'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'changeit'</defaultValue>
+					<name>trust-store-password</name>
+					<type>server</type>
+					<value>'changeit'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>false</defaultValue>
+					<name>ldap-enabled-realm</name>
+					<type>server</type>
+					<value>false</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>- key: connectionURL
+						value: ldap://${host.name}:10389
+						- key: connectionName
+						value: uid=admin,ou=system
+						- key: connectionPassword
+						value: ${pe.ldap.password}
+						- key: authentication
+						value: simple
+						- key: userBase
+						value: ou=people,DC=${host.name},DC=informatica,DC=com
+						- key: userSearch
+						value: (uid={0})
+						- key: roleBase
+						value: ou=groups,DC=${host.name},DC=informatica,DC=com
+						- key: roleName
+						value: cn
+						- key: roleSearch
+						value: (uniqueMember={0})
+					</defaultValue>
+					<name>ldap-properties</name>
+					<type>server</type>
+					<value>- key: connectionURL&#xd;
+						value: ldap://${host.name}:10389&#xd;
+						- key: connectionName&#xd;
+						value: uid=admin,ou=system&#xd;
+						- key: connectionPassword&#xd;
+						value: ${pe.ldap.password}&#xd;
+						- key: authentication&#xd;
+						value: simple&#xd;
+						- key: userBase&#xd;
+						value: ou=people,DC=${host.name},DC=informatica,DC=com&#xd;
+						- key: userSearch&#xd;
+						value: (uid={0})&#xd;
+						- key: roleBase&#xd;
+						value: ou=groups,DC=${host.name},DC=informatica,DC=com&#xd;
+						- key: roleName&#xd;
+						value: cn&#xd;
+						- key: roleSearch&#xd;
+						value: (uniqueMember={0})&#xd; </value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'TLSv1.2'</defaultValue>
+					<name>ssl-enabled-protocols</name>
+					<type>server</type>
+					<value>'TLSv1.2'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>2048</defaultValue>
+					<name>ephemeral-DH-key-size</name>
+					<type>server</type>
+					<value>2048</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>true</defaultValue>
+					<name>use-secure-ciphers-only</name>
+					<type>server</type>
+					<value>true</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>false</defaultValue>
+					<name>enabled</name>
+					<type>cluster</type>
+					<value>false</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'ProcessEngine'</defaultValue>
+					<name>name</name>
+					<type>cluster</type>
+					<value>'ProcessEngine'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>true</defaultValue>
+					<name>primary-node</name>
+					<type>cluster</type>
+					<value>true</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>load-balance-url</name>
+					<type>cluster</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'512M'</defaultValue>
+					<name>min-heap</name>
+					<type>jvm</type>
+					<value>'512M'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'1536M'</defaultValue>
+					<name>max-heap</name>
+					<type>jvm</type>
+					<value>'1536M'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>additional-properties</name>
+					<type>jvm</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7080</defaultValue>
+					<name>http-port</name>
+					<type>connectors</type>
+					<value>7080</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>http-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>http-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7443</defaultValue>
+					<name>https-port</name>
+					<type>connectors</type>
+					<value>7443</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>https-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>https-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>secure-channel-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>secure-channel-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'postgre'</defaultValue>
+					<name>type</name>
+					<type>db</type>
+					<value>'postgre'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'org.postgresql.Driver'</defaultValue>
+					<name>driver</name>
+					<type>db</type>
+					<value>'org.postgresql.Driver'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'jdbc:postgresql://localhost:5432/activevos'</defaultValue>
+					<name>url</name>
+					<type>db</type>
+					<value>'jdbc:postgresql://localhost:5432/activevos'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>maxActive</name>
+					<type>db</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>30</defaultValue>
+					<name>maxIdle</name>
+					<type>db</type>
+					<value>30</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>30000</defaultValue>
+					<name>maxWait</name>
+					<type>db</type>
+					<value>30000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>- key: timeBetweenEvictionRunsMillis
+						value: 300000
+						- key: testOnBorrow
+						value: true
+						- key: testWhileIdle
+						value: true
+					</defaultValue>
+					<name>connection-properties</name>
+					<type>db</type>
+					<value>- key: timeBetweenEvictionRunsMillis&#xd;
+						value: 300000&#xd;
+						- key: testOnBorrow&#xd;
+						value: true&#xd;
+						- key: testWhileIdle&#xd;
+						value: true&#xd; </value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>1catalina_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>2localhost_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>3manager_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>4host_manager_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>java_util_logging_ConsoleHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_manager_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_host-manager_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j2_root_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-apache-tomcat-7-0.89</packages>
+				<packages>package-postgresql.12</packages>
+				<packages>package-process-engine.11549058</packages>
+				<packages>package-JDBCv2.36</packages>
+				<packages>package-sapbapi.370026</packages>
+				<packages>package-saas-xmetadataread.370</packages>
+				<packages>package-UDTforHierarchy.370</packages>
+				<packages>package-DataTransformation.362</packages>
+				<packages>package-NetSuiteConnector.370012</packages>
+				<agentEngineStatus>
+					<subState>-1</subState>
+					<appname>process-engine</appname>
+					<replacePolicy>REPLACE_VERSION</replacePolicy>
+					<createTime>2021-08-11T02:05:46.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>Process Server</appDisplayName>
+					<appversion>10293094.10</appversion>
+					<updateTime>2021-08-11T02:05:46.000Z</updateTime>
+					<desiredStatus>NEED_RUNNING</desiredStatus>
+					<status>NEED_RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<agentEngines>
+				<type>AgentEngine</type>
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'localhost'</defaultValue>
+					<name>host-name</name>
+					<type>server</type>
+					<value>'localhost'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7005</defaultValue>
+					<name>shutdown-port</name>
+					<type>server</type>
+					<value>7005</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'localhost'</defaultValue>
+					<name>key-alias</name>
+					<type>server</type>
+					<value>'localhost'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../conf/ae.keystore'</defaultValue>
+					<name>key-store</name>
+					<type>server</type>
+					<value>'../conf/ae.keystore'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'password'</defaultValue>
+					<name>key-store-password</name>
+					<type>server</type>
+					<value>'password'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'../conf/ae.cacerts'</defaultValue>
+					<name>trust-store</name>
+					<type>server</type>
+					<value>'../conf/ae.cacerts'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'changeit'</defaultValue>
+					<name>trust-store-password</name>
+					<type>server</type>
+					<value>'changeit'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>false</defaultValue>
+					<name>ldap-enabled-realm</name>
+					<type>server</type>
+					<value>false</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>- key: connectionURL
+						value: ldap://${host.name}:10389
+						- key: connectionName
+						value: uid=admin,ou=system
+						- key: connectionPassword
+						value: ${pe.ldap.password}
+						- key: authentication
+						value: simple
+						- key: userBase
+						value: ou=people,DC=${host.name},DC=informatica,DC=com
+						- key: userSearch
+						value: (uid={0})
+						- key: roleBase
+						value: ou=groups,DC=${host.name},DC=informatica,DC=com
+						- key: roleName
+						value: cn
+						- key: roleSearch
+						value: (uniqueMember={0})
+					</defaultValue>
+					<name>ldap-properties</name>
+					<type>server</type>
+					<value>- key: connectionURL&#xd;
+						value: ldap://${host.name}:10389&#xd;
+						- key: connectionName&#xd;
+						value: uid=admin,ou=system&#xd;
+						- key: connectionPassword&#xd;
+						value: ${pe.ldap.password}&#xd;
+						- key: authentication&#xd;
+						value: simple&#xd;
+						- key: userBase&#xd;
+						value: ou=people,DC=${host.name},DC=informatica,DC=com&#xd;
+						- key: userSearch&#xd;
+						value: (uid={0})&#xd;
+						- key: roleBase&#xd;
+						value: ou=groups,DC=${host.name},DC=informatica,DC=com&#xd;
+						- key: roleName&#xd;
+						value: cn&#xd;
+						- key: roleSearch&#xd;
+						value: (uniqueMember={0})&#xd; </value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'TLSv1.2'</defaultValue>
+					<name>ssl-enabled-protocols</name>
+					<type>server</type>
+					<value>'TLSv1.2'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>2048</defaultValue>
+					<name>ephemeral-DH-key-size</name>
+					<type>server</type>
+					<value>2048</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>true</defaultValue>
+					<name>use-secure-ciphers-only</name>
+					<type>server</type>
+					<value>true</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>false</defaultValue>
+					<name>enabled</name>
+					<type>cluster</type>
+					<value>false</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'ProcessEngine'</defaultValue>
+					<name>name</name>
+					<type>cluster</type>
+					<value>'ProcessEngine'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>true</defaultValue>
+					<name>primary-node</name>
+					<type>cluster</type>
+					<value>true</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>load-balance-url</name>
+					<type>cluster</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'512M'</defaultValue>
+					<name>min-heap</name>
+					<type>jvm</type>
+					<value>'512M'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'1536M'</defaultValue>
+					<name>max-heap</name>
+					<type>jvm</type>
+					<value>'1536M'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue />
+
+					<name>additional-properties</name>
+					<type>jvm</type>
+					<value />
+
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7080</defaultValue>
+					<name>http-port</name>
+					<type>connectors</type>
+					<value>7080</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>http-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>http-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>7443</defaultValue>
+					<name>https-port</name>
+					<type>connectors</type>
+					<value>7443</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>https-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>https-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>600</defaultValue>
+					<name>secure-channel-maxThreads</name>
+					<type>connectors</type>
+					<value>600</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>120000</defaultValue>
+					<name>secure-channel-connectionTimeout</name>
+					<type>connectors</type>
+					<value>120000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'postgre'</defaultValue>
+					<name>type</name>
+					<type>db</type>
+					<value>'postgre'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'org.postgresql.Driver'</defaultValue>
+					<name>driver</name>
+					<type>db</type>
+					<value>'org.postgresql.Driver'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'jdbc:postgresql://localhost:5432/activevos'</defaultValue>
+					<name>url</name>
+					<type>db</type>
+					<value>'jdbc:postgresql://localhost:5432/activevos'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>300</defaultValue>
+					<name>maxActive</name>
+					<type>db</type>
+					<value>300</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>30</defaultValue>
+					<name>maxIdle</name>
+					<type>db</type>
+					<value>30</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>30000</defaultValue>
+					<name>maxWait</name>
+					<type>db</type>
+					<value>30000</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>- key: timeBetweenEvictionRunsMillis
+						value: 300000
+						- key: testOnBorrow
+						value: true
+						- key: testWhileIdle
+						value: true
+					</defaultValue>
+					<name>connection-properties</name>
+					<type>db</type>
+					<value>- key: timeBetweenEvictionRunsMillis&#xd;
+						value: 300000&#xd;
+						- key: testOnBorrow&#xd;
+						value: true&#xd;
+						- key: testWhileIdle&#xd;
+						value: true&#xd; </value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>1catalina_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>2localhost_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>3manager_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>4host_manager_org_apache_juli_FileHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'FINE'</defaultValue>
+					<name>java_util_logging_ConsoleHandler_level</name>
+					<type>logging</type>
+					<value>'FINE'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_manager_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>org_apache_catalina_core_ContainerBase_Catalina_localhost_host-manager_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<agentEngineConfigs>
+					<customized>false</customized>
+					<type>engineConfig</type>
+					<defaultValue>'INFO'</defaultValue>
+					<name>log4j2_root_level</name>
+					<type>logging</type>
+					<value>'INFO'</value>
+					<platform>all</platform>
+				</agentEngineConfigs>
+
+				<packages>package-apache-tomcat-7-0.89</packages>
+				<packages>package-postgresql.12</packages>
+				<packages>package-process-engine.11549058</packages>
+				<packages>package-JDBCv2.36</packages>
+				<packages>package-sapbapi.370026</packages>
+				<packages>package-saas-xmetadataread.370</packages>
+				<packages>package-UDTforHierarchy.370</packages>
+				<packages>package-DataTransformation.362</packages>
+				<packages>package-NetSuiteConnector.370012</packages>
+				<agentEngineStatus>
+					<subState>0</subState>
+					<appname>process-engine</appname>
+					<replacePolicy>REPLACE_VERSION</replacePolicy>
+					<createTime>2021-07-17T02:03:26.000Z</createTime>
+					<type>AgentEngineStatus</type>
+					<appDisplayName>Process Server</appDisplayName>
+					<appversion>10293094.9</appversion>
+					<updateTime>2021-07-24T02:06:33.000Z</updateTime>
+					<desiredStatus>STOPPED</desiredStatus>
+					<status>RUNNING</status>
+				</agentEngineStatus>
+			</agentEngines>
+
+			<createTime>2021-05-13T09:56:49.000Z</createTime>
+			<createdBy>admin</createdBy>
+			<platformAgent>true</platformAgent>
+			<serverUrl>https://na1.dm-us.informaticacloud.com/saas</serverUrl>
+			<lastStatusChange>2021-08-11T02:13:34.000Z</lastStatusChange>
+			<name>g01_agent_01</name>
+			<agentVersion>60.04</agentVersion>
+			<id>0118TN08000000000003</id>
+			<agentHost>MP1DMAIICSAPP4</agentHost>
+			<spiUrl>https://paku.rt.informaticacloud.com/activevos</spiUrl>
+			<lastUpgradeCheck>2021-08-11T09:24:52.000Z</lastUpgradeCheck>
+		</agent>
+	</sf:field>
 </aetgt:output>
+
